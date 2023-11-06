@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const ArticleSchema = new mongoose.Schema(
+const GallerySchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -65,6 +65,6 @@ const ArticleSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Article = mongoose.model("Article", ArticleSchema);
+const Gallery = mongoose.model("Gallery", GallerySchema);
 
-export default Article;
+export default Gallery;

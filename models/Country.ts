@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const DestinationSchema = new mongoose.Schema({
+const CountrySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -22,30 +22,6 @@ const DestinationSchema = new mongoose.Schema({
     },
   },
 
-  views: {
-    type: Number,
-  },
-
-  interest: {
-    type: Schema.Types.ObjectId,
-    ref: "Interest",
-  },
-
-  region: {
-    type: Schema.Types.ObjectId,
-    ref: "Region",
-  },
-
-  country: {
-    type: Schema.Types.ObjectId,
-    ref: "Country",
-  },
-
-  address: {
-    type: String,
-    required: true,
-  },
-
   articles: {
     type: [Schema.Types.ObjectId],
     ref: "Article",
@@ -56,17 +32,15 @@ const DestinationSchema = new mongoose.Schema({
     ref: "Gallery",
   },
 
-  comments: {
+  destination: {
     type: [Schema.Types.ObjectId],
-    ref: "Comment",
+    ref: "Destinations",
   },
-
   content: {
     type: String,
-    required: true,
   },
 });
 
-const Destination = mongoose.model("Destination", DestinationSchema);
+const Country = mongoose.model("Country", CountrySchema);
 
-export default Destination;
+export default Country;

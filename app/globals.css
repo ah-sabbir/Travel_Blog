@@ -2,26 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Common */
+.admin-main-gradient {
+  @apply bg-[linear-gradient(135deg,#c3224a_0%,#4a0d37_100%)];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Button */
+.primary-btn {
+  transition: background-image 0.5s ease-in;
+  @apply relative py-3 px-4 rounded admin-main-gradient text-dark_text font-bold;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.primary-btn:hover::before {
+  opacity: 1;
+}
+
+.primary-btn span {
+  @apply relative z-[3];
+}
+
+.primary-btn::before {
+  background-image: linear-gradient(315deg, #c3224a, #4a0d37);
+  @apply absolute content-[''] w-full h-full transition-opacity duration-500 ease-[ease-out] z-[2] opacity-0 left-0 top-0 rounded-[5px];
+}
+
+/* Form */
+.form-title {
+  @apply text-[25px] text-slate-700 font-bold text-center py-2;
+}
+
+.form-input-label {
+  @apply text-sm text-slate-600 font-bold;
+}
+
+/* Login page */
+.admin-login-background {
+  background-image: url("/assets/images/admin/login-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: rgba(55, 65, 81, 0.6);
+  @apply h-screen bg-blend-multiply;
+}
+
+/* Admin Sidebar */
+.admin-sidebar-shadow {
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56),
+    0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.admin-sidebar-item {
+  @apply flex items-center text-sm font-extralight py-3 pl-4 hover:bg-[#c8c8c833] transition duration-[350] hover:text-white rounded text-[#ffffffcc];
+}
+
+.admin-sidebar-background {
+  background-image: url("/assets/images/admin/sidebar-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 6px;
 }
