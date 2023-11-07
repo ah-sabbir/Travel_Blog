@@ -3,6 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/providers/auth-provider";
+import { GlobalStateProvider } from "@/providers/redux-provider";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={nunito.className}>
-        <AuthProvider>{children}</AuthProvider>
+        <GlobalStateProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </GlobalStateProvider>
         <Toaster position="bottom-center" reverseOrder={false} />
       </body>
     </html>

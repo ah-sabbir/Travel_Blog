@@ -1,4 +1,4 @@
-import { CreateAccountInput } from "@/dtos/create-account.dto";
+import { CreateAccountInput } from "@/dtos/auth/create-account.dto";
 import dbConnect from "@/lib/db";
 import { NextResponse } from "next/server";
 import * as bcrypt from "bcrypt";
@@ -25,7 +25,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error: any) {
-    console.log(error);
     return NextResponse.json(
       { ok: false, error: error.message },
       { status: 500 }

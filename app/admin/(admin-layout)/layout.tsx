@@ -1,16 +1,25 @@
+"use client";
+
+import AdminHeader from "@/components/layout/admin-header";
 import AdminSidebar from "@/components/layout/admin-sidebar";
 import { FC, ReactNode } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 interface Props {
   children: ReactNode;
 }
 
 const AdminPageLayout: FC<Props> = ({ children }): JSX.Element => {
+  const isExpand = useSelector((state: RootState) => state.adminSidebar.expand);
   return (
     <>
-      <div className="flex bg-[#eee] text-[#3c4858]">
-        <AdminSidebar />
-        <div className="flex-1 h-screen">{children}</div>
+      <div className="bg-[#eee] text-[#3c4858]">
+        <AdminSidebar isExpand={isExpand} />
+        <div className={`${isExpand ? "ml-[260px]" : "ml-[80px]"}`}>
+          <AdminHeader isExpand={isExpand} />
+          {children}
+        </div>
       </div>
     </>
   );

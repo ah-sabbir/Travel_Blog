@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        secondary: "#0da5b5",
-        tertiary: "#4a0d37",
-        dark_text: "#edfff4",
+        admin_primary: "#c3224a",
+        admin_black_text: "#333333",
+        admin_gray_text: "#999999",
       },
       transitionProperty: {
         width: "width",

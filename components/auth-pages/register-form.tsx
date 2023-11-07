@@ -8,7 +8,7 @@ import FormInput from "@/components/form-input";
 import AuthSwitchBtns from "@/components/auth-pages/auth-switch-btns";
 import BtnWithLoading from "@/components/btn-with-loading";
 import axios from "@/lib/axios";
-import { CreateAccountOutput } from "@/dtos/create-account.dto";
+import { CreateAccountOutput } from "@/dtos/auth/create-account.dto";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { path } from "@/constant";

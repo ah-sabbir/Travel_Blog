@@ -1,4 +1,4 @@
-import { CoreOutput } from "./common.dto";
+import { CoreOutput } from "../common.dto";
 
 export interface CreateAccountInput {
   email: string;

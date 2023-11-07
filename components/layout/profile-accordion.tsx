@@ -12,9 +12,11 @@ import { path } from "@/constant";
  * @type {React.ExoticComponent<import('@szhsin/react-accordion').AccordionItemProps>}
  */
 
-interface Props {}
+interface Props {
+  isExpand: boolean;
+}
 
-const ProfileAccordion: FC<Props> = (): JSX.Element => {
+const ProfileAccordion: FC<Props> = ({ isExpand }): JSX.Element => {
   const { data: session } = useSession();
 
   return (
@@ -23,18 +25,33 @@ const ProfileAccordion: FC<Props> = (): JSX.Element => {
         <AccordionItem
           header={
             <div className="flex items-center gap-3 w-full">
-              <UserAvatar wrapperClasses="w-[34px] h-[34px] ml-[7px]" />
-              <div className="flex items-center justify-between">
+              <UserAvatar
+                wrapperClasses={`${
+                  isExpand ? "w-[34px] h-[34px] ml-[7px]" : "w-11 h-11"
+                }`}
+              />
+              <div
+                className={`${
+                  isExpand ? "flex items-center justify-between" : "hidden"
+                }`}
+              >
                 <span className="text-sm">{session?.user?.name}</span>
               </div>
             </div>
           }
         >
-          <Link href={path.profile} className="mb-1 gap-4 admin-sidebar-item">
+          <Link
+            href={path.profile}
+            className={`${
+              isExpand ? "mb-1 gap-4 admin-sidebar-item" : "hidden"
+            }`}
+          >
             <span>MP</span> Profile
           </Link>
           <button
-            className="w-full admin-sidebar-item gap-[19px]"
+            className={`${
+              isExpand ? "w-full admin-sidebar-item gap-[19px]" : "hidden"
+            }`}
             onClick={() => signOut()}
           >
             <span>LO</span> Log Out

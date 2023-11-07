@@ -44,10 +44,24 @@ export const authOptions: NextAuthOptions = {
       if (user) token.role = (user as any).role;
       return token;
     },
+    async session({ session }) {
+      await dbConnect();
+      const user = await User.findOne({ email: session.user?.email });
+      if (user)
+        session.user = {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          image: user.avatar.url || "",
+        } as any;
+
+      return session;
+    },
   },
 
   pages: {
-    signIn: "/admin/login",
+    signIn: "/login",
   },
 };
 

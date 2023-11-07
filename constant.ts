@@ -1,7 +1,7 @@
 export const path = {
   // Admin
-  login: "/admin/login",
-  signup: "/admin/signup",
+  login: "/login",
+  signup: "/signup",
   dashboard: "/admin/dashboard",
   profile: "/admin/profile",
   adminCategories: "/admin/categories",
@@ -12,5 +12,5 @@ export const path = {
   adminDestinations: "/admin/destinations",
   adminInterests: "/admin/interests",
   adminRegions: "/admin/regions",
-  adminTickets: "admin/tickets",
+  adminTickets: "/admin/tickets",
 };

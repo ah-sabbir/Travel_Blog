@@ -22,13 +22,41 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
 
+    avatar: {
+      public_id: {
+        type: String,
+        //  required: true
+      },
+      url: {
+        type: String,
+        // required: true
+      },
+    },
+
     role: {
       type: String,
       enum: Object.values(userRole),
       default: userRole.user,
+      required: true,
     },
 
     description: {
+      type: String,
+    },
+
+    facebook: {
+      type: String,
+    },
+
+    twitter: {
+      type: String,
+    },
+
+    youtube: {
+      type: String,
+    },
+
+    linkedin: {
       type: String,
     },
 
