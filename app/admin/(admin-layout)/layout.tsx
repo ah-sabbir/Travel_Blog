@@ -14,7 +14,7 @@ const AdminPageLayout: FC<Props> = ({ children }): JSX.Element => {
   const isExpand = useSelector((state: RootState) => state.adminSidebar.expand);
   return (
     <>
-      <div className="bg-[#eee] text-[#3c4858]">
+      <div className="bg-[#eee] min-h-screen text-[#3c4858]">
         <AdminSidebar isExpand={isExpand} />
         <div className={`${isExpand ? "ml-[260px]" : "ml-[80px]"}`}>
           <AdminHeader isExpand={isExpand} />

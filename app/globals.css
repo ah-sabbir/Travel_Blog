@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Common */
+/* Admin Common */
 .admin-main-gradient {
   @apply bg-[linear-gradient(135deg,#c3224a_0%,#4a0d37_100%)];
 }
@@ -17,7 +17,7 @@
 }
 
 .admin-card-body {
-  @apply my-4 mx-5 pb-6 h-fit;
+  @apply my-4 px-5 pb-6;
 }
 
 /* Button */
@@ -92,4 +92,26 @@
 ::-webkit-scrollbar-thumb {
   background-color: #999;
   border-radius: 6px;
+}
+
+/* Admin table */
+.admin-table thead {
+  @apply bg-slate-50;
+}
+
+.admin-table th {
+  @apply py-3 border-b;
+}
+
+.admin-table td {
+  @apply py-3 pl-3;
+}
+
+.admin-table tr {
+  @apply even:bg-slate-50;
+}
+
+/* Modal */
+.customModal {
+  @apply rounded-md w-2/3 p-0;
 }
