@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import { CreateRegionInput } from "@/dtos/region/create-region.dto";
 import Region from "@/models/Region";
 import Country from "@/models/Country";
+import { EditRegionInput } from "@/dtos/region/edit-region.dto";
 
 export async function POST(req: Request) {
   try {
@@ -58,6 +59,100 @@ export async function POST(req: Request) {
 
       country.save();
     }
+
+    return NextResponse.json({
+      ok: true,
+    });
+  } catch (error: any) {
+    return NextResponse.json({
+      ok: false,
+      error: error.message,
+    });
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const body: EditRegionInput = await req.json();
+
+    const {
+      name,
+      slug,
+      description,
+      content,
+      thumbnail,
+      banner,
+      id,
+      countryId,
+    } = body;
+
+    if (!name || !slug || !description || !content || !id) {
+      return NextResponse.json({
+        ok: false,
+        error:
+          "Thiếu tên, đường dẫn, mô tả, id hoặc thông tin vắn tắt của tỉnh / vùng miền",
+      });
+    }
+
+    await dbConnect();
+
+    const region = await Region.findById(id);
+
+    if (!region) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy tỉnh / vùng miền",
+      });
+    }
+
+    const country: any = await Country.findById(region.countryId).select(
+      "regions"
+    );
+
+    if (country) {
+      const regionIndex = country.regions.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      country.regions.splice(regionIndex, 1);
+      country.save();
+    }
+
+    const newCountry = await Country.findById(countryId).select("regions");
+
+    if (!newCountry) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy quốc gia",
+      });
+    } else {
+      newCountry.regions.push(id);
+      newCountry.save();
+    }
+
+    const newThumbnail = await editCloudinaryImage(thumbnail, region.thumbnail);
+    if (newThumbnail) {
+      region.thumbnail = {
+        public_id: newThumbnail.public_id,
+        url: newThumbnail.secure_url,
+      };
+    }
+
+    const newBanner = await editCloudinaryImage(banner, region.banner);
+    if (newBanner) {
+      region.thumbnail = {
+        public_id: newBanner.public_id,
+        url: newBanner.secure_url,
+      };
+    }
+
+    region.name = name;
+    region.slug = slug;
+    region.description = description;
+    region.countryId = countryId;
+    region.content = content;
+
+    await region.save();
 
     return NextResponse.json({
       ok: true,

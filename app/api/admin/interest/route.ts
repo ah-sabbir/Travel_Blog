@@ -54,8 +54,6 @@ export async function PUT(req: Request) {
 
     const { name, slug, description, thumbnail, id } = body;
 
-    console.log(body);
-
     if (!name || !slug || !description || !id) {
       return NextResponse.json({
         ok: false,

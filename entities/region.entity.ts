@@ -9,7 +9,7 @@ export interface RegionEntity {
   articles: [];
   galleries: [];
   regions: [];
-  country: ObjectId;
+  countryId: string;
   thumbnail: {
     public_id: string;
     url: string;
