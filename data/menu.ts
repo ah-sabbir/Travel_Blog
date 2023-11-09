@@ -1,5 +1,6 @@
 import { path } from "@/constant";
 import { IconType } from "react-icons";
+import { IoMdPricetags } from "react-icons/io";
 import {
   MdAccountCircle,
   MdAddLocationAlt,
@@ -27,9 +28,13 @@ export const adminSidebarItems: {
   { link: path.adminArticles, title: "Bài viết", icon: MdEditSquare },
   { link: path.adminTickets, title: "Vé du lịch", icon: MdAirplaneTicket },
   { link: path.adminCategories, title: "Danh mục", icon: MdCategory },
-  { link: path.adminCountries, title: "Quốc gia", icon: MdOutlineGpsFixed },
-  { link: path.adminBrands, title: "Thương hiệu", icon: MdTravelExplore },
+  {
+    link: path.adminRegions,
+    title: "Tỉnh - Vùng miền",
+    icon: MdOutlineGpsFixed,
+  },
+  { link: path.adminCountries, title: "Quốc gia", icon: MdOutlinePublic },
+  { link: path.adminBrands, title: "Thương hiệu", icon: IoMdPricetags },
   { link: path.adminDestinations, title: "Điểm đến", icon: MdAddLocationAlt },
   { link: path.adminInterests, title: "Sở thích", icon: MdInterests },
-  { link: path.adminRegions, title: "Tỉnh - Vùng miền", icon: MdOutlinePublic },
 ];

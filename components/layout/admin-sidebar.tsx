@@ -13,6 +13,7 @@ interface Props {
 
 const AdminSidebar: FC<Props> = ({ isExpand }): JSX.Element => {
   const pathName = usePathname();
+
   return (
     <aside
       className={`bg-[#191919] h-full max-h-full fixed top-0 bottom-0 left-0 z-[2] admin-sidebar-shadow text-white overflow-y-scroll transition-width ${
@@ -43,7 +44,9 @@ const AdminSidebar: FC<Props> = ({ isExpand }): JSX.Element => {
               href={item.link}
               key={item.title}
               className={`admin-sidebar-item gap-4 my-2 ${
-                pathName === item.link && "admin-main-gradient !text-white"
+                pathName.includes(item.link) &&
+                item.link.length > 1 &&
+                "admin-main-gradient !text-white"
               } ${isExpand ? "mx-4 my-2" : "ml-2 mr-[10px]"}`}
             >
               {item.icon({ size: 23 })}{" "}

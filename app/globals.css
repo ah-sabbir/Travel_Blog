@@ -133,3 +133,8 @@
 .customModal {
   @apply rounded-md w-1/2 py-0;
 }
+
+/* Text editor */
+.tox-tinymce {
+  @apply !border-[1px] !border-[#e5e7eb] !rounded-md;
+}

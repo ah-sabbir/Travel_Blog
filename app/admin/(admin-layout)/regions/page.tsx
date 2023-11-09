@@ -1,24 +1,24 @@
 import AdminCardTitle from "@/components/admin-card-title";
-import CategoriesTable from "@/components/admin-categories-page/categories-table";
+import RegionsTable from "@/components/admin-regions-page/regions-table";
 import { NextPage } from "next";
-import { MdCategory } from "react-icons/md";
+import { MdOutlineGpsFixed } from "react-icons/md";
 
 interface Props {}
 
-const AdminCategoriesPage: NextPage<Props> = async () => {
+const AdminRegionPage: NextPage<Props> = () => {
   return (
     <div className="admin-page-container">
       <div className="admin-card">
         <AdminCardTitle
-          cardTitle="Danh mục"
+          cardTitle="Tỉnh - Vùng miền"
           cardIconClasses="admin-main-gradient"
-          icon={MdCategory}
+          icon={MdOutlineGpsFixed}
           iconSize={22}
         />
-        <CategoriesTable />
+        <RegionsTable />
       </div>
     </div>
   );
 };
 
-export default AdminCategoriesPage;
+export default AdminRegionPage;

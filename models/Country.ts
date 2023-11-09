@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, models } from "mongoose";
 
 const CountrySchema = new mongoose.Schema({
   name: {
@@ -6,19 +6,23 @@ const CountrySchema = new mongoose.Schema({
     required: true,
   },
 
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
   description: {
     type: String,
     required: true,
   },
 
-  image: {
+  thumbnail: {
     public_id: {
       type: String,
-      //  required: true
     },
     url: {
       type: String,
-      // required: true
     },
   },
 
@@ -36,11 +40,23 @@ const CountrySchema = new mongoose.Schema({
     type: [Schema.Types.ObjectId],
     ref: "Destinations",
   },
+
+  regions: {
+    type: [Schema.Types.ObjectId],
+    ref: "Region",
+  },
+
+  views: {
+    type: Number,
+    default: 0,
+  },
+
   content: {
     type: String,
+    required: true,
   },
 });
 
-const Country = mongoose.model("Country", CountrySchema);
+const Country = models.Country || mongoose.model("Country", CountrySchema);
 
 export default Country;

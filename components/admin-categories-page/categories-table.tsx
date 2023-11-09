@@ -1,8 +1,7 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import AdminCardTitle from "../admin-card-title";
-import { MdCategory, MdEditSquare } from "react-icons/md";
+import { MdEditSquare } from "react-icons/md";
 import BtnWithIcon from "../btn-with-icon";
 import { BiPlusCircle } from "react-icons/bi";
 import { CategoryEntity } from "@/entities/category.entity";
@@ -39,12 +38,6 @@ const CategoriesTable: FC<Props> = (): JSX.Element => {
 
   return (
     <>
-      <AdminCardTitle
-        cardTitle="Danh mục"
-        cardIconClasses="admin-main-gradient"
-        icon={MdCategory}
-        iconSize={18}
-      />
       <div className="admin-card-body">
         <div className="text-right">
           <BtnWithIcon

@@ -37,7 +37,7 @@ export async function PUT(req: Request) {
       );
     }
 
-    const newImage = await editCloudinaryImage(avatar);
+    const newImage = await editCloudinaryImage(avatar, user.avatar);
     if (newImage) {
       user.avatar = { public_id: newImage.public_id, url: newImage.secure_url };
     }

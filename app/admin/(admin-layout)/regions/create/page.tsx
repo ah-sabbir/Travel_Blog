@@ -1,24 +1,25 @@
 import AdminCardTitle from "@/components/admin-card-title";
-import CategoriesTable from "@/components/admin-categories-page/categories-table";
+import CreateRegionForm from "@/components/admin-regions-page/create-region-form";
 import { NextPage } from "next";
-import { MdCategory } from "react-icons/md";
+import { MdCreateNewFolder } from "react-icons/md";
 
 interface Props {}
 
-const AdminCategoriesPage: NextPage<Props> = async () => {
+const CreateRegionPage: NextPage<Props> = () => {
   return (
     <div className="admin-page-container">
       <div className="admin-card">
         <AdminCardTitle
-          cardTitle="Danh mục"
+          cardTitle="Tạo tỉnh / vùng miền"
           cardIconClasses="admin-main-gradient"
-          icon={MdCategory}
+          icon={MdCreateNewFolder}
           iconSize={22}
         />
-        <CategoriesTable />
+
+        <CreateRegionForm />
       </div>
     </div>
   );
 };
 
-export default AdminCategoriesPage;
+export default CreateRegionPage;
