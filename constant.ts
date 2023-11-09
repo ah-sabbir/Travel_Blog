@@ -19,4 +19,6 @@ export const path = {
   editCountry: "/admin/countries/edit",
   createRegion: "/admin/regions/create",
   editRegion: "/admin/regions/edit",
+  createInterest: "/admin/interests/create",
+  editInterest: "/admin/interests/edit",
 };

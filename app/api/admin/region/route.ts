@@ -48,22 +48,65 @@ export async function POST(req: Request) {
       content,
       thumbnail: savedThumbnail,
       banner: savedBanner,
+      countryId,
     });
 
-    if (!countryId) {
-      const country: any = Country.findById(countryId).select("regions");
-
-      if (!country) {
-        return NextResponse.json({
-          ok: false,
-          error: `Không tìm thấy quốc gia`,
-        });
-      }
+    if (countryId) {
+      const country: any = await Country.findById(countryId).select("regions");
 
       country.regions.push(region._id);
 
       country.save();
     }
+
+    return NextResponse.json({
+      ok: true,
+    });
+  } catch (error: any) {
+    return NextResponse.json({
+      ok: false,
+      error: error.message,
+    });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({
+        ok: false,
+        error: "Thiếu tham số id của tỉnh / vùng miền",
+      });
+    }
+
+    await dbConnect();
+
+    const region = await Region.findById(id);
+
+    if (!region) {
+      return NextResponse.json({ ok: false, error: "Không tìm thấy quốc gia" });
+    }
+
+    await cloudinary.v2.uploader.destroy(region.thumbnail.public_id);
+    await cloudinary.v2.uploader.destroy(region.banner.public_id);
+
+    const country: any = await Country.findById(region.countryId).select(
+      "regions"
+    );
+
+    if (country) {
+      const regionIndex = country.regions.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      country.regions.splice(regionIndex, 1);
+      country.save();
+    }
+
+    await region.deleteOne({ _id: id });
 
     return NextResponse.json({
       ok: true,

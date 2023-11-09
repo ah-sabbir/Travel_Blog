@@ -48,7 +48,7 @@ const RegionSchema = new mongoose.Schema({
     ref: "Destinations",
   },
 
-  country: {
+  countryId: {
     type: String,
   },
 

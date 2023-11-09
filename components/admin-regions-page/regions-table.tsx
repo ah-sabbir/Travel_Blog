@@ -8,6 +8,7 @@ import DeleteCountryForm from "../admin-countries-page/delete-country-form";
 import AdminDataTable from "../admin-data-table";
 import { RegionEntity } from "@/entities/region.entity";
 import { getAllRegions } from "@/lib/fetch-region-data";
+import DeleteRegionForm from "./delete-region-form";
 
 interface Props {}
 
@@ -47,10 +48,10 @@ const RegionsTable: FC<Props> = (): JSX.Element => {
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
       >
-        <DeleteCountryForm
+        <DeleteRegionForm
           setShowDeleteForm={setShowDeleteForm}
           refetch={fetchRegions}
-          deletedCountry={deletedRegion as CountryEntity}
+          deletedRegion={deletedRegion as RegionEntity}
         />
       </CustomModal>
     </>
