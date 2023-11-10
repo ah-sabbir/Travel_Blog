@@ -132,7 +132,7 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
       if (data.ok) {
         setIsLoading(false);
         toast.success(`Tạo bài viết thành công`);
-        return router.back();
+        router.back();
       }
     } catch (error: any) {
       setIsLoading(false);
