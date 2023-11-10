@@ -26,4 +26,6 @@ const CreateArticlePage: NextPage<Props> = async () => {
   );
 };
 
+export const dynamic = "force-dynamic";
+
 export default CreateArticlePage;

@@ -14,4 +14,6 @@ const SignupPage: NextPage<Props> = async () => {
   return <RegisterForm />;
 };
 
+export const dynamic = "force-dynamic";
+
 export default SignupPage;

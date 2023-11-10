@@ -105,7 +105,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
       >
         {/* <DeleteArticleForm
           setShowDeleteForm={setShowDeleteForm}
-          refetch={fetchCategories}
+          refetch={fetAr}
           deletedArticle={deletedArticle as ArticleEntity}
         /> */}
       </CustomModal>

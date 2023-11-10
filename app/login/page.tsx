@@ -12,4 +12,6 @@ const LoginPage: NextPage = async () => {
   return <LoginForm />;
 };
 
+export const dynamic = "force-dynamic";
+
 export default LoginPage;
