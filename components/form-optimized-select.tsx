@@ -14,6 +14,7 @@ interface Props {
   label: string;
   labelCustomClasses?: string;
   id: string;
+  wrapperCustomClasses?: string;
 }
 
 const customStyles = {
@@ -22,7 +23,6 @@ const customStyles = {
     borderColor: "#e5e7eb",
     borderRadius: "6px",
     padding: "5px 8px",
-    background: "#f5f5f5",
   }),
 };
 
@@ -33,10 +33,11 @@ const FormOptimzedSelect: FC<Props> = ({
   value,
   label,
   labelCustomClasses,
+  wrapperCustomClasses,
   id,
 }): JSX.Element => {
   return (
-    <div className="mb-4">
+    <div className={`mb-4 ${wrapperCustomClasses}`}>
       <label htmlFor={id} className={`form-input-label ${labelCustomClasses}`}>
         {label}
       </label>

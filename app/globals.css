@@ -136,5 +136,5 @@
 
 /* Text editor */
 .tox-tinymce {
-  @apply !border-[1px] !border-[#e5e7eb] !rounded-md;
+  @apply !border-[1px] !border-[#e5e7eb] !rounded-md !min-h-[600px];
 }

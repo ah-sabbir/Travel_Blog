@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, models } from "mongoose";
 
 const ArticleSchema = new mongoose.Schema(
   {
@@ -15,11 +15,9 @@ const ArticleSchema = new mongoose.Schema(
     image: {
       public_id: {
         type: String,
-        //  required: true
       },
       url: {
         type: String,
-        // required: true
       },
     },
 
@@ -53,6 +51,11 @@ const ArticleSchema = new mongoose.Schema(
       ref: "Region",
     },
 
+    country: {
+      type: Schema.Types.ObjectId,
+      ref: "Country",
+    },
+
     category: {
       type: Schema.Types.ObjectId,
       ref: "Category",
@@ -66,6 +69,6 @@ const ArticleSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Article = mongoose.model("Article", ArticleSchema);
+const Article = models.Article || mongoose.model("Article", ArticleSchema);
 
 export default Article;

@@ -21,4 +21,6 @@ export const path = {
   editRegion: "/admin/regions/edit",
   createInterest: "/admin/interests/create",
   editInterest: "/admin/interests/edit",
+  createArticle: "/admin/articles/create",
+  editArticle: "/admin/articles/edit",
 };
