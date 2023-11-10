@@ -5,6 +5,7 @@ import dbConnect from "@/lib/db";
 import Interest from "@/models/Interest";
 import { NextResponse } from "next/server";
 import { EditInterestInput } from "@/dtos/interest/edit-interest.dto";
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
   try {

@@ -6,6 +6,7 @@ import { CreateRegionInput } from "@/dtos/region/create-region.dto";
 import Region from "@/models/Region";
 import Country from "@/models/Country";
 import { EditRegionInput } from "@/dtos/region/edit-region.dto";
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
   try {

@@ -3,6 +3,7 @@ import { EditCategoryInput } from "@/dtos/category/edit-category.dto";
 import dbConnect from "@/lib/db";
 import Category from "@/models/Category";
 import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
