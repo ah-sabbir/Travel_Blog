@@ -107,17 +107,17 @@ const UserProfileCard: FC<Props> = ({ user }): JSX.Element => {
     setIsFetchUserLoading(true);
     const data = await getUserProfileById(user._id as string);
 
-    const userInfo = data.user;
-    setValue("name", userInfo.name);
+    const userInfo = data?.user;
+    setValue("name", userInfo?.name || "");
     setValue("description", userInfo?.description || "");
-    setValue("email", userInfo.email);
+    setValue("email", userInfo?.email || "");
     setValue("facebook", userInfo?.facebook || "");
     setValue("youtube", userInfo?.youtube || "");
-    setValue("twitter", userInfo.twitter || "");
-    setValue("linkedin", userInfo.linkedin || "");
+    setValue("twitter", userInfo?.twitter || "");
+    setValue("linkedin", userInfo?.linkedin || "");
 
-    if (userInfo.avatar?.url) {
-      setAvatar(userInfo.avatar.url);
+    if (userInfo?.avatar?.url) {
+      setAvatar(userInfo?.avatar.url);
     }
 
     setIsFetchUserLoading(false);
