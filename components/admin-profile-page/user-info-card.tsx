@@ -18,8 +18,8 @@ const UserInfoCard: FC<Props> = ({ userId }): JSX.Element => {
   const fetchUser = async () => {
     setIsLoading(true);
     const data = await getUserProfileById(userId);
-    if (data.user) {
-      setUser(data.user);
+    if (data?.user) {
+      setUser(data?.user);
     }
     setIsLoading(false);
   };
