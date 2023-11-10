@@ -42,7 +42,7 @@ const RegionsTable: FC<Props> = (): JSX.Element => {
             content="Thêm tỉnh / vùng miền"
             icon={BiPlusCircle}
             iconSize={18}
-            to={path.createCountry}
+            to={path.createRegion}
             customClasses="w-fit ml-auto block"
           />
         </div>
