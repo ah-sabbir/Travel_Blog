@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/providers/auth-provider";
 import { GlobalStateProvider } from "@/providers/redux-provider";
+import StyledProgressBar from "@/components/progress-bar";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={nunito.className}>
+        <StyledProgressBar />
         <GlobalStateProvider>
           <AuthProvider>{children}</AuthProvider>
         </GlobalStateProvider>

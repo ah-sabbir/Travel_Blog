@@ -4,32 +4,32 @@ import { FC, useEffect, useState } from "react";
 import { MdEditSquare } from "react-icons/md";
 import BtnWithIcon from "../btn-with-icon";
 import { BiPlusCircle } from "react-icons/bi";
-import { CategoryEntity } from "@/entities/category.entity";
 import CustomModal from "../custom-modal";
-import { getAllCategories } from "@/lib/fetch-category-data";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { AiFillDelete } from "react-icons/ai";
-import DeleteCategoryForm from "../admin-categories-page/delete-category-form";
 import { path } from "@/constant";
+import { ArticleEntity } from "@/entities/article.entity";
+import { getAllArticles } from "@/lib/fetch-article-data";
+import moment from "moment";
 
 interface Props {}
 
 const ArticlesTable: FC<Props> = (): JSX.Element => {
-  const [categories, setCategories] = useState<CategoryEntity[]>([]);
+  const [articles, setArticles] = useState<ArticleEntity[]>([]);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [deletedCategory, setDeletedCategory] = useState<CategoryEntity>();
+  const [deletedArticle, setDeletedArticle] = useState<ArticleEntity>();
 
-  const fetchCategories = async () => {
+  const fetchArticles = async () => {
     setIsLoading(true);
-    const fetchedCategories = await getAllCategories();
-    setCategories(fetchedCategories as CategoryEntity[]);
+    const fetchedArticles = await getAllArticles();
+    setArticles(fetchedArticles as ArticleEntity[]);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchCategories();
+    fetchArticles();
   }, []);
 
   return (
@@ -49,8 +49,8 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
           <thead>
             <tr>
               <th>Tiêu đề</th>
-              <th>Danh mục</th>
-              <th>Sở thích</th>
+              <th>Đường dẫn</th>
+              <th>Lượt xem</th>
               <th>Ngày sửa</th>
               <th>Sửa / Xóa</th>
             </tr>
@@ -68,12 +68,14 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
             </>
           ) : (
             <tbody>
-              {categories.map((category) => (
-                <tr key={category._id.toString()}>
-                  <td className="text-center">{category.name}</td>
-                  <td className="text-center">{category.slug}</td>
-                  <td className="text-center">{category.articles.length}</td>
-                  <td className="text-center">{category.galleries.length}</td>
+              {articles.map((article) => (
+                <tr key={article._id.toString()}>
+                  <td className="text-center">{article.name}</td>
+                  <td className="text-center">{article.slug}</td>
+                  <td className="text-center">{article.views}</td>
+                  <td className="text-center">
+                    {moment(article.updatedAt).format("L")}
+                  </td>
                   <td className="flex items-center justify-center gap-4">
                     <MdEditSquare
                       className="mt-1 cursor-pointer text-blue-900"
@@ -85,7 +87,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
                       size={18}
                       onClick={() => {
                         setShowDeleteForm(true);
-                        setDeletedCategory(category);
+                        setDeletedArticle(article);
                       }}
                     />
                   </td>
@@ -101,11 +103,11 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
       >
-        <DeleteCategoryForm
+        {/* <DeleteArticleForm
           setShowDeleteForm={setShowDeleteForm}
           refetch={fetchCategories}
-          deletedCategory={deletedCategory as CategoryEntity}
-        />
+          deletedArticle={deletedArticle as ArticleEntity}
+        /> */}
       </CustomModal>
     </>
   );

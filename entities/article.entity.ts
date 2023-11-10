@@ -19,4 +19,6 @@ export interface ArticleEntity {
   comments: [];
   views: number;
   author: ObjectId;
+  createdAt: string;
+  updatedAt: string;
 }
