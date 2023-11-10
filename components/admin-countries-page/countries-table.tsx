@@ -25,7 +25,11 @@ const CountriesTable: FC<Props> = (): JSX.Element => {
   };
 
   useEffect(() => {
-    fetchCountries();
+    const fetchData = async () => {
+      await fetchCountries();
+    };
+
+    fetchData();
   }, []);
 
   return (
