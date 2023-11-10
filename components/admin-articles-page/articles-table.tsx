@@ -12,6 +12,8 @@ import { path } from "@/constant";
 import { ArticleEntity } from "@/entities/article.entity";
 import { getAllArticles } from "@/lib/fetch-article-data";
 import moment from "moment";
+import Link from "next/link";
+import DeleteArticleForm from "./delete-article-form";
 
 interface Props {}
 
@@ -77,11 +79,12 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
                     {moment(article.updatedAt).format("L")}
                   </td>
                   <td className="flex items-center justify-center gap-4">
-                    <MdEditSquare
-                      className="mt-1 cursor-pointer text-blue-900"
-                      size={18}
-                      onClick={() => {}}
-                    />
+                    <Link href={`${path.editArticle}?slug=${article.slug}`}>
+                      <MdEditSquare
+                        className="mt-1 cursor-pointer text-blue-900"
+                        size={18}
+                      />
+                    </Link>
                     <AiFillDelete
                       className="mt-1 cursor-pointer text-red-700"
                       size={18}
@@ -103,11 +106,11 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
       >
-        {/* <DeleteArticleForm
+        <DeleteArticleForm
           setShowDeleteForm={setShowDeleteForm}
-          refetch={fetAr}
+          refetch={fetchArticles}
           deletedArticle={deletedArticle as ArticleEntity}
-        /> */}
+        />
       </CustomModal>
     </>
   );

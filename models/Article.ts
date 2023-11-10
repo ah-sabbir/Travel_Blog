@@ -12,7 +12,7 @@ const ArticleSchema = new mongoose.Schema(
       required: true,
     },
 
-    image: {
+    thumbnail: {
       public_id: {
         type: String,
       },

@@ -1,4 +1,6 @@
+import cloudinary from "cloudinary";
 import { CreateArticleInput } from "@/dtos/article/create-article.dto";
+import { EditArticleInput } from "@/dtos/article/edit-article.dto";
 import { editCloudinaryImage } from "@/lib/cloudinary";
 import dbConnect from "@/lib/db";
 import Article from "@/models/Article";
@@ -8,6 +10,7 @@ import Interest from "@/models/Interest";
 import Region from "@/models/Region";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
@@ -52,7 +55,7 @@ export async function POST(req: Request) {
       content,
       thumbnail: savedThumbnail,
       category: categoryId,
-      coutry: countryId,
+      country: countryId,
       interest: interestId,
       region: regionId,
       author: authorId,
@@ -77,6 +80,282 @@ export async function POST(req: Request) {
     const user = await User.findById(authorId).select("articles");
     user.articles.push(article._id);
     await user.save();
+
+    return NextResponse.json({
+      ok: true,
+    });
+  } catch (error: any) {
+    return NextResponse.json({
+      ok: false,
+      error: error.message,
+    });
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const body: EditArticleInput = await req.json();
+
+    const {
+      name,
+      slug,
+      description,
+      content,
+      thumbnail,
+      articleId,
+      categoryId,
+      countryId,
+      interestId,
+      regionId,
+    } = body;
+
+    console.log(articleId);
+
+    if (!name || !slug || !description || !content || !articleId) {
+      return NextResponse.json({
+        ok: false,
+        error: "Thiếu tham số cần thiết",
+      });
+    }
+
+    await dbConnect();
+
+    const article = await Article.findById(articleId);
+
+    if (!article) {
+      return NextResponse.json({ ok: false, error: "Không tìm thấy bài viết" });
+    }
+
+    // Country
+    const country: any = await Country.findById(
+      article.country.toString()
+    ).select("articles");
+
+    if (country) {
+      const articleIndex = country.articles.findIndex((r: any) => {
+        return r.toString() === articleId;
+      });
+
+      country.articles.splice(articleIndex, 1);
+      country.save();
+    }
+
+    const newCountry = await Country.findById(countryId).select("articles");
+
+    if (!newCountry) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy quốc gia",
+      });
+    } else {
+      newCountry.articles.push(articleId);
+      newCountry.save();
+    }
+
+    // Interest
+    const interest: any = await Interest.findById(
+      article.interest.toString()
+    ).select("articles");
+
+    if (interest) {
+      const articleIndex = interest.articles.findIndex((r: any) => {
+        return r.toString() === articleId;
+      });
+
+      interest.articles.splice(articleIndex, 1);
+      interest.save();
+    }
+
+    const newInterest = await Interest.findById(interestId).select("articles");
+
+    if (!newInterest) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy sở thích",
+      });
+    } else {
+      newInterest.articles.push(articleId);
+      newInterest.save();
+    }
+
+    // Region
+    const region: any = await Region.findById(article.region.toString()).select(
+      "articles"
+    );
+
+    if (interest) {
+      const articleIndex = region.articles.findIndex((r: any) => {
+        return r.toString() === articleId;
+      });
+
+      region.articles.splice(articleIndex, 1);
+      region.save();
+    }
+
+    const newRegion = await Region.findById(regionId).select("articles");
+
+    if (!newRegion) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy sở thích",
+      });
+    } else {
+      newRegion.articles.push(articleId);
+      newRegion.save();
+    }
+
+    // Category
+    const category: any = await Category.findById(article.category).select(
+      "articles"
+    );
+
+    if (interest) {
+      const articleIndex = category.articles.findIndex((r: any) => {
+        return r.toString() === articleId;
+      });
+
+      category.articles.splice(articleIndex, 1);
+      category.save();
+    }
+
+    const newCategory = await Category.findById(categoryId).select("articles");
+
+    if (!newCategory) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy danh mục",
+      });
+    } else {
+      newCategory.articles.push(articleId);
+      newCategory.save();
+    }
+
+    const newThumbnail = await editCloudinaryImage(
+      thumbnail,
+      article.thumbnail
+    );
+    if (newThumbnail) {
+      article.thumbnail = {
+        public_id: newThumbnail.public_id,
+        url: newThumbnail.secure_url,
+      };
+    }
+
+    article.name = name;
+    article.slug = slug;
+    article.description = description;
+    article.content = content;
+    article.interest = interestId;
+    article.region = regionId;
+    article.country = countryId;
+    article.category = categoryId;
+
+    await article.save();
+
+    return NextResponse.json({
+      ok: true,
+    });
+  } catch (error: any) {
+    return NextResponse.json({
+      ok: false,
+      error: error.message,
+    });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({
+        ok: false,
+        error: "Thiếu tham số id của bài viết",
+      });
+    }
+
+    await dbConnect();
+
+    const article = await Article.findById(id);
+
+    if (!article) {
+      return NextResponse.json({ ok: false, error: "Không tìm thấy bài viết" });
+    }
+
+    await cloudinary.v2.uploader.destroy(article.thumbnail.public_id);
+
+    // Country
+    const country: any = await Country.findById(
+      article.country.toString()
+    ).select("articles");
+
+    if (country) {
+      const articleIndex = country.articles.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      country.articles.splice(articleIndex, 1);
+      country.save();
+    }
+
+    // Interest
+    const interest: any = await Interest.findById(
+      article.interest.toString()
+    ).select("articles");
+
+    if (interest) {
+      const articleIndex = interest.articles.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      interest.articles.splice(articleIndex, 1);
+      interest.save();
+    }
+
+    // Category
+    const category: any = await Category.findById(
+      article.category.toString()
+    ).select("articles");
+
+    if (category) {
+      const articleIndex = category.articles.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      category.articles.splice(articleIndex, 1);
+      category.save();
+    }
+
+    // Region
+    const region: any = await Region.findById(article.region.toString()).select(
+      "articles"
+    );
+
+    if (region) {
+      const articleIndex = region.articles.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      region.articles.splice(articleIndex, 1);
+      region.save();
+    }
+
+    // User
+    const user: any = await User.findById(article.author.toString()).select(
+      "articles"
+    );
+
+    if (user) {
+      const articleIndex = user.articles.findIndex((r: any) => {
+        return r.toString() === id;
+      });
+
+      user.articles.splice(articleIndex, 1);
+      user.save();
+    }
+
+    await Article.deleteOne({ _id: id });
 
     return NextResponse.json({
       ok: true,

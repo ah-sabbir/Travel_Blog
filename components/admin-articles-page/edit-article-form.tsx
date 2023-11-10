@@ -29,6 +29,8 @@ import TextEditor from "../text-editor";
 import BtnWithLoading from "../btn-with-loading";
 import { CreateArticleInput } from "@/dtos/article/create-article.dto";
 import { getAllCountries } from "@/lib/fetch-country-data";
+import { ArticleEntity } from "@/entities/article.entity";
+import { EditArticleInput } from "@/dtos/article/edit-article.dto";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên tỉnh / vùng miền"),
@@ -46,13 +48,16 @@ interface FormValues {
 
 interface Props {
   authorId: string | undefined;
+  article: ArticleEntity | undefined;
 }
 
-const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
+const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
   const router = useRouter();
 
-  const [thumbnail, setThumbnail] = useState("");
-  const [content, setContent] = useState("");
+  console.log(article?._id.toString());
+
+  const [thumbnail, setThumbnail] = useState(article?.thumbnail?.url || "");
+  const [content, setContent] = useState(article?.content || "");
   const [regions, setRegions] = useState<ISelectOption[]>();
   const [interests, setInterests] = useState<ISelectOption[]>();
   const [categories, setCategories] = useState<ISelectOption[]>();
@@ -89,7 +94,7 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
     resolver: yupResolver(schema),
   });
 
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, setValue } = form;
 
   const { errors } = formState;
 
@@ -108,8 +113,9 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
     try {
       setIsLoading(true);
 
-      const bodyRequest: CreateArticleInput = {
+      const bodyRequest: EditArticleInput = {
         ...formData,
+        articleId: article?._id.toString() as string,
         content,
         thumbnail,
         categoryId: selectedCategory.value,
@@ -119,7 +125,7 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
         authorId: authorId as string,
       };
 
-      const { data }: { data: CoreOutput } = await axiosInstance.post(
+      const { data }: { data: CoreOutput } = await axiosInstance.put(
         "/api/admin/article",
         bodyRequest
       );
@@ -131,7 +137,7 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
 
       if (data.ok) {
         setIsLoading(false);
-        toast.success(`Tạo bài viết thành công`);
+        toast.success(`Cập nhật bài viết thành công`);
         router.back();
       }
     } catch (error: any) {
@@ -176,6 +182,64 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setValue("name", article?.name || "");
+    setValue("slug", article?.slug || "");
+    setValue("description", article?.description || "");
+  }, []);
+
+  useEffect(() => {
+    const selectedCountryName = countries?.find(
+      (item) => item.value === article?.country?.toString()
+    )?.label;
+
+    if (selectedCountryName && countries?.length > 0) {
+      setSelectedCountry({
+        value: article?.country.toString() || "",
+        label: selectedCountryName || "",
+      });
+    }
+  }, [countries?.length]);
+
+  useEffect(() => {
+    const selectedInterestName = interests?.find(
+      (item) => item.value === article?.interest?.toString()
+    )?.label;
+
+    if (selectedInterestName && interests?.length > 0) {
+      setSelectedInterest({
+        value: article?.interest.toString() || "",
+        label: selectedInterestName || "",
+      });
+    }
+  }, [interests?.length]);
+
+  useEffect(() => {
+    const selectedRegionName = regions?.find(
+      (item) => item.value === article?.region?.toString()
+    )?.label;
+
+    if (selectedRegionName && regions?.length > 0) {
+      setSelectedRegion({
+        value: article?.region.toString() || "",
+        label: selectedRegionName || "",
+      });
+    }
+  }, [regions?.length]);
+
+  useEffect(() => {
+    const selectedCategoryName = categories?.find(
+      (item) => item.value === article?.category?.toString()
+    )?.label;
+
+    if (selectedCategoryName && categories?.length > 0) {
+      setSelectedCategory({
+        value: article?.category.toString() || "",
+        label: selectedCategoryName || "",
+      });
+    }
+  }, [categories?.length]);
 
   return (
     <>
@@ -286,15 +350,17 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
             </div>
           </div>
 
-          <FormInput
-            textarea
-            id="description"
-            rows={4}
-            label="Mô tả"
-            register={register("description")}
-            errorMsg={errors.description?.message}
-            placeholder="Nhập description (mô tả) cho bài viết"
-          />
+          <div>
+            <FormInput
+              textarea
+              id="description"
+              rows={4}
+              label="Mô tả"
+              register={register("description")}
+              errorMsg={errors.description?.message}
+              placeholder="Nhập description (mô tả) cho bài viết"
+            />
+          </div>
 
           <label className="form-input-label !mb-1 block">
             Nội dung bài viết
@@ -302,7 +368,7 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
           <TextEditor content={content} setContent={setContent} />
 
           <BtnWithLoading
-            content="Tạo bài viết"
+            content="Cập nhật bài viết"
             isLoading={isLoading}
             type="submit"
             customClasses="!absolute bottom-7 right-5"
@@ -313,4 +379,4 @@ const CreateArticleForm: FC<Props> = ({ authorId }): JSX.Element => {
   );
 };
 
-export default CreateArticleForm;
+export default EditArticleForm;
