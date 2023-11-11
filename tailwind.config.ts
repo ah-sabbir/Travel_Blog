@@ -16,8 +16,15 @@ const config: Config = {
       transitionProperty: {
         width: "width",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "120ch",
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;

@@ -11,7 +11,7 @@ const DestinationSchema = new mongoose.Schema({
     required: true,
   },
 
-  image: {
+  thumbnail: {
     public_id: {
       type: String,
     },
@@ -20,8 +20,11 @@ const DestinationSchema = new mongoose.Schema({
     },
   },
 
+  images: { type: [String] },
+
   views: {
     type: Number,
+    default: 0,
   },
 
   interest: {
@@ -42,6 +45,10 @@ const DestinationSchema = new mongoose.Schema({
   address: {
     type: String,
     required: true,
+  },
+
+  instruction: {
+    type: String,
   },
 
   articles: {

@@ -23,4 +23,6 @@ export const path = {
   editInterest: "/admin/interests/edit",
   createArticle: "/admin/articles/create",
   editArticle: "/admin/articles/edit",
+  createDestination: "/admin/destinations/create",
+  editDestination: "/admin/destinations/edit",
 };

@@ -34,7 +34,7 @@ export const adminSidebarItems: {
   { link: path.adminInterests, title: "Sở thích", icon: MdInterests },
   { link: path.adminArticles, title: "Bài viết", icon: MdEditSquare },
   { link: path.adminGalleries, title: "Gallery", icon: MdImage },
-  { link: path.adminDestinations, title: "Điểm đến", icon: MdAddLocationAlt },
+  { link: path.adminDestinations, title: "Địa danh", icon: MdAddLocationAlt },
   { link: path.adminBrands, title: "Thương hiệu", icon: IoMdPricetags },
   { link: path.adminTickets, title: "Vé du lịch", icon: MdAirplaneTicket },
 ];

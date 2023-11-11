@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* Admin Common */
+.container {
+  @apply max-w-6xl p-4 mx-auto;
+}
+
 .admin-main-gradient {
   @apply bg-[linear-gradient(135deg,#c3224a_0%,#4a0d37_100%)];
 }

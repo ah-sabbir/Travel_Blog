@@ -14,6 +14,7 @@ import { getAllArticles } from "@/lib/fetch-article-data";
 import moment from "moment";
 import Link from "next/link";
 import DeleteArticleForm from "./delete-article-form";
+import { FaExternalLinkAlt, FaExternalLinkSquareAlt } from "react-icons/fa";
 
 interface Props {}
 
@@ -55,6 +56,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
               <th>Lượt xem</th>
               <th>Ngày sửa</th>
               <th>Sửa / Xóa</th>
+              <th>Live link</th>
             </tr>
           </thead>
 
@@ -93,6 +95,15 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
                         setDeletedArticle(article);
                       }}
                     />
+                  </td>
+                  <td className="text-center">
+                    <a
+                      href={`/test/${article.slug}`}
+                      target="_blank"
+                      className="underline text-sm font-bold text-blue-600"
+                    >
+                      Xem
+                    </a>
                   </td>
                 </tr>
               ))}
