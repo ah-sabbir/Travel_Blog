@@ -64,7 +64,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
             <>
               {[...Array(6).keys()].map((item) => (
                 <tr key={item} className="mb-3">
-                  <td colSpan={5}>
+                  <td colSpan={6}>
                     <Skeleton className="w-full h-10" />
                   </td>
                 </tr>

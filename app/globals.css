@@ -4,7 +4,7 @@
 
 /* Admin Common */
 .container {
-  @apply max-w-6xl p-4 mx-auto;
+  @apply max-w-[1200px] p-4 mx-auto;
 }
 
 .admin-main-gradient {
@@ -141,4 +141,17 @@
 /* Text editor */
 .tox-tinymce {
   @apply !border-[1px] !border-[#e5e7eb] !rounded-md !min-h-[600px];
+}
+
+/* Content parsed from HTML */
+figure.image {
+  @apply my-4 w-full;
+}
+
+figure img {
+  @apply !w-full object-cover;
+}
+
+figure.image figcaption {
+  @apply text-[#5b7c98] text-sm text-center pt-[10px] p-3 px-[10px] bg-[#f8f7f7];
 }

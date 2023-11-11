@@ -25,6 +25,8 @@ const TextEditor: FC<Props> = ({ setContent, content }): JSX.Element => {
             { value: "First.Name", title: "First Name" },
             { value: "Email", title: "Email" },
           ],
+          image_title: true,
+          image_caption: true,
         }}
         onInit={(evt, editor) => {
           if (editorRef) editorRef.current = editor;
