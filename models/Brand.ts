@@ -24,7 +24,6 @@ const BrandSchema = new mongoose.Schema({
 
   affLink: {
     type: String,
-    required: true,
   },
 
   logo: {
@@ -46,7 +45,7 @@ const BrandSchema = new mongoose.Schema({
     required: true,
   },
 
-  brandType: { type: [Schema.Types.ObjectId], ref: "BrandType" },
+  brandType: { type: Schema.Types.ObjectId, ref: "BrandType" },
 });
 
 const Brand = models.Brand || mongoose.model("Brand", BrandSchema);

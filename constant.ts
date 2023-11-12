@@ -28,4 +28,6 @@ export const path = {
   editDestination: "/admin/destinations/edit",
   createGallery: "/admin/galleries/create",
   editGallery: "/admin/galleries/edit",
+  createBrand: "/admin/brands/create",
+  editBrand: "/admin/brands/edit",
 };

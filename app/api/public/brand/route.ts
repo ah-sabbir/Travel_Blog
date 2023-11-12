@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/db";
+import Brand from "@/models/Brand";
 import Country from "@/models/Country";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
@@ -14,13 +15,16 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const country = await Country.findOne({ slug });
+    const brand = await Brand.findOne({ slug });
 
-    if (!country) {
-      return NextResponse.json({ ok: false, error: "Không tìm thấy quốc gia" });
+    if (!brand) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy thương hiệu",
+      });
     }
 
-    return NextResponse.json({ ok: true, country });
+    return NextResponse.json({ ok: true, brand });
   } catch (error: any) {
     return NextResponse.json({ ok: false, error: error.message });
   }
