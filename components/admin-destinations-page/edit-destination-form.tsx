@@ -28,7 +28,6 @@ import { getAllRegions } from "@/lib/fetch-region-data";
 import { getAllInterests } from "@/lib/fetch-interest-data";
 import { getAllCountries } from "@/lib/fetch-country-data";
 import { BiMinusCircle, BiPlusCircle } from "react-icons/bi";
-import { CreateDestinationInput } from "@/dtos/destination/create-destination.dto";
 import { DestinationEntity } from "@/entities/destination.entity";
 import { EditDestinationInput } from "@/dtos/destination/edit-destination.dto";
 
@@ -185,6 +184,46 @@ const EditDestinationForm: FC<Props> = ({ destination }): JSX.Element => {
     setValue("instruction", destination?.instruction || "");
     setValue("images", newImages);
   }, []);
+
+  useEffect(() => {
+    const selectedCountryName = countries?.find(
+      (item) => item.value === destination?.country?.toString()
+    )?.label;
+
+    if (selectedCountryName && countries?.length > 0) {
+      setSelectedCountry({
+        value: destination?.country.toString() || "",
+        label: selectedCountryName || "",
+      });
+    }
+  }, [countries?.length]);
+
+  useEffect(() => {
+    const selectedInterestName = interests?.find(
+      (item) => item.value === destination?.interest?.toString()
+    )?.label;
+
+    if (selectedInterestName && interests?.length > 0) {
+      setSelectedInterest({
+        value: destination?.interest.toString() || "",
+        label: selectedInterestName || "",
+      });
+    }
+  }, [interests?.length]);
+
+  useEffect(() => {
+    const selectedRegionName = regions?.find(
+      (item) => item.value === destination?.region?.toString()
+    )?.label;
+
+    if (selectedRegionName && regions?.length > 0) {
+      setSelectedRegion({
+        value: destination?.region.toString() || "",
+        label: selectedRegionName || "",
+      });
+    }
+  }, [regions?.length]);
+
   return (
     <>
       <div className="admin-card-body relative !pb-24">

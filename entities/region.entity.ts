@@ -8,7 +8,7 @@ export interface RegionEntity {
   content: string;
   articles: [];
   galleries: [];
-  regions: [];
+  destinations: [];
   countryId: string;
   thumbnail: {
     public_id: string;

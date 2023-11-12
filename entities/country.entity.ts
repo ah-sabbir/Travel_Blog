@@ -8,6 +8,7 @@ export interface CountryEntity {
   content: string;
   articles: [];
   galleries: [];
+  destinations: [];
   regions: [];
   thumbnail: {
     public_id: string;
