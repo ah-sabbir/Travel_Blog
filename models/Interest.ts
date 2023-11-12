@@ -35,6 +35,11 @@ const InterestSchema = new mongoose.Schema({
     type: [Schema.Types.ObjectId],
     ref: "Gallery",
   },
+
+  destinations: {
+    type: [Schema.Types.ObjectId],
+    ref: "Destination",
+  },
 });
 
 const Interest = models.Interest || mongoose.model("Interest", InterestSchema);

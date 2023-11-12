@@ -11,7 +11,7 @@ import {
 import BtnWithIcon from "../btn-with-icon";
 import { TiArrowBack } from "react-icons/ti";
 import { useRouter } from "next/navigation";
-import FormOptimzedSelect, { ISelectOption } from "../form-optimized-select";
+import FormOptimizedSelect, { ISelectOption } from "../form-optimized-select";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -27,10 +27,10 @@ import { getAllInterests } from "@/lib/fetch-interest-data";
 import { getAllCategories } from "@/lib/fetch-category-data";
 import TextEditor from "../text-editor";
 import BtnWithLoading from "../btn-with-loading";
-import { CreateArticleInput } from "@/dtos/article/create-article.dto";
 import { getAllCountries } from "@/lib/fetch-country-data";
 import { ArticleEntity } from "@/entities/article.entity";
 import { EditArticleInput } from "@/dtos/article/edit-article.dto";
+import { getAllDestinations } from "@/lib/fetch-destination-data";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên tỉnh / vùng miền"),
@@ -54,14 +54,13 @@ interface Props {
 const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
   const router = useRouter();
 
-  console.log(article?._id.toString());
-
   const [thumbnail, setThumbnail] = useState(article?.thumbnail?.url || "");
   const [content, setContent] = useState(article?.content || "");
   const [regions, setRegions] = useState<ISelectOption[]>();
   const [interests, setInterests] = useState<ISelectOption[]>();
   const [categories, setCategories] = useState<ISelectOption[]>();
   const [countries, setCountries] = useState<ISelectOption[]>();
+  const [destinations, setDestinations] = useState<ISelectOption[]>();
 
   const [selectedInterest, setSelectedInterest] = useState<ISelectOption>({
     value: "",
@@ -82,6 +81,13 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
     value: "",
     label: "",
   });
+
+  const [selectedDestination, setSelectedDestination] = useState<ISelectOption>(
+    {
+      value: "",
+      label: "",
+    }
+  );
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -122,6 +128,7 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
         interestId: selectedInterest.value,
         regionId: selectedRegion.value,
         countryId: selectedCountry.value,
+        destinationId: selectedDestination.value,
         authorId: authorId as string,
       };
 
@@ -152,6 +159,7 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
       getAllInterests("name"),
       getAllCategories("name"),
       getAllCountries("name"),
+      getAllDestinations("name"),
     ]).then((data) => {
       const formattedRegions = data[0]?.map((region) => ({
         label: region.name,
@@ -176,6 +184,12 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
         value: country._id.toString(),
       }));
       setCountries(formattedCountries as ISelectOption[]);
+
+      const formattedDestinations = data[4]?.map((destination) => ({
+        label: destination.name,
+        value: destination._id.toString(),
+      }));
+      setDestinations(formattedDestinations as ISelectOption[]);
     });
   };
 
@@ -241,6 +255,19 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
     }
   }, [categories?.length]);
 
+  useEffect(() => {
+    const selectedDesinationName = destinations?.find(
+      (item) => item.value === article?.destination?.toString()
+    )?.label;
+
+    if (selectedDesinationName && destinations?.length > 0) {
+      setSelectedDestination({
+        value: article?.destination.toString() || "",
+        label: selectedDesinationName || "",
+      });
+    }
+  }, [destinations?.length]);
+
   return (
     <>
       <div className="admin-card-body relative !pb-24">
@@ -305,7 +332,7 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
             </label>
 
             <div className="">
-              <FormOptimzedSelect
+              <FormOptimizedSelect
                 id="country"
                 label="Chọn quốc gia"
                 onChange={
@@ -315,7 +342,7 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
                 value={selectedCountry}
               />
 
-              <FormOptimzedSelect
+              <FormOptimizedSelect
                 wrapperCustomClasses="-mt-2"
                 id="region"
                 label="Chọn tỉnh / vùng miền"
@@ -326,7 +353,7 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
                 value={selectedRegion}
               />
 
-              <FormOptimzedSelect
+              <FormOptimizedSelect
                 wrapperCustomClasses="-mt-2"
                 id="interest"
                 label="Chọn sở thích"
@@ -337,7 +364,7 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
                 value={selectedInterest}
               />
 
-              <FormOptimzedSelect
+              <FormOptimizedSelect
                 wrapperCustomClasses="-mt-2"
                 id="category"
                 label="Chọn danh mục"
@@ -346,6 +373,19 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
                 }
                 options={categories as ISelectOption[]}
                 value={selectedCategory}
+              />
+
+              <FormOptimizedSelect
+                wrapperCustomClasses="-mt-2"
+                id="destination"
+                label="Chọn địa danh"
+                onChange={
+                  setSelectedDestination as Dispatch<
+                    SetStateAction<ISelectOption>
+                  >
+                }
+                options={destinations as ISelectOption[]}
+                value={selectedDestination}
               />
             </div>
           </div>

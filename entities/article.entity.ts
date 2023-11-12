@@ -12,6 +12,7 @@ export interface ArticleEntity {
   category: ObjectId;
   interest: ObjectId;
   country: ObjectId;
+  destination: ObjectId;
   thumbnail: {
     public_id: string;
     url: string;

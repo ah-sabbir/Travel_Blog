@@ -29,6 +29,8 @@ import { getAllInterests } from "@/lib/fetch-interest-data";
 import { getAllCountries } from "@/lib/fetch-country-data";
 import { BiMinusCircle, BiPlusCircle } from "react-icons/bi";
 import { CreateDestinationInput } from "@/dtos/destination/create-destination.dto";
+import { DestinationEntity } from "@/entities/destination.entity";
+import { EditDestinationInput } from "@/dtos/destination/edit-destination.dto";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên địa danh"),
@@ -48,12 +50,14 @@ interface FormValues {
   images: { link: string }[];
 }
 
-interface Props {}
+interface Props {
+  destination: DestinationEntity | undefined;
+}
 
-const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
+const EditDestinationForm: FC<Props> = ({ destination }): JSX.Element => {
   const router = useRouter();
-  const [thumbnail, setThumbnail] = useState("");
-  const [content, setContent] = useState("");
+  const [thumbnail, setThumbnail] = useState(destination?.thumbnail.url || "");
+  const [content, setContent] = useState(destination?.content || "");
   const [interests, setInterests] = useState<ISelectOption[]>();
   const [countries, setCountries] = useState<ISelectOption[]>();
   const [regions, setRegions] = useState<ISelectOption[]>();
@@ -87,7 +91,7 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
     resolver: yupResolver(schema),
   });
 
-  const { register, handleSubmit, formState, control } = form;
+  const { register, handleSubmit, formState, control, setValue } = form;
 
   const { errors } = formState;
 
@@ -106,17 +110,18 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
 
   const onSubmit = async (formData: FormValues) => {
     try {
-      const bodyRequest: CreateDestinationInput = {
+      const bodyRequest: EditDestinationInput = {
         ...formData,
         content,
         thumbnail,
         interestId: selectedInterest.value,
         regionId: selectedRegion.value,
         countryId: selectedCountry.value,
+        destinationId: destination?._id.toString() as string,
       };
 
       setIsLoading(true);
-      const { data }: { data: CoreOutput } = await axiosInstance.post(
+      const { data }: { data: CoreOutput } = await axiosInstance.put(
         "/api/admin/destination",
         bodyRequest
       );
@@ -128,7 +133,7 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
 
       if (data.ok) {
         setIsLoading(false);
-        toast.success(`Tạo địa danh ${formData.name} thành công`);
+        toast.success(`Cập nhật địa danh ${formData.name} thành công`);
         return router.back();
       }
     } catch (error: any) {
@@ -165,6 +170,20 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    let newImages: { link: string }[] = [];
+    if (destination?.images && destination?.images.length > 0) {
+      newImages = destination.images.map((image) => ({ link: image }));
+    }
+
+    setValue("name", destination?.name || "");
+    setValue("slug", destination?.slug || "");
+    setValue("description", destination?.description || "");
+    setValue("address", destination?.address || "");
+    setValue("instruction", destination?.instruction || "");
+    setValue("images", newImages);
   }, []);
   return (
     <>
@@ -338,4 +357,4 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
   );
 };
 
-export default CreateDestinationForm;
+export default EditDestinationForm;

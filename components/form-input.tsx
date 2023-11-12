@@ -18,6 +18,7 @@ interface Props {
   readOnly?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   labelCustomClasses?: string;
+  wrapperCustomClasses?: string;
 }
 
 const FormInput: FC<Props> = ({
@@ -34,11 +35,12 @@ const FormInput: FC<Props> = ({
   readOnly,
   onChange,
   labelCustomClasses,
+  wrapperCustomClasses,
 }): JSX.Element => {
   let Component: any = "input";
   if (textarea) Component = "textarea";
   return (
-    <div className="mb-4">
+    <div className={`mb-4 ${wrapperCustomClasses}`}>
       <label htmlFor={id} className={`form-input-label ${labelCustomClasses}`}>
         {label}
       </label>

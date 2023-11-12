@@ -43,9 +43,9 @@ const RegionSchema = new mongoose.Schema({
     ref: "Ticket",
   },
 
-  destination: {
+  destinations: {
     type: [Schema.Types.ObjectId],
-    ref: "Destinations",
+    ref: "Destination",
   },
 
   countryId: {

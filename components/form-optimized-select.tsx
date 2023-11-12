@@ -26,7 +26,7 @@ const customStyles = {
   }),
 };
 
-const FormOptimzedSelect: FC<Props> = ({
+const FormOptimizedSelect: FC<Props> = ({
   options,
   onChange,
   defaultValue,
@@ -54,4 +54,4 @@ const FormOptimzedSelect: FC<Props> = ({
   );
 };
 
-export default FormOptimzedSelect;
+export default FormOptimizedSelect;

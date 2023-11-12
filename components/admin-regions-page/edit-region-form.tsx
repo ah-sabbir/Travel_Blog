@@ -24,7 +24,7 @@ import toast from "react-hot-toast";
 import { CoreOutput } from "@/dtos/common.dto";
 import BtnWithLoading from "../btn-with-loading";
 import { RegionEntity } from "@/entities/region.entity";
-import FormOptimzedSelect, { ISelectOption } from "../form-optimized-select";
+import FormOptimizedSelect, { ISelectOption } from "../form-optimized-select";
 import { getAllCountries } from "@/lib/fetch-country-data";
 
 const schema: any = Yup.object({
@@ -246,7 +246,7 @@ const EditRegionForm: FC<Props> = ({ region }): JSX.Element => {
               placeholder="Nhập đường dẫn đến trang tỉnh / vùng miền"
             />
 
-            <FormOptimzedSelect
+            <FormOptimizedSelect
               id="country"
               label="Thuộc quốc gia"
               onChange={

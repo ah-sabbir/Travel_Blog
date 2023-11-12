@@ -8,5 +8,5 @@ export interface CreateDestinationInput
   regionId?: string;
   address: string;
   instruction?: string;
-  images?: string[];
+  images?: { link: string }[];
 }

@@ -10,6 +10,7 @@ import Interest from "@/models/Interest";
 import Region from "@/models/Region";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
+import Destination from "@/models/Destination";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
@@ -26,6 +27,7 @@ export async function POST(req: Request) {
       categoryId,
       countryId,
       interestId,
+      destinationId,
       regionId,
     } = body;
 
@@ -57,6 +59,7 @@ export async function POST(req: Request) {
       category: categoryId,
       country: countryId,
       interest: interestId,
+      destination: destinationId,
       region: regionId,
       author: authorId,
     });
@@ -76,6 +79,12 @@ export async function POST(req: Request) {
     const region = await Region.findById(regionId).select("articles");
     region.articles.push(article._id);
     await region.save();
+
+    const destination = await Destination.findById(destinationId).select(
+      "articles"
+    );
+    destination.articles.push(article._id);
+    await destination.save();
 
     const user = await User.findById(authorId).select("articles");
     user.articles.push(article._id);
@@ -106,10 +115,9 @@ export async function PUT(req: Request) {
       categoryId,
       countryId,
       interestId,
+      destinationId,
       regionId,
     } = body;
-
-    console.log(articleId);
 
     if (!name || !slug || !description || !content || !articleId) {
       return NextResponse.json({
@@ -183,7 +191,7 @@ export async function PUT(req: Request) {
       "articles"
     );
 
-    if (interest) {
+    if (region) {
       const articleIndex = region.articles.findIndex((r: any) => {
         return r.toString() === articleId;
       });
@@ -209,7 +217,7 @@ export async function PUT(req: Request) {
       "articles"
     );
 
-    if (interest) {
+    if (category) {
       const articleIndex = category.articles.findIndex((r: any) => {
         return r.toString() === articleId;
       });
@@ -241,6 +249,34 @@ export async function PUT(req: Request) {
       };
     }
 
+    // Destination
+    const destination: any = await Destination.findById(
+      article.destination.toString()
+    ).select("articles");
+
+    if (destination) {
+      const articleIndex = destination.articles.findIndex((r: any) => {
+        return r.toString() === articleId;
+      });
+
+      destination.articles.splice(articleIndex, 1);
+      destination.save();
+    }
+
+    const newDestination = await Destination.findById(destinationId).select(
+      "articles"
+    );
+
+    if (!newDestination) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy địa danh",
+      });
+    } else {
+      newDestination.articles.push(articleId);
+      newDestination.save();
+    }
+
     article.name = name;
     article.slug = slug;
     article.description = description;
@@ -249,6 +285,7 @@ export async function PUT(req: Request) {
     article.region = regionId;
     article.country = countryId;
     article.category = categoryId;
+    article.destination = destinationId;
 
     await article.save();
 
@@ -339,6 +376,20 @@ export async function DELETE(req: Request) {
 
       region.articles.splice(articleIndex, 1);
       region.save();
+    }
+
+    // Destination
+    const destination: any = await Destination.findById(
+      article.destination.toString()
+    ).select("articles");
+
+    if (destination) {
+      const articleIndex = destination.articles.findIndex((r: any) => {
+        return r?.toString() === id;
+      });
+
+      destination.articles.splice(articleIndex, 1);
+      destination.save();
     }
 
     // User

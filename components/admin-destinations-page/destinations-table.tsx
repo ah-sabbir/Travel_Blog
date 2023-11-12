@@ -2,8 +2,6 @@
 
 import { FC, useEffect, useState } from "react";
 import { path } from "@/constant";
-import { getAllCountries } from "@/lib/fetch-country-data";
-import { CountryEntity } from "@/entities/country.entity";
 import CustomModal from "../custom-modal";
 import BtnWithIcon from "../btn-with-icon";
 import { BiPlusCircle } from "react-icons/bi";
@@ -12,25 +10,29 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { MdEditSquare } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 import Link from "next/link";
+import { DestinationEntity } from "@/entities/destination.entity";
+import { getAllDestinations } from "@/lib/fetch-destination-data";
+import DeleteDestinationForm from "./delete-destination-form";
 
 interface Props {}
 
 const DestinationsTable: FC<Props> = (): JSX.Element => {
-  const [countries, setCountries] = useState<CountryEntity[]>([]);
+  const [destinations, setDestinations] = useState<DestinationEntity[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const [showDeleteForm, setShowDeleteForm] = useState(false);
-  const [deletedCountry, setDeletedCountry] = useState<CountryEntity>();
+  const [deletedDestination, setDeletedDestination] =
+    useState<DestinationEntity>();
 
-  const fetchCountries = async () => {
+  const fetchDestinations = async () => {
     setIsLoading(true);
-    const fetchedCountries = await getAllCountries();
-    setCountries(fetchedCountries as CountryEntity[]);
+    const fetchedDestinations = await getAllDestinations();
+    setDestinations(fetchedDestinations as DestinationEntity[]);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchCountries();
+    fetchDestinations();
   }, []);
 
   return (
@@ -69,14 +71,18 @@ const DestinationsTable: FC<Props> = (): JSX.Element => {
             </>
           ) : (
             <tbody>
-              {countries.map((country) => (
-                <tr key={country._id.toString()}>
-                  <td className="text-center">{country.name}</td>
-                  <td className="text-center">{country.slug}</td>
-                  <td className="text-center">{country.articles.length}</td>
-                  <td className="text-center">{country.galleries.length}</td>
+              {destinations?.map((destination) => (
+                <tr key={destination._id.toString()}>
+                  <td className="text-center">{destination.name}</td>
+                  <td className="text-center">{destination.slug}</td>
+                  <td className="text-center">{destination.articles.length}</td>
+                  <td className="text-center">
+                    {destination.galleries.length}
+                  </td>
                   <td className="flex items-center justify-center gap-4">
-                    <Link href={`${path.editCountry}?slug=${country.slug}`}>
+                    <Link
+                      href={`${path.editDestination}?slug=${destination.slug}`}
+                    >
                       <MdEditSquare
                         className="mt-1 cursor-pointer text-blue-900"
                         size={18}
@@ -87,7 +93,7 @@ const DestinationsTable: FC<Props> = (): JSX.Element => {
                       size={18}
                       onClick={() => {
                         setShowDeleteForm(true);
-                        setDeletedCountry(country);
+                        setDeletedDestination(destination);
                       }}
                     />
                   </td>
@@ -103,11 +109,11 @@ const DestinationsTable: FC<Props> = (): JSX.Element => {
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
       >
-        {/* <DeleteCountryForm
+        <DeleteDestinationForm
           setShowDeleteForm={setShowDeleteForm}
-          refetch={fetchCountries}
-          deletedCountry={deletedCountry as CountryEntity}
-        /> */}
+          refetch={fetchDestinations}
+          deletedDestination={deletedDestination as DestinationEntity}
+        />
       </CustomModal>
     </>
   );

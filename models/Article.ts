@@ -61,6 +61,11 @@ const ArticleSchema = new mongoose.Schema(
       ref: "Category",
     },
 
+    destination: {
+      type: Schema.Types.ObjectId,
+      ref: "Destination",
+    },
+
     content: {
       type: String,
       required: true,

@@ -7,5 +7,6 @@ export interface CreateArticleInput
   categoryId?: string;
   countryId?: string;
   regionId?: string;
+  destinationId?: string;
   authorId: string;
 }

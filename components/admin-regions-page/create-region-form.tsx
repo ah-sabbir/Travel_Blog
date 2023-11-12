@@ -23,7 +23,7 @@ import axiosInstance from "@/lib/axios";
 import toast from "react-hot-toast";
 import { CoreOutput } from "@/dtos/common.dto";
 import BtnWithLoading from "../btn-with-loading";
-import FormOptimzedSelect, { ISelectOption } from "../form-optimized-select";
+import FormOptimizedSelect, { ISelectOption } from "../form-optimized-select";
 import { getAllCountries } from "@/lib/fetch-country-data";
 
 const schema: any = Yup.object({
@@ -220,7 +220,7 @@ const CreateRegionForm: FC<Props> = (props): JSX.Element => {
               placeholder="Nhập đường dẫn đến trang tỉnh / vùng miền"
             />
 
-            <FormOptimzedSelect
+            <FormOptimizedSelect
               id="country"
               label="Thuộc quốc gia"
               onChange={

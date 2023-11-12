@@ -36,7 +36,7 @@ const CountrySchema = new mongoose.Schema({
     ref: "Gallery",
   },
 
-  destination: {
+  destinations: {
     type: [Schema.Types.ObjectId],
     ref: "Destinations",
   },

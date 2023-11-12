@@ -5,26 +5,26 @@ import BtnWithLoading from "../btn-with-loading";
 import axiosInstance from "@/lib/axios";
 import { CoreOutput } from "@/dtos/common.dto";
 import toast from "react-hot-toast";
-import { ArticleEntity } from "@/entities/article.entity";
+import { DestinationEntity } from "@/entities/destination.entity";
 
 interface Props {
   setShowDeleteForm: Dispatch<SetStateAction<boolean>>;
   refetch: () => void;
-  deletedArticle: ArticleEntity;
+  deletedDestination: DestinationEntity;
 }
 
-const DeleteArticleForm: FC<Props> = ({
+const DeleteDestinationForm: FC<Props> = ({
   setShowDeleteForm,
   refetch,
-  deletedArticle,
+  deletedDestination,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const deleteArticleHandler = async () => {
+  const deleteDestinationHandler = async () => {
     try {
       setIsLoading(true);
       const { data }: { data: CoreOutput } = await axiosInstance.delete(
-        `/api/admin/article?id=${deletedArticle._id}`
+        `/api/admin/destination?id=${deletedDestination._id}`
       );
 
       if (data.error) {
@@ -33,7 +33,7 @@ const DeleteArticleForm: FC<Props> = ({
       }
 
       if (data.ok) {
-        toast.success(`Xóa bài viết ${deletedArticle.name} thành công`);
+        toast.success(`Xóa địa danh ${deletedDestination.name} thành công`);
         setShowDeleteForm(false);
         setIsLoading(false);
         refetch();
@@ -46,7 +46,11 @@ const DeleteArticleForm: FC<Props> = ({
   return (
     <div className="admin-card-body">
       <p className="font-bold text-xl text-center mt-2 mb-3">
-        Bạn chắc chắn muốn xóa bài viết {deletedArticle.name}?
+        Bạn chắc chắn muốn xóa địa danh {deletedDestination.name}?
+      </p>
+      <p className="text-center">
+        Sau khi xóa tất cả bài viết và galleries của địa danh{" "}
+        {deletedDestination.name} vẫn giữ nguyên
       </p>
 
       <div className="text-center mt-4">
@@ -54,11 +58,11 @@ const DeleteArticleForm: FC<Props> = ({
           content="Xác nhận xóa"
           isLoading={isLoading}
           type="submit"
-          onClick={deleteArticleHandler}
+          onClick={deleteDestinationHandler}
         />
       </div>
     </div>
   );
 };
 
-export default DeleteArticleForm;
+export default DeleteDestinationForm;
