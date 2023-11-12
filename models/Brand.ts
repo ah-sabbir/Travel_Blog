@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, models } from "mongoose";
 
 const BrandSchema = new mongoose.Schema({
   name: {
@@ -6,7 +6,23 @@ const BrandSchema = new mongoose.Schema({
     required: true,
   },
 
+  description: {
+    type: String,
+    required: true,
+  },
+
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
   link: {
+    type: String,
+    required: true,
+  },
+
+  affLink: {
     type: String,
     required: true,
   },
@@ -14,21 +30,15 @@ const BrandSchema = new mongoose.Schema({
   logo: {
     public_id: {
       type: String,
-      //  required: true
     },
     url: {
       type: String,
-      // required: true
     },
   },
 
   views: {
     type: Number,
-  },
-
-  description: {
-    type: String,
-    required: true,
+    default: 0,
   },
 
   content: {
@@ -39,6 +49,6 @@ const BrandSchema = new mongoose.Schema({
   brandType: { type: [Schema.Types.ObjectId], ref: "BrandType" },
 });
 
-const Brand = mongoose.model("Brand", BrandSchema);
+const Brand = models.Brand || mongoose.model("Brand", BrandSchema);
 
 export default Brand;

@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, models } from "mongoose";
 
 const GallerySchema = new mongoose.Schema(
   {
@@ -12,14 +12,12 @@ const GallerySchema = new mongoose.Schema(
       required: true,
     },
 
-    image: {
+    thumbnail: {
       public_id: {
         type: String,
-        //  required: true
       },
       url: {
         type: String,
-        // required: true
       },
     },
 
@@ -28,13 +26,23 @@ const GallerySchema = new mongoose.Schema(
       required: true,
     },
 
+    credit: {
+      type: String,
+    },
+
     views: {
       type: Number,
+      default: 0,
     },
 
     author: {
       type: Schema.Types.ObjectId,
       ref: "Author",
+    },
+
+    destination: {
+      type: Schema.Types.ObjectId,
+      ref: "Destination",
     },
 
     comments: {
@@ -57,6 +65,16 @@ const GallerySchema = new mongoose.Schema(
       ref: "Category",
     },
 
+    country: {
+      type: Schema.Types.ObjectId,
+      ref: "Region",
+    },
+
+    imagesContent: {
+      type: String,
+      required: true,
+    },
+
     content: {
       type: String,
       required: true,
@@ -65,6 +83,6 @@ const GallerySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Gallery = mongoose.model("Gallery", GallerySchema);
+const Gallery = models.Gallery || mongoose.model("Gallery", GallerySchema);
 
 export default Gallery;

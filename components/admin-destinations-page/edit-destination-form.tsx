@@ -385,7 +385,7 @@ const EditDestinationForm: FC<Props> = ({ destination }): JSX.Element => {
           <TextEditor content={content} setContent={setContent} />
 
           <BtnWithLoading
-            content="Tạo địa danh"
+            content="Cập nhật địa danh"
             isLoading={isLoading}
             type="submit"
             customClasses="!absolute bottom-7 right-5"

@@ -8,6 +8,7 @@ export const path = {
   adminArticles: "/admin/articles",
   adminGalleries: "/admin/galleries",
   adminBrands: "/admin/brands",
+  adminBrandTypes: "/admin/brand-types",
   adminCountries: "/admin/countries",
   adminDestinations: "/admin/destinations",
   adminInterests: "/admin/interests",
@@ -25,4 +26,6 @@ export const path = {
   editArticle: "/admin/articles/edit",
   createDestination: "/admin/destinations/create",
   editDestination: "/admin/destinations/edit",
+  createGallery: "/admin/galleries/create",
+  editGallery: "/admin/galleries/edit",
 };

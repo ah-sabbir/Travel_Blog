@@ -140,7 +140,11 @@
 
 /* Text editor */
 .tox-tinymce {
-  @apply !border-[1px] !border-[#e5e7eb] !rounded-md !min-h-[600px];
+  @apply !border-[1px] !border-[#e5e7eb] !rounded-md !h-[600px];
+}
+
+.small-text-editor .tox-tinymce {
+  @apply !h-[263px];
 }
 
 /* Content parsed from HTML */

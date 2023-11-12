@@ -17,7 +17,7 @@ export async function GET(req: Request) {
     const gallery = await Gallery.findOne({ slug });
 
     if (!slug) {
-      return NextResponse.json({ ok: false, error: "Không tìm thấy gallery" });
+      return NextResponse.json({ ok: false, error: "Không tìm thấy bài viết" });
     }
 
     return NextResponse.json({ ok: true, gallery });

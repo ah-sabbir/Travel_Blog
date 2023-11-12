@@ -46,7 +46,7 @@ const ProfileAccordion: FC<Props> = ({ isExpand }): JSX.Element => {
               isExpand ? "mb-1 gap-4 admin-sidebar-item" : "hidden"
             }`}
           >
-            <span>MP</span> Profile
+            <span>MP</span> Thông tin user
           </Link>
           <button
             className={`${
@@ -54,7 +54,7 @@ const ProfileAccordion: FC<Props> = ({ isExpand }): JSX.Element => {
             }`}
             onClick={() => signOut()}
           >
-            <span>LO</span> Log Out
+            <span>LO</span> Đăng xuất
           </button>
         </AccordionItem>
       </Accordion>

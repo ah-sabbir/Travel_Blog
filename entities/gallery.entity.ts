@@ -1,11 +1,13 @@
 import { ObjectId } from "mongodb";
 
-export interface ArticleEntity {
+export interface GalleryEntity {
   _id: ObjectId;
   name: string;
   slug: string;
   description: string;
   content: string;
+  imagesContent: string;
+  credit: string;
   region: ObjectId;
   category: ObjectId;
   interest: ObjectId;

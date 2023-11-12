@@ -13,8 +13,8 @@ import {
   MdInterests,
   MdOutlineGpsFixed,
   MdOutlinePublic,
-  MdTravelExplore,
 } from "react-icons/md";
+import { TbCategoryFilled } from "react-icons/tb";
 
 export const adminSidebarItems: {
   link: string;
@@ -35,6 +35,11 @@ export const adminSidebarItems: {
   { link: path.adminDestinations, title: "Địa danh", icon: MdAddLocationAlt },
   { link: path.adminArticles, title: "Bài viết", icon: MdEditSquare },
   { link: path.adminGalleries, title: "Gallery", icon: MdImage },
+  {
+    link: path.adminBrandTypes,
+    title: "Danh mục thương hiệu",
+    icon: TbCategoryFilled,
+  },
   { link: path.adminBrands, title: "Thương hiệu", icon: IoMdPricetags },
   { link: path.adminTickets, title: "Vé du lịch", icon: MdAirplaneTicket },
 ];
