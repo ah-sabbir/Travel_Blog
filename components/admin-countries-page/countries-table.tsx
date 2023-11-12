@@ -25,7 +25,9 @@ const CountriesTable: FC<Props> = (): JSX.Element => {
 
   const fetchCountries = async () => {
     setIsLoading(true);
-    const fetchedCountries = await getAllCountries();
+    const fetchedCountries = await getAllCountries(
+      "name slug galleries articles"
+    );
     setCountries(fetchedCountries as CountryEntity[]);
     setIsLoading(false);
   };

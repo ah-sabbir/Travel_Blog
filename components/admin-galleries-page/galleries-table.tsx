@@ -27,7 +27,7 @@ const GalleriesTable: FC<Props> = (): JSX.Element => {
 
   const fetchGalleries = async () => {
     setIsLoading(true);
-    const fetchedGalleries = await getAllGalleries();
+    const fetchedGalleries = await getAllGalleries("name slug views updatedAt");
     setGalleries(fetchedGalleries as GalleryEntity[]);
     setIsLoading(false);
   };

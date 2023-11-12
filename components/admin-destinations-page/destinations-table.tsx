@@ -26,7 +26,9 @@ const DestinationsTable: FC<Props> = (): JSX.Element => {
 
   const fetchDestinations = async () => {
     setIsLoading(true);
-    const fetchedDestinations = await getAllDestinations();
+    const fetchedDestinations = await getAllDestinations(
+      "name slug galleries articles"
+    );
     setDestinations(fetchedDestinations as DestinationEntity[]);
     setIsLoading(false);
   };

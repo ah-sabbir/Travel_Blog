@@ -1,7 +1,7 @@
 import BrandCategoriesTable from "@/components/admin-brand-categories-page/brand-categories-table";
 import AdminCardTitle from "@/components/admin-card-title";
 import { NextPage } from "next";
-import { MdCategory } from "react-icons/md";
+import { TbCategoryFilled } from "react-icons/tb";
 
 interface Props {}
 
@@ -12,7 +12,7 @@ const AdminBrandCategoriesPage: NextPage<Props> = async () => {
         <AdminCardTitle
           cardTitle="Danh mục thương hiệu"
           cardIconClasses="admin-main-gradient"
-          icon={MdCategory}
+          icon={TbCategoryFilled}
           iconSize={22}
         />
         <BrandCategoriesTable />

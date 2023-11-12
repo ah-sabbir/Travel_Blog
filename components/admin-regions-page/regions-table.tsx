@@ -25,7 +25,7 @@ const RegionsTable: FC<Props> = (): JSX.Element => {
 
   const fetchRegions = async () => {
     setIsLoading(true);
-    const fetchedRegions = await getAllRegions();
+    const fetchedRegions = await getAllRegions("name slug galleries articles");
     setRegions(fetchedRegions as RegionEntity[]);
     setIsLoading(false);
   };

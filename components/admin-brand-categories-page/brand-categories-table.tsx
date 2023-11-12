@@ -12,6 +12,9 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { AiFillDelete } from "react-icons/ai";
 import { getAllBrandTypes } from "@/lib/fetch-brand-type-data";
 import { BrandTypeEntity } from "@/entities/brandType.entity";
+import CreateBrandCategoryForm from "./create-brand-category-form";
+import EditBrandCategoryForm from "./edit-brand-category-form";
+import DeleteBrandCategoryForm from "./delete-brand-category-form";
 
 interface Props {}
 
@@ -21,14 +24,14 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [editedBrandCategory, setEditBrandCategory] =
+  const [editedBrandCategory, setEditedBrandCategory] =
     useState<BrandTypeEntity>();
   const [deletedBrandCategory, setDeletedBrandCategory] =
     useState<BrandTypeEntity>();
 
   const fetchBrandCategories = async () => {
     setIsLoading(true);
-    const fetchedBrandCategories = await getAllBrandTypes();
+    const fetchedBrandCategories = await getAllBrandTypes("name slug");
     setBrandCategories(fetchedBrandCategories as BrandTypeEntity[]);
     setIsLoading(false);
   };
@@ -71,7 +74,7 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
             </>
           ) : (
             <tbody>
-              {brandCategories.map((brandType) => (
+              {brandCategories?.map((brandType) => (
                 <tr key={brandType._id.toString()}>
                   <td className="text-center">{brandType.name}</td>
                   <td className="text-center">{brandType.slug}</td>
@@ -82,7 +85,7 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
                       size={18}
                       onClick={() => {
                         setShowEditForm(true);
-                        setEditBrandCategory(brandType);
+                        setEditedBrandCategory(brandType);
                       }}
                     />
                     <AiFillDelete
@@ -93,16 +96,16 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
                         setDeletedBrandCategory(brandType);
                       }}
                     />
+                  </td>
 
-                    <td className="text-center">
-                      <a
-                        href={`/test/${brandType.slug}`}
-                        target="_blank"
-                        className="underline text-sm font-bold text-blue-600"
-                      >
-                        Xem
-                      </a>
-                    </td>
+                  <td className="text-center">
+                    <a
+                      href={`/test/${brandType.slug}`}
+                      target="_blank"
+                      className="underline text-sm font-bold text-blue-600"
+                    >
+                      Xem
+                    </a>
                   </td>
                 </tr>
               ))}
@@ -111,14 +114,14 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
         </table>
       </div>
 
-      {/* <CustomModal
+      <CustomModal
         heading="Tạo danh mục thương hiệu mới"
         onClose={() => setShowCreateForm(false)}
         open={showCreateForm}
       >
-        <CreateCategoryForm
+        <CreateBrandCategoryForm
           setShowCreateForm={setShowCreateForm}
-          refetch={fetchCategories}
+          refetch={fetchBrandCategories}
         />
       </CustomModal>
 
@@ -127,10 +130,10 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
         onClose={() => setShowEditForm(false)}
         open={showEditForm}
       >
-        <EditCategoryForm
+        <EditBrandCategoryForm
           setShowEditForm={setShowEditForm}
-          refetch={fetchCategories}
-          editedCategory={editedCategory as CategoryEntity}
+          refetch={fetchBrandCategories}
+          editedBrandCategory={editedBrandCategory as BrandTypeEntity}
         />
       </CustomModal>
 
@@ -139,12 +142,12 @@ const BrandCategoriesTable: FC<Props> = (): JSX.Element => {
         onClose={() => setShowDeleteForm(false)}
         open={showDeleteForm}
       >
-        <DeleteCategoryForm
+        <DeleteBrandCategoryForm
           setShowDeleteForm={setShowDeleteForm}
-          refetch={fetchCategories}
-          deletedCategory={deletedCategory as CategoryEntity}
+          refetch={fetchBrandCategories}
+          deletedBrandCategory={deletedBrandCategory as BrandTypeEntity}
         />
-      </CustomModal> */}
+      </CustomModal>
     </>
   );
 };

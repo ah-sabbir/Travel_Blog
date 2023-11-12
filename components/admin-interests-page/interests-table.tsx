@@ -25,7 +25,9 @@ const InterestsTable: FC<Props> = (): JSX.Element => {
 
   const fetchInterests = async () => {
     setIsLoading(true);
-    const fetchedInterests = await getAllInterests();
+    const fetchedInterests = await getAllInterests(
+      "name slug galleries articles"
+    );
     setInterests(fetchedInterests as InterestEntity[]);
     setIsLoading(false);
   };

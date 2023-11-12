@@ -27,7 +27,9 @@ const CategoriesTable: FC<Props> = (): JSX.Element => {
 
   const fetchCategories = async () => {
     setIsLoading(true);
-    const fetchedCategories = await getAllCategories();
+    const fetchedCategories = await getAllCategories(
+      "name slug galleries articles"
+    );
     setCategories(fetchedCategories as CategoryEntity[]);
     setIsLoading(false);
   };

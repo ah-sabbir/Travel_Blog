@@ -1,8 +1,7 @@
-import ArticlesTable from "@/components/admin-articles-page/articles-table";
 import AdminCardTitle from "@/components/admin-card-title";
 import GalleriesTable from "@/components/admin-galleries-page/galleries-table";
 import { NextPage } from "next";
-import { MdEditSquare } from "react-icons/md";
+import { MdImage } from "react-icons/md";
 
 interface Props {}
 
@@ -13,7 +12,7 @@ const AdminGalleriesPage: NextPage<Props> = async () => {
         <AdminCardTitle
           cardTitle="Galleries"
           cardIconClasses="admin-main-gradient"
-          icon={MdEditSquare}
+          icon={MdImage}
           iconSize={22}
         />
         <GalleriesTable />

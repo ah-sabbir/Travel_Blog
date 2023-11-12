@@ -26,7 +26,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
 
   const fetchArticles = async () => {
     setIsLoading(true);
-    const fetchedArticles = await getAllArticles();
+    const fetchedArticles = await getAllArticles("name slug views updatedAt");
     setArticles(fetchedArticles as ArticleEntity[]);
     setIsLoading(false);
   };

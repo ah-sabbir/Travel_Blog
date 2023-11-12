@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,12 +7,13 @@ import FormInput from "../form-input";
 import axiosInstance from "@/lib/axios";
 import toast from "react-hot-toast";
 import { CreateAccountOutput } from "@/dtos/auth/create-account.dto";
-import { CreateBrandTypeInput } from "@/dtos/brandType/create-brand-type.dto";
-import { CoreOutput } from "@/dtos/common.dto";
+import { CategoryEntity } from "@/entities/category.entity";
+import { BrandTypeEntity } from "@/entities/brandType.entity";
 
 interface Props {
-  setShowCreateForm: Dispatch<SetStateAction<boolean>>;
+  setShowEditForm: Dispatch<SetStateAction<boolean>>;
   refetch: () => void;
+  editedBrandCategory: BrandTypeEntity;
 }
 
 const schema = Yup.object({
@@ -20,14 +21,19 @@ const schema = Yup.object({
   slug: Yup.string().required("Vui lòng nhập đường dẫn danh mục thương hiệu"),
 });
 
+interface Props {
+  refetch: () => void;
+}
+
 interface FormValues {
   name: string;
   slug: string;
 }
 
-const CreateBrandCategoryForm: FC<Props> = ({
-  setShowCreateForm,
+const EditBrandCategoryForm: FC<Props> = ({
+  setShowEditForm,
   refetch,
+  editedBrandCategory,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<FormValues>({
@@ -38,7 +44,7 @@ const CreateBrandCategoryForm: FC<Props> = ({
     resolver: yupResolver(schema),
   });
 
-  const { register, handleSubmit, formState, getValues } = form;
+  const { register, handleSubmit, formState, setValue } = form;
 
   const { errors } = formState;
 
@@ -46,9 +52,9 @@ const CreateBrandCategoryForm: FC<Props> = ({
     try {
       setIsLoading(true);
 
-      const { data }: { data: CoreOutput } = await axiosInstance.post(
+      const { data }: { data: CreateAccountOutput } = await axiosInstance.put(
         "/api/admin/brand-type",
-        formData
+        { ...formData, id: editedBrandCategory._id }
       );
 
       if (data.error) {
@@ -58,8 +64,10 @@ const CreateBrandCategoryForm: FC<Props> = ({
 
       if (data.ok) {
         setIsLoading(false);
-        toast.success(`Tạo danh mục thương hiệu ${formData.name} thành công`);
-        setShowCreateForm(false);
+        toast.success(
+          `Cập nhật danh mục thương hiệu ${formData.name} thành công`
+        );
+        setShowEditForm(false);
         refetch();
       }
     } catch (error: any) {
@@ -67,6 +75,11 @@ const CreateBrandCategoryForm: FC<Props> = ({
       toast.error(error.message);
     }
   };
+
+  useEffect(() => {
+    setValue("name", editedBrandCategory.name);
+    setValue("slug", editedBrandCategory.slug);
+  }, []);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="admin-card-body">
       <FormInput
@@ -95,4 +108,4 @@ const CreateBrandCategoryForm: FC<Props> = ({
   );
 };
 
-export default CreateBrandCategoryForm;
+export default EditBrandCategoryForm;
