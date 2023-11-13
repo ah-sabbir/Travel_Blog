@@ -6,7 +6,7 @@ import { CreateRegionInput } from "@/dtos/region/create-region.dto";
 import Region from "@/models/Region";
 import Country from "@/models/Country";
 import { EditRegionInput } from "@/dtos/region/edit-region.dto";
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
@@ -186,8 +186,13 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ ok: false, error: "Không tìm thấy quốc gia" });
     }
 
-    await cloudinary.v2.uploader.destroy(region.thumbnail.public_id);
-    await cloudinary.v2.uploader.destroy(region.banner.public_id);
+    if (region.thumbnail.public_id) {
+      await cloudinary.v2.uploader.destroy(region.thumbnail.public_id);
+    }
+
+    if (region.banner.public_id) {
+      await cloudinary.v2.uploader.destroy(region.banner.public_id);
+    }
 
     const country: any = await Country.findById(region.countryId).select(
       "regions"

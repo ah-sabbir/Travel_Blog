@@ -8,7 +8,7 @@ import StyledProgressBar from "@/components/progress-bar";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
