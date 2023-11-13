@@ -38,10 +38,10 @@ export const adminSidebarItems: {
   { link: path.adminGalleries, title: "Gallery", icon: MdImage },
   {
     link: path.adminBrandTypes,
-    title: "Danh mục thương hiệu",
+    title: "Loại hãng vé",
     icon: TbCategoryFilled,
   },
-  { link: path.adminBrands, title: "Thương hiệu", icon: IoMdPricetags },
+  { link: path.adminBrands, title: "Hãng vé", icon: IoMdPricetags },
   { link: path.adminTicketTypes, title: "Danh mục vé", icon: IoTicket },
   { link: path.adminTickets, title: "Vé du lịch", icon: MdAirplaneTicket },
 ];

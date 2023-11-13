@@ -46,6 +46,11 @@ const CountrySchema = new mongoose.Schema({
     ref: "Region",
   },
 
+  tickets: {
+    type: [Schema.Types.ObjectId],
+    ref: "Ticket",
+  },
+
   views: {
     type: Number,
     default: 0,

@@ -45,6 +45,11 @@ const BrandSchema = new mongoose.Schema({
     required: true,
   },
 
+  tickets: {
+    type: [Schema.Types.ObjectId],
+    ref: "Ticket",
+  },
+
   brandType: { type: Schema.Types.ObjectId, ref: "BrandType" },
 });
 

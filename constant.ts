@@ -31,4 +31,6 @@ export const path = {
   editGallery: "/admin/galleries/edit",
   createBrand: "/admin/brands/create",
   editBrand: "/admin/brands/edit",
+  createTicket: "/admin/tickets/create",
+  editTicket: "/admin/tickets/edit",
 };

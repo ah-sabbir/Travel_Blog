@@ -33,6 +33,15 @@ const TicketSchema = new mongoose.Schema(
       required: true,
     },
 
+    thumbnail: {
+      public_id: {
+        type: String,
+      },
+      url: {
+        type: String,
+      },
+    },
+
     brand: {
       type: Schema.Types.ObjectId,
       ref: "Brand",
