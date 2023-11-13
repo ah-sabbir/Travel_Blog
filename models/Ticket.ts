@@ -1,10 +1,16 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, models } from "mongoose";
 
 const TicketSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
+    },
+
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
     },
 
     description: {
@@ -22,6 +28,11 @@ const TicketSchema = new mongoose.Schema(
       required: true,
     },
 
+    link: {
+      type: String,
+      required: true,
+    },
+
     brand: {
       type: Schema.Types.ObjectId,
       ref: "Brand",
@@ -29,10 +40,15 @@ const TicketSchema = new mongoose.Schema(
 
     views: {
       type: Number,
+      default: 0,
     },
 
     sku: {
       type: String,
+    },
+
+    images: {
+      type: [String],
     },
 
     region: {
@@ -53,6 +69,6 @@ const TicketSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Ticket = mongoose.model("Ticket", TicketSchema);
+const Ticket = models.Ticket || mongoose.model("Ticket", TicketSchema);
 
 export default Ticket;

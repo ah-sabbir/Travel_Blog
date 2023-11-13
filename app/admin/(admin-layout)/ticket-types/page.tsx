@@ -1,9 +1,7 @@
-import BrandCategoriesTable from "@/components/admin-brand-categories-page/brand-categories-table";
 import AdminCardTitle from "@/components/admin-card-title";
 import TicketTypesTable from "@/components/admin-ticket-types-page/ticket-types-table";
 import { NextPage } from "next";
 import { IoTicket } from "react-icons/io5";
-import { TbCategoryFilled } from "react-icons/tb";
 
 interface Props {}
 
