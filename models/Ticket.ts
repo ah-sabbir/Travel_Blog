@@ -43,10 +43,6 @@ const TicketSchema = new mongoose.Schema(
       default: 0,
     },
 
-    sku: {
-      type: String,
-    },
-
     images: {
       type: [String],
     },

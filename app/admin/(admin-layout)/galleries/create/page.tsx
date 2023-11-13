@@ -1,6 +1,6 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AdminCardTitle from "@/components/admin-card-title";
 import CreateGalleryForm from "@/components/admin-galleries-page/create-gallery-form";
+import { authOptions } from "@/utils/authOptions";
 import { NextPage } from "next";
 import { getServerSession } from "next-auth";
 import { MdCreateNewFolder } from "react-icons/md";

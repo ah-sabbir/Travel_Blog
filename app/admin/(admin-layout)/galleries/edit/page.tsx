@@ -1,7 +1,7 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AdminCardTitle from "@/components/admin-card-title";
 import EditGalleryForm from "@/components/admin-galleries-page/edit-gallery-form";
 import { getGalleryBySlug } from "@/lib/fetch-gallery-data";
+import { authOptions } from "@/utils/authOptions";
 import { NextPage } from "next";
 import { getServerSession } from "next-auth";
 import { MdEditSquare } from "react-icons/md";

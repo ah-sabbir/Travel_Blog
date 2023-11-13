@@ -1,7 +1,7 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import UserInfoCard from "@/components/admin-profile-page/user-info-card";
 import UserPasswordCard from "@/components/admin-profile-page/user-password-card";
 import UserProfileCard from "@/components/admin-profile-page/user-profile-card";
+import { authOptions } from "@/utils/authOptions";
 import { NextPage } from "next";
 import { getServerSession } from "next-auth";
 

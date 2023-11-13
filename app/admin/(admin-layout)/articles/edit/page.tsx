@@ -1,7 +1,7 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import EditArticleForm from "@/components/admin-articles-page/edit-article-form";
 import AdminCardTitle from "@/components/admin-card-title";
 import { getArticleBySlug } from "@/lib/fetch-article-data";
+import { authOptions } from "@/utils/authOptions";
 import { NextPage } from "next";
 import { getServerSession } from "next-auth";
 import { MdEditSquare } from "react-icons/md";
