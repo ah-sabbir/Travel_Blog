@@ -40,6 +40,11 @@ const TicketSchema = new mongoose.Schema(
       ref: "Region",
     },
 
+    country: {
+      type: Schema.Types.ObjectId,
+      ref: "Country",
+    },
+
     content: {
       type: String,
       required: true,

@@ -5,18 +5,18 @@ import BtnWithLoading from "../btn-with-loading";
 import axiosInstance from "@/lib/axios";
 import { CoreOutput } from "@/dtos/common.dto";
 import toast from "react-hot-toast";
-import { BrandTypeEntity } from "@/entities/brandType.entity";
+import { TicketTypeEntity } from "@/entities/ticketType.entity";
 
 interface Props {
   setShowDeleteForm: Dispatch<SetStateAction<boolean>>;
   refetch: () => void;
-  deletedBrandCategory: BrandTypeEntity;
+  deletedTicketType: TicketTypeEntity;
 }
 
-const DeleteBrandCategoryForm: FC<Props> = ({
+const DeleteTicketTypeForm: FC<Props> = ({
   setShowDeleteForm,
   refetch,
-  deletedBrandCategory,
+  deletedTicketType,
 }): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,7 +24,7 @@ const DeleteBrandCategoryForm: FC<Props> = ({
     try {
       setIsLoading(true);
       const { data }: { data: CoreOutput } = await axiosInstance.delete(
-        `/api/admin/brand-type?id=${deletedBrandCategory._id}`
+        `/api/admin/ticket-type?id=${deletedTicketType._id}`
       );
 
       if (data.error) {
@@ -33,9 +33,7 @@ const DeleteBrandCategoryForm: FC<Props> = ({
       }
 
       if (data.ok) {
-        toast.success(
-          `Xóa danh mục thương hiệu ${deletedBrandCategory.name} thành công`
-        );
+        toast.success(`Xóa danh mục vé ${deletedTicketType.name} thành công`);
         setShowDeleteForm(false);
         setIsLoading(false);
         refetch();
@@ -48,11 +46,11 @@ const DeleteBrandCategoryForm: FC<Props> = ({
   return (
     <div className="admin-card-body">
       <p className="font-bold text-xl text-center mt-2 mb-3">
-        Bạn chắc chắn muốn xóa danh mục thương hiệu {deletedBrandCategory.name}?
+        Bạn chắc chắn muốn xóa danh mục vé {deletedTicketType.name}?
       </p>
       <p className="text-center">
-        Sau khi xóa tất cả thương hiệu thuộc danh mục{" "}
-        {deletedBrandCategory.name} vẫn giữ nguyên
+        Sau khi xóa tất cả vé của danh mục {deletedTicketType.name} vẫn giữ
+        nguyên
       </p>
 
       <div className="text-center mt-4">
@@ -67,4 +65,4 @@ const DeleteBrandCategoryForm: FC<Props> = ({
   );
 };
 
-export default DeleteBrandCategoryForm;
+export default DeleteTicketTypeForm;

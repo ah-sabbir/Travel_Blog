@@ -14,6 +14,7 @@ export const path = {
   adminInterests: "/admin/interests",
   adminRegions: "/admin/regions",
   adminTickets: "/admin/tickets",
+  adminTicketTypes: "/admin/ticket-types",
 
   // CRUD Admin
   createCountry: "/admin/countries/create",

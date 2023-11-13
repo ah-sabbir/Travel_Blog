@@ -1,6 +1,7 @@
 import { path } from "@/constant";
 import { IconType } from "react-icons";
 import { IoMdPricetags } from "react-icons/io";
+import { IoTicket } from "react-icons/io5";
 import {
   MdAccountCircle,
   MdAddLocationAlt,
@@ -41,5 +42,6 @@ export const adminSidebarItems: {
     icon: TbCategoryFilled,
   },
   { link: path.adminBrands, title: "Thương hiệu", icon: IoMdPricetags },
+  { link: path.adminTicketTypes, title: "Danh mục vé", icon: IoTicket },
   { link: path.adminTickets, title: "Vé du lịch", icon: MdAirplaneTicket },
 ];
