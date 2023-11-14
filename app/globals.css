@@ -7,6 +7,19 @@
   @apply max-w-[1200px] px-4 mx-auto;
 }
 
+.header-dropdown-card {
+  @apply invisible absolute opacity-0 group-hover:visible group-hover:opacity-100 transition-all bg-white rounded-md card-shadow;
+}
+
+.header-dropdown-item {
+  @apply bg-light_gray py-[6px] px-2 text-center rounded-[20px] font-bold line-clamp-1 hover:bg-bold_gray transition;
+}
+
+.card-shadow {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05), -2px 2px 2px rgba(0, 0, 0, 0.06),
+    2px 2px 2px rgba(0, 0, 0, 0.12), 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
 /* Home page */
 .home-page-cover {
   @apply h-[550px] absolute w-[calc(100vw_-_(43%_+_40px)_-_(100vw_-_100%)_/_2)] z-0 mr-10 left-[initial] right-[43%] top-0;

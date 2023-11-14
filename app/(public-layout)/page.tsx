@@ -7,6 +7,7 @@ export default function Home() {
         <NextImage
           src="/assets/images/home-page/home-cover.jpg"
           alt="Ảnh bìa trang chủ"
+          priority
         />
       </div>
     </div>
