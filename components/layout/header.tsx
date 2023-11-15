@@ -10,6 +10,10 @@ import { getAllCategories } from "@/lib/fetch-category-data";
 import { CategoryEntity } from "@/entities/category.entity";
 import CategoriesDropdown from "./categories-dropdown";
 import ServicesDropdown from "./services-dropdown";
+import AboutUsDropdown from "./about-us-dropdown";
+import SearchBar from "./search-bar";
+import SocialItems from "../social-items";
+import { usePathname } from "next/navigation";
 
 interface Props {}
 const liClasses =
@@ -18,6 +22,8 @@ const liClasses =
 const Header: FC<Props> = (props): JSX.Element => {
   const [countries, setCountries] = useState<CountryForHeader[]>();
   const [categories, setCategories] = useState<CategoryEntity[]>();
+  const [changeBg, setChangeBg] = useState(false);
+  const pathName = usePathname();
 
   const fetchCountries = async () => {
     const countries = await getAllCountries(
@@ -43,8 +49,33 @@ const Header: FC<Props> = (props): JSX.Element => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const scrollHandler = () => {
+      const position =
+        document.body.scrollTop || document.documentElement.scrollTop;
+
+      if (position > 80) {
+        setChangeBg(true);
+      } else {
+        setChangeBg(false);
+      }
+    };
+
+    if (pathName === "/") {
+      window.addEventListener("scroll", scrollHandler, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
   return (
-    <header className="z-10 mx-4 fixed top-0 right-0 left-0 py-2 flex items-center justify-between text-white">
+    <header
+      className={`z-10 container fixed top-0 right-0 left-0 py-3 flex items-center justify-between ${
+        changeBg && "bg-black_text"
+      } text-white transition`}
+    >
       <div className="flex items-center gap-8">
         <Logo wrapperClasses="w-[150px] h-[30px]" />
 
@@ -64,7 +95,18 @@ const Header: FC<Props> = (props): JSX.Element => {
             <BiSolidChevronDown size={18} />
             <ServicesDropdown />
           </li>
+
+          <li className={liClasses}>
+            Về chúng tôi
+            <BiSolidChevronDown size={18} />
+            <AboutUsDropdown />
+          </li>
         </ul>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <SearchBar />
+        <SocialItems />
       </div>
     </header>
   );
