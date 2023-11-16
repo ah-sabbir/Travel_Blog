@@ -20,34 +20,8 @@ const liClasses =
   "group relative font-black flex justify-center items-center gap-1 hover:bg-[#f0f0f040] rounded-2xl pl-[10px] pr-1 py-1 transition cursor-pointer after:absolute after:top-full after:left-0 after:block after:bg-transparent after:w-full after:h-8";
 
 const Header: FC<Props> = (props): JSX.Element => {
-  const [countries, setCountries] = useState<CountryForHeader[]>();
-  const [categories, setCategories] = useState<CategoryEntity[]>();
   const [changeBg, setChangeBg] = useState(false);
   const pathName = usePathname();
-
-  const fetchCountries = async () => {
-    const countries = await getAllCountries(
-      "name slug",
-      "5",
-      "regions",
-      "name slug",
-      "16"
-    );
-    setCountries(countries as any);
-  };
-
-  const fetchCategories = async () => {
-    const categories = await getAllCategories("name slug", "8");
-    setCategories(categories as CategoryEntity[]);
-  };
-
-  const fetchData = () => {
-    Promise.all([fetchCountries(), fetchCategories()]);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -82,12 +56,12 @@ const Header: FC<Props> = (props): JSX.Element => {
         <ul className="flex items-center gap-2">
           <li className={liClasses}>
             Điểm đến <BiSolidChevronDown size={18} />
-            <DestinationsDropdown countries={countries} />
+            <DestinationsDropdown wrapperClasses="-left-1/3" />
           </li>
 
           <li className={liClasses}>
             Danh mục <BiSolidChevronDown size={18} />
-            <CategoriesDropdown categories={categories} />
+            <CategoriesDropdown />
           </li>
 
           <li className={liClasses}>

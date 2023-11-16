@@ -7,10 +7,10 @@ import { FiExternalLink } from "react-icons/fi";
 const AboutUsDropdown: FC<Props> = (props): JSX.Element => {
   return (
     <div className="header-dropdown-card top-[150%] -left-[10%] text-black_text w-[165px]">
-      <li className="py-4 px-5 border-b border-light_gray hover:bg-gray_hover transition rounded-t-md">
+      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-t-md">
         <Link href="">Câu chuyện</Link>
       </li>
-      <li className="py-4 px-5 border-b border-light_gray hover:bg-gray_hover transition">
+      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition">
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -20,7 +20,7 @@ const AboutUsDropdown: FC<Props> = (props): JSX.Element => {
           Instagram <FiExternalLink />
         </a>
       </li>
-      <li className="py-4 px-5 hover:bg-gray_hover transition rounded-b-md">
+      <li className="py-4 px-5 hover:bg-light_gray transition rounded-b-md">
         <a
           target="_blank"
           rel="noopener noreferrer"

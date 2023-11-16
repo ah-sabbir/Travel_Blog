@@ -2,11 +2,18 @@ import { GetAllArticleOutput } from "@/dtos/article/get-all-articles.dto";
 import axiosInstance from "./axios";
 import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
 
-export const getAllArticles = async (specifiedProps: string = "") => {
+export const getAllArticles = async (
+  specifiedProps: string = "",
+  limit: string = "",
+  populate: string = "",
+  nestedProps: string = ""
+) => {
   try {
     const { data }: { data: GetAllArticleOutput } = await axiosInstance(
       "/api/public/articles",
-      { params: { specifiedProps } }
+      {
+        params: { specifiedProps, limit, populate, nestedProps },
+      }
     );
 
     return data.articles;

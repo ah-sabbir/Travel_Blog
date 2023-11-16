@@ -1,16 +1,38 @@
+"use client";
+
 import { CountryForHeader } from "@/dtos/country/get-all-countries.dto";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import DropdownHeading from "./dropdown-heading";
+import { getAllCountries } from "@/lib/fetch-country-data";
 
 interface Props {
-  countries: CountryForHeader[] | undefined;
+  wrapperClasses?: string;
 }
 
-const DestinationsDropdown: FC<Props> = ({ countries }): JSX.Element => {
+const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
+  const [countries, setCountries] = useState<CountryForHeader[]>();
+
+  const fetchCountries = async () => {
+    const countries = await getAllCountries(
+      "name slug",
+      "5",
+      "regions",
+      "name slug",
+      "16"
+    );
+    setCountries(countries as any);
+  };
+
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
   return (
-    <div className="header-dropdown-card top-[150%] -left-1/3 text-black_text w-[990px]">
+    <div
+      className={`!font-nunito !not-italic !text-base header-dropdown-card top-[150%] text-black_text w-[990px] ${wrapperClasses}`}
+    >
       <div className="grid grid-cols-2 gap-6 p-6">
         {countries?.map((country) => (
           <div key={country._id.toString()}>

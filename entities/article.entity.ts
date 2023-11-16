@@ -9,7 +9,7 @@ export interface ArticleEntity {
   region: ObjectId;
   category: ObjectId;
   interest: ObjectId;
-  country: ObjectId;
+  country: any;
   destination: ObjectId;
   thumbnail: {
     public_id: string;

@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/db";
+import Article from "@/models/Article";
 import Gallery from "@/models/Gallery";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
@@ -14,13 +15,13 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const gallery = await Gallery.findOne({ slug });
+    const article = await Article.findOne({ slug });
 
     if (!slug) {
-      return NextResponse.json({ ok: false, error: "Không tìm thấy gallery" });
+      return NextResponse.json({ ok: false, error: "Không tìm thấy bài viết" });
     }
 
-    return NextResponse.json({ ok: true, gallery });
+    return NextResponse.json({ ok: true, article });
   } catch (error: any) {
     return NextResponse.json({ ok: false, error: error.message });
   }

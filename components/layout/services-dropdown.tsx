@@ -3,6 +3,8 @@ import DropdownHeading from "./dropdown-heading";
 import { headerServiceItems } from "@/data/menu";
 import SmallArticleCard from "../small-article-card";
 import SubArticleCard from "../sub-article-card";
+import { iconsFile } from "@/constant";
+import StyledIcon from "../styled-icon";
 
 interface Props {}
 
@@ -21,20 +23,13 @@ const ServicesDropdown: FC<Props> = (props): JSX.Element => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 px-2 pt-[6px] pb-2 hover:bg-gray_hover rounded-md transition"
+                className="group flex items-center gap-4 px-2 pt-[6px] pb-2 hover:bg-light_gray rounded-md transition"
               >
-                <span
-                  style={{
-                    background: "url(/assets/images/icons/icons.png)",
-                    backgroundPosition: item.position,
-                    backgroundSize: "100%",
-                  }}
-                  className={`block w-10 h-10 relative after:absolute ${
-                    index === 0
-                      ? "after:top-2 after:left-0"
-                      : "after:top-1 after:left-1"
-                  } after:block after:opacity-30 after:bg-[#D8C4C3] after:circle-radius after:w-[80%] after:h-[80%] after:rounded-[67%_59%_64%_52%_/_50%_63%_61%_69%]`}
-                ></span>
+                <StyledIcon
+                  position={item.position}
+                  wrapperClasses={`w-10 h-10`}
+                  iconClasses={index === 0 ? "left-[3px]" : ""}
+                />
                 <div>
                   <p>{item.title}</p>
                   <p className="font-normal text-sm">{item.via}</p>

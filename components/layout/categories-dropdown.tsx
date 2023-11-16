@@ -1,14 +1,26 @@
+"use client";
+
 import { CategoryEntity } from "@/entities/category.entity";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import SubArticleCard from "../sub-article-card";
 import { FaChevronRight } from "react-icons/fa";
+import { getAllCategories } from "@/lib/fetch-category-data";
 
-interface Props {
-  categories: CategoryEntity[] | undefined;
-}
+interface Props {}
 
-const CategoriesDropdown: FC<Props> = ({ categories }): JSX.Element => {
+const CategoriesDropdown: FC<Props> = (): JSX.Element => {
+  const [categories, setCategories] = useState<CategoryEntity[]>();
+
+  const fetchCategories = async () => {
+    const categories = await getAllCategories("name slug", "8");
+    setCategories(categories as CategoryEntity[]);
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <div className="header-dropdown-card top-[150%] -left-1/3 text-black_text w-[780px]">
       <Link

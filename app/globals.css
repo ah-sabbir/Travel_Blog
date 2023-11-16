@@ -8,7 +8,7 @@
 }
 
 .header-dropdown-card {
-  @apply invisible absolute opacity-0 group-hover:visible group-hover:opacity-100 transition-all bg-white rounded-md card-shadow;
+  @apply invisible absolute opacity-0 group-hover:visible group-hover:opacity-100 transition-all bg-white rounded-md card-shadow z-10;
 }
 
 .header-dropdown-item {

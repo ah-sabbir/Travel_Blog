@@ -1,4 +1,4 @@
-import { path } from "@/constant";
+import { iconPosition, path } from "@/constant";
 import { IconType } from "react-icons";
 import {
   FaInstagram,
@@ -58,37 +58,37 @@ export const headerServiceItems = [
     title: "Tìm khách sạn",
     link: "",
     via: "via Booking.com",
-    position: "1% 36.8421052632%",
+    position: iconPosition.bed,
   },
   {
     title: "Thuê xe",
     link: "",
     via: "via Sunny Cars",
-    position: "0 89.4736842105%",
+    position: iconPosition.car,
   },
   {
     title: "Tìm chuyến bay giá rẻ",
     link: "",
     via: "via Skyscanner",
-    position: "0 26.3157894737%",
+    position: iconPosition.plane,
   },
   {
     title: "Tìm bảo hiểm du lịch",
     link: "",
     via: "via Heymondo",
-    position: "0 42.1052631579%",
+    position: iconPosition.shield,
   },
   {
     title: "Book Tours",
     link: "",
     via: "via Viator",
-    position: "0 84.2105263158%",
+    position: iconPosition.foot,
   },
   {
     title: "Book phương tiện di chuyển",
     link: "",
     via: "via 12Go",
-    position: "0 0",
+    position: iconPosition.ticket,
   },
 ];
 

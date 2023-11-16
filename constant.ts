@@ -34,3 +34,21 @@ export const path = {
   createTicket: "/admin/tickets/create",
   editTicket: "/admin/tickets/edit",
 };
+
+export const iconsFile = "/assets/images/icons/icons.png";
+
+export const iconPosition = {
+  bed: "0 36.8421052632%",
+  car: "0 89.4736842105%",
+  plane: "0 26.3157894737%",
+  shield: "0 42.1052631579%",
+  foot: "0 84.2105263158%",
+  ticket: "0 0",
+  hand: "0 68.4210526316%",
+  earth: "0 100%",
+};
+
+export const owner = "XXX";
+export const domain = "dulich4phuong.com";
+
+export const intro = `<p>Xin chào! Mình là Travel Blogger ${owner} - người sáng lập blog du lịch <strong class="font-extrabold underline">${domain}</strong>.</p><p>Hy vọng những bài viết của mình sẽ giúp bạn có thêm một xíu kinh nghiệm và nguồn cảm hứng để tự mình cất bước chân khám phá thế giới.</p>`;
