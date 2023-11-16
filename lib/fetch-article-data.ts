@@ -18,7 +18,7 @@ export const getAllArticles = async (
 
     return data.articles;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
