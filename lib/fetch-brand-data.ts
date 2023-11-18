@@ -11,7 +11,7 @@ export const getAllBrands = async (specifiedProps: string = "") => {
 
     return data.brands;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -24,7 +24,7 @@ export const getBrandBySlug = async (slug: string) => {
 
     return data.brand;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

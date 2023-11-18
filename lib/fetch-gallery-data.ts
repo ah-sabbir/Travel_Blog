@@ -11,7 +11,7 @@ export const getAllGalleries = async (specifiedProps: string = "") => {
 
     return data.galleries;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -24,7 +24,7 @@ export const getGalleryBySlug = async (slug: string) => {
 
     return data.gallery;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

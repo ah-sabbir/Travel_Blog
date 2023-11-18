@@ -31,7 +31,7 @@ export const getArticleBySlug = async (slug: string) => {
 
     return data.article;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

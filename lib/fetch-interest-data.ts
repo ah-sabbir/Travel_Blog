@@ -11,7 +11,7 @@ export const getAllInterests = async (specifiedProps: string = "") => {
 
     return data.interests;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -24,7 +24,7 @@ export const getInterestBySlug = async (slug: string) => {
 
     return data.interest;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

@@ -14,7 +14,7 @@ export const getAllRegions = async (
 
     return data.regions;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -27,7 +27,7 @@ export const getRegionBySlug = async (slug: string) => {
 
     return data.region;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

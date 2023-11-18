@@ -11,7 +11,7 @@ export const getAllDestinations = async (specifiedProps: string = "") => {
 
     return data.destinations;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -24,7 +24,7 @@ export const getDestinationBySlug = async (slug: string) => {
 
     return data.destination;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

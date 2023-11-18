@@ -25,7 +25,7 @@ export const getAllCountries = async (
 
     return data.countries;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -38,7 +38,7 @@ export const getCountryBySlug = async (slug: string) => {
 
     return data.country;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

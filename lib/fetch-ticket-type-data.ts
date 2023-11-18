@@ -10,7 +10,7 @@ export const getAllTicketTypes = async (specifiedProps: string = "") => {
 
     return data.ticketTypes;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

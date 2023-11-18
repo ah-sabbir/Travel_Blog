@@ -37,7 +37,7 @@ const RegionsSwiper: FC<Props> = ({ regions }): JSX.Element => {
           <SwiperSlide key={region._id.toString()}>
             <Link
               href=""
-              className="flex items-center gap-2 w-full rounded-[40px] bg-light_gray p-[6px]"
+              className="flex items-center gap-[10px] w-full rounded-[40px] bg-light_gray p-[6px]"
             >
               <div className="circle-radius border border-white relative w-11 h-11">
                 <NextImage

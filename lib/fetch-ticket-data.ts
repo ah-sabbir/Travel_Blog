@@ -11,7 +11,7 @@ export const getAllTickets = async (specifiedProps: string = "") => {
 
     return data.tickets;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
@@ -24,7 +24,7 @@ export const getTicketBySlug = async (slug: string) => {
 
     return data.ticket;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

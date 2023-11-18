@@ -13,7 +13,7 @@ export const getAllCategories = async (
 
     return data.categories;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };

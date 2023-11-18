@@ -10,7 +10,7 @@ export const getAllBrandTypes = async (specifiedProps: string = "") => {
 
     return data.brandTypes;
   } catch (err: any) {
-    console.log(err.response.statusText);
+    console.log(err);
     return;
   }
 };
