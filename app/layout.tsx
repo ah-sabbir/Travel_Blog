@@ -3,7 +3,6 @@ import { Nunito_Sans, Arima } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/providers/auth-provider";
-import { GlobalStateProvider } from "@/providers/redux-provider";
 import StyledProgressBar from "@/components/progress-bar";
 
 const nunito = Nunito_Sans({
@@ -31,12 +30,10 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body
-        className={`${nunito.className} ${arima.variable}  ${nunito.variable}`}
+        className={`${nunito.className} ${arima.variable} ${nunito.variable}`}
       >
         <StyledProgressBar />
-        <GlobalStateProvider>
-          <AuthProvider>{children}</AuthProvider>
-        </GlobalStateProvider>
+        <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />
       </body>
     </html>

@@ -3,11 +3,7 @@
 import { FC, useEffect, useState } from "react";
 import Logo from "../logo";
 import { BiSolidChevronDown } from "react-icons/bi";
-import { getAllCountries } from "@/lib/fetch-country-data";
-import { CountryForHeader } from "@/dtos/country/get-all-countries.dto";
 import DestinationsDropdown from "./destinations-dropdown";
-import { getAllCategories } from "@/lib/fetch-category-data";
-import { CategoryEntity } from "@/entities/category.entity";
 import CategoriesDropdown from "./categories-dropdown";
 import ServicesDropdown from "./services-dropdown";
 import AboutUsDropdown from "./about-us-dropdown";
@@ -54,27 +50,27 @@ const Header: FC<Props> = (props): JSX.Element => {
         <Logo wrapperClasses="w-[150px] h-[30px]" />
 
         <ul className="flex items-center gap-2">
-          <li className={liClasses}>
+          <div className={liClasses}>
             Điểm đến <BiSolidChevronDown size={18} />
             <DestinationsDropdown wrapperClasses="-left-1/3" />
-          </li>
+          </div>
 
           <li className={liClasses}>
             Danh mục <BiSolidChevronDown size={18} />
             <CategoriesDropdown />
           </li>
 
-          <li className={liClasses}>
+          <div className={liClasses}>
             Dịch vụ
             <BiSolidChevronDown size={18} />
             <ServicesDropdown />
-          </li>
+          </div>
 
-          <li className={liClasses}>
+          <div className={liClasses}>
             Về chúng tôi
             <BiSolidChevronDown size={18} />
             <AboutUsDropdown />
-          </li>
+          </div>
         </ul>
       </div>
 

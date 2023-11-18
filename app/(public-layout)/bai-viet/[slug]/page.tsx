@@ -6,16 +6,13 @@ interface Props {
   params: { slug: string };
 }
 
-const ArticlePage: NextPage<Props> = async ({ params }) => {
+const Page: NextPage<Props> = async ({ params }) => {
   const article = await getArticleBySlug(params.slug);
-
   return (
-    <div className="container my-10 flex items-center">
-      <div className="article-content w-[65%]">
-        <ArticleContent article={article} />
-      </div>
+    <div>
+      <ArticleContent article={article} />
     </div>
   );
 };
 
-export default ArticlePage;
+export default Page;

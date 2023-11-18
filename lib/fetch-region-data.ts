@@ -2,11 +2,14 @@ import { GetAllRegionsOutput } from "@/dtos/region/get-all-regions.dto";
 import axiosInstance from "./axios";
 import { GetRegionBySlugOutput } from "@/dtos/region/get-region-by-slug.dto";
 
-export const getAllRegions = async (specifiedProps: string = "") => {
+export const getAllRegions = async (
+  specifiedProps: string = "",
+  limit: string = ""
+) => {
   try {
     const { data }: { data: GetAllRegionsOutput } = await axiosInstance(
       "/api/public/regions",
-      { params: { specifiedProps } }
+      { params: { specifiedProps, limit } }
     );
 
     return data.regions;

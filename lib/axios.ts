@@ -14,7 +14,6 @@ axiosInstance.interceptors.request.use(async (config) => {
   if (isServer) {
     const { cookies } = await import("next/headers"),
       token = cookies().get("token")?.value;
-
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }

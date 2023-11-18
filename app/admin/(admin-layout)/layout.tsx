@@ -3,25 +3,22 @@
 import AdminHeader from "@/components/layout/admin-header";
 import AdminSidebar from "@/components/layout/admin-sidebar";
 import { FC, ReactNode } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { GlobalStateProvider } from "@/providers/redux-provider";
+import AdminChilren from "@/components/layout/admin-children";
 
 interface Props {
   children: ReactNode;
 }
 
 const AdminPageLayout: FC<Props> = ({ children }): JSX.Element => {
-  const isExpand = useSelector((state: RootState) => state.adminSidebar.expand);
   return (
-    <>
+    <GlobalStateProvider>
       <div className="bg-[#eee] min-h-screen text-[#3c4858]">
-        <AdminSidebar isExpand={isExpand} />
-        <div className={`${isExpand ? "ml-[260px]" : "ml-[80px]"}`}>
-          <AdminHeader isExpand={isExpand} />
-          {children}
-        </div>
+        <AdminSidebar />
+        <AdminHeader />
+        <AdminChilren>{children}</AdminChilren>
       </div>
-    </>
+    </GlobalStateProvider>
   );
 };
 

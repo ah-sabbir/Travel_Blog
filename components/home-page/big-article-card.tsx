@@ -33,7 +33,7 @@ const BigArticleCard: FC<Props> = ({ article, order }): JSX.Element => {
       <p className="relative z-[1] text-center font-extrabold my-2">
         {article?.country.name}
       </p>
-      <h3 className="text-center w-[90%] mx-auto text-2xl font-black line-clamp-2">
+      <h3 className="text-center w-[90%] mx-auto text-2xl font-extrabold line-clamp-2 leading-9">
         {article?.name}
       </h3>
 

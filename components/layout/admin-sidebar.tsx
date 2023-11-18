@@ -6,12 +6,13 @@ import ProfileAccordion from "./profile-accordion";
 import { adminSidebarItems } from "@/data/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
-interface Props {
-  isExpand: boolean;
-}
+interface Props {}
 
-const AdminSidebar: FC<Props> = ({ isExpand }): JSX.Element => {
+const AdminSidebar: FC<Props> = (): JSX.Element => {
+  const isExpand = useSelector((state: RootState) => state.adminSidebar.expand);
   const pathName = usePathname();
 
   return (

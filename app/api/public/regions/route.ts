@@ -7,10 +7,13 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const specifiedProps = searchParams.get("specifiedProps");
+    const limit = searchParams.get("limit");
 
     await dbConnect();
 
-    const regions = await Region.find().select(specifiedProps || "");
+    const regions = await Region.find()
+      .select(specifiedProps || "")
+      .limit(Number(limit) || 0);
 
     return NextResponse.json({ ok: true, regions });
   } catch (error: any) {
