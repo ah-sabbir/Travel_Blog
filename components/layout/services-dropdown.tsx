@@ -3,7 +3,6 @@ import DropdownHeading from "./dropdown-heading";
 import { headerServiceItems } from "@/data/menu";
 import SmallArticleCard from "../small-article-card";
 import SubArticleCard from "../sub-article-card";
-import { iconsFile } from "@/constant";
 import StyledIcon from "../styled-icon";
 
 interface Props {}
@@ -39,7 +38,7 @@ const ServicesDropdown: FC<Props> = (props): JSX.Element => {
           ))}
         </ul>
 
-        <div className="flex-1 space-y-1">
+        <div className="flex-1">
           <SmallArticleCard
             image="/assets/images/header/hoi-dap-travel-blogger.webp"
             title="Bày tỏ với tôi về thắc mắc của bạn về travel blogger"
@@ -50,6 +49,7 @@ const ServicesDropdown: FC<Props> = (props): JSX.Element => {
             image="/assets/images/header/cach-de-len-ke-hoach-cho-1-chuyen-di.jpg"
             title="Cách để lên kế hoạch cho 1 chuyến đi: 7 tips cho hành trình tiếp theo của bạn"
             slug=""
+            isLastItem
           />
 
           <div className="m-2">

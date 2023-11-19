@@ -1,4 +1,4 @@
-import { GetAllArticleOutput } from "@/dtos/article/get-all-articles.dto";
+import { GetAllArticlesOutput } from "@/dtos/article/get-all-articles.dto";
 import axiosInstance from "./axios";
 import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
 
@@ -9,7 +9,7 @@ export const getAllArticles = async (
   nestedProps: string = ""
 ) => {
   try {
-    const { data }: { data: GetAllArticleOutput } = await axiosInstance(
+    const { data }: { data: GetAllArticlesOutput } = await axiosInstance(
       "/api/public/articles",
       {
         params: { specifiedProps, limit, populate, nestedProps },
@@ -30,6 +30,26 @@ export const getArticleBySlug = async (slug: string) => {
     );
 
     return data.article;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getArticlesByCategory = async (
+  categorySlug: string,
+  specifiedProps: string = "",
+  limit: string = ""
+) => {
+  try {
+    const { data }: { data: GetAllArticlesOutput } = await axiosInstance(
+      `/api/public/articles/tips`,
+      {
+        params: { categorySlug, specifiedProps, limit },
+      }
+    );
+
+    return data.articles;
   } catch (err: any) {
     console.log(err);
     return;

@@ -1,19 +1,40 @@
+import BtnWithIcon from "@/components/btn-with-icon";
 import BigArticleCard from "@/components/home-page/big-article-card";
+import DestinationsSwiper from "@/components/home-page/destinations-swiper";
 import IntroSection from "@/components/home-page/intro-section";
 import RegionsSwiper from "@/components/home-page/regions-swiper";
 import NextImage from "@/components/next-image";
-import { getAllArticles } from "@/lib/fetch-article-data";
+import SmallArticleCard from "@/components/small-article-card";
+import { GetDestinationsForHomepage } from "@/dtos/destination/get-all-destinations.dto";
+import {
+  getAllArticles,
+  getArticlesByCategory,
+} from "@/lib/fetch-article-data";
+import { getAllDestinations } from "@/lib/fetch-destination-data";
 import { getAllRegions } from "@/lib/fetch-region-data";
 
 export default async function page() {
   const articles = await getAllArticles(
     "thumbnail name slug",
-    "10",
+    "7",
     "country",
     "name"
   );
 
   const regions = await getAllRegions("thumbnail name slug", "16");
+
+  const tipsArticles = await getArticlesByCategory(
+    "meo-vat",
+    "thumbnail slug name",
+    "4"
+  );
+
+  const destinations = await getAllDestinations(
+    "thumbnail name slug",
+    "6",
+    "country",
+    "name"
+  );
 
   return (
     <>
@@ -54,7 +75,7 @@ export default async function page() {
       </div>
 
       <div className="home-page-cover-2">
-        <div className="max-w-[1100px] mx-auto flex items-center relative z-[1]">
+        <div className="max-w-[1100px] mx-auto flex items-center justify-between py-[70px] relative z-[1]">
           <div className="max-w-[550px] text-white flex flex-col justify-center">
             <p className="font-extrabold text-2xl">Không phải ai cũng biết</p>
             <h3 className="text-6xl font-black my-4">Mẹo nhỏ du lịch</h3>
@@ -63,7 +84,46 @@ export default async function page() {
               thú vị. Tham khảo ngay để có thêm kinh nghiệm cho chuyến du lịch
               giá rẻ!
             </p>
+            <BtnWithIcon
+              customClasses="w-fit !rounded-[40px] mt-4 before:rounded-[40px]"
+              content="Xem ngay!"
+              to=""
+            />
           </div>
+          <div className="max-w-[450px] rounded-md p-2 bg-white">
+            {tipsArticles?.map((article, index) => (
+              <SmallArticleCard
+                image={article?.thumbnail?.url}
+                slug={article?.slug}
+                title={article?.name}
+                key={article?._id?.toString()}
+                isLastItem={index === tipsArticles.length - 1}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex gap-4">
+        <div className="flex-1">
+          {articles?.slice(3)?.map((article, index) => (
+            <SmallArticleCard
+              image={article?.thumbnail?.url}
+              slug={article?.slug}
+              title={article?.name}
+              key={article?._id?.toString()}
+              isLastItem={index === articles?.slice(3)?.length - 1}
+              isMedium
+            />
+          ))}
+        </div>
+
+        <div className="w-[60%]">
+          <DestinationsSwiper
+            destinations={
+              destinations as GetDestinationsForHomepage["destinations"]
+            }
+          />
         </div>
       </div>
     </>

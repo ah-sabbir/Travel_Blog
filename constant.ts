@@ -33,6 +33,8 @@ export const path = {
   editBrand: "/admin/brands/edit",
   createTicket: "/admin/tickets/create",
   editTicket: "/admin/tickets/edit",
+
+  // Frontend pages
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

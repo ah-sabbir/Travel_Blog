@@ -48,16 +48,16 @@
 
 .home-page-cover-2 {
   background: url("/assets/images/home-page/blog-du-lich-home-cover-2.jpg");
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: 80% 50%;
 
-  @apply my-10 aspect-[3] py-[70px] relative;
+  @apply my-10 aspect-[2.98] relative;
 }
 
 .home-page-cover-2:after {
   @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
-  @apply content-[""] h-full absolute bottom-0 inset-x-0 z-0;
+  @apply content-[""] absolute inset-0 z-0;
 }
 
 /* Admin Common */

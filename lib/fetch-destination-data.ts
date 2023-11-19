@@ -1,13 +1,23 @@
-import { GetAllDestinationsOutput } from "@/dtos/destination/get-all-destinations.dto";
+import {
+  GetAllDestinationsOutput,
+  GetDestinationsForHomepage,
+} from "@/dtos/destination/get-all-destinations.dto";
 import axiosInstance from "./axios";
 import { GetDestinationBySlugOutput } from "@/dtos/destination/get-destination-by-slug.dto";
 
-export const getAllDestinations = async (specifiedProps: string = "") => {
+export const getAllDestinations = async (
+  specifiedProps: string = "",
+  limit: string = "",
+  populate: string = "",
+  nestedProps: string = ""
+) => {
   try {
-    const { data }: { data: GetAllDestinationsOutput } = await axiosInstance(
-      "/api/public/destinations",
-      { params: { specifiedProps } }
-    );
+    const {
+      data,
+    }: { data: GetAllDestinationsOutput | GetDestinationsForHomepage } =
+      await axiosInstance("/api/public/destinations", {
+        params: { specifiedProps, limit, populate, nestedProps },
+      });
 
     return data.destinations;
   } catch (err: any) {
