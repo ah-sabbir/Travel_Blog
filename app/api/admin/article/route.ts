@@ -56,11 +56,11 @@ export async function POST(req: Request) {
       description,
       content,
       thumbnail: savedThumbnail,
-      category: categoryId || "",
-      country: countryId || "",
-      interest: interestId || "",
-      destination: destinationId || "",
-      region: regionId,
+      ...(categoryId && { category: categoryId }),
+      ...(countryId && { country: countryId }),
+      ...(interestId && { interest: interestId }),
+      ...(destinationId && { destination: destinationId }),
+      ...(regionId && { region: regionId }),
       author: authorId,
     });
 
