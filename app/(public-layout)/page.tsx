@@ -6,9 +6,9 @@ import { getAllArticles } from "@/lib/fetch-article-data";
 import { getAllRegions } from "@/lib/fetch-region-data";
 
 export default async function page() {
-  const threeLatestArticles = await getAllArticles(
+  const articles = await getAllArticles(
     "thumbnail name slug",
-    "3",
+    "10",
     "country",
     "name"
   );
@@ -39,7 +39,7 @@ export default async function page() {
         </div>
 
         <div className="mt-16 grid grid-cols-3 gap-8">
-          {threeLatestArticles?.map((article, index) => (
+          {articles?.slice(0, 3)?.map((article, index) => (
             <BigArticleCard
               key={article._id.toString()}
               article={article}
@@ -50,6 +50,20 @@ export default async function page() {
 
         <div className="my-6">
           <RegionsSwiper regions={regions} />
+        </div>
+      </div>
+
+      <div className="home-page-cover-2">
+        <div className="max-w-[1100px] mx-auto flex items-center relative z-[1]">
+          <div className="max-w-[550px] text-white flex flex-col justify-center">
+            <p className="font-extrabold text-2xl">Không phải ai cũng biết</p>
+            <h3 className="text-6xl font-black my-4">Mẹo nhỏ du lịch</h3>
+            <p className="font-normal text-sm max-w-[350px] font-monserrat leading-6">
+              Có rất nhiều mẹo nhỏ để giúp bạn có được một chuyến đi đáng nhớ và
+              thú vị. Tham khảo ngay để có thêm kinh nghiệm cho chuyến du lịch
+              giá rẻ!
+            </p>
+          </div>
         </div>
       </div>
     </>

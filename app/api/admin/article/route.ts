@@ -68,23 +68,31 @@ export async function POST(req: Request) {
     category.articles.push(article._id);
     await category.save();
 
-    const interest = await Interest.findById(interestId).select("articles");
-    interest.articles.push(article._id);
-    await interest.save();
+    if (interestId) {
+      const interest = await Interest.findById(interestId).select("articles");
+      interest.articles.push(article._id);
+      await interest.save();
+    }
 
-    const country = await Country.findById(countryId).select("articles");
-    country.articles.push(article._id);
-    await country.save();
+    if (countryId) {
+      const country = await Country.findById(countryId).select("articles");
+      country.articles.push(article._id);
+      await country.save();
+    }
 
-    const region = await Region.findById(regionId).select("articles");
-    region.articles.push(article._id);
-    await region.save();
+    if (regionId) {
+      const region = await Region.findById(regionId).select("articles");
+      region.articles.push(article._id);
+      await region.save();
+    }
 
-    const destination = await Destination.findById(destinationId).select(
-      "articles"
-    );
-    destination.articles.push(article._id);
-    await destination.save();
+    if (destinationId) {
+      const destination = await Destination.findById(destinationId).select(
+        "articles"
+      );
+      destination.articles.push(article._id);
+      await destination.save();
+    }
 
     const user = await User.findById(authorId).select("articles");
     user.articles.push(article._id);

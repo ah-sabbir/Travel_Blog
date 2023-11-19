@@ -46,6 +46,20 @@
   mask-repeat: no-repeat;
 }
 
+.home-page-cover-2 {
+  background: url("/assets/images/home-page/blog-du-lich-home-cover-2.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: 80% 50%;
+
+  @apply my-10 aspect-[3] py-[70px] relative;
+}
+
+.home-page-cover-2:after {
+  @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
+  @apply content-[""] h-full absolute bottom-0 inset-x-0 z-0;
+}
+
 /* Admin Common */
 .admin-main-gradient {
   @apply bg-[linear-gradient(135deg,#c3224a_0%,#4a0d37_100%)];
