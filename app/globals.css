@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* Common */
+.small-container {
+  @apply max-w-[1100px] mx-auto;
+}
+
 .container {
   @apply max-w-7xl px-4 mx-auto;
 }
@@ -22,6 +26,18 @@
 
 .circle-radius {
   border-radius: 67% 59% 64% 52% / 50% 63% 61% 69%;
+}
+
+.footer-wave {
+  background: url("/assets/images/footer/footer-wave.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  @apply w-full h-[300px];
+}
+
+.footer-wave:after {
+  @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
+  @apply content-[""] absolute inset-0 z-0 circle-radius;
 }
 
 /* Home page */

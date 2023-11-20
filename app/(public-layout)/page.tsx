@@ -75,7 +75,7 @@ export default async function page() {
       </div>
 
       <div className="home-page-cover-2">
-        <div className="max-w-[1100px] mx-auto flex items-center justify-between py-[70px] relative z-[1]">
+        <div className="small-container flex items-center justify-between py-[70px] relative z-[1]">
           <div className="max-w-[550px] text-white flex flex-col justify-center">
             <p className="font-extrabold text-2xl">Không phải ai cũng biết</p>
             <h3 className="text-6xl font-black my-4">Mẹo nhỏ du lịch</h3>
