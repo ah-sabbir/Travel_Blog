@@ -157,7 +157,6 @@ export async function PUT(req: Request) {
     }
 
     const newCountry = await Country.findById(countryId).select("articles");
-
     if (!newCountry) {
       return NextResponse.json({
         ok: false,
@@ -183,7 +182,6 @@ export async function PUT(req: Request) {
     }
 
     const newInterest = await Interest.findById(interestId).select("articles");
-
     if (!newInterest) {
       return NextResponse.json({
         ok: false,
