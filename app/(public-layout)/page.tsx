@@ -69,7 +69,7 @@ export default async function page() {
           ))}
         </div>
 
-        <div className="my-6">
+        <div className="mt-12 mb-6">
           <RegionsSwiper regions={regions} />
         </div>
       </div>
@@ -104,7 +104,7 @@ export default async function page() {
         </div>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 mt-16">
         <div className="flex-1">
           {articles?.slice(3)?.map((article, index) => (
             <SmallArticleCard

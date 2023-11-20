@@ -10,7 +10,7 @@ const SocialItems: FC<Props> = (props): JSX.Element => {
       {headerSocialItems.map((item, index) => (
         <li
           key={index}
-          className="bg-light_gray circle-radius w-[32px] h-[32px] grid place-items-center hover:bg-bold_gray transition"
+          className="bg-light_gray circle-radius w-[32px] h-[32px] grid place-items-center hover:scale-110 transition"
         >
           <a
             target="_blank"

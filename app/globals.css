@@ -32,12 +32,15 @@
   background: url("/assets/images/footer/footer-wave.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  @apply w-full h-[300px];
+  @apply relative w-full h-[300px];
 }
 
-.footer-wave:after {
-  @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
-  @apply content-[""] absolute inset-0 z-0 circle-radius;
+.footer-image-wrapper {
+  @apply w-[400px] h-[400px] circle-radius relative -mt-[240px];
+}
+
+.footer-image-wrapper::after {
+  @apply circle-radius bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)] content-[''] absolute inset-0 z-0;
 }
 
 /* Home page */

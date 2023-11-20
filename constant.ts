@@ -54,3 +54,5 @@ export const owner = "XXX";
 export const domain = "dulich4phuong.com";
 
 export const intro = `<p>Xin chào! Mình là Travel Blogger ${owner} - người sáng lập blog du lịch <strong class="font-extrabold underline">${domain}</strong>.</p><p>Hy vọng những bài viết của mình sẽ giúp bạn có thêm một xíu kinh nghiệm và nguồn cảm hứng để tự mình cất bước chân khám phá thế giới.</p>`;
+
+export const ownerEmail = "legiangbmt09@gmail.com";

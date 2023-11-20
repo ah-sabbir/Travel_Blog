@@ -98,3 +98,45 @@ export const headerSocialItems = [
   { link: "", icon: FaPinterestP },
   { link: "", icon: FaFacebookF, size: 16 },
 ];
+
+export const footerColumns = [
+  {
+    heading: "Điểm đến nổi bật",
+    items: [
+      { title: "Việt Nam", link: "viet-nam" },
+      { title: "Thái Lan", link: "thai-lan" },
+      { title: "Singarpore", link: "singapore" },
+      { title: "Trung Quốc", link: "trung-quoc" },
+      { title: "Nhật Bản", link: "nhat-ban" },
+    ],
+  },
+  {
+    heading: "Danh mục nổi bật",
+    items: [
+      { title: "Nhật ký", link: "nhat-ky" },
+      { title: "Khám phá", link: "kham-pha" },
+      { title: "Mẹo vặt", link: "meo-vat" },
+      { title: "Bộ sưu tập", link: "bo-suu-tap" },
+      { title: "Đặc sản", link: "dac-san" },
+    ],
+  },
+  {
+    heading: "Tìm đọc theo",
+    items: [
+      { title: "Địa danh", link: "dia-danh" },
+      { title: "Sở thích", link: "so-thich" },
+      { title: "Du lịch qua ảnh", link: "galleries" },
+      { title: "Vé giá rẻ", link: "ve-gia-re" },
+      { title: "Các hãng vé", link: "hang-ve-gia-re" },
+    ],
+  },
+
+  {
+    heading: "Tips & Tricks",
+    items: [
+      { title: "Trở thành Travel Blogger", link: "" },
+      { title: "Hạn chế rác thải nhựa", link: "" },
+      { title: "Thiết bị quay chụp của tôi", link: "" },
+    ],
+  },
+];
