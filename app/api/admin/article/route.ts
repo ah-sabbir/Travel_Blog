@@ -156,15 +156,17 @@ export async function PUT(req: Request) {
       country.save();
     }
 
-    const newCountry = await Country.findById(countryId).select("articles");
-    if (!newCountry) {
-      return NextResponse.json({
-        ok: false,
-        error: "Không tìm thấy quốc gia",
-      });
-    } else {
-      newCountry.articles.push(articleId);
-      newCountry.save();
+    if (countryId) {
+      const newCountry = await Country.findById(countryId).select("articles");
+      if (!newCountry) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy quốc gia",
+        });
+      } else {
+        newCountry.articles.push(articleId);
+        newCountry.save();
+      }
     }
 
     // Interest
@@ -181,15 +183,19 @@ export async function PUT(req: Request) {
       interest.save();
     }
 
-    const newInterest = await Interest.findById(interestId).select("articles");
-    if (!newInterest) {
-      return NextResponse.json({
-        ok: false,
-        error: "Không tìm thấy sở thích",
-      });
-    } else {
-      newInterest.articles.push(articleId);
-      newInterest.save();
+    if (interestId) {
+      const newInterest = await Interest.findById(interestId).select(
+        "articles"
+      );
+      if (!newInterest) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy sở thích",
+        });
+      } else {
+        newInterest.articles.push(articleId);
+        newInterest.save();
+      }
     }
 
     // Region
@@ -206,16 +212,18 @@ export async function PUT(req: Request) {
       region.save();
     }
 
-    const newRegion = await Region.findById(regionId).select("articles");
+    if (regionId) {
+      const newRegion = await Region.findById(regionId).select("articles");
 
-    if (!newRegion) {
-      return NextResponse.json({
-        ok: false,
-        error: "Không tìm thấy sở thích",
-      });
-    } else {
-      newRegion.articles.push(articleId);
-      newRegion.save();
+      if (!newRegion) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy sở thích",
+        });
+      } else {
+        newRegion.articles.push(articleId);
+        newRegion.save();
+      }
     }
 
     // Category
@@ -232,44 +240,52 @@ export async function PUT(req: Request) {
       category.save();
     }
 
-    const newCategory = await Category.findById(categoryId).select("articles");
+    if (categoryId) {
+      const newCategory = await Category.findById(categoryId).select(
+        "articles"
+      );
 
-    if (!newCategory) {
-      return NextResponse.json({
-        ok: false,
-        error: "Không tìm thấy danh mục",
-      });
-    } else {
-      newCategory.articles.push(articleId);
-      newCategory.save();
+      if (!newCategory) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy danh mục",
+        });
+      } else {
+        newCategory.articles.push(articleId);
+        newCategory.save();
+      }
     }
 
     // Destination
-    const destination: any = await Destination.findById(
-      article?.destination
-    ).select("articles");
+    if (article.destination) {
+      const destination: any = await Destination.findById(
+        article?.destination
+      ).select("articles");
 
-    if (destination) {
-      const articleIndex = destination.articles.findIndex((r: any) => {
-        return r.toString() === articleId;
-      });
+      if (destination) {
+        const articleIndex = destination.articles.findIndex((r: any) => {
+          return r.toString() === articleId;
+        });
 
-      destination.articles.splice(articleIndex, 1);
-      destination.save();
+        destination.articles.splice(articleIndex, 1);
+        destination.save();
+      }
     }
 
-    const newDestination = await Destination.findById(destinationId).select(
-      "articles"
-    );
+    if (destinationId) {
+      const newDestination = await Destination.findById(destinationId).select(
+        "articles"
+      );
 
-    if (!newDestination) {
-      return NextResponse.json({
-        ok: false,
-        error: "Không tìm thấy địa danh",
-      });
-    } else {
-      newDestination.articles.push(articleId);
-      newDestination.save();
+      if (!newDestination) {
+        return NextResponse.json({
+          ok: false,
+          error: "Không tìm thấy địa danh",
+        });
+      } else {
+        newDestination.articles.push(articleId);
+        newDestination.save();
+      }
     }
 
     const newThumbnail = await editCloudinaryImage(
