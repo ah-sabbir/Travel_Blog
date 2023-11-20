@@ -289,11 +289,26 @@ export async function PUT(req: Request) {
     article.slug = slug;
     article.description = description;
     article.content = content;
-    article.interest = interestId;
-    article.region = regionId;
-    article.country = countryId;
-    article.category = categoryId;
-    article.destination = destinationId;
+
+    if (interestId) {
+      article.interest = interestId;
+    }
+
+    if (regionId) {
+      article.region = regionId;
+    }
+
+    if (countryId) {
+      article.country = countryId;
+    }
+
+    if (categoryId) {
+      article.category = categoryId;
+    }
+
+    if (destinationId) {
+      article.destination = destinationId;
+    }
 
     await article.save();
 
