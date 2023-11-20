@@ -10,7 +10,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   const article = await getArticleBySlug(params.slug);
   return (
     <div className="container mt-16 flex">
-      <div className="w-[65%]">
+      <div className="w-[65%] prose">
         <ArticleContent article={article} />
       </div>
     </div>

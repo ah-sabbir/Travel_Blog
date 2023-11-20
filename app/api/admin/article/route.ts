@@ -246,20 +246,9 @@ export async function PUT(req: Request) {
       newCategory.save();
     }
 
-    const newThumbnail = await editCloudinaryImage(
-      thumbnail,
-      article.thumbnail
-    );
-    if (newThumbnail) {
-      article.thumbnail = {
-        public_id: newThumbnail.public_id,
-        url: newThumbnail.secure_url,
-      };
-    }
-
     // Destination
     const destination: any = await Destination.findById(
-      article.destination.toString()
+      article?.destination
     ).select("articles");
 
     if (destination) {
@@ -283,6 +272,17 @@ export async function PUT(req: Request) {
     } else {
       newDestination.articles.push(articleId);
       newDestination.save();
+    }
+
+    const newThumbnail = await editCloudinaryImage(
+      thumbnail,
+      article.thumbnail
+    );
+    if (newThumbnail) {
+      article.thumbnail = {
+        public_id: newThumbnail.public_id,
+        url: newThumbnail.secure_url,
+      };
     }
 
     article.name = name;
