@@ -1,9 +1,9 @@
-import { ArticleEntity } from "@/entities/article.entity";
+import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
 import parse from "html-react-parser";
 import { FC } from "react";
 
 interface Props {
-  article: ArticleEntity | undefined;
+  article: GetArticleBySlugOutput["article"] | undefined;
 }
 
 const ArticleContent: FC<Props> = ({ article }): JSX.Element => {

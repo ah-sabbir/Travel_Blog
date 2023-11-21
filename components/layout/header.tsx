@@ -20,7 +20,7 @@ const Header: FC<Props> = (props): JSX.Element => {
   const pathName = usePathname();
 
   useEffect(() => {
-    const scrollHandler = () => {
+    const scrollHandler: any = () => {
       const position =
         document.body.scrollTop || document.documentElement.scrollTop;
 
@@ -31,9 +31,7 @@ const Header: FC<Props> = (props): JSX.Element => {
       }
     };
 
-    if (pathName === "/") {
-      window.addEventListener("scroll", scrollHandler, { passive: true });
-    }
+    window.addEventListener("scroll", scrollHandler, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", scrollHandler);
@@ -43,8 +41,8 @@ const Header: FC<Props> = (props): JSX.Element => {
   return (
     <header
       className={`z-10 container fixed top-0 right-0 left-0 py-3 flex items-center justify-between ${
-        changeBg && "bg-black_text"
-      } text-white transition`}
+        changeBg && "bg-black_text !text-white"
+      } ${pathName === "/" ? "text-white" : "text-black_text"} transition`}
     >
       <div className="flex items-center gap-8">
         <Logo wrapperClasses="w-[150px] h-[30px]" />
