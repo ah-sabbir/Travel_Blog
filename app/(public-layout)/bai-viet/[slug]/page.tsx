@@ -1,4 +1,5 @@
 import ArticleContent from "@/components/article-page/article-content";
+import ArticleSocialShare from "@/components/article-page/article-social-share";
 import TOC from "@/components/article-page/toc";
 import BtnWithIcon from "@/components/btn-with-icon";
 import NextImage from "@/components/next-image";
@@ -60,7 +61,7 @@ const Page: NextPage<Props> = async ({ params }) => {
         <p className="text-sm flex items-center gap-1 mb-2">
           <FcAlarmClock />{" "}
           <span>
-            Đã đăng: <strong>{formatLongDate(article?.updatedAt || "")}</strong>
+            Đã đăng: <strong>{formatLongDate(article?.createdAt || "")}</strong>
           </span>
         </p>
 
@@ -108,6 +109,16 @@ const Page: NextPage<Props> = async ({ params }) => {
       <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10">
         <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
           <ArticleContent article={article} />
+
+          <div className="mt-10">
+            <p className="font-arima italic mx-auto w-fit border-b">
+              Chia sẻ ngay để mọi người cùng đọc
+            </p>
+            <ArticleSocialShare
+              slug={article?.slug || ""}
+              title={article?.name || ""}
+            />
+          </div>
         </div>
 
         <TOC selector=".content" />
