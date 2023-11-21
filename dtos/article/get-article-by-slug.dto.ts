@@ -36,6 +36,11 @@ export interface GetArticleBySlugOutput extends CoreOutput {
       name: string;
       slug: string;
     };
+    destination: {
+      _id: string;
+      name: string;
+      slug: string;
+    };
     content: string;
     updatedAt: string;
   };

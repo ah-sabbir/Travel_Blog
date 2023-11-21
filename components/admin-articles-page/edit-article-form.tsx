@@ -28,9 +28,9 @@ import { getAllCategories } from "@/lib/fetch-category-data";
 import TextEditor from "../text-editor";
 import BtnWithLoading from "../btn-with-loading";
 import { getAllCountries } from "@/lib/fetch-country-data";
-import { ArticleEntity } from "@/entities/article.entity";
 import { EditArticleInput } from "@/dtos/article/edit-article.dto";
 import { getAllDestinations } from "@/lib/fetch-destination-data";
+import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên tỉnh / vùng miền"),
@@ -48,7 +48,7 @@ interface FormValues {
 
 interface Props {
   authorId: string | undefined;
-  article: ArticleEntity | undefined;
+  article: GetArticleBySlugOutput["article"] | undefined;
 }
 
 const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {

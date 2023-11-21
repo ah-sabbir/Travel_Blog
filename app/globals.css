@@ -242,9 +242,9 @@ figure.image {
 }
 
 figure img {
-  @apply !w-full object-cover;
+  @apply !w-full object-cover rounded-t-md;
 }
 
 figure.image figcaption {
-  @apply text-[#5b7c98] text-sm text-center p-3 px-[10px] bg-[#f8f7f7];
+  @apply text-[#5b7c98] !mt-0 text-sm text-center p-3 px-[10px] bg-[#f8f7f7] rounded-b-md;
 }

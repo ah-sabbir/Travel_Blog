@@ -106,7 +106,7 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
 
       <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10">
-        <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h3:font-extrabold text-justify">
+        <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
           <ArticleContent article={article} />
         </div>
 
