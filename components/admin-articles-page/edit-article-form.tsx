@@ -201,6 +201,25 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
     setValue("name", article?.name || "");
     setValue("slug", article?.slug || "");
     setValue("description", article?.description || "");
+    setSelectedCategory({
+      value: article?.category?._id.toString() || "",
+      label: article?.category?.name || "",
+    });
+
+    setSelectedCountry({
+      value: article?.country?._id.toString() || "",
+      label: article?.country?.name || "",
+    });
+
+    setSelectedInterest({
+      value: article?.interest?._id.toString() || "",
+      label: article?.interest?.name || "",
+    });
+
+    setSelectedRegion({
+      value: article?.region?._id.toString() || "",
+      label: article?.region?.name || "",
+    });
   }, []);
 
   useEffect(() => {
@@ -215,45 +234,6 @@ const EditArticleForm: FC<Props> = ({ authorId, article }): JSX.Element => {
       });
     }
   }, [countries?.length]);
-
-  useEffect(() => {
-    const selectedInterestName = interests?.find(
-      (item) => item.value === article?.interest?.toString()
-    )?.label;
-
-    if (selectedInterestName && interests?.length > 0) {
-      setSelectedInterest({
-        value: article?.interest.toString() || "",
-        label: selectedInterestName || "",
-      });
-    }
-  }, [interests?.length]);
-
-  useEffect(() => {
-    const selectedRegionName = regions?.find(
-      (item) => item.value === article?.region?.toString()
-    )?.label;
-
-    if (selectedRegionName && regions?.length > 0) {
-      setSelectedRegion({
-        value: article?.region.toString() || "",
-        label: selectedRegionName || "",
-      });
-    }
-  }, [regions?.length]);
-
-  useEffect(() => {
-    const selectedCategoryName = categories?.find(
-      (item) => item.value === article?.category?.toString()
-    )?.label;
-
-    if (selectedCategoryName && categories?.length > 0) {
-      setSelectedCategory({
-        value: article?.category.toString() || "",
-        label: selectedCategoryName || "",
-      });
-    }
-  }, [categories?.length]);
 
   useEffect(() => {
     const selectedDesinationName = destinations?.find(

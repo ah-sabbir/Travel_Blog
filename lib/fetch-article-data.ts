@@ -55,3 +55,16 @@ export const getArticlesByCategory = async (
     return;
   }
 };
+
+export const getRelatedArticles = async (slug: string) => {
+  try {
+    const { data }: { data: GetAllArticlesOutput } = await axiosInstance(
+      `/api/public/articles/related?categorySlug=${slug}`
+    );
+
+    return data.articles;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

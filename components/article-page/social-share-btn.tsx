@@ -51,7 +51,7 @@ const SocialShareBtn: FC<Props> = ({ title, color, subColor }): JSX.Element => {
           {Icon}
         </div>
       </div>
-      <div className="ml-11 relative z-10 flex flex-1 pl-4 font-semibold">
+      <div className="ml-11 relative z-[9] flex flex-1 pl-4 font-semibold">
         {title}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import ArticleContent from "@/components/article-page/article-content";
 import ArticleSocialShare from "@/components/article-page/article-social-share";
+import RelatedArticles from "@/components/article-page/related-articles";
 import TOC from "@/components/article-page/toc";
 import BtnWithIcon from "@/components/btn-with-icon";
 import NextImage from "@/components/next-image";
@@ -16,6 +17,7 @@ interface Props {
 
 const Page: NextPage<Props> = async ({ params }) => {
   const article = await getArticleBySlug(params.slug);
+
   return (
     <>
       <div className="article-page-cover bubble-mask">
@@ -123,6 +125,8 @@ const Page: NextPage<Props> = async ({ params }) => {
 
         <TOC selector=".content" />
       </div>
+
+      <RelatedArticles categorySlug={article?.category.slug || ""} />
 
       <div className="container my-3 text-admin_gray_text mt-10">
         <p className="italic">
