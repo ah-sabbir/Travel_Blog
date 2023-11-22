@@ -20,7 +20,7 @@
 }
 
 .header-dropdown-item {
-  @apply bg-light_gray py-[6px] px-2 text-center rounded-[20px] font-bold line-clamp-1 hover:bg-bold_gray transition;
+  @apply bg-light_gray py-[6px] px-1 font-thin text-center rounded-[20px] line-clamp-1 hover:bg-bold_gray transition;
 }
 
 .card-shadow {

@@ -28,7 +28,7 @@ const Page: NextPage<Props> = async ({ params }) => {
         </div>
       </div>
 
-      <div className="pl-4 mt-28 w-[calc(100vw_-_(48%_+_40px)_-_(100vw_-_100%)_/_2)]">
+      <div className="pl-8 mt-28 w-[calc(100vw_-_(48%_+_40px)_-_(100vw_-_100%)_/_2)]">
         <div className="flex items-center gap-2">
           <BtnWithIcon
             icon={FaAngleLeft}
@@ -103,7 +103,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
         <hr className="mt-6 mb-4" />
 
-        <p className="font-arima italic leading-8">{article?.description}</p>
+        <p className="italic leading-8">{article?.description}</p>
       </div>
 
       <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10">
@@ -111,7 +111,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           <ArticleContent article={article} />
 
           <div className="mt-10">
-            <p className="font-arima italic mx-auto w-fit border-b">
+            <p className="italic mx-auto w-fit border-b text-admin_gray_text">
               Chia sẻ ngay để mọi người cùng đọc
             </p>
             <ArticleSocialShare
@@ -122,6 +122,51 @@ const Page: NextPage<Props> = async ({ params }) => {
         </div>
 
         <TOC selector=".content" />
+      </div>
+
+      <div className="container my-3 text-admin_gray_text mt-10">
+        <p className="italic">
+          Bài viết được cập nhật lần cuối vào:{" "}
+          {formatLongDate(article?.updatedAt || "")}
+        </p>
+
+        <div className="flex items-center gap-2 mt-3">
+          <p className="italic">Các chủ đề liên quan:</p>
+
+          <div className="flex items-center gap-2">
+            {article?.country?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.country.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {article?.region?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.region.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {article?.category?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.category.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {article?.interest?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.interest.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

@@ -10,8 +10,6 @@ const config: Config = {
     extend: {
       fontFamily: {
         arima: ["var(--font-arima)"],
-        nunito: ["var(--font-nunito)"],
-        monserrat: ["var(--font-monserrat)"],
       },
       colors: {
         black_text: "#353535",

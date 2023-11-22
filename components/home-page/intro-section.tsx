@@ -16,7 +16,7 @@ const IntroSection: FC<Props> = (props): JSX.Element => {
         position={iconPosition.hand}
         wrapperClasses={`w-[70px] h-[70px] mx-auto`}
       />
-      <div className="w-[95%] italic font-arima text-2xl space-y-4 leading-10 text-[#424242] mt-5">
+      <div className="w-[95%] italic text-xl space-y-4 leading-10 text-[#424242] mt-5">
         {parse(intro)}
 
         <div className="flex items-center">

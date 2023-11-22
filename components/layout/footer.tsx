@@ -18,7 +18,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
           <div className="flex justify-between">
             <div className="-mt-16 relative z-1 text-white">
               <p className="font-extrabold text-3xl">Đăng ký nhận bản tin</p>
-              <p className="font-monserrat mt-2 mb-4">
+              <p className="mt-2 mb-4">
                 Tôi sẽ gửi đến bạn những trải nghiệm du lịch một cách chân thực
                 nhất.
               </p>
@@ -35,7 +35,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
             </div>
           </div>
 
-          <div className="flex gap-6 font-monserrat my-6 text-sm text-white">
+          <div className="flex gap-6 my-6 text-sm text-white">
             <div className="flex-1 grid grid-cols-4">
               {footerColumns.map((column, index) => (
                 <div key={index}>
