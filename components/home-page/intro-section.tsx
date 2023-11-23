@@ -21,8 +21,8 @@ const IntroSection: FC<Props> = (props): JSX.Element => {
 
         <div className="flex items-center">
           <span>Lựa chọn điểm đến đầu tiên của bạn&nbsp;</span>
-          <strong className="font-extrabold flex gap-1 cursor-pointer relative group underline">
-            tại đây <FaAngleDown size={16} className="mt-[6px]" />
+          <strong className="font-extrabold flex items-center gap-1 cursor-pointer relative group underline">
+            tại đây <FaAngleDown size={16} className="mt-[2px]" />
             <DestinationsDropdown wrapperClasses="right-0" />
           </strong>
         </div>

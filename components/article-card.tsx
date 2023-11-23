@@ -1,18 +1,49 @@
+import { RelatedArticle } from "@/dtos/article/get-related-articles.dto";
+import Link from "next/link";
 import { FC } from "react";
+import NextImage from "./next-image";
+import { formatShortDate } from "@/lib/format-date";
+import { TiPen } from "react-icons/ti";
+import { ImClock } from "react-icons/im";
 
 interface Props {
-  article: {
-    updatedAt: string;
-    name: string;
-    description: string;
-    author: { name: string };
-    slug: string;
-    thumbnail: { public_url: string; url: string };
-  };
+  article: RelatedArticle;
 }
 
-const ArticleCard: FC<Props> = (props): JSX.Element => {
-  return <div>ArticleCard</div>;
+const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
+  return (
+    <Link
+      href={`/bai-viet/${article?.slug}`}
+      className="block w-full rounded-md card-shadow group"
+    >
+      <div className="w-full aspect-[1.5] relative overflow-hidden">
+        <NextImage
+          src={article?.thumbnail?.url}
+          alt={article?.name}
+          className="rounded-t-md group-hover:scale-105 transition"
+        />
+      </div>
+
+      <div className="p-6">
+        <h4 className="text-xl font-bold leading-8 text-black_text line-clamp-2">
+          {article.name}
+        </h4>
+        <p className="text-sm mt-3 line-clamp-3 leading-7">
+          {article.description}
+        </p>
+        <p className="flex items-center gap-4 text-[#838383] text-xs mt-4">
+          <span className="flex items-center gap-[3px]">
+            <ImClock size={11} className="-mt-[2px]" />
+            Ngày đăng: {formatShortDate(article?.updatedAt)}
+          </span>
+          <span className="flex items-center gap-[2px]">
+            <TiPen size={14} className="-mt-[2px]" />
+            Tác giả: {article?.author?.name}
+          </span>
+        </p>
+      </div>
+    </Link>
+  );
 };
 
 export default ArticleCard;

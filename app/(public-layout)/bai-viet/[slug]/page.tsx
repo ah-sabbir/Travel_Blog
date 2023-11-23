@@ -3,6 +3,7 @@ import ArticleSocialShare from "@/components/article-page/article-social-share";
 import RelatedArticles from "@/components/article-page/related-articles";
 import TOC from "@/components/article-page/toc";
 import BtnWithIcon from "@/components/btn-with-icon";
+import Comments from "@/components/comments";
 import NextImage from "@/components/next-image";
 import { getArticleBySlug } from "@/lib/fetch-article-data";
 import { formatLongDate } from "@/lib/format-date";
@@ -116,6 +117,51 @@ const Page: NextPage<Props> = async ({ params }) => {
         <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
           <ArticleContent article={article} />
 
+          <div className="text-admin_gray_text mt-10">
+            <p className="italic my-0">
+              Bài viết được cập nhật lần cuối vào:{" "}
+              {formatLongDate(article?.updatedAt || "")}
+            </p>
+
+            <div className="flex items-center gap-2 mt-3">
+              <p className="italic my-0">Các chủ đề liên quan:</p>
+
+              <div className="flex items-center gap-2">
+                {article?.country?.name && (
+                  <BtnWithIcon
+                    to=""
+                    content={article.country.name}
+                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+                  />
+                )}
+
+                {article?.region?.name && (
+                  <BtnWithIcon
+                    to=""
+                    content={article.region.name}
+                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+                  />
+                )}
+
+                {article?.category?.name && (
+                  <BtnWithIcon
+                    to=""
+                    content={article.category.name}
+                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+                  />
+                )}
+
+                {article?.interest?.name && (
+                  <BtnWithIcon
+                    to=""
+                    content={article.interest.name}
+                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+
           <div className="mt-10">
             <p className="italic mx-auto w-fit border-b text-admin_gray_text">
               Chia sẻ ngay để mọi người cùng đọc
@@ -130,51 +176,18 @@ const Page: NextPage<Props> = async ({ params }) => {
         <TOC selector=".content" />
       </div>
 
-      <RelatedArticles categorySlug={article?.category.slug || ""} />
-
-      <div className="container my-3 text-admin_gray_text mt-10">
-        <p className="italic">
-          Bài viết được cập nhật lần cuối vào:{" "}
-          {formatLongDate(article?.updatedAt || "")}
+      <div className="container mt-16">
+        <p className="font-bold text-2xl text-admin_primary">
+          Bài viết cùng danh mục &quot;{article?.category.name}&quot;
         </p>
+        <RelatedArticles
+          categorySlug={article?.category.slug || ""}
+          articleId={article?._id || ""}
+        />
+      </div>
 
-        <div className="flex items-center gap-2 mt-3">
-          <p className="italic">Các chủ đề liên quan:</p>
-
-          <div className="flex items-center gap-2">
-            {article?.country?.name && (
-              <BtnWithIcon
-                to=""
-                content={article.country.name}
-                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-              />
-            )}
-
-            {article?.region?.name && (
-              <BtnWithIcon
-                to=""
-                content={article.region.name}
-                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-              />
-            )}
-
-            {article?.category?.name && (
-              <BtnWithIcon
-                to=""
-                content={article.category.name}
-                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-              />
-            )}
-
-            {article?.interest?.name && (
-              <BtnWithIcon
-                to=""
-                content={article.interest.name}
-                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-              />
-            )}
-          </div>
-        </div>
+      <div className="container mt-14">
+        <Comments article={article} />
       </div>
     </>
   );

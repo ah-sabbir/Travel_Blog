@@ -1,6 +1,7 @@
 import { GetAllArticlesOutput } from "@/dtos/article/get-all-articles.dto";
 import axiosInstance from "./axios";
 import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
+import { GetRelatedArticlesOutput } from "@/dtos/article/get-related-articles.dto";
 
 export const getAllArticles = async (
   specifiedProps: string = "",
@@ -56,10 +57,10 @@ export const getArticlesByCategory = async (
   }
 };
 
-export const getRelatedArticles = async (slug: string) => {
+export const getRelatedArticles = async (slug: string, currentId: string) => {
   try {
-    const { data }: { data: GetAllArticlesOutput } = await axiosInstance(
-      `/api/public/articles/related?categorySlug=${slug}`
+    const { data }: { data: GetRelatedArticlesOutput } = await axiosInstance(
+      `/api/public/articles/related?categorySlug=${slug}&currentId=${currentId}`
     );
 
     return data.articles;

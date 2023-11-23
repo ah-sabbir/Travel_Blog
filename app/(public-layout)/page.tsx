@@ -50,7 +50,7 @@ export default async function page() {
 
       <div className="container">
         <div className="flex gap-6 mt-[88px]">
-          <div className="w-[calc(100vw_-_(43%_+_40px)_-_(100vw_-_100%)_/_2)]"></div>
+          <div className="w-[56%]"></div>
 
           <div className="flex-1">
             <div className="">
