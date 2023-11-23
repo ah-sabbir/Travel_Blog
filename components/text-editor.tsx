@@ -16,7 +16,7 @@ const TextEditor: FC<Props> = ({ setContent, content }): JSX.Element => {
         apiKey={process.env.NEXT_PUBLIC_TEXT_EDITOR_KEY}
         init={{
           plugins:
-            "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount editimage powerpaste typography inlinecss",
+            "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
           toolbar:
             "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
           tinycomments_mode: "embedded",

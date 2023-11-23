@@ -117,51 +117,6 @@ const Page: NextPage<Props> = async ({ params }) => {
         <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
           <ArticleContent article={article} />
 
-          <div className="text-admin_gray_text mt-10">
-            <p className="italic my-0">
-              Bài viết được cập nhật lần cuối vào:{" "}
-              {formatLongDate(article?.updatedAt || "")}
-            </p>
-
-            <div className="flex items-center gap-2 mt-3">
-              <p className="italic my-0">Các chủ đề liên quan:</p>
-
-              <div className="flex items-center gap-2">
-                {article?.country?.name && (
-                  <BtnWithIcon
-                    to=""
-                    content={article.country.name}
-                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-                  />
-                )}
-
-                {article?.region?.name && (
-                  <BtnWithIcon
-                    to=""
-                    content={article.region.name}
-                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-                  />
-                )}
-
-                {article?.category?.name && (
-                  <BtnWithIcon
-                    to=""
-                    content={article.category.name}
-                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-                  />
-                )}
-
-                {article?.interest?.name && (
-                  <BtnWithIcon
-                    to=""
-                    content={article.interest.name}
-                    customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-
           <div className="mt-10">
             <p className="italic mx-auto w-fit border-b text-admin_gray_text">
               Chia sẻ ngay để mọi người cùng đọc
@@ -186,8 +141,53 @@ const Page: NextPage<Props> = async ({ params }) => {
         />
       </div>
 
-      <div className="container mt-14">
+      <div className="small-container mt-14 comments">
         <Comments article={article} />
+      </div>
+
+      <div className="small-container text-admin_gray_text mt-14">
+        <p className="italic my-0">
+          Bài viết được cập nhật lần cuối vào:{" "}
+          {formatLongDate(article?.updatedAt || "")}
+        </p>
+
+        <div className="flex items-center gap-2 mt-3">
+          <p className="italic my-0">Các chủ đề liên quan:</p>
+
+          <div className="flex items-center gap-2">
+            {article?.country?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.country.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {article?.region?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.region.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {article?.category?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.category.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {article?.interest?.name && (
+              <BtnWithIcon
+                to=""
+                content={article.interest.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

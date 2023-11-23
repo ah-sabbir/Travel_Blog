@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className={`${arima.className}`}>
+      <body className={`${arima.className} ${arima.variable}`}>
         <StyledProgressBar />
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />
