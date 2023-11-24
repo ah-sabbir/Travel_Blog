@@ -7,10 +7,10 @@ import Box from "@mui/material/Box";
 import CustomTabPanel from "../custom-tab-panel";
 import { CountryEntity } from "@/entities/country.entity";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CountryContent from "./country-content";
 import TOC from "../article-page/toc";
-import CountryDestinations from "./country-destinations";
-import CountryArticles from "./country-articles";
+import RegionContent from "./region-content";
+import { RegionEntity } from "@/entities/region.entity";
+import RegionArticles from "./region-articles";
 
 const theme = createTheme({
   palette: {
@@ -31,10 +31,10 @@ function a11yProps(index: number) {
 }
 
 interface Props {
-  country: CountryEntity | undefined;
+  region: RegionEntity | undefined;
 }
 
-export default function CountryTabs({ country }: Props) {
+export default function RegionTabs({ region }: Props) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -53,7 +53,7 @@ export default function CountryTabs({ country }: Props) {
             textColor="secondary"
           >
             <Tab
-              label={`Tổng quan về đất nước ${country?.name}`}
+              label={`Tổng quan về ${region?.name}`}
               {...a11yProps(0)}
               className="tab-heading "
             />
@@ -68,18 +68,13 @@ export default function CountryTabs({ country }: Props) {
         </Box>
         <CustomTabPanel value={value} index={0}>
           <div className="content grid grid-cols-1 lg:grid-cols-[1fr,0.35fr] gap-10">
-            <CountryContent content={country?.content} />
+            <RegionContent content={region?.content} />
             <TOC selector=".content" />
           </div>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <CountryDestinations
-            slug={country?.slug}
-            countryName={country?.name}
-          />
-        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}></CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <CountryArticles slug={country?.slug} />
+          <RegionArticles slug={region?.slug} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
           Item Three

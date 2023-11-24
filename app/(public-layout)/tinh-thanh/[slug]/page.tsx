@@ -1,6 +1,6 @@
-import CountryTabs from "@/components/country-page/country-tabs";
 import NextImage from "@/components/next-image";
-import { getCountryBySlug } from "@/lib/fetch-country-data";
+import RegionTabs from "@/components/region-page/region-tabs";
+import { getRegionBySlug } from "@/lib/fetch-region-data";
 import { NextPage } from "next";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Page: NextPage<Props> = async ({ params }) => {
-  const country = await getCountryBySlug(
+  const region = await getRegionBySlug(
     params.slug,
     "name slug description thumbnail content"
   );
@@ -17,8 +17,8 @@ const Page: NextPage<Props> = async ({ params }) => {
       <div className="country-page-cover bubble-mask">
         <div className="relative w-full h-full">
           <NextImage
-            src={country?.thumbnail.url || ""}
-            alt={country?.name || ""}
+            src={region?.thumbnail.url || ""}
+            alt={region?.name || ""}
             priority
           />
         </div>
@@ -26,13 +26,13 @@ const Page: NextPage<Props> = async ({ params }) => {
       <div className="container">
         <div className="mt-28 w-[45%]">
           <h1 className="font-dancing font-bold text-[70px] text-admin_primary">
-            Du lịch {country?.name}
+            Du lịch {region?.name}
           </h1>
-          <p className="leading-8 text-justify">{country?.description}</p>
+          <p className="leading-8 text-justify">{region?.description}</p>
         </div>
 
         <div className="mt-36">
-          <CountryTabs country={country} />
+          <RegionTabs region={region} />
         </div>
       </div>
     </>

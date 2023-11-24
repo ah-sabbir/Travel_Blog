@@ -46,7 +46,7 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
               {country.regions.map((region) => (
                 <Link
                   key={region._id.toString()}
-                  href=""
+                  href={`${path.region}${region.slug}`}
                   className="header-dropdown-item"
                 >
                   {region.name}

@@ -1,8 +1,8 @@
 import dbConnect from "@/lib/db";
 import Article from "@/models/Article";
-import Country from "@/models/Country";
 import Destination from "@/models/Destination";
 import Gallery from "@/models/Gallery";
+import Region from "@/models/Region";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
@@ -21,7 +21,7 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const country = await Country.findOne(
+    const region = await Region.findOne(
       { slug },
       {
         destinations: { $slice: [0, Number(nestedLimit)] },
@@ -42,11 +42,14 @@ export async function GET(req: Request) {
       })
       .sort({ createdAt: 1 });
 
-    if (!country) {
-      return NextResponse.json({ ok: false, error: "Không tìm thấy quốc gia" });
+    if (!region) {
+      return NextResponse.json({
+        ok: false,
+        error: "Không tìm thấy tỉnh / vùng miền",
+      });
     }
 
-    return NextResponse.json({ ok: true, country });
+    return NextResponse.json({ ok: true, region });
   } catch (error: any) {
     return NextResponse.json({ ok: false, error: error.message });
   }

@@ -68,7 +68,7 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
 
   return (
     <aside>
-      <nav className="sticky block top-28 max-h-screen overflow-y-scroll border-l border-[#3c3c431f] no-scrollbar">
+      <nav className="sticky block top-28 max-h-[490px] overflow-y-scroll border-l border-[#3c3c431f] no-scrollbar">
         <ul ref={listWrapperRef}>
           <div className="flex items-center gap-2 pl-10 tracking-widest text-lg text-gray-700 uppercase mb-4 font-extrabold">
             <MdOutlineFormatListNumbered className="w-5 h-w-5" /> Mục Lục
@@ -94,7 +94,7 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
                       ? "14px"
                       : "15px",
                 }}
-                className={`flex items-center py-1 cursor-pointer h-10 ${
+                className={`flex items-center py-1 cursor-pointer h-10 line-clamp-1 ${
                   currentHeadingID === heading.dataset.id
                     ? "font-bold text-admin_primary border-l-2 border-admin_primary"
                     : "text-black_text"
@@ -109,8 +109,8 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
                   });
                 }}
               >
-                {heading.innerHTML.length > 40
-                  ? heading.innerHTML.substring(0, 40) + "..."
+                {heading.innerHTML.length > 30
+                  ? heading.innerHTML.substring(0, 30) + "..."
                   : heading.innerHTML}
               </li>
             );

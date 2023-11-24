@@ -38,6 +38,7 @@ export const path = {
   article: "/bai-viet/",
   country: "/dat-nuoc/",
   destination: "/diem-den/",
+  region: "/tinh-thanh/",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

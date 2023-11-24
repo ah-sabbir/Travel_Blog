@@ -8,7 +8,7 @@ import { ImClock } from "react-icons/im";
 import { path } from "@/constant";
 
 interface Props {
-  article: RelatedArticle;
+  article: any;
 }
 
 const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
@@ -37,10 +37,12 @@ const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
             <ImClock size={11} className="-mt-[2px]" />
             Ngày đăng: {formatShortDate(article?.updatedAt)}
           </span>
-          <span className="flex items-center gap-[2px]">
-            <TiPen size={14} className="-mt-[2px]" />
-            Tác giả: {article?.author?.name}
-          </span>
+          {article?.author?.name && (
+            <span className="flex items-center gap-[2px]">
+              <TiPen size={14} className="-mt-[2px]" />
+              Tác giả: {article.author.name}
+            </span>
+          )}
         </p>
       </div>
     </Link>
