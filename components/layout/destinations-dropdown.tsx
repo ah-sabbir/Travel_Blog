@@ -6,6 +6,7 @@ import { FC, useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import DropdownHeading from "./dropdown-heading";
 import { getAllCountries } from "@/lib/fetch-country-data";
+import { path } from "@/constant";
 
 interface Props {
   wrapperClasses?: string;
@@ -36,7 +37,10 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
       <div className="grid grid-cols-2 gap-6 p-6">
         {countries?.map((country) => (
           <div key={country._id.toString()}>
-            <DropdownHeading link="" title={country.name} />
+            <DropdownHeading
+              link={`${path.country}${country.slug}`}
+              title={country.name}
+            />
 
             <ul className="grid grid-cols-4 gap-[10px] pt-2">
               {country.regions.map((region) => (

@@ -35,6 +35,9 @@ export const path = {
   editTicket: "/admin/tickets/edit",
 
   // Frontend pages
+  article: "/bai-viet/",
+  country: "/dat-nuoc/",
+  destination: "/diem-den/",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

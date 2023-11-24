@@ -98,7 +98,7 @@ const ArticlesTable: FC<Props> = (): JSX.Element => {
                   </td>
                   <td className="text-center">
                     <a
-                      href={`/bai-viet/${article.slug}`}
+                      href={`${path.article}${article.slug}`}
                       target="_blank"
                       className="underline text-sm font-bold text-blue-600"
                     >

@@ -68,9 +68,9 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
 
   return (
     <aside>
-      <nav className="sticky block top-28 mt-14 max-h-screen overflow-y-scroll border-l border-[#3c3c431f] no-scrollbar">
+      <nav className="sticky block top-28 max-h-screen overflow-y-scroll border-l border-[#3c3c431f] no-scrollbar">
         <ul ref={listWrapperRef}>
-          <div className="flex items-center gap-2 pl-5 tracking-widest text-lg text-gray-700 uppercase mb-4 font-extrabold">
+          <div className="flex items-center gap-2 pl-10 tracking-widest text-lg text-gray-700 uppercase mb-4 font-extrabold">
             <MdOutlineFormatListNumbered className="w-5 h-w-5" /> Mục Lục
           </div>
           {headings.map((heading) => {
@@ -83,10 +83,10 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
                 style={{
                   paddingLeft:
                     tagLevel === "4"
-                      ? "24px"
+                      ? "44px"
                       : tagLevel === "3"
-                      ? "36px"
-                      : "20px",
+                      ? "56px"
+                      : "40px",
                   fontSize:
                     tagLevel === "4"
                       ? "11px"

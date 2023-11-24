@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         arima: ["var(--font-arima)"],
+        dancing: ["var(--font-dancing-script)"],
       },
       colors: {
         black_text: "#353535",

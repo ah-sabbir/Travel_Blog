@@ -7,6 +7,7 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const slug = searchParams.get("slug");
+    const specifiedProps = searchParams.get("specifiedProps");
 
     if (!slug) {
       return NextResponse.json({ ok: false, error: "Thiếu tham số slug" });
@@ -14,7 +15,9 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const country = await Country.findOne({ slug });
+    const country = await Country.findOne({ slug }).select(
+      specifiedProps || ""
+    );
 
     if (!country) {
       return NextResponse.json({ ok: false, error: "Không tìm thấy quốc gia" });

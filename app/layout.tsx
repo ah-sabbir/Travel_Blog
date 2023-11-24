@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Arima } from "next/font/google";
+import { Arima, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/providers/auth-provider";
@@ -9,6 +9,12 @@ const arima = Arima({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arima",
+});
+
+const dancing_script = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dancing-script",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className={`${arima.className} ${arima.variable}`}>
+      <body
+        className={`${arima.className} ${arima.variable} ${dancing_script.variable}`}
+      >
         <StyledProgressBar />
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-center" reverseOrder={false} />

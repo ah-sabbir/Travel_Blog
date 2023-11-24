@@ -2,7 +2,7 @@ import { ArticleEntity } from "@/entities/article.entity";
 import Link from "next/link";
 import { FC } from "react";
 import StyledIcon from "../styled-icon";
-import { iconPosition } from "@/constant";
+import { iconPosition, path } from "@/constant";
 import NextImage from "../next-image";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const BigArticleCard: FC<Props> = ({ article, order }): JSX.Element => {
   return (
     <Link
-      href={`/bai-viet/${article?.slug}`}
+      href={`${path.article}${article?.slug}`}
       className="block w-full text-black_text relative"
     >
       {order === 0 && (

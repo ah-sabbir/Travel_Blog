@@ -5,6 +5,7 @@ import NextImage from "./next-image";
 import { formatShortDate } from "@/lib/format-date";
 import { TiPen } from "react-icons/ti";
 import { ImClock } from "react-icons/im";
+import { path } from "@/constant";
 
 interface Props {
   article: RelatedArticle;
@@ -13,7 +14,7 @@ interface Props {
 const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
   return (
     <Link
-      href={`/bai-viet/${article?.slug}`}
+      href={`${path.article}${article?.slug}`}
       className="block w-full rounded-md card-shadow group"
     >
       <div className="w-full aspect-[1.5] relative overflow-hidden">

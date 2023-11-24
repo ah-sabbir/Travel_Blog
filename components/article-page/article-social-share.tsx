@@ -9,6 +9,7 @@ import {
   RedditShareButton,
 } from "next-share";
 import SocialShareBtn from "./social-share-btn";
+import { path } from "@/constant";
 
 interface Props {
   slug: string;
@@ -19,7 +20,7 @@ interface Props {
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ArticleSocialShare: FC<Props> = ({ slug, title, quote }): JSX.Element => {
-  const url = `${baseURL}/bai-viet/${slug}`;
+  const url = `${baseURL}${path.article}${slug}`;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 w-full">

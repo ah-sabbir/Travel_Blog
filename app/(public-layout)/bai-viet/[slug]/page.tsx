@@ -115,7 +115,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
       <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10 mt-6">
         <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
-          <ArticleContent article={article} />
+          <ArticleContent content={article?.content} />
 
           <div className="mt-10">
             <p className="italic mx-auto w-fit border-b text-admin_gray_text">
@@ -127,8 +127,9 @@ const Page: NextPage<Props> = async ({ params }) => {
             />
           </div>
         </div>
-
-        <TOC selector=".content" />
+        <div className="mt-14">
+          <TOC selector=".content" />
+        </div>
       </div>
 
       <div className="container mt-16">

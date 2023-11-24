@@ -68,8 +68,19 @@
   -webkit-backface-visibility: hidden;
 }
 
+.country-page-cover {
+  @apply h-[550px] absolute w-[calc(100vw_-_(45%_+_40px)_-_(100vw_-_100%)_/_2)] z-0 mr-10 left-[47.9%] top-0;
+  mask-position: bottom 7px left 0;
+  -webkit-mask-position: bottom 7px left 0;
+  mask-size: 108% 110%;
+  -webkit-mask-size: 108% 110%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 .home-page-cover:after,
-.article-page-cover:after {
+.article-page-cover:after,
+country-page-cover:after {
   @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
   @apply content-[""] h-full absolute bottom-0 inset-x-0;
 }
@@ -77,6 +88,13 @@
 .bubble-mask {
   -webkit-mask-image: url("/assets/images/home-page/bubble-mask.svg");
   mask-image: url("/assets/images/home-page/bubble-mask.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.country-bubble-mask {
+  -webkit-mask-image: url("/assets/images/country-page/bubble-mask.svg");
+  mask-image: url("/assets/images/country-page/bubble-mask.svg");
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
@@ -247,4 +265,9 @@ figure img {
 
 figure.image figcaption {
   @apply text-[#5b7c98] !mt-0 text-sm text-center p-3 px-[10px] bg-[#f8f7f7] rounded-b-md;
+}
+
+/* Tab panel */
+.tab-heading {
+  @apply !font-arima font-bold text-lg;
 }

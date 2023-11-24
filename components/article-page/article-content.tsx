@@ -3,11 +3,11 @@ import parse from "html-react-parser";
 import { FC } from "react";
 
 interface Props {
-  article: GetArticleBySlugOutput["article"] | undefined;
+  content: string | undefined;
 }
 
-const ArticleContent: FC<Props> = ({ article }): JSX.Element => {
-  return <div>{parse(article?.content as string)}</div>;
+const ArticleContent: FC<Props> = ({ content }): JSX.Element => {
+  return <>{parse(content as string)}</>;
 };
 
 export default ArticleContent;
