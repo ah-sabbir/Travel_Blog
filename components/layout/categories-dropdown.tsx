@@ -6,6 +6,7 @@ import { FC, useEffect, useState } from "react";
 import SubArticleCard from "../sub-article-card";
 import { FaChevronRight } from "react-icons/fa";
 import { getAllCategories } from "@/lib/fetch-category-data";
+import { path } from "@/constant";
 
 interface Props {}
 
@@ -33,7 +34,7 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
         {categories?.map((category) => (
           <Link
             key={category._id.toString()}
-            href=""
+            href={`${path.category}${category.slug}`}
             className="header-dropdown-item"
           >
             {category.name}

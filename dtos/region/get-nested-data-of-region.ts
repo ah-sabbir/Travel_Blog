@@ -9,4 +9,5 @@ export interface getNestedDataOfRegionOutput extends CoreOutput {
     articles?: ArticleEntity[];
     galleries?: GalleryEntity[];
   };
+  country: string;
 }

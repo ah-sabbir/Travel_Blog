@@ -10,7 +10,7 @@ export interface DestinationEntity {
   galleries: [];
   region: ObjectId;
   interest: ObjectId;
-  country: ObjectId;
+  country: any;
   thumbnail: {
     public_id: string;
     url: string;

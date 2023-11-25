@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/db";
 import Article from "@/models/Article";
+import Country from "@/models/Country";
 import Destination from "@/models/Destination";
 import Gallery from "@/models/Gallery";
 import Region from "@/models/Region";
@@ -39,14 +40,18 @@ export async function GET(req: Request) {
             ? Article
             : Gallery,
         select: nestedProps,
-      })
-      .sort({ createdAt: 1 });
+      });
 
     if (!region) {
       return NextResponse.json({
         ok: false,
         error: "Không tìm thấy tỉnh / vùng miền",
       });
+    }
+
+    if (populate === "destinations") {
+      const country = await Country.findById(region.countryId).select("name");
+      return NextResponse.json({ ok: true, region, country: country.name });
     }
 
     return NextResponse.json({ ok: true, region });

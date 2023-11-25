@@ -1,4 +1,3 @@
-import { RelatedArticle } from "@/dtos/article/get-related-articles.dto";
 import Link from "next/link";
 import { FC } from "react";
 import NextImage from "./next-image";

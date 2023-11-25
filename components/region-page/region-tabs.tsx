@@ -11,6 +11,7 @@ import TOC from "../article-page/toc";
 import RegionContent from "./region-content";
 import { RegionEntity } from "@/entities/region.entity";
 import RegionArticles from "./region-articles";
+import RegionDestinations from "./region-destinations";
 
 const theme = createTheme({
   palette: {
@@ -72,7 +73,9 @@ export default function RegionTabs({ region }: Props) {
             <TOC selector=".content" />
           </div>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}></CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <RegionDestinations slug={region?.slug} regionName={region?.name} />
+        </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
           <RegionArticles slug={region?.slug} />
         </CustomTabPanel>

@@ -39,6 +39,7 @@ export const path = {
   country: "/dat-nuoc/",
   destination: "/diem-den/",
   region: "/tinh-thanh/",
+  category: "/danh-muc/",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

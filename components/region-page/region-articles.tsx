@@ -13,11 +13,9 @@ const RegionArticles: FC<Props> = ({ slug }): JSX.Element => {
   const [articles, setArticles] = useState<ArticleEntity[]>();
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(slug);
-
   const fetchArticles = async () => {
     setIsLoading(true);
-    const articles = await getNestedDataOfRegion(
+    const data = await getNestedDataOfRegion(
       slug || "",
       "articles",
       "articles",
@@ -25,7 +23,7 @@ const RegionArticles: FC<Props> = ({ slug }): JSX.Element => {
       "20"
     );
     setIsLoading(false);
-    setArticles(articles?.articles);
+    setArticles(data?.region?.articles);
   };
 
   useEffect(() => {

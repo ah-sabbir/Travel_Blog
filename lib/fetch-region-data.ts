@@ -57,7 +57,7 @@ export const getNestedDataOfRegion = async (
       }
     );
 
-    return data.region;
+    return data;
   } catch (err: any) {
     console.log(err);
     return;
