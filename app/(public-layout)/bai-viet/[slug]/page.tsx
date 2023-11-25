@@ -107,9 +107,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
           <hr className="mt-6 mb-4" />
 
-          <p className="italic leading-8 text-justify">
-            {article?.description}
-          </p>
+          <p className="leading-8 text-justify">{article?.description}</p>
         </div>
       </div>
 
