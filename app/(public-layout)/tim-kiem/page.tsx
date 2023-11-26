@@ -57,8 +57,8 @@ const SearchResults: FC<Props> = (props): JSX.Element => {
             />
           </form>
           <p className="mt-2 text-sm">
-            <span className="font-bold">76 kết quả</span> được tìm thấy cho từ
-            khóa &quot;{query}
+            <span className="font-bold">{totalResults} kết quả</span> được tìm
+            thấy cho từ khóa &quot;{query}
             &quot;
           </p>
         </div>

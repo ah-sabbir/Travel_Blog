@@ -14,7 +14,7 @@ const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
   return (
     <Link
       href={`${path.article}${article?.slug}`}
-      className="block w-full rounded-md shadow-md group"
+      className="block w-full rounded-md shadow-md border group"
     >
       <div className="w-full aspect-[1.5] relative overflow-hidden rounded-t-md">
         <NextImage
