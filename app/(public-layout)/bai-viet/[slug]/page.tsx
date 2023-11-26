@@ -5,6 +5,7 @@ import TOC from "@/components/article-page/toc";
 import BtnWithIcon from "@/components/btn-with-icon";
 import Comments from "@/components/comments";
 import NextImage from "@/components/next-image";
+import { path } from "@/constant";
 import { getArticleBySlug } from "@/lib/fetch-article-data";
 import { formatLongDate } from "@/lib/format-date";
 import { NextPage } from "next";
@@ -84,7 +85,7 @@ const Page: NextPage<Props> = async ({ params }) => {
               <span>
                 Danh mục:{" "}
                 <Link
-                  href=""
+                  href={`${path.category}${article.category.slug}`}
                   className="underline font-extrabold text-admin_primary"
                 >
                   {article.category.name}
@@ -96,7 +97,7 @@ const Page: NextPage<Props> = async ({ params }) => {
               <span>
                 Sở thích:{" "}
                 <Link
-                  href=""
+                  href={`${path.interest}${article.interest.slug}`}
                   className="underline font-extrabold text-admin_primary"
                 >
                   {article.interest.name}

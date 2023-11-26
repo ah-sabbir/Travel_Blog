@@ -2,6 +2,7 @@ import { GetAllArticlesOutput } from "@/dtos/article/get-all-articles.dto";
 import axiosInstance from "./axios";
 import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
 import { GetRelatedArticlesOutput } from "@/dtos/article/get-related-articles.dto";
+import { GetArticleResultsOutput } from "@/dtos/article/get-article-results.dto";
 
 export const getAllArticles = async (
   specifiedProps: string = "",
@@ -64,6 +65,26 @@ export const getRelatedArticles = async (slug: string, currentId: string) => {
     );
 
     return data.articles;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSearchResults = async (
+  query: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/search/articles`,
+      {
+        params: { query, page, limit },
+      }
+    );
+
+    return data;
   } catch (err: any) {
     console.log(err);
     return;

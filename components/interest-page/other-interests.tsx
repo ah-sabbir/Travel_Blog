@@ -1,6 +1,6 @@
 import { path } from "@/constant";
-import { CategoryEntity } from "@/entities/category.entity";
-import { getAllCategories } from "@/lib/fetch-category-data";
+import { InterestEntity } from "@/entities/interest.entity";
+import { getAllInterests } from "@/lib/fetch-interest-data";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -10,24 +10,24 @@ interface Props {
   currentId: string | undefined;
 }
 
-const OtherCategories: FC<Props> = ({ currentId }): JSX.Element => {
-  const [categories, setCategories] = useState<CategoryEntity[]>();
+const OtherInterests: FC<Props> = ({ currentId }): JSX.Element => {
+  const [interests, setInterests] = useState<InterestEntity[]>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchOtherCategories = async () => {
+  const fetchOtherInterests = async () => {
     setIsLoading(true);
-    const allCategories = await getAllCategories("name slug");
+    const allInterests = await getAllInterests("name slug");
 
-    const otherCategories = allCategories?.filter(
-      (category) => category._id.toString() !== currentId
+    const otherInterests = allInterests?.filter(
+      (interest) => interest._id.toString() !== currentId
     );
 
-    setCategories(otherCategories);
+    setInterests(otherInterests);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchOtherCategories();
+    fetchOtherInterests();
   }, []);
 
   return (
@@ -40,13 +40,13 @@ const OtherCategories: FC<Props> = ({ currentId }): JSX.Element => {
         </div>
       ) : (
         <div className="flex items-center gap-[10px] flex-wrap">
-          {categories?.map((category) => (
+          {interests?.map((interest) => (
             <Link
-              key={category._id.toString()}
-              href={`${path.category}${category.slug}`}
+              key={interest._id.toString()}
+              href={`${path.interest}${interest.slug}`}
               className="header-dropdown-item !px-3 !block"
             >
-              {category.name}
+              {interest.name}
             </Link>
           ))}
         </div>
@@ -55,4 +55,4 @@ const OtherCategories: FC<Props> = ({ currentId }): JSX.Element => {
   );
 };
 
-export default OtherCategories;
+export default OtherInterests;

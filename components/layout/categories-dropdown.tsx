@@ -23,7 +23,7 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="header-dropdown-card top-[150%] -left-1/3 text-black_text w-[780px]">
+    <div className="header-dropdown-card top-[130%] -left-1/3 text-black_text w-[780px]">
       <Link
         href=""
         className="block w-full border-b border-light_gray pb-2 pt-6 px-6"

@@ -1,3 +1,5 @@
+import { path } from "@/constant";
+import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoSearchOutline } from "react-icons/io5";
@@ -11,6 +13,7 @@ interface FormValues {
 const SearchBar: FC<Props> = (props): JSX.Element => {
   const [expand, setExpand] = useState(false);
   const [placeholder, setPlaceholder] = useState("Tìm bài viết ...");
+  const router = useRouter();
 
   const form = useForm<FormValues>({
     defaultValues: {
@@ -27,7 +30,15 @@ const SearchBar: FC<Props> = (props): JSX.Element => {
     setPlaceholder("Tìm bài viết ...");
   };
 
-  const onSubmit = (data: FormValues) => {};
+  const onSubmit = (data: FormValues) => {
+    if (!data.query || !data.query.trim()) {
+      return;
+    }
+
+    console.log(data.query);
+
+    router.push(`${path.search}?tu-khoa=${data.query}`);
+  };
 
   return (
     <form

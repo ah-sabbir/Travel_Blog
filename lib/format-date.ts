@@ -20,5 +20,5 @@ export const formatShortDate = (rawDate: string) => {
     year: "numeric",
   };
 
-  return date.toLocaleDateString("en", options);
+  return date.toLocaleDateString("vi", options);
 };

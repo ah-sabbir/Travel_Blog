@@ -121,6 +121,14 @@ country-page-cover:after {
   @apply w-full aspect-[3];
 }
 
+.search-page-cover {
+  background: url("/assets/images/search-page/search-page-cover.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  @apply w-full aspect-[3];
+}
+
 /* Admin Common */
 .admin-main-gradient {
   @apply bg-[linear-gradient(135deg,#c3224a_0%,#4a0d37_100%)];
@@ -278,4 +286,25 @@ figure.image figcaption {
 /* Tab panel */
 .tab-heading {
   @apply !font-arima font-bold !text-lg;
+}
+
+/* Pagination */
+/* Pagination */
+/* Paginagation */
+.common-shadow {
+  box-shadow: 0 2px 4px #00000012;
+}
+
+/* Pagination */
+/* Paginagation */
+.pagination .page-link {
+  @apply !font-arima !rounded-lg grid !text-[#333] font-bold text-sm !border-transparent !py-[10px] !px-4 shadow-md border;
+}
+
+.pagination .page-item.active .page-link {
+  @apply bg-[#ad2849] border-[#c60000] !text-white !px-4;
+}
+
+.pagination .page-item.disabled .page-link {
+  @apply !text-[#ccc];
 }

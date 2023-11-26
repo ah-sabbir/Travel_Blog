@@ -32,7 +32,7 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
 
   return (
     <div
-      className={`!not-italic !text-base header-dropdown-card top-[150%] text-black_text w-[990px] ${wrapperClasses}`}
+      className={`!not-italic !text-base header-dropdown-card top-[130%] text-black_text w-[990px] ${wrapperClasses}`}
     >
       <div className="grid grid-cols-2 gap-6 p-6">
         {countries?.map((country) => (

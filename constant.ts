@@ -40,6 +40,8 @@ export const path = {
   destination: "/diem-den/",
   region: "/tinh-thanh/",
   category: "/danh-muc/",
+  interest: "/so-thich/",
+  search: "/tim-kiem",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

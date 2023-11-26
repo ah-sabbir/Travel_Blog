@@ -9,7 +9,7 @@ interface Props {}
 
 const ServicesDropdown: FC<Props> = (props): JSX.Element => {
   return (
-    <div className="header-dropdown-card top-[150%] -left-[200%] text-black_text w-[780px]">
+    <div className="header-dropdown-card top-[130%] -left-[200%] text-black_text w-[780px]">
       <div className="pb-2 pt-6 px-6">
         <DropdownHeading link="" title="Dịch vụ cho chuyến đi" />
       </div>
