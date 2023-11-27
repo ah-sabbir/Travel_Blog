@@ -8,8 +8,8 @@ export interface DestinationEntity {
   content: string;
   articles: [];
   galleries: [];
-  region: ObjectId;
-  interest: ObjectId;
+  region: any;
+  interest: any;
   country: any;
   thumbnail: {
     public_id: string;

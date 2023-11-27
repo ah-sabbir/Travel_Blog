@@ -67,7 +67,7 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
                 </div>
               </div>
             ) : (
-              <p>Chưa có bài viết nào</p>
+              <p>Không tìm thấy bài viết nào</p>
             )}
           </>
         )}

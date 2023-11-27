@@ -37,7 +37,7 @@ export const path = {
   // Frontend pages
   article: "/bai-viet/",
   country: "/dat-nuoc/",
-  destination: "/diem-den/",
+  destination: "/dia-danh/",
   region: "/tinh-thanh/",
   category: "/danh-muc/",
   interest: "/so-thich/",
@@ -55,6 +55,7 @@ export const iconPosition = {
   ticket: "0 0",
   hand: "0 68.4210526316%",
   earth: "0 100%",
+  location: "0 78.9473684211%",
 };
 
 export const owner = "XXX";

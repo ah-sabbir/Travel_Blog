@@ -43,7 +43,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
             {article?.country?.name && (
               <BtnWithIcon
-                to=""
+                to={`${path.country}${article.country.slug}`}
                 content={article.country.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />
@@ -51,7 +51,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
             {article?.region?.name && (
               <BtnWithIcon
-                to=""
+                to={`${path.region}${article.region.slug}`}
                 content={article.region.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />

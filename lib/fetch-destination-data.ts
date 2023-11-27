@@ -26,10 +26,16 @@ export const getAllDestinations = async (
   }
 };
 
-export const getDestinationBySlug = async (slug: string) => {
+export const getDestinationBySlug = async (
+  slug: string,
+  specifiedProps: string = "",
+  populate: boolean = false,
+  nestedProps: string = ""
+) => {
   try {
     const { data }: { data: GetDestinationBySlugOutput } = await axiosInstance(
-      `/api/public/destination?slug=${slug}`
+      `/api/public/destination?slug=${slug}`,
+      { params: { specifiedProps, populate, nestedProps } }
     );
 
     return data.destination;

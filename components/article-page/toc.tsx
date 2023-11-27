@@ -81,15 +81,16 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
                 key={heading.dataset.id}
                 data-id={heading.dataset.id}
                 style={{
+                  fontStyle: tagLevel === "4" ? "italic" : "normal",
                   paddingLeft:
                     tagLevel === "4"
-                      ? "44px"
+                      ? "72px"
                       : tagLevel === "3"
                       ? "56px"
                       : "40px",
                   fontSize:
                     tagLevel === "4"
-                      ? "11px"
+                      ? "13px"
                       : tagLevel === "3"
                       ? "14px"
                       : "15px",
