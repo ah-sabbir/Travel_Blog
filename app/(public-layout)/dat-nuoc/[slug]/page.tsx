@@ -14,7 +14,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   );
   return (
     <>
-      <div className="country-page-cover bubble-mask">
+      <div className="page-cover bubble-mask">
         <div className="relative w-full h-full">
           <NextImage
             src={country?.thumbnail.url || ""}
@@ -31,9 +31,11 @@ const Page: NextPage<Props> = async ({ params }) => {
           <p className="leading-8 text-justify">{country?.description}</p>
         </div>
 
-        <div className="mt-36">
-          <CountryTabs country={country} />
-        </div>
+        <div className="h-[550px]"></div>
+      </div>
+
+      <div className="mt-12 container">
+        <CountryTabs country={country} />
       </div>
     </>
   );

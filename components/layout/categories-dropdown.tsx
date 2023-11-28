@@ -56,7 +56,7 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
       </div>
 
       <Link
-        href=""
+        href={path.allCategories}
         className="flex items-center justify-center gap-2 py-3 bg-[#DFF0F0] hover:underline rounded-b-md"
       >
         Tất cả danh mục <FaChevronRight size={12} />

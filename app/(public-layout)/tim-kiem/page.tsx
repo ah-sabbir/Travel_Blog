@@ -36,7 +36,7 @@ const SearchResults: FC<Props> = (props): JSX.Element => {
 
   return (
     <>
-      <div className="category-page-cover relative">
+      <div className="sub-page-cover relative">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
           <p className="text-lg font-bold mb-1">Bạn đang tìm kiếm điều gì?</p>
           <form

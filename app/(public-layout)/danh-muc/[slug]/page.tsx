@@ -11,7 +11,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
   return (
     <>
-      <div className="category-page-cover relative">
+      <div className="sub-page-cover relative">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
           <h1 className="font-dancing font-bold text-admin_primary text-[60px] mb-3">
             Danh mục {category?.name}

@@ -31,7 +31,6 @@ const CountryArticles: FC<Props> = ({ slug }): JSX.Element => {
   }, []);
   return (
     <div className="grid grid-cols-3 gap-6">
-      {" "}
       {isLoading ? (
         <>
           {[...Array(12).keys()].map((item) => (

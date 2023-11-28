@@ -16,36 +16,41 @@ const DestinationImages: FC<Props> = ({ images }): JSX.Element => {
 
   const newImages =
     images &&
-    images.map((image) => ({
+    images?.map((image) => ({
       src: image,
     }));
 
   return (
     <>
       {images && images.length > 0 ? (
-        <div className="grid grid-cols-3 gap-4">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative w-full aspect-video cursor-pointer"
-              onClick={() => setIndex(index)}
-            >
-              <NextImage src={image} alt={image} className="rounded-md" />
-            </div>
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-3 gap-4">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="relative w-full aspect-video cursor-pointer"
+                onClick={() => setIndex(index)}
+              >
+                <NextImage
+                  src={image || ""}
+                  alt={image || ""}
+                  className="rounded-md"
+                />
+              </div>
+            ))}
+          </div>
+          <Lightbox
+            index={index}
+            open={index >= 0}
+            close={() => setIndex(-1)}
+            slides={newImages as SlideImage[] | undefined}
+            render={{ slide: LightboxImage }}
+            plugins={[Zoom]}
+          />
+        </>
       ) : (
         <p>Không có hình ảnh nào</p>
       )}
-
-      <Lightbox
-        index={index}
-        open={index >= 0}
-        close={() => setIndex(-1)}
-        slides={newImages as SlideImage[] | undefined}
-        render={{ slide: LightboxImage }}
-        plugins={[Zoom]}
-      />
     </>
   );
 };

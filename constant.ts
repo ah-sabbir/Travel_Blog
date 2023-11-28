@@ -37,9 +37,11 @@ export const path = {
   // Frontend pages
   article: "/bai-viet/",
   country: "/dat-nuoc/",
+  allCountries: "/dat-nuoc/tat-ca",
   destination: "/dia-danh/",
   region: "/tinh-thanh/",
   category: "/danh-muc/",
+  allCategories: "/danh-muc/tat-ca",
   interest: "/so-thich/",
   search: "/tim-kiem",
 };

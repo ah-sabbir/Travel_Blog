@@ -16,7 +16,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   );
   return (
     <>
-      <div className="country-page-cover bubble-mask">
+      <div className="page-cover bubble-mask">
         <div className="relative w-full h-full">
           <NextImage
             src={interest?.thumbnail.url || ""}

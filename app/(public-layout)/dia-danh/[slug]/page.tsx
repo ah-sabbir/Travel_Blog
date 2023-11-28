@@ -14,9 +14,10 @@ const Page: NextPage<Props> = async ({ params }) => {
     true,
     "name slug"
   );
+
   return (
     <>
-      <div className="country-page-cover bubble-mask">
+      <div className="page-cover bubble-mask">
         <div className="relative w-full h-full">
           <NextImage
             src={destination?.thumbnail.url || ""}
@@ -25,7 +26,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container">
+      <div className="container flex">
         <div className="mt-28 w-[45%]">
           <h1 className="font-dancing font-bold text-[70px] text-admin_primary">
             {destination?.name}
@@ -34,9 +35,11 @@ const Page: NextPage<Props> = async ({ params }) => {
           <p className="leading-8 text-justify">{destination?.description}</p>
         </div>
 
-        <div className="mt-36">
-          <DestinationTabs destination={destination} />
-        </div>
+        <div className="h-[550px]"></div>
+      </div>
+
+      <div className="mt-12 container">
+        <DestinationTabs destination={destination} />
       </div>
     </>
   );

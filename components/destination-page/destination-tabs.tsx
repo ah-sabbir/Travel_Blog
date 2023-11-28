@@ -11,6 +11,8 @@ import TOC from "../article-page/toc";
 import { DestinationEntity } from "@/entities/destination.entity";
 import DestinationContent from "./destination-content";
 import DestinationImages from "./destination-images";
+import DestinationArticles from "./destination-articles";
+import OtherDestinations from "./other-destinations";
 
 const theme = createTheme({
   palette: {
@@ -59,9 +61,10 @@ export default function DestinationTabs({ destination }: Props) {
             />
             <Tab label="Hình ảnh" {...a11yProps(1)} className="tab-heading " />
             <Tab label="Bài viết" {...a11yProps(2)} className="tab-heading " />
+            <Tab label="Galleries" {...a11yProps(3)} className="tab-heading " />
             <Tab
               label="Địa danh khác"
-              {...a11yProps(3)}
+              {...a11yProps(4)}
               className="tab-heading "
             />
           </Tabs>
@@ -75,9 +78,17 @@ export default function DestinationTabs({ destination }: Props) {
         <CustomTabPanel value={value} index={1}>
           <DestinationImages images={destination?.images} />
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}></CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <DestinationArticles destinationId={destination?._id.toString()} />
+        </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
           Item Three
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={4}>
+          <OtherDestinations
+            currentId={destination?._id.toString()}
+            regionId={destination?.region?._id.toString()}
+          />
         </CustomTabPanel>
       </Box>
     </ThemeProvider>

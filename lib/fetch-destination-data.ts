@@ -4,6 +4,7 @@ import {
 } from "@/dtos/destination/get-all-destinations.dto";
 import axiosInstance from "./axios";
 import { GetDestinationBySlugOutput } from "@/dtos/destination/get-destination-by-slug.dto";
+import { GetOtherDestinations } from "@/dtos/destination/get-other-destinations.dto";
 
 export const getAllDestinations = async (
   specifiedProps: string = "",
@@ -39,6 +40,22 @@ export const getDestinationBySlug = async (
     );
 
     return data.destination;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getOtherDestinations = async (
+  currentId: string,
+  regionId: string
+) => {
+  try {
+    const { data }: { data: GetOtherDestinations } = await axiosInstance(
+      `/api/public/destinations/other?regionId=${regionId}&currentId=${currentId}`
+    );
+
+    return data.destinations;
   } catch (err: any) {
     console.log(err);
     return;

@@ -18,7 +18,9 @@ export async function GET(req: Request) {
     let countries;
 
     if (!populate) {
-      countries = await Country.find().select(specifiedProps || "");
+      countries = await Country.find()
+        .select(specifiedProps || "")
+        .sort({ createdAt: 1 });
     } else {
       countries = await Country.find(
         {},

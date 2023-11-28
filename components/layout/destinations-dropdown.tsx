@@ -58,10 +58,10 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
       </div>
 
       <Link
-        href=""
+        href={`${path.allCountries}`}
         className="flex items-center justify-center gap-2 py-3 bg-[#f0e8e7] hover:underline"
       >
-        Tất cả bài viết <FaChevronRight size={12} />
+        Tất cả quốc gia <FaChevronRight size={12} />
       </Link>
     </div>
   );

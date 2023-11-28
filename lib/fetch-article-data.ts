@@ -90,3 +90,63 @@ export const getSearchResults = async (
     return;
   }
 };
+
+export const getArticlesOfDestination = async (
+  destinationId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/destination/articles`,
+      {
+        params: { destinationId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getArticlesOfCountry = async (
+  countryId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/country/articles`,
+      {
+        params: { countryId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getArticlesOfCategory = async (
+  categoryId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/category/articles`,
+      {
+        params: { categoryId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

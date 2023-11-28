@@ -22,7 +22,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
   return (
     <>
-      <div className="article-page-cover bubble-mask">
+      <div className="page-cover bubble-mask">
         <div className="relative w-full h-full">
           <NextImage
             src={article?.thumbnail.url || ""}
@@ -31,13 +31,13 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container">
-        <div className="mt-28 w-1/2">
+      <div className="container flex">
+        <div className="mt-20 w-[45%]">
           <div className="flex items-center gap-2">
             <BtnWithIcon
               icon={FaAngleLeft}
               content=""
-              customClasses="grid place-items-center h-[30px] w-[30px] !p-0 !rounded-full before:!rounded-full !text-sm"
+              customClasses="grid place-items-center h-[28px] w-[28px] !p-0 !rounded-full before:!rounded-full !text-sm"
               to="/"
             />
 
@@ -110,9 +110,11 @@ const Page: NextPage<Props> = async ({ params }) => {
 
           <p className="leading-8 text-justify">{article?.description}</p>
         </div>
+
+        <div className="h-[550px]"></div>
       </div>
 
-      <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10 mt-6">
+      <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10 mt-12">
         <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
           <ArticleContent content={article?.content} />
 
@@ -126,9 +128,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             />
           </div>
         </div>
-        <div className="mt-14">
-          <TOC selector=".content" />
-        </div>
+        <TOC selector=".content" />
       </div>
 
       <div className="container mt-16">
