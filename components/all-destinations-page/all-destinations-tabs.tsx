@@ -3,11 +3,11 @@
 import { Box, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
 import { FC, useState } from "react";
 import CustomTabPanel from "../custom-tab-panel";
-import { CategoryEntity } from "@/entities/category.entity";
-import CategoryArticles from "./category-articles";
+import DestinationArticles from "./destination-articles";
+import { DestinationEntity } from "@/entities/destination.entity";
 
 interface Props {
-  categories: CategoryEntity[] | undefined;
+  destinations: any[] | undefined;
 }
 
 const theme = createTheme({
@@ -28,7 +28,7 @@ function a11yProps(index: number) {
   };
 }
 
-const AllCategoriesTabs: FC<Props> = ({ categories }): JSX.Element => {
+const AllDestinationsTabs: FC<Props> = ({ destinations }): JSX.Element => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -43,28 +43,28 @@ const AllCategoriesTabs: FC<Props> = ({ categories }): JSX.Element => {
             value={value}
             onChange={handleChange}
             indicatorColor="secondary"
+            variant="scrollable"
             textColor="secondary"
             scrollButtons="auto"
-            variant="scrollable"
             aria-label="primary scrollable auto tabs example"
           >
-            {categories?.map((category, index) => (
+            {destinations?.map((destination, index) => (
               <Tab
-                label={category?.name || ""}
+                label={destination?.name || ""}
                 {...a11yProps(index)}
                 className="tab-heading "
-                key={category._id.toString()}
+                key={destination._id.toString()}
               />
             ))}
           </Tabs>
         </Box>
-        {categories?.map((category, index) => (
+        {destinations?.map((destination, index) => (
           <CustomTabPanel
             value={value}
             index={index}
-            key={category._id.toString()}
+            key={destination._id.toString()}
           >
-            <CategoryArticles categoryId={category._id.toString()} />
+            <DestinationArticles destinationId={destination._id.toString()} />
           </CustomTabPanel>
         ))}
       </Box>
@@ -72,4 +72,4 @@ const AllCategoriesTabs: FC<Props> = ({ categories }): JSX.Element => {
   );
 };
 
-export default AllCategoriesTabs;
+export default AllDestinationsTabs;

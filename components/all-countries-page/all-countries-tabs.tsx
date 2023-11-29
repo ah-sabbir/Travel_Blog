@@ -44,6 +44,7 @@ const AllCountriesTabs: FC<Props> = ({ countries }): JSX.Element => {
             onChange={handleChange}
             indicatorColor="secondary"
             textColor="secondary"
+            variant="scrollable"
             scrollButtons="auto"
             aria-label="primary scrollable auto tabs example"
           >

@@ -2,9 +2,10 @@ import BtnWithIcon from "@/components/btn-with-icon";
 import BigArticleCard from "@/components/home-page/big-article-card";
 import DestinationsSwiper from "@/components/home-page/destinations-swiper";
 import IntroSection from "@/components/home-page/intro-section";
-import RegionsSwiper from "@/components/home-page/regions-swiper";
 import NextImage from "@/components/next-image";
+import SmallItemSwiper from "@/components/smaill-item-swiper";
 import SmallArticleCard from "@/components/small-article-card";
+import { path } from "@/constant";
 import { GetDestinationsForHomepage } from "@/dtos/destination/get-all-destinations.dto";
 import {
   getAllArticles,
@@ -70,7 +71,7 @@ export default async function page() {
         </div>
 
         <div className="mt-12 mb-6">
-          <RegionsSwiper regions={regions} />
+          <SmallItemSwiper items={regions} coreSlug={path.region} />
         </div>
       </div>
 

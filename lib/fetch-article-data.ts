@@ -150,3 +150,43 @@ export const getArticlesOfCategory = async (
     return;
   }
 };
+
+export const getArticlesOfInterest = async (
+  interestId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/interest/articles`,
+      {
+        params: { interestId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getArticlesOfRegion = async (
+  regionId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/region/articles`,
+      {
+        params: { regionId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

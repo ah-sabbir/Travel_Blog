@@ -23,8 +23,8 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container">
-        <div className="mt-28 w-[45%]">
+      <div className="container flex">
+        <div className="w-[45%] mt-24">
           <h1 className="font-dancing font-bold text-[70px] text-admin_primary">
             Du lịch {country?.name}
           </h1>

@@ -40,9 +40,11 @@ export const path = {
   allCountries: "/dat-nuoc/tat-ca",
   destination: "/dia-danh/",
   region: "/tinh-thanh/",
+  allRegions: "/tinh-thanh/tat-ca",
   category: "/danh-muc/",
   allCategories: "/danh-muc/tat-ca",
   interest: "/so-thich/",
+  allInterests: "/so-thich/tat-ca",
   search: "/tim-kiem",
 };
 

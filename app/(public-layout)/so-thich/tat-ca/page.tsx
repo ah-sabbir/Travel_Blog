@@ -1,27 +1,28 @@
-import AllCountriesTabs from "@/components/all-countries-page/all-countries-tabs";
+import AllInterestsTabs from "@/components/all-interests-page/all-interests-tabs";
 import SmallItemSwiper from "@/components/smaill-item-swiper";
 import { path } from "@/constant";
-import { getAllCountries } from "@/lib/fetch-country-data";
+import { getAllInterests } from "@/lib/fetch-interest-data";
+import { formatShortDate } from "@/lib/format-date";
 import { NextPage } from "next";
 
 interface Props {}
 
 const Page: NextPage<Props> = async () => {
-  const countries = await getAllCountries("name slug thumbnail");
+  const interests = await getAllInterests("name thumbnail slug");
   return (
     <>
       <div className="sub-page-cover">
         <div className="container pt-24">
           <h1 className="font-dancing font-bold text-admin_primary mb-2 text-[60px] text-center">
-            Những quốc gia đã đi qua
+            Tìm đọc theo sở thích
           </h1>
           <div>
-            <SmallItemSwiper items={countries} coreSlug={path.country} />
+            <SmallItemSwiper items={interests} coreSlug={path.interest} />
           </div>
         </div>
       </div>
 
-      <AllCountriesTabs countries={countries} />
+      <AllInterestsTabs interests={interests} />
     </>
   );
 };

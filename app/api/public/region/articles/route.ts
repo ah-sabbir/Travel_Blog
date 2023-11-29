@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const query = searchParams.get("query");
+    const regionId = searchParams.get("regionId");
     const page = Number(searchParams.get("page"));
     const limit = Number(searchParams.get("limit"));
 
@@ -16,11 +16,11 @@ export async function GET(req: Request) {
     await dbConnect();
 
     const numberOfResults = await Article.countDocuments({
-      name: { $regex: query, $options: "i" },
+      region: regionId,
     });
 
     const articles = await Article.find({
-      $text: { $search: query as string },
+      region: regionId,
     })
       .select("name slug thumbnail description updatedAt")
       .skip(skip)

@@ -1,16 +1,11 @@
 import AllCategoriesTabs from "@/components/all-categories-page/all-categories-tabs";
-import AllCountriesTabs from "@/components/all-countries-page/all-countries-tabs";
-import { domain } from "@/constant";
 import { getAllCategories } from "@/lib/fetch-category-data";
-import { getAllCountries } from "@/lib/fetch-country-data";
 import { formatShortDate } from "@/lib/format-date";
 import { NextPage } from "next";
 
-interface Props {
-  params: { slug: string };
-}
+interface Props {}
 
-const Page: NextPage<Props> = async ({ params }) => {
+const Page: NextPage<Props> = async () => {
   const categories = await getAllCategories("name");
   return (
     <>

@@ -6,20 +6,27 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import { RegionEntity } from "@/entities/region.entity";
 import Link from "next/link";
-import NextImage from "../next-image";
+import NextImage from "./next-image";
 
 interface Props {
-  regions: RegionEntity[] | undefined;
+  items: any | undefined;
+  span1?: string;
+  span2?: string;
+  coreSlug: string;
 }
 
-const RegionsSwiper: FC<Props> = ({ regions }): JSX.Element => {
+const SmallItemSwiper: FC<Props> = ({
+  items,
+  span1 = "Where to",
+  span2 = "next?",
+  coreSlug,
+}): JSX.Element => {
   return (
     <div className="flex items-center gap-6">
       <div className="w-[94px] text-black_text font-black">
-        <p className="text-lg">Where to</p>
-        <p className="text-[34px] -mt-4">next?</p>
+        <p className="text-lg">{span1}</p>
+        <p className="text-[34px] -mt-4">{span2}</p>
       </div>
 
       <Swiper
@@ -33,21 +40,21 @@ const RegionsSwiper: FC<Props> = ({ regions }): JSX.Element => {
         navigation={false}
         loop={true}
       >
-        {regions?.map((region) => (
-          <SwiperSlide key={region._id.toString()}>
+        {items?.map((item: any) => (
+          <SwiperSlide key={item?._id?.toString()}>
             <Link
-              href=""
+              href={`${coreSlug}${item?.slug}`}
               className="flex items-center gap-[10px] w-full rounded-[40px] bg-light_gray p-[6px]"
             >
               <div className="circle-radius border border-white relative w-11 h-11">
                 <NextImage
-                  src={region.thumbnail.url}
-                  alt={region.name}
+                  src={item?.thumbnail?.url}
+                  alt={item?.name}
                   className="circle-radius"
                 />
               </div>
 
-              <h3 className="font-black line-clamp-1">{region.name}</h3>
+              <h3 className="font-black line-clamp-1 flex-1">{item?.name}</h3>
             </Link>
           </SwiperSlide>
         ))}
@@ -56,4 +63,4 @@ const RegionsSwiper: FC<Props> = ({ regions }): JSX.Element => {
   );
 };
 
-export default RegionsSwiper;
+export default SmallItemSwiper;

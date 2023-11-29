@@ -277,7 +277,7 @@ figure.image figcaption {
 
 /* Tab panel */
 .tab-heading {
-  @apply !font-arima font-bold !text-lg;
+  @apply !font-arima font-bold !text-lg !normal-case;
 }
 
 /* Pagination */

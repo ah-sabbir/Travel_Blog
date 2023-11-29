@@ -74,6 +74,8 @@ const ArticleSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+ArticleSchema.index({ name: "text" });
+
 const Article = models.Article || mongoose.model("Article", ArticleSchema);
 
 export default Article;
