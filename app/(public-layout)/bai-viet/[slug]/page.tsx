@@ -165,7 +165,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
             {article?.region?.name && (
               <BtnWithIcon
-                to=""
+                to={`${path.region}${article.region.slug}`}
                 content={article.region.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />
@@ -173,7 +173,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
             {article?.category?.name && (
               <BtnWithIcon
-                to=""
+                to={`${path.category}${article.category.slug}`}
                 content={article.category.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />
@@ -181,7 +181,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
             {article?.interest?.name && (
               <BtnWithIcon
-                to=""
+                to={`${path.interest}${article.interest.slug}`}
                 content={article.interest.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />

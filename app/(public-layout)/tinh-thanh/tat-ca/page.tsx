@@ -18,7 +18,7 @@ const Page: NextPage<Props> = async () => {
             Những tỉnh / thành đã ghé thăm
           </h1>
           <div>
-            <SmallItemSwiper items={regions} coreSlug={path.destination} />
+            <SmallItemSwiper items={regions} coreSlug={path.region} />
           </div>
         </div>
       </div>

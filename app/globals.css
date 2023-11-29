@@ -108,9 +108,19 @@
   @apply my-10 aspect-[2.98] relative;
 }
 
-.home-page-cover-2:after {
+.home-page-cover-2:after,
+.home-page-cover-3:after {
   @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
   @apply content-[""] absolute inset-0 z-0;
+}
+
+.home-page-cover-3 {
+  background: url("/assets/images/home-page/blog-du-lich-home-cover-4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 80% 50%;
+
+  @apply my-10 aspect-[2.98] relative;
 }
 
 .sub-page-cover {

@@ -3,11 +3,14 @@ import axiosInstance from "./axios";
 import { GetAllInterestsOutput } from "@/dtos/interest/get-all-interests.dto";
 import { GetDestinationsOfInterest } from "@/dtos/interest/get-destinations-of-interest";
 
-export const getAllInterests = async (specifiedProps: string = "") => {
+export const getAllInterests = async (
+  specifiedProps: string = "",
+  limit: string = ""
+) => {
   try {
     const { data }: { data: GetAllInterestsOutput } = await axiosInstance(
       "/api/public/interests",
-      { params: { specifiedProps } }
+      { params: { specifiedProps, limit } }
     );
 
     return data.interests;

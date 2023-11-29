@@ -23,7 +23,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container">
+      <div className="container flex">
         <div className="mt-28 w-[45%]">
           <h1 className="font-dancing font-bold text-[70px] text-admin_primary">
             Du lịch {region?.name}
@@ -31,9 +31,11 @@ const Page: NextPage<Props> = async ({ params }) => {
           <p className="leading-8 text-justify">{region?.description}</p>
         </div>
 
-        <div className="mt-36">
-          <RegionTabs region={region} />
-        </div>
+        <div className="h-[550px]"></div>
+      </div>
+
+      <div className="container">
+        <RegionTabs region={region} />
       </div>
     </>
   );

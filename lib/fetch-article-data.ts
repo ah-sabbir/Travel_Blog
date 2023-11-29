@@ -25,6 +25,25 @@ export const getAllArticles = async (
   }
 };
 
+export const getAllArticlesWithPagination = async (
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/articles/pagination`,
+      {
+        params: { page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
 export const getArticleBySlug = async (slug: string) => {
   try {
     const { data }: { data: GetArticleBySlugOutput } = await axiosInstance(
