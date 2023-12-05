@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/db";
 import Brand from "@/models/Brand";
+import BrandType from "@/models/BrandType";
 import Country from "@/models/Country";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
@@ -15,7 +16,11 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const brand = await Brand.findOne({ slug });
+    const brand = await Brand.findOne({ slug }).populate({
+      path: "brandType",
+      model: BrandType,
+      select: "name slug",
+    });
 
     if (!brand) {
       return NextResponse.json({

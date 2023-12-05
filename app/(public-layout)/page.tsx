@@ -145,7 +145,7 @@ export default async function page() {
             <BtnWithIcon
               customClasses="w-fit !rounded-[40px] mt-4 before:rounded-[40px]"
               content="Xem tất cả!"
-              to=""
+              to={path.allInterests}
             />
           </div>
           <div className="max-w-[650px] grid grid-cols-2 gap-4">

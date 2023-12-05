@@ -29,12 +29,10 @@ import { getAllCountries } from "@/lib/fetch-country-data";
 import { BiMinusCircle, BiPlusCircle } from "react-icons/bi";
 import { CreateTicketInput } from "@/dtos/ticket/create-ticket.dto";
 import { getAllBrands } from "@/lib/fetch-brand-data";
-import { getAllBrandTypes } from "@/lib/fetch-brand-type-data";
 import { getAllTicketTypes } from "@/lib/fetch-ticket-type-data";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên vé"),
-  description: Yup.string().required("Vui lòng nhập đoạn mô tả ngắn về vé"),
   link: Yup.string().required("Vui lòng nhập link mua vé"),
   price: Yup.string().required("Vui lòng nhập giá vé"),
   slug: Yup.string().required("Vui lòng nhập đường dẫn cho vé"),
@@ -42,7 +40,6 @@ const schema: any = Yup.object({
 
 interface FormValues {
   name: string;
-  description: string;
   slug: string;
   link: string;
   price: string;
@@ -55,6 +52,7 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
   const router = useRouter();
   const [thumbnail, setThumbnail] = useState("");
   const [content, setContent] = useState("");
+  const [description, setDescription] = useState("");
   const [brands, setBrands] = useState<ISelectOption[]>();
   const [countries, setCountries] = useState<ISelectOption[]>();
   const [regions, setRegions] = useState<ISelectOption[]>();
@@ -85,7 +83,6 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
   const form = useForm<FormValues>({
     defaultValues: {
       name: "",
-      description: "",
       slug: "",
       link: "",
       price: "",
@@ -117,6 +114,7 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
         ...formData,
         content,
         thumbnail,
+        description,
         brandId: selectedBrand.value,
         ticketTypeId: selectedTicketType.value,
         regionId: selectedRegion.value,
@@ -336,15 +334,9 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
             </button>
           </div>
 
-          <FormInput
-            textarea
-            id="description"
-            rows={4}
-            label="Mô tả"
-            register={register("description")}
-            errorMsg={errors.description?.message}
-            placeholder="Nhập mô tả ngắn gọn về vé"
-          />
+          <div className="small-text-editor">
+            <TextEditor content={description} setContent={setDescription} />
+          </div>
 
           <label className="form-input-label !mb-1 block">Nội dung</label>
           <TextEditor content={content} setContent={setContent} />

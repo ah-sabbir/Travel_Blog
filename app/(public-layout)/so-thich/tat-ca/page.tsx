@@ -2,7 +2,6 @@ import AllInterestsTabs from "@/components/all-interests-page/all-interests-tabs
 import SmallItemSwiper from "@/components/smaill-item-swiper";
 import { path } from "@/constant";
 import { getAllInterests } from "@/lib/fetch-interest-data";
-import { formatShortDate } from "@/lib/format-date";
 import { NextPage } from "next";
 
 interface Props {}

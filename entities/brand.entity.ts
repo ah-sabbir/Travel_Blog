@@ -13,5 +13,5 @@ export interface BrandEntity {
   };
   views: number;
   content: string;
-  brandType: ObjectId;
+  brandType: any;
 }

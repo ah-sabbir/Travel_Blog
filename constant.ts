@@ -39,6 +39,7 @@ export const path = {
   country: "/dat-nuoc/",
   allCountries: "/dat-nuoc/tat-ca",
   destination: "/dia-danh/",
+  allDestinations: "/dia-danh/tat-ca",
   region: "/tinh-thanh/",
   allRegions: "/tinh-thanh/tat-ca",
   category: "/danh-muc/",
@@ -46,6 +47,10 @@ export const path = {
   interest: "/so-thich/",
   allInterests: "/so-thich/tat-ca",
   search: "/tim-kiem",
+  brand: "/thuong-hieu/",
+  allBrands: "/thuong-hieu/tat-ca",
+  brandType: "/loai-thuong-hieu/",
+  allBrandTypes: "/loai-thuong-hieu/tat-ca",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

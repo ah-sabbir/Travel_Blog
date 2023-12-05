@@ -4,6 +4,9 @@ import { headerServiceItems } from "@/data/menu";
 import SmallArticleCard from "../small-article-card";
 import SubArticleCard from "../sub-article-card";
 import StyledIcon from "../styled-icon";
+import Link from "next/link";
+import { path } from "@/constant";
+import { FaChevronRight } from "react-icons/fa";
 
 interface Props {}
 
@@ -61,6 +64,13 @@ const ServicesDropdown: FC<Props> = (props): JSX.Element => {
           </div>
         </div>
       </div>
+
+      <Link
+        href={path.allBrands}
+        className="flex items-center justify-center gap-2 py-3 bg-[#DFF0F0] hover:underline rounded-b-md"
+      >
+        Tất cả dịch vụ <FaChevronRight size={12} />
+      </Link>
     </div>
   );
 };

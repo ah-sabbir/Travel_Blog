@@ -14,7 +14,6 @@ import { getAllArticles } from "@/lib/fetch-article-data";
 import moment from "moment";
 import Link from "next/link";
 import DeleteArticleForm from "./delete-article-form";
-import { FaExternalLinkAlt, FaExternalLinkSquareAlt } from "react-icons/fa";
 
 interface Props {}
 

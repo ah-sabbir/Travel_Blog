@@ -42,7 +42,7 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-[10px] px-6 pt-2 pb-8">
+      <div className="grid grid-cols-2 gap-[10px] px-6 pt-2 pb-4">
         <SubArticleCard
           image="/assets/images/header/article-1.jpg"
           slug=""

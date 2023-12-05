@@ -6,8 +6,7 @@ import {
   FaFacebookF,
   FaYoutube,
 } from "react-icons/fa";
-import { ImFacebook2 } from "react-icons/im";
-import { IoLogoYoutube, IoMdPricetags } from "react-icons/io";
+import { IoMdPricetags } from "react-icons/io";
 import { IoTicket } from "react-icons/io5";
 import {
   MdAccountCircle,
@@ -63,13 +62,13 @@ export const headerServiceItems = [
   {
     title: "Thuê xe",
     link: "",
-    via: "via Sunny Cars",
+    via: "via Chungxe",
     position: iconPosition.car,
   },
   {
     title: "Tìm chuyến bay giá rẻ",
     link: "",
-    via: "via Skyscanner",
+    via: "via Traveloka",
     position: iconPosition.plane,
   },
   {
@@ -103,28 +102,28 @@ export const footerColumns = [
   {
     heading: "Điểm đến nổi bật",
     items: [
-      { title: "Việt Nam", link: "viet-nam" },
-      { title: "Thái Lan", link: "thai-lan" },
-      { title: "Singarpore", link: "singapore" },
-      { title: "Trung Quốc", link: "trung-quoc" },
-      { title: "Nhật Bản", link: "nhat-ban" },
+      { title: "Việt Nam", link: `${path.country}viet-nam` },
+      { title: "Thái Lan", link: `${path.country}thai-lan` },
+      { title: "Singarpore", link: `${path.country}singapore` },
+      { title: "Trung Quốc", link: `${path.country}trung-quoc` },
+      { title: "Nhật Bản", link: `${path.country}nhat-ban` },
     ],
   },
   {
     heading: "Danh mục nổi bật",
     items: [
-      { title: "Nhật ký", link: "nhat-ky" },
-      { title: "Khám phá", link: "kham-pha" },
-      { title: "Mẹo vặt", link: "meo-vat" },
-      { title: "Bộ sưu tập", link: "bo-suu-tap" },
-      { title: "Đặc sản", link: "dac-san" },
+      { title: "Nhật ký", link: `${path.category}nhat-ky` },
+      { title: "Khám phá", link: `${path.category}kham-pha` },
+      { title: "Mẹo vặt", link: `${path.category}meo-vat` },
+      { title: "Bộ sưu tập", link: `${path.category}bo-suu-tap` },
+      { title: "Đặc sản", link: `${path.category}dac-san` },
     ],
   },
   {
     heading: "Tìm đọc theo",
     items: [
-      { title: "Địa danh", link: "dia-danh" },
-      { title: "Sở thích", link: "so-thich" },
+      { title: "Địa danh", link: `${path.allDestinations}` },
+      { title: "Sở thích", link: `${path.allInterests}` },
       { title: "Du lịch qua ảnh", link: "galleries" },
       { title: "Vé giá rẻ", link: "ve-gia-re" },
       { title: "Các hãng vé", link: "hang-ve-gia-re" },

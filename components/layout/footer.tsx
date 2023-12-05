@@ -41,9 +41,9 @@ const Footer: FC<Props> = (props): JSX.Element => {
                 <div key={index}>
                   <h5 className="font-extrabold mb-2">{column.heading}</h5>
                   <ul>
-                    {column.items.map((item, itemIndex) => (
+                    {column.items.map((item, itemIndex: number) => (
                       <li key={itemIndex} className="my-[10px] hover:underline">
-                        <Link href={`/${item.link}`}>{item.title}</Link>
+                        <Link href={item.link}>{item.title}</Link>
                       </li>
                     ))}
                   </ul>
