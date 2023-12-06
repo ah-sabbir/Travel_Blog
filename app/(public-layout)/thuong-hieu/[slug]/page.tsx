@@ -74,9 +74,14 @@ const Page: NextPage<Props> = async ({ params }) => {
                   <GiEarthAmerica />
                   Website :{" "}
                 </span>
-                <span className="font-semibold text-admin_primary underline ml-auto w-[70%] line-clamp-1 flex justify-end">
+                <a
+                  href={brand?.affLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-admin_primary underline ml-auto w-[70%] line-clamp-1 flex justify-end"
+                >
                   {brand?.link}
-                </span>
+                </a>
               </div>
 
               <BtnWithIcon

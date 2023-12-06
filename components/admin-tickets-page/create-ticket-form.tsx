@@ -334,7 +334,8 @@ const CreateDestinationForm: FC<Props> = (props): JSX.Element => {
             </button>
           </div>
 
-          <div className="small-text-editor">
+          <div className="small-text-editor mb-6">
+            <label className="form-input-label !mb-1 block">Mô tả</label>
             <TextEditor content={description} setContent={setDescription} />
           </div>
 

@@ -35,7 +35,6 @@ import { EditTicketInput } from "@/dtos/ticket/edit-ticket.dto";
 
 const schema: any = Yup.object({
   name: Yup.string().required("Vui lòng nhập tên vé"),
-  description: Yup.string().required("Vui lòng nhập đoạn mô tả ngắn về vé"),
   link: Yup.string().required("Vui lòng nhập link mua vé"),
   price: Yup.string().required("Vui lòng nhập giá vé"),
   slug: Yup.string().required("Vui lòng nhập đường dẫn cho vé"),
@@ -43,7 +42,6 @@ const schema: any = Yup.object({
 
 interface FormValues {
   name: string;
-  description: string;
   slug: string;
   link: string;
   price: string;
@@ -58,6 +56,7 @@ const EditTicketForm: FC<Props> = ({ ticket }): JSX.Element => {
   const router = useRouter();
   const [thumbnail, setThumbnail] = useState(ticket?.thumbnail.url || "");
   const [content, setContent] = useState(ticket?.content || "");
+  const [description, setDescription] = useState(ticket?.description || "");
   const [brands, setBrands] = useState<ISelectOption[]>();
   const [countries, setCountries] = useState<ISelectOption[]>();
   const [regions, setRegions] = useState<ISelectOption[]>();
@@ -88,7 +87,6 @@ const EditTicketForm: FC<Props> = ({ ticket }): JSX.Element => {
   const form = useForm<FormValues>({
     defaultValues: {
       name: "",
-      description: "",
       slug: "",
       link: "",
       price: "",
@@ -120,6 +118,7 @@ const EditTicketForm: FC<Props> = ({ ticket }): JSX.Element => {
         ...formData,
         content,
         thumbnail,
+        description,
         brandId: selectedBrand.value,
         ticketTypeId: selectedTicketType.value,
         regionId: selectedRegion.value,
@@ -194,7 +193,6 @@ const EditTicketForm: FC<Props> = ({ ticket }): JSX.Element => {
 
     setValue("name", ticket?.name || "");
     setValue("slug", ticket?.slug || "");
-    setValue("description", ticket?.description || "");
     setValue("price", ticket?.price || "");
     setValue("link", ticket?.link || "");
     setValue("images", newImages);
@@ -407,15 +405,10 @@ const EditTicketForm: FC<Props> = ({ ticket }): JSX.Element => {
             </button>
           </div>
 
-          <FormInput
-            textarea
-            id="description"
-            rows={4}
-            label="Mô tả"
-            register={register("description")}
-            errorMsg={errors.description?.message}
-            placeholder="Nhập mô tả ngắn gọn về vé"
-          />
+          <div className="small-text-editor mb-6">
+            <label className="form-input-label !mb-1 block">Mô tả</label>
+            <TextEditor content={description} setContent={setDescription} />
+          </div>
 
           <label className="form-input-label !mb-1 block">Nội dung</label>
           <TextEditor content={content} setContent={setContent} />
