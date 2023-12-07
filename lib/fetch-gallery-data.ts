@@ -28,3 +28,19 @@ export const getGalleryBySlug = async (slug: string) => {
     return;
   }
 };
+
+export const getRelatedGalleries = async (
+  countryId: string,
+  currentId: string
+) => {
+  try {
+    const { data }: { data: GetAllGalleriesOutput } = await axiosInstance(
+      `/api/public/galleries/related?countryId=${countryId}&currentId=${currentId}`
+    );
+
+    return data.galleries;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
