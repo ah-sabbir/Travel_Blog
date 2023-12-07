@@ -37,7 +37,7 @@ export async function GET(req: Request) {
         {
           path: "brand",
           model: Brand,
-          select: "name affLink logo",
+          select: "name affLink logo slug",
         },
         {
           path: "ticketType",

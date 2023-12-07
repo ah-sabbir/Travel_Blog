@@ -24,7 +24,6 @@ import toast from "react-hot-toast";
 import { CoreOutput } from "@/dtos/common.dto";
 import BtnWithLoading from "../btn-with-loading";
 import FormOptimizedSelect, { ISelectOption } from "../form-optimized-select";
-import { CreateBrandInput } from "@/dtos/brand/create-brand.dto";
 import { getAllBrandTypes } from "@/lib/fetch-brand-type-data";
 import { BrandEntity } from "@/entities/brand.entity";
 import { EditBrandInput } from "@/dtos/brand/edit-brand.dto";
@@ -53,14 +52,16 @@ interface Props {
 }
 
 const EditBrandForm: FC<Props> = ({ brand }): JSX.Element => {
+  console.log(brand);
+
   const router = useRouter();
   const [logo, setLogo] = useState(brand?.logo.url || "");
   const [content, setContent] = useState(brand?.content || "");
 
   const [brandTypes, setBrandTypes] = useState<ISelectOption[]>();
   const [selectedBrandType, setSelectedBrandType] = useState<ISelectOption>({
-    value: "",
-    label: "",
+    value: brand?.brandType._id.toString() || "",
+    label: brand?.brandType.name || "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -143,19 +144,6 @@ const EditBrandForm: FC<Props> = ({ brand }): JSX.Element => {
     setValue("name", brand?.name || "");
     setValue("slug", brand?.slug || "");
   }, []);
-
-  useEffect(() => {
-    const selectedBrandTypeName = brandTypes?.find(
-      (item) => item.value === brand?.brandType?.toString()
-    )?.label;
-
-    if (selectedBrandTypeName && brandTypes?.length > 0) {
-      setSelectedBrandType({
-        value: brand?.brandType.toString() || "",
-        label: selectedBrandTypeName || "",
-      });
-    }
-  }, [brandTypes?.length]);
 
   return (
     <>

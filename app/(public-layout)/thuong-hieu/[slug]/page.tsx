@@ -1,3 +1,4 @@
+import BrandTabs from "@/components/brand-page/brand-tabs";
 import BtnWithIcon from "@/components/btn-with-icon";
 import NextImage from "@/components/next-image";
 import { path } from "@/constant";
@@ -95,6 +96,10 @@ const Page: NextPage<Props> = async ({ params }) => {
               />
             </div>
           </div>
+        </div>
+
+        <div className="mt-10">
+          <BrandTabs brand={brand} />
         </div>
       </div>
     </>

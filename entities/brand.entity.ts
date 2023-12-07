@@ -1,4 +1,5 @@
 import { ObjectId } from "mongodb";
+import { BrandTypeEntity } from "./brandType.entity";
 
 export interface BrandEntity {
   _id: ObjectId;
@@ -13,5 +14,5 @@ export interface BrandEntity {
   };
   views: number;
   content: string;
-  brandType: any;
+  brandType: BrandTypeEntity;
 }
