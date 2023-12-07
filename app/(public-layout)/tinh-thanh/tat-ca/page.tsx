@@ -1,8 +1,6 @@
-import AllDestinationsTabs from "@/components/all-destinations-page/all-destinations-tabs";
 import AllRegionsTabs from "@/components/all-regions-page/all-regions-tabs";
 import SmallItemSwiper from "@/components/smaill-item-swiper";
 import { path } from "@/constant";
-import { getAllDestinations } from "@/lib/fetch-destination-data";
 import { getAllRegions } from "@/lib/fetch-region-data";
 import { NextPage } from "next";
 

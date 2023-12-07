@@ -10,6 +10,8 @@ import TicketContent from "./brand-content";
 import BrandContent from "./brand-content";
 import { BrandEntity } from "@/entities/brand.entity";
 import TOC from "../article-page/toc";
+import BrandTickets from "../ticket-page/brand-tickets";
+import SameTypeBrands from "./same-type-brands";
 
 const theme = createTheme({
   palette: {
@@ -56,19 +58,10 @@ export default function BrandTabs({ brand }: Props) {
               {...a11yProps(0)}
               className="tab-heading "
             />
+            <Tab label="Vé giá rẻ" {...a11yProps(1)} className="tab-heading " />
             <Tab
-              label="Cùng thương hiệu"
-              {...a11yProps(1)}
-              className="tab-heading "
-            />
-            <Tab
-              label="Cùng quốc gia"
+              label="Hãng vé cạnh tranh"
               {...a11yProps(2)}
-              className="tab-heading "
-            />
-            <Tab
-              label="Cùng khu vực"
-              {...a11yProps(3)}
               className="tab-heading "
             />
           </Tabs>
@@ -79,9 +72,15 @@ export default function BrandTabs({ brand }: Props) {
             <TOC selector=".content" />
           </div>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}></CustomTabPanel>
-        <CustomTabPanel value={value} index={2}></CustomTabPanel>
-        <CustomTabPanel value={value} index={3}></CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <BrandTickets brandId={brand?._id.toString()} ticketId="" />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <SameTypeBrands
+            brandId={brand?._id.toString()}
+            brandTypeId={brand?.brandType._id.toString()}
+          />
+        </CustomTabPanel>
       </Box>
     </ThemeProvider>
   );

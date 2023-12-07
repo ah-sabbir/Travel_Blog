@@ -25,7 +25,7 @@ const SmallBrandSwiper: FC<Props> = ({ items }): JSX.Element => {
       <Swiper
         modules={[Autoplay]}
         className="w-full"
-        spaceBetween={10}
+        spaceBetween={20}
         slidesPerView={4}
         slidesPerGroup={1}
         autoplay={{ delay: 2000 }}

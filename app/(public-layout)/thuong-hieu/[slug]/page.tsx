@@ -56,7 +56,7 @@ const Page: NextPage<Props> = async ({ params }) => {
               />
             </div>
 
-            <div className="px-4 py-2 text-sm">
+            <div className="px-4 py-2">
               <div className="flex items-center justify-between pt-2 pb-4 border-b">
                 <span className="flex items-center gap-1">
                   <BiSolidDashboard />

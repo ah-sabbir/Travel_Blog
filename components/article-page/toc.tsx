@@ -95,7 +95,7 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
                       ? "14px"
                       : "15px",
                 }}
-                className={`flex items-center py-1 cursor-pointer h-10 line-clamp-1 ${
+                className={`my-4 cursor-pointer line-clamp-1 ${
                   currentHeadingID === heading.dataset.id
                     ? "font-bold text-admin_primary border-l-2 border-admin_primary"
                     : "text-black_text"
