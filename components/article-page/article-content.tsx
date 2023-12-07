@@ -1,4 +1,3 @@
-import { GetArticleBySlugOutput } from "@/dtos/article/get-article-by-slug.dto";
 import parse from "html-react-parser";
 import { FC } from "react";
 

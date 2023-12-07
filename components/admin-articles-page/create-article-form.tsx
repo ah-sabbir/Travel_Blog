@@ -32,11 +32,11 @@ import { getAllCountries } from "@/lib/fetch-country-data";
 import { getAllDestinations } from "@/lib/fetch-destination-data";
 
 const schema: any = Yup.object({
-  name: Yup.string().required("Vui lòng nhập tên tỉnh / vùng miền"),
+  name: Yup.string().required("Vui lòng nhập tên bài viết"),
   description: Yup.string().required(
-    "Vui lòng nhập đoạn mô tả ngắn về tỉnh / vùng miền"
+    "Vui lòng nhập đoạn mô tả ngắn về bài viết"
   ),
-  slug: Yup.string().required("Vui lòng nhập đường dẫn cho tỉnh / vùng miền"),
+  slug: Yup.string().required("Vui lòng nhập đường dẫn cho bài viết"),
 });
 
 interface FormValues {

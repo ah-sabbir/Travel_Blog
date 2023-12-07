@@ -1,4 +1,8 @@
 import { ObjectId } from "mongodb";
+import { BrandEntity } from "./brand.entity";
+import { TicketTypeEntity } from "./ticketType.entity";
+import { RegionEntity } from "./region.entity";
+import { CountryEntity } from "./country.entity";
 
 export interface TicketEntity {
   _id: ObjectId;
@@ -9,10 +13,10 @@ export interface TicketEntity {
   link: string;
   views: number;
   images: string[];
-  brand: ObjectId;
-  ticketType: ObjectId;
-  region: ObjectId;
-  country: ObjectId;
+  brand: BrandEntity;
+  ticketType: TicketTypeEntity;
+  region: RegionEntity;
+  country: CountryEntity;
   content: string;
   thumbnail: {
     public_id: string;

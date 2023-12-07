@@ -51,6 +51,8 @@ export const path = {
   allBrands: "/thuong-hieu/tat-ca",
   brandType: "/loai-thuong-hieu/",
   allBrandTypes: "/loai-thuong-hieu/tat-ca",
+  ticket: "/ve/",
+  allTickets: "/ve/tat-ca",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

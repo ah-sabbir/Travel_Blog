@@ -45,7 +45,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <p className="leading-8 text-justify">{brand?.description}</p>
           </div>
 
-          <div className="flex-1 shadow-md rounded-md">
+          <div className="flex-1 border shadow-md rounded-md h-fit">
             <div className="w-full relative aspect-video rounded-t-md">
               <NextImage
                 src={brand?.logo.url || ""}
@@ -55,7 +55,7 @@ const Page: NextPage<Props> = async ({ params }) => {
               />
             </div>
 
-            <div className="px-4 py-2 border rounded-b-md text-sm">
+            <div className="px-4 py-2 text-sm">
               <div className="flex items-center justify-between pt-2 pb-4 border-b">
                 <span className="flex items-center gap-1">
                   <BiSolidDashboard />
