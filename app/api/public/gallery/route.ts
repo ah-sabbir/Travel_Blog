@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/db";
 import Category from "@/models/Category";
 import Country from "@/models/Country";
+import Destination from "@/models/Destination";
 import Gallery from "@/models/Gallery";
 import Interest from "@/models/Interest";
 import Region from "@/models/Region";
@@ -38,6 +39,11 @@ export async function GET(req: Request) {
       {
         path: "interest",
         model: Interest,
+        select: "name slug",
+      },
+      {
+        path: "destination",
+        model: Destination,
         select: "name slug",
       },
       {

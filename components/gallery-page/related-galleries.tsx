@@ -1,7 +1,6 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import ArticleCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GalleryEntity } from "@/entities/gallery.entity";
@@ -43,7 +42,7 @@ const RelatedGalleries: FC<Props> = ({ countryId, galleryId }): JSX.Element => {
         </>
       ) : (
         <>
-          {relatedGalleries.map((gallery) => (
+          {relatedGalleries?.map((gallery) => (
             <GalleryCard gallery={gallery} key={gallery._id.toString()} />
           ))}
         </>

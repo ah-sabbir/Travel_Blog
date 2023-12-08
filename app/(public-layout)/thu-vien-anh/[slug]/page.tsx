@@ -2,6 +2,7 @@ import ArticleSocialShare from "@/components/article-page/article-social-share";
 import BtnWithIcon from "@/components/btn-with-icon";
 import Comments from "@/components/comments";
 import GalleryContent from "@/components/gallery-page/gallery-content";
+import RelatedGalleries from "@/components/gallery-page/related-galleries";
 import NextImage from "@/components/next-image";
 import { path } from "@/constant";
 import { getGalleryBySlug } from "@/lib/fetch-gallery-data";
@@ -51,6 +52,14 @@ const Page: NextPage<Props> = async ({ params }) => {
               <BtnWithIcon
                 to={`${path.region}${gallery.region.slug}`}
                 content={gallery.region.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {gallery?.destination?.name && (
+              <BtnWithIcon
+                to={`${path.destination}${gallery.destination.slug}`}
+                content={gallery.destination.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />
             )}
@@ -130,16 +139,16 @@ const Page: NextPage<Props> = async ({ params }) => {
 
       <div className="container mt-16">
         <p className="font-bold text-2xl text-admin_primary">
-          Bài viết cùng danh mục &quot;{gallery?.category.name}&quot;
+          Đón xem các thư viện ảnh khác
         </p>
-        {/* <RelatedArticles
-          categorySlug={gallery?.category.slug || ""}
-          galleryId={gallery?._id || ""}
-        /> */}
+        <RelatedGalleries
+          countryId={gallery?.country._id.toString() || ""}
+          galleryId={gallery?._id.toString() || ""}
+        />
       </div>
 
       <div className="small-container mt-14 comments">
-        {/* <Comments gallery={gallery} /> */}
+        <Comments gallery={gallery} />
       </div>
 
       <div className="container text-admin_gray_text mt-14">
@@ -180,6 +189,14 @@ const Page: NextPage<Props> = async ({ params }) => {
               <BtnWithIcon
                 to={`${path.interest}${gallery.interest.slug}`}
                 content={gallery.interest.name}
+                customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
+              />
+            )}
+
+            {gallery?.destination?.name && (
+              <BtnWithIcon
+                to={`${path.destination}${gallery.destination.slug}`}
+                content={gallery.destination.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />
             )}

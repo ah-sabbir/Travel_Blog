@@ -6,6 +6,7 @@ import { TicketEntity } from "@/entities/ticket.entity";
 import { formatVNDCurrency } from "@/lib/format-price";
 import { FaEarthAmericas, FaLocationDot } from "react-icons/fa6";
 import { FaAccusoft } from "react-icons/fa";
+import { IoTicket } from "react-icons/io5";
 
 interface Props {
   ticket: TicketEntity;
@@ -23,6 +24,8 @@ const TicketCard: FC<Props> = ({ ticket }): JSX.Element => {
           alt={ticket?.name}
           className="rounded-t-md group-hover:scale-105 transition"
         />
+
+        <IoTicket size={40} className="text-white absolute top-4 right-4" />
       </div>
 
       <div className="p-6">

@@ -99,7 +99,7 @@ const GalleriesTable: FC<Props> = (): JSX.Element => {
                   </td>
                   <td className="text-center">
                     <a
-                      href={`/test/${gallery.slug}`}
+                      href={`${path.gallery}${gallery.slug}`}
                       target="_blank"
                       className="underline text-sm font-bold text-blue-600"
                     >

@@ -5,6 +5,7 @@ import { formatShortDate } from "@/lib/format-date";
 import { TiPen } from "react-icons/ti";
 import { ImClock } from "react-icons/im";
 import { path } from "@/constant";
+import { FaEdit } from "react-icons/fa";
 
 interface Props {
   article: any;
@@ -22,6 +23,8 @@ const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
           alt={article?.name}
           className="rounded-t-md group-hover:scale-105 transition"
         />
+
+        <FaEdit size={40} className="text-white absolute top-4 right-4" />
       </div>
 
       <div className="p-6">
