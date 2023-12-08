@@ -141,11 +141,11 @@ const Page: NextPage<Props> = async ({ params }) => {
         />
       </div>
 
-      <div className="small-container mt-14 comments">
+      <div className="container mt-14 comments">
         <Comments article={article} />
       </div>
 
-      <div className="small-container text-admin_gray_text mt-14">
+      <div className="container text-admin_gray_text mt-14">
         <p className="italic my-0">
           Bài viết được cập nhật lần cuối vào:{" "}
           {formatLongDate(article?.updatedAt || "")}

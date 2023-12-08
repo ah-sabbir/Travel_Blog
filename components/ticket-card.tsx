@@ -25,11 +25,13 @@ const TicketCard: FC<Props> = ({ ticket }): JSX.Element => {
           className="rounded-t-md group-hover:scale-105 transition"
         />
 
-        <IoTicket size={40} className="text-white absolute top-4 right-4" />
+        <div className="absolute top-4 right-4 admin-main-gradient text-white rounded-full w-12 h-12 grid place-items-center">
+          <IoTicket size={30} />
+        </div>
       </div>
 
       <div className="p-6">
-        <h4 className="text-xl font-bold leading-8 text-admin_primary line-clamp-2">
+        <h4 className="text-xl font-semibold leading-8 line-clamp-2">
           {ticket.name}
         </h4>
 

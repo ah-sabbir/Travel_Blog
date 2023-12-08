@@ -147,7 +147,7 @@ const Page: NextPage<Props> = async ({ params }) => {
         />
       </div>
 
-      <div className="small-container mt-14 comments">
+      <div className="container mt-14 comments">
         <Comments gallery={gallery} />
       </div>
 

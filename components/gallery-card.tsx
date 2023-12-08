@@ -24,7 +24,9 @@ const GalleryCard: FC<Props> = ({ gallery }): JSX.Element => {
           className="rounded-t-md group-hover:scale-105 transition"
         />
 
-        <FaImages size={40} className="text-white absolute top-4 right-4" />
+        <div className="absolute top-4 right-4 admin-main-gradient text-white rounded-full w-12 h-12 grid place-items-center">
+          <FaImages size={30} />
+        </div>
       </div>
 
       <div className="p-6">
