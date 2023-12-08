@@ -12,6 +12,7 @@ import TicketCTA from "./ticket-cta";
 import BrandTickets from "./brand-tickets";
 import CountryTickets from "./country-tickets";
 import RegionTickets from "./region-tickets";
+import SameTypeTickets from "./same-type-tickets";
 
 const theme = createTheme({
   palette: {
@@ -73,6 +74,11 @@ export default function TicketTabs({ ticket }: Props) {
               {...a11yProps(3)}
               className="tab-heading "
             />
+            <Tab
+              label="Cùng danh mục vé"
+              {...a11yProps(4)}
+              className="tab-heading "
+            />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
@@ -97,6 +103,12 @@ export default function TicketTabs({ ticket }: Props) {
           <RegionTickets
             ticketId={ticket?._id.toString()}
             regionId={ticket?.region._id.toString()}
+          />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={4}>
+          <SameTypeTickets
+            ticketId={ticket?._id.toString()}
+            ticketTypeId={ticket?.ticketType._id.toString()}
           />
         </CustomTabPanel>
       </Box>

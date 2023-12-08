@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const ticketId = searchParams.get("ticketId");
-    const regionId = searchParams.get("regionId");
+    const ticketTypeId = searchParams.get("ticketTypeId");
     const page = Number(searchParams.get("page"));
     const limit = Number(searchParams.get("limit"));
 
@@ -19,13 +19,13 @@ export async function GET(req: Request) {
     await dbConnect();
 
     let numberOfResults = await Ticket.countDocuments({
-      region: regionId,
+      ticketType: ticketTypeId,
     });
 
     await dbConnect();
 
     let tickets = await Ticket.find({
-      region: regionId,
+      ticketType: ticketTypeId,
     })
       .select("name slug thumbnail description price")
       .skip(skip)

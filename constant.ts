@@ -52,6 +52,7 @@ export const path = {
   brandType: "/loai-thuong-hieu/",
   allBrandTypes: "/loai-thuong-hieu/tat-ca",
   ticket: "/ve/",
+  ticketType: "/loai-ve/",
   allTickets: "/ve/tat-ca",
   gallery: "/thu-vien-anh/",
 };

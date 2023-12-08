@@ -7,6 +7,7 @@ import { formatVNDCurrency } from "@/lib/format-price";
 import { FaEarthAmericas, FaLocationDot } from "react-icons/fa6";
 import { FaAccusoft } from "react-icons/fa";
 import { IoTicket } from "react-icons/io5";
+import parse from "html-react-parser";
 
 interface Props {
   ticket: TicketEntity;
@@ -31,46 +32,48 @@ const TicketCard: FC<Props> = ({ ticket }): JSX.Element => {
       </div>
 
       <div className="p-6">
-        <h4 className="text-xl font-semibold leading-8 line-clamp-2">
+        <h4 className="text-xl font-bold leading-8 line-clamp-2">
           {ticket.name}
         </h4>
 
-        <div className="flex items-center justify-between mt-3">
-          <ul className="text-[#838383] space-y-2">
-            {ticket.country.name && (
-              <li className="flex items-center gap-1">
-                <FaEarthAmericas size={14} className="-mt-[2px]" />
-                Quốc gia:{" "}
-                <span className="text-black_text font-semibold">
-                  {ticket.country.name}
-                </span>
-              </li>
-            )}
+        <div className="text-sm mt-3 line-clamp-4 leading-7 prose">
+          {parse(ticket.description)}
+        </div>
 
-            {ticket.region.name && (
-              <li className="flex items-center gap-1">
-                <FaLocationDot size={14} className="-mt-[2px]" />
-                Khu vực:{" "}
-                <span className="text-black_text font-semibold">
-                  {ticket.region.name}
-                </span>
-              </li>
-            )}
+        <ul className="flex items-center gap-4 justify-between text-[#838383] text-xs my-4 flex-wrap">
+          {ticket.country.name && (
+            <li className="flex items-center gap-1">
+              Quốc gia:{" "}
+              <span className="text-black_text font-semibold">
+                {ticket.country.name}
+              </span>
+            </li>
+          )}
 
-            {ticket.brand.name && (
-              <li className="flex items-center gap-1">
-                <FaAccusoft size={14} className="-mt-[2px]" />
-                Hãng vé:{" "}
-                <span className="text-black_text font-semibold">
-                  {ticket.brand.name}
-                </span>
-              </li>
-            )}
-          </ul>
+          {ticket.region.name && (
+            <li className="flex items-center gap-1">
+              Khu vực:{" "}
+              <span className="text-black_text font-semibold">
+                {ticket.region.name}
+              </span>
+            </li>
+          )}
 
-          <div className="admin-main-gradient text-white p-2 rounded-md font-semibold">
-            Giá: {formatVNDCurrency(ticket.price)}
-          </div>
+          {ticket.brand.name && (
+            <li className="flex items-center gap-1">
+              Hãng vé:{" "}
+              <span className="text-black_text font-semibold">
+                {ticket.brand.name}
+              </span>
+            </li>
+          )}
+        </ul>
+
+        <div className="admin-main-gradient text-white px-2 py-3 rounded-md text-center">
+          Giá vé:{" "}
+          <span className="font-bold text-xl">
+            {formatVNDCurrency(ticket.price)}
+          </span>
         </div>
       </div>
     </Link>

@@ -3,11 +3,11 @@
 import { Box, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
 import { FC, useState } from "react";
 import CustomTabPanel from "../custom-tab-panel";
-import { BrandTypeEntity } from "@/entities/brandType.entity";
-import SameTypeBrands from "../brand-page/same-type-brands";
+import { BrandEntity } from "@/entities/brand.entity";
+import BrandTickets from "../ticket-page/brand-tickets";
 
 interface Props {
-  brandTypes: BrandTypeEntity[] | undefined;
+  brands: BrandEntity[] | undefined;
 }
 
 const theme = createTheme({
@@ -28,7 +28,7 @@ function a11yProps(index: number) {
   };
 }
 
-const AllBrandTypesTabs: FC<Props> = ({ brandTypes }): JSX.Element => {
+const AllBrandsTabs: FC<Props> = ({ brands }): JSX.Element => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -48,23 +48,23 @@ const AllBrandTypesTabs: FC<Props> = ({ brandTypes }): JSX.Element => {
             scrollButtons="auto"
             aria-label="primary scrollable auto tabs example"
           >
-            {brandTypes?.map((brandType, index) => (
+            {brands?.map((brand, index) => (
               <Tab
-                label={brandType?.name || ""}
+                label={brand?.name || ""}
                 {...a11yProps(index)}
                 className="tab-heading "
-                key={brandType._id.toString()}
+                key={brand._id.toString()}
               />
             ))}
           </Tabs>
         </Box>
-        {brandTypes?.map((brandType, index) => (
+        {brands?.map((brand, index) => (
           <CustomTabPanel
             value={value}
             index={index}
-            key={brandType._id.toString()}
+            key={brand._id.toString()}
           >
-            <SameTypeBrands brandId="" brandTypeId={brandType._id.toString()} />
+            <BrandTickets brandId={brand._id.toString()} ticketId="" />
           </CustomTabPanel>
         ))}
       </Box>
@@ -72,4 +72,4 @@ const AllBrandTypesTabs: FC<Props> = ({ brandTypes }): JSX.Element => {
   );
 };
 
-export default AllBrandTypesTabs;
+export default AllBrandsTabs;

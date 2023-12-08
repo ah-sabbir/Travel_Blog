@@ -27,7 +27,7 @@ export async function GET(req: Request) {
     let tickets = await Ticket.find({
       brand: brandId,
     })
-      .select("name slug thumbnail price")
+      .select("name slug thumbnail description price")
       .skip(skip)
       .limit(limit)
       .populate([

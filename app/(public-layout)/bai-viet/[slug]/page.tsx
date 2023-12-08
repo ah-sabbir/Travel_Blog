@@ -157,7 +157,7 @@ const Page: NextPage<Props> = async ({ params }) => {
           <div className="flex items-center gap-2">
             {article?.country?.name && (
               <BtnWithIcon
-                to=""
+                to={`${path.country}${article.country.slug}`}
                 content={article.country.name}
                 customClasses="!py-1 !rounded-[40px] before:!rounded-[40px] !text-sm"
               />

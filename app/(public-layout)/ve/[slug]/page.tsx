@@ -86,7 +86,7 @@ const Page: NextPage<Props> = async ({ params }) => {
                   Loại vé :{" "}
                 </span>
                 <Link
-                  href={`${path.ticket}${ticket?.ticketType?.slug}`}
+                  href={`${path.ticketType}${ticket?.ticketType?.slug}`}
                   className="font-semibold text-admin_primary underline"
                 >
                   {ticket?.ticketType?.name}
@@ -116,7 +116,7 @@ const Page: NextPage<Props> = async ({ params }) => {
               </div>
 
               <BtnWithIcon
-                content={`Mua ${ticket?.name}`}
+                content={`Mua vé tại ${ticket?.brand.name}`}
                 iconBehind={FiExternalLink}
                 iconCustomClasses="-mt-2"
                 iconSize={14}
