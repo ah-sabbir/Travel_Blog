@@ -5,6 +5,7 @@ import {
 import axiosInstance from "./axios";
 import { GetDestinationBySlugOutput } from "@/dtos/destination/get-destination-by-slug.dto";
 import { GetOtherDestinations } from "@/dtos/destination/get-other-destinations.dto";
+import { GetDestinationResultsOutput } from "@/dtos/destination/get-destination-results.dto";
 
 export const getAllDestinations = async (
   specifiedProps: string = "",
@@ -56,6 +57,27 @@ export const getOtherDestinations = async (
     );
 
     return data.destinations;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSameCountryDestinations = async (
+  destinationId: string = "",
+  countryId: string = "",
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetDestinationResultsOutput } = await axiosInstance(
+      `/api/public/destinations/same-country`,
+      {
+        params: { destinationId, countryId, page, limit },
+      }
+    );
+
+    return data;
   } catch (err: any) {
     console.log(err);
     return;

@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import ArticleCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
 import { TicketEntity } from "@/entities/ticket.entity";
 import { getSameBrandTickets } from "@/lib/fetch-ticket-data";

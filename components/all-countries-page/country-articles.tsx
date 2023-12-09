@@ -1,8 +1,5 @@
 import { ArticleEntity } from "@/entities/article.entity";
-import {
-  getArticlesOfCountry,
-  getArticlesOfDestination,
-} from "@/lib/fetch-article-data";
+import { getArticlesOfCountry } from "@/lib/fetch-article-data";
 import { FC, useEffect, useState } from "react";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";

@@ -10,7 +10,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CountryContent from "./country-content";
 import TOC from "../article-page/toc";
 import CountryDestinations from "./country-destinations";
-import CountryArticles from "./country-articles";
+import CountryArticles from "@/components/all-countries-page/country-articles";
+import CountryGalleries from "../all-countries-page/country-galleries";
 
 const theme = createTheme({
   palette: {
@@ -73,16 +74,13 @@ export default function CountryTabs({ country }: Props) {
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <CountryDestinations
-            slug={country?.slug}
-            countryName={country?.name}
-          />
+          <CountryDestinations countryId={country?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <CountryArticles slug={country?.slug} />
+          <CountryArticles countryId={country?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
-          Item Three
+          <CountryGalleries countryId={country?._id.toString()} />
         </CustomTabPanel>
       </Box>
     </ThemeProvider>

@@ -64,3 +64,23 @@ export const getAllGalleriesWithPagination = async (
     return;
   }
 };
+
+export const getSameCountryGalleries = async (
+  countryId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetGalleryResultsOutput } = await axiosInstance(
+      `/api/public/galleries/same-country`,
+      {
+        params: { countryId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
