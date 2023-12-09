@@ -29,7 +29,12 @@ export async function GET(req: Request) {
 
     const totalPages = Math.ceil(numberOfResults / 6);
 
-    return NextResponse.json({ ok: true, galleries, totalPages });
+    return NextResponse.json({
+      ok: true,
+      galleries,
+      totalPages,
+      numberOfResults,
+    });
   } catch (error: any) {
     return NextResponse.json({ ok: false, error: error.message });
   }
