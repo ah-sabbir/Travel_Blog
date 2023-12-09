@@ -14,7 +14,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
     <footer>
       <div className="footer-wave"></div>
       <div className="bg-black_text">
-        <div className="small-container">
+        <div className="container">
           <div className="flex justify-between">
             <div className="-mt-16 relative z-1 text-white">
               <p className="font-extrabold text-3xl">Đăng ký nhận bản tin</p>
@@ -70,7 +70,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
         </div>
 
         <div className="border-t">
-          <div className="small-container flex items-center justify-center gap-4 py-2">
+          <div className="container flex items-center justify-center gap-4 py-2">
             <Logo wrapperClasses="w-[90px] h-[20px]" />
 
             <div className="text-xs text-white">

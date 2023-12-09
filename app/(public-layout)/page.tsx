@@ -81,7 +81,7 @@ export default async function page() {
       </div>
 
       <div className="home-page-cover-2">
-        <div className="small-container flex items-center justify-between py-[70px] relative z-[1]">
+        <div className="container flex items-center justify-between gap-24 py-[70px] relative z-[1]">
           <div className="max-w-[550px] text-white flex flex-col justify-center">
             <p className="font-extrabold text-2xl">Không phải ai cũng biết</p>
             <h3 className="text-6xl font-black my-4">Mẹo nhỏ du lịch</h3>
@@ -134,7 +134,7 @@ export default async function page() {
       </div>
 
       <div className="home-page-cover-3">
-        <div className="small-container flex items-center justify-between py-[70px] relative z-[1]">
+        <div className="container flex items-center gap-24 py-[70px] relative z-[1]">
           <div className="max-w-[550px] text-white flex flex-col justify-center">
             <p className="font-extrabold text-2xl">Chuyên mục</p>
             <h3 className="text-6xl font-black my-4">Đọc theo sở thích</h3>
@@ -148,7 +148,7 @@ export default async function page() {
               to={path.allInterests}
             />
           </div>
-          <div className="max-w-[650px] grid grid-cols-2 gap-4">
+          <div className="flex-1 grid grid-cols-2 gap-4">
             <div className="rounded-md p-2 bg-white">
               {interests?.slice(0, 4)?.map((interest, index) => (
                 <SmallInterestCard

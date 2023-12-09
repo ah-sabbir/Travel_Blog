@@ -63,7 +63,7 @@ const Page: NextPage<Props> = async ({ params }) => {
                   Loại thương hiệu :{" "}
                 </span>
                 <Link
-                  href={`${path.brand}${brand?.brandType.slug}`}
+                  href={`${path.brandType}${brand?.brandType.slug}`}
                   className="font-semibold text-admin_primary underline"
                 >
                   {brand?.brandType?.name}
