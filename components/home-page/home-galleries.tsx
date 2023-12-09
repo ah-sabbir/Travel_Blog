@@ -1,29 +1,29 @@
 "use client";
 
-import { ArticleEntity } from "@/entities/article.entity";
-import { getAllArticlesWithPagination } from "@/lib/fetch-article-data";
+import { GalleryEntity } from "@/entities/gallery.entity";
+import { getAllGalleriesWithPagination } from "@/lib/fetch-gallery-data";
 import { FC, useEffect, useState } from "react";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import ArticleCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import { path } from "@/constant";
+import GalleryCard from "../gallery-card";
 
 interface Props {}
 
-const HomeArticles: FC<Props> = (): JSX.Element => {
-  const [articles, setArticles] = useState<ArticleEntity[]>();
-  const [currentPage, setCurrentPage] = useState(2);
+const HomeGalleries: FC<Props> = (): JSX.Element => {
+  const [galleries, setGalleries] = useState<GalleryEntity[]>();
+  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
 
   const fetchResults = async () => {
     try {
       setIsLoading(true);
-      const data = await getAllArticlesWithPagination(currentPage, 6);
-      setArticles(data?.articles || []);
+      const data = await getAllGalleriesWithPagination(currentPage, 6);
+      setGalleries(data?.galleries || []);
       setTotalPages(data?.totalPages || 1);
       setIsLoading(false);
     } catch (error) {
@@ -39,10 +39,10 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
     <div>
       <div className="flex items-baseline justify-between">
         <h4 className="font-dancing text-admin_primary font-bold text-[40px] mb-3">
-          Trải nghiệm của tôi
+          Thư viện ảnh của tôi
         </h4>
 
-        <Link href={`${path.allArticles}`} className="font-bold underline">
+        <Link href={`${path.allGalleries}`} className="font-bold underline">
           Xem tất cả
         </Link>
       </div>
@@ -55,13 +55,13 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
           </div>
         ) : (
           <>
-            {articles && articles?.length > 0 ? (
+            {galleries && galleries?.length > 0 ? (
               <div>
                 <div className="grid grid-cols-3 gap-6">
-                  {articles?.map((article) => (
-                    <ArticleCard
-                      key={article._id.toString()}
-                      article={article}
+                  {galleries?.map((gallery) => (
+                    <GalleryCard
+                      key={gallery._id.toString()}
+                      gallery={gallery}
                     />
                   ))}
                 </div>
@@ -76,7 +76,7 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
                 </div>
               </div>
             ) : (
-              <p>Không tìm thấy bài viết nào</p>
+              <p>Không tìm thấy thư viện ảnh nào</p>
             )}
           </>
         )}
@@ -85,4 +85,4 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
   );
 };
 
-export default HomeArticles;
+export default HomeGalleries;

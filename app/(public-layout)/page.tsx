@@ -2,6 +2,7 @@ import BtnWithIcon from "@/components/btn-with-icon";
 import BigArticleCard from "@/components/home-page/big-article-card";
 import DestinationsSwiper from "@/components/home-page/destinations-swiper";
 import HomeArticles from "@/components/home-page/home-articles";
+import HomeGalleries from "@/components/home-page/home-galleries";
 import IntroSection from "@/components/home-page/intro-section";
 import SmallInterestCard from "@/components/home-page/small-interest-card";
 import NextImage from "@/components/next-image";
@@ -176,8 +177,12 @@ export default async function page() {
         </div>
       </div>
 
-      <div className="container mt-16">
+      <div className="container mt-10">
         <HomeArticles />
+      </div>
+
+      <div className="container mt-14">
+        <HomeGalleries />
       </div>
     </>
   );

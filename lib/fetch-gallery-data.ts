@@ -1,6 +1,7 @@
 import { GetAllGalleriesOutput } from "@/dtos/gallery/get-all-galleries.dto";
 import axiosInstance from "./axios";
 import { GetGalleryBySlugOutput } from "@/dtos/gallery/get-gallery-by-slug.dto";
+import { GetGalleryResultsOutput } from "@/dtos/gallery/get-gallery-results.dto";
 
 export const getAllGalleries = async (specifiedProps: string = "") => {
   try {
@@ -39,6 +40,25 @@ export const getRelatedGalleries = async (
     );
 
     return data.galleries;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getAllGalleriesWithPagination = async (
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetGalleryResultsOutput } = await axiosInstance(
+      `/api/public/galleries/pagination`,
+      {
+        params: { page, limit },
+      }
+    );
+
+    return data;
   } catch (err: any) {
     console.log(err);
     return;

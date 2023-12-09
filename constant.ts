@@ -36,6 +36,7 @@ export const path = {
 
   // Frontend pages
   article: "/bai-viet/",
+  allArticles: "/bai-viet/tat-ca",
   country: "/dat-nuoc/",
   allCountries: "/dat-nuoc/tat-ca",
   destination: "/dia-danh/",
@@ -56,6 +57,7 @@ export const path = {
   allTicketTypes: "/loai-ve/tat-ca",
   allTickets: "/ve/tat-ca",
   gallery: "/thu-vien-anh/",
+  allGalleries: "/thu-vien-anh/tat-ca",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";
@@ -72,9 +74,10 @@ export const iconPosition = {
   location: "0 78.9473684211%",
 };
 
-export const owner = "XXX";
+export const owner = "Lê Thanh Trường";
 export const domain = "dulich4phuong.com";
+export const websiteName = "Du Lịch 4 Phương";
 
-export const intro = `<p>Xin chào! Mình là Travel Blogger ${owner} - người sáng lập blog du lịch <strong class="font-extrabold underline">${domain}</strong>.</p><p>Hy vọng những bài viết của mình sẽ giúp bạn có thêm một xíu kinh nghiệm và nguồn cảm hứng để tự mình cất bước chân khám phá thế giới.</p>`;
+export const intro = `<h1>Xin chào! Mình là Travel Blogger ${owner} - người sáng lập blog du lịch <strong class="font-extrabold underline">${websiteName}</strong></h1><p>Hy vọng những bài viết của mình sẽ giúp bạn có thêm một xíu kinh nghiệm và nguồn cảm hứng để tự mình cất bước chân khám phá thế giới.</p>`;
 
 export const ownerEmail = "legiangbmt09@gmail.com";
