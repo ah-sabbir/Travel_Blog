@@ -28,7 +28,7 @@ const DestinationImages: FC<Props> = ({ images }): JSX.Element => {
             {images.map((image, index) => (
               <div
                 key={index}
-                className="relative w-full aspect-video cursor-pointer"
+                className="relative w-full aspect-video cursor-zoom-in"
                 onClick={() => setIndex(index)}
               >
                 <NextImage

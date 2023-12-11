@@ -10,7 +10,7 @@ interface Props {
 const Page: NextPage<Props> = async ({ params }) => {
   const region = await getRegionBySlug(
     params.slug,
-    "name slug description thumbnail content"
+    "name slug description thumbnail content countryId"
   );
   return (
     <>
@@ -34,7 +34,7 @@ const Page: NextPage<Props> = async ({ params }) => {
         <div className="h-[550px]"></div>
       </div>
 
-      <div className="container">
+      <div className="container mt-10">
         <RegionTabs region={region} />
       </div>
     </>

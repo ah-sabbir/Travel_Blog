@@ -5,14 +5,14 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import CustomTabPanel from "../custom-tab-panel";
-import { CountryEntity } from "@/entities/country.entity";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TOC from "../article-page/toc";
 import { DestinationEntity } from "@/entities/destination.entity";
 import DestinationContent from "./destination-content";
 import DestinationImages from "./destination-images";
-import DestinationArticles from "./destination-articles";
-import OtherDestinations from "./other-destinations";
+import DestinationArticles from "@/components/all-destinations-page/destination-articles";
+import DestinationGalleries from "./destination-galleries";
+import RegionDestinations from "../region-page/region-destinations";
 
 const theme = createTheme({
   palette: {
@@ -82,11 +82,11 @@ export default function DestinationTabs({ destination }: Props) {
           <DestinationArticles destinationId={destination?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
-          Item Three
+          <DestinationGalleries destinationId={destination?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={4}>
-          <OtherDestinations
-            currentId={destination?._id.toString()}
+          <RegionDestinations
+            destinationId={destination?._id.toString()}
             regionId={destination?.region?._id.toString()}
           />
         </CustomTabPanel>

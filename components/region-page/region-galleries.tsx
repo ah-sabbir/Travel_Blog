@@ -1,22 +1,18 @@
-import { DestinationEntity } from "@/entities/destination.entity";
 import { FC, useEffect, useState } from "react";
-import DestinationCard from "../destination-card";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
-import { getSameRegionDestinations } from "@/lib/fetch-destination-data";
+import "react-loading-skeleton/dist/skeleton.css";
+import Skeleton from "react-loading-skeleton";
+import { GalleryEntity } from "@/entities/gallery.entity";
+import { getSameRegionGalleries } from "@/lib/fetch-gallery-data";
+import GalleryCard from "../gallery-card";
 
 interface Props {
-  destinationId: string | undefined;
   regionId: string | undefined;
 }
 
-const RegionDestinations: FC<Props> = ({
-  destinationId,
-  regionId,
-}): JSX.Element => {
-  const [destinations, setDestinations] = useState<DestinationEntity[]>();
+const RegionGalleries: FC<Props> = ({ regionId }): JSX.Element => {
+  const [galleries, setGalleries] = useState<GalleryEntity[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -27,13 +23,8 @@ const RegionDestinations: FC<Props> = ({
     }
 
     setIsLoading(true);
-    const data = await getSameRegionDestinations(
-      destinationId,
-      regionId,
-      currentPage,
-      8
-    );
-    setDestinations(data?.destinations || []);
+    const data = await getSameRegionGalleries(regionId, currentPage, 6);
+    setGalleries(data?.galleries || []);
     setTotalPages(data?.totalPages || 1);
     setIsLoading(false);
   };
@@ -41,24 +32,25 @@ const RegionDestinations: FC<Props> = ({
   useEffect(() => {
     fetchResults();
   }, [regionId, currentPage]);
+
   return (
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-4 gap-4">
-            {[...Array(8).keys()].map((item) => (
+          <div className="grid grid-cols-3 gap-6">
+            {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
           </div>
         ) : (
           <>
-            {destinations && destinations?.length > 0 ? (
+            {galleries && galleries?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-4 gap-4">
-                  {destinations?.map((destination) => (
-                    <DestinationCard
-                      key={destination._id.toString()}
-                      destination={destination}
+                <div className="grid grid-cols-3 gap-6">
+                  {galleries?.map((gallery) => (
+                    <GalleryCard
+                      key={gallery._id.toString()}
+                      gallery={gallery}
                     />
                   ))}
                 </div>
@@ -73,7 +65,7 @@ const RegionDestinations: FC<Props> = ({
                 </div>
               </div>
             ) : (
-              <p>Không tìm thấy địa danh nào</p>
+              <p>Không tìm thấy thư viện ảnh nào</p>
             )}
           </>
         )}
@@ -82,4 +74,4 @@ const RegionDestinations: FC<Props> = ({
   );
 };
 
-export default RegionDestinations;
+export default RegionGalleries;

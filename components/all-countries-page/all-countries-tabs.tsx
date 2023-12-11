@@ -38,7 +38,7 @@ const AllCountriesTabs: FC<Props> = ({ countries }): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider", mx: "16px" }}>
           <Tabs
             value={value}
             onChange={handleChange}

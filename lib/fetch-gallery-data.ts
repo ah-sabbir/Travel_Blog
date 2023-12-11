@@ -84,3 +84,43 @@ export const getSameCountryGalleries = async (
     return;
   }
 };
+
+export const getSameRegionGalleries = async (
+  regionId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetGalleryResultsOutput } = await axiosInstance(
+      `/api/public/galleries/same-region`,
+      {
+        params: { regionId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
+
+export const getSameDestinationGalleries = async (
+  destinationId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetGalleryResultsOutput } = await axiosInstance(
+      `/api/public/galleries/same-destination`,
+      {
+        params: { destinationId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

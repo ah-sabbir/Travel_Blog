@@ -5,13 +5,14 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import CustomTabPanel from "../custom-tab-panel";
-import { CountryEntity } from "@/entities/country.entity";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TOC from "../article-page/toc";
 import RegionContent from "./region-content";
 import { RegionEntity } from "@/entities/region.entity";
-import RegionArticles from "./region-articles";
+import RegionArticles from "@/components/all-regions-page/region-articles";
 import RegionDestinations from "./region-destinations";
+import RegionGalleries from "./region-galleries";
+import CountryRegions from "../country-page/country-regions";
 
 const theme = createTheme({
   palette: {
@@ -65,6 +66,11 @@ export default function RegionTabs({ region }: Props) {
               {...a11yProps(3)}
               className="tab-heading "
             />
+            <Tab
+              label="Tỉnh / Thành khác"
+              {...a11yProps(4)}
+              className="tab-heading "
+            />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
@@ -74,13 +80,22 @@ export default function RegionTabs({ region }: Props) {
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <RegionDestinations slug={region?.slug} regionName={region?.name} />
+          <RegionDestinations
+            destinationId=""
+            regionId={region?._id.toString()}
+          />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <RegionArticles slug={region?.slug} />
+          <RegionArticles regionId={region?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
-          Item Three
+          <RegionGalleries regionId={region?._id.toString()} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={4}>
+          <CountryRegions
+            countryId={region?.countryId?.toString()}
+            regionId={region?._id?.toString()}
+          />
         </CustomTabPanel>
       </Box>
     </ThemeProvider>

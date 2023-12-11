@@ -4,7 +4,6 @@ import { Box, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
 import { FC, useState } from "react";
 import CustomTabPanel from "../custom-tab-panel";
 import DestinationArticles from "./destination-articles";
-import { DestinationEntity } from "@/entities/destination.entity";
 
 interface Props {
   destinations: any[] | undefined;

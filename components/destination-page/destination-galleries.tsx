@@ -1,18 +1,18 @@
-import { ArticleEntity } from "@/entities/article.entity";
-import { getArticlesOfDestination } from "@/lib/fetch-article-data";
 import { FC, useEffect, useState } from "react";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import ArticleCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
+import { GalleryEntity } from "@/entities/gallery.entity";
+import { getSameDestinationGalleries } from "@/lib/fetch-gallery-data";
+import GalleryCard from "../gallery-card";
 
 interface Props {
   destinationId: string | undefined;
 }
 
-const DestinationArticles: FC<Props> = ({ destinationId }): JSX.Element => {
-  const [articles, setArticles] = useState<ArticleEntity[]>();
+const DestinationGalleries: FC<Props> = ({ destinationId }): JSX.Element => {
+  const [galleries, setGalleries] = useState<GalleryEntity[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -23,8 +23,12 @@ const DestinationArticles: FC<Props> = ({ destinationId }): JSX.Element => {
     }
 
     setIsLoading(true);
-    const data = await getArticlesOfDestination(destinationId, currentPage, 6);
-    setArticles(data?.articles || []);
+    const data = await getSameDestinationGalleries(
+      destinationId,
+      currentPage,
+      6
+    );
+    setGalleries(data?.galleries || []);
     setTotalPages(data?.totalPages || 1);
     setIsLoading(false);
   };
@@ -44,13 +48,13 @@ const DestinationArticles: FC<Props> = ({ destinationId }): JSX.Element => {
           </div>
         ) : (
           <>
-            {articles && articles?.length > 0 ? (
+            {galleries && galleries?.length > 0 ? (
               <div>
                 <div className="grid grid-cols-3 gap-6">
-                  {articles?.map((article) => (
-                    <ArticleCard
-                      key={article._id.toString()}
-                      article={article}
+                  {galleries?.map((gallery) => (
+                    <GalleryCard
+                      key={gallery._id.toString()}
+                      gallery={gallery}
                     />
                   ))}
                 </div>
@@ -65,7 +69,7 @@ const DestinationArticles: FC<Props> = ({ destinationId }): JSX.Element => {
                 </div>
               </div>
             ) : (
-              <p>Không tìm thấy bài viết nào</p>
+              <p>Không tìm thấy thư viện ảnh nào</p>
             )}
           </>
         )}
@@ -74,4 +78,4 @@ const DestinationArticles: FC<Props> = ({ destinationId }): JSX.Element => {
   );
 };
 
-export default DestinationArticles;
+export default DestinationGalleries;

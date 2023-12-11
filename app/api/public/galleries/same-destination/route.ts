@@ -7,20 +7,20 @@ export const dynamic = "force-dynamic";
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const countryId = searchParams.get("countryId");
+    const destinationId = searchParams.get("destinationId");
     const page = Number(searchParams.get("page"));
     const limit = Number(searchParams.get("limit"));
 
     const skip = (page - 1) * limit;
 
     let numberOfResults = await Gallery.countDocuments({
-      country: countryId,
+      destination: destinationId,
     });
 
     await dbConnect();
 
     let galleries = await Gallery.find({
-      country: countryId,
+      destination: destinationId,
     })
       .select("name slug description thumbnail updatedAt")
       .skip(skip)
