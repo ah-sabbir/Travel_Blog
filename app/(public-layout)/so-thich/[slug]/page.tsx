@@ -8,12 +8,8 @@ interface Props {
 }
 
 const Page: NextPage<Props> = async ({ params }) => {
-  const interest = await getInterestBySlug(
-    params.slug,
-    "name slug description thumbnail",
-    "articles",
-    "name slug thumbnail description updatedAt"
-  );
+  const interest = await getInterestBySlug(params.slug);
+
   return (
     <>
       <div className="page-cover bubble-mask">
@@ -25,21 +21,19 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container">
-        <div className="mt-28 w-[45%]">
+      <div className="container flex mt-28">
+        <div className="w-[45%]">
           <h1 className="font-dancing font-bold text-[70px] text-admin_primary">
             {interest?.name}
           </h1>
           <p className="leading-8 text-justify">{interest?.description}</p>
         </div>
 
-        <div className="mt-36">
-          <InterestTabs
-            articles={interest?.articles}
-            interestId={interest?._id.toString()}
-            interestSlug={params.slug}
-          />
-        </div>
+        <div className="h-[550px]"></div>
+      </div>
+
+      <div className="container">
+        <InterestTabs interestId={interest?._id.toString()} />
       </div>
     </>
   );

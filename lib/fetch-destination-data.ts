@@ -87,3 +87,24 @@ export const getSameRegionDestinations = async (
     return;
   }
 };
+
+export const getSameInterestDestinations = async (
+  destinationId: string = "",
+  interestId: string = "",
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetDestinationResultsOutput } = await axiosInstance(
+      `/api/public/destinations/same-interest`,
+      {
+        params: { destinationId, interestId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

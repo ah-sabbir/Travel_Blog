@@ -20,16 +20,10 @@ export const getAllInterests = async (
   }
 };
 
-export const getInterestBySlug = async (
-  slug: string,
-  specifiedProps: string = "",
-  populate: string = "",
-  nestedProps: string = ""
-) => {
+export const getInterestBySlug = async (slug: string) => {
   try {
     const { data }: { data: GetInterestBySlugOutput } = await axiosInstance(
-      `/api/public/interest?slug=${slug}`,
-      { params: { specifiedProps, populate, nestedProps } }
+      `/api/public/interest?slug=${slug}`
     );
 
     return data.interest;
