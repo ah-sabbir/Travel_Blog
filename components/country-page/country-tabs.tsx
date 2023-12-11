@@ -12,6 +12,7 @@ import TOC from "../article-page/toc";
 import CountryDestinations from "./country-destinations";
 import CountryArticles from "@/components/all-countries-page/country-articles";
 import CountryGalleries from "../all-countries-page/country-galleries";
+import CountryRegions from "./country-regions";
 
 const theme = createTheme({
   palette: {
@@ -58,11 +59,16 @@ export default function CountryTabs({ country }: Props) {
               {...a11yProps(0)}
               className="tab-heading "
             />
-            <Tab label="Địa danh" {...a11yProps(1)} className="tab-heading " />
-            <Tab label="Bài viết" {...a11yProps(2)} className="tab-heading " />
+            <Tab
+              label="Tỉnh thành"
+              {...a11yProps(1)}
+              className="tab-heading "
+            />
+            <Tab label="Địa danh" {...a11yProps(2)} className="tab-heading " />
+            <Tab label="Bài viết" {...a11yProps(3)} className="tab-heading " />
             <Tab
               label="Thư viện ảnh"
-              {...a11yProps(3)}
+              {...a11yProps(4)}
               className="tab-heading "
             />
           </Tabs>
@@ -74,12 +80,15 @@ export default function CountryTabs({ country }: Props) {
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <CountryDestinations countryId={country?._id.toString()} />
+          <CountryRegions countryId={country?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          <CountryArticles countryId={country?._id.toString()} />
+          <CountryDestinations countryId={country?._id.toString()} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
+          <CountryArticles countryId={country?._id.toString()} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={4}>
           <CountryGalleries countryId={country?._id.toString()} />
         </CustomTabPanel>
       </Box>

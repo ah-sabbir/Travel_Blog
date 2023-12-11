@@ -63,3 +63,22 @@ export const getNestedDataOfRegion = async (
     return;
   }
 };
+
+export const getSameCountryRegions = async (
+  countryId: string,
+  regionId?: string
+) => {
+  try {
+    const { data }: { data: GetAllRegionsOutput } = await axiosInstance(
+      `/api/public/regions/same-country`,
+      {
+        params: { countryId, regionId },
+      }
+    );
+
+    return data.regions;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};
