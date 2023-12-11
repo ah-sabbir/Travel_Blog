@@ -116,3 +116,23 @@ export const getSameTypeTickets = async (
     return;
   }
 };
+
+export const getTicketSearchResults = async (
+  query: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetTicketResultsOutput } = await axiosInstance(
+      `/api/public/search/tickets`,
+      {
+        params: { query, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

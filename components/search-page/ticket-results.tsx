@@ -3,17 +3,17 @@ import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "react-loading-skeleton";
-import { GalleryEntity } from "@/entities/gallery.entity";
-import { getGallerySearchResults } from "@/lib/fetch-gallery-data";
-import GalleryCard from "../gallery-card";
+import { TicketEntity } from "@/entities/ticket.entity";
+import { getTicketSearchResults } from "@/lib/fetch-ticket-data";
+import TicketCard from "../ticket-card";
 
 interface Props {
   query: string | null;
   setTotalResults: Dispatch<SetStateAction<number>>;
 }
 
-const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
-  const [galleries, setGalleries] = useState<GalleryEntity[]>();
+const TicketResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
+  const [tickets, setTickets] = useState<TicketEntity[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -24,14 +24,14 @@ const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
     }
 
     setIsLoading(true);
-    const data = await getGallerySearchResults(query, currentPage, 6);
-    setGalleries(data?.galleries || []);
+    const data = await getTicketSearchResults(query, currentPage, 6);
+    setTickets(data?.tickets || []);
     setTotalPages(data?.totalPages || 1);
     setTotalResults(data?.numberOfResults || 0);
     setIsLoading(false);
   };
 
-  console.log(galleries);
+  console.log(tickets);
 
   useEffect(() => {
     fetchResults();
@@ -48,14 +48,11 @@ const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
           </div>
         ) : (
           <>
-            {galleries && galleries?.length > 0 ? (
+            {tickets && tickets?.length > 0 ? (
               <div>
                 <div className="grid grid-cols-3 container gap-6">
-                  {galleries?.map((gallery) => (
-                    <GalleryCard
-                      key={gallery._id.toString()}
-                      gallery={gallery}
-                    />
+                  {tickets?.map((ticket) => (
+                    <TicketCard key={ticket._id.toString()} ticket={ticket} />
                   ))}
                 </div>
                 <div className="w-fit pagination pt-12 mx-auto">
@@ -69,7 +66,7 @@ const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
                 </div>
               </div>
             ) : (
-              <p>Không tìm thấy thư viện ảnh nào</p>
+              <p>Không tìm thấy loại vé nào</p>
             )}
           </>
         )}
@@ -78,4 +75,4 @@ const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
   );
 };
 
-export default GalleryResults;
+export default TicketResults;

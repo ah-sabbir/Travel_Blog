@@ -5,6 +5,7 @@ import { Dispatch, FC, SetStateAction, useState } from "react";
 import CustomTabPanel from "../custom-tab-panel";
 import ArticleResults from "./article-results";
 import GalleryResults from "./gallery-results";
+import TicketResults from "./ticket-results";
 
 interface Props {
   query: string | null;
@@ -54,6 +55,11 @@ const SearchTabs: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
               {...a11yProps(1)}
               className="tab-heading "
             />
+            <Tab
+              label="Vé / Tour du lịch"
+              {...a11yProps(2)}
+              className="tab-heading "
+            />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
@@ -62,7 +68,9 @@ const SearchTabs: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
         <CustomTabPanel value={value} index={1}>
           <GalleryResults query={query} setTotalResults={setTotalResults} />
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}></CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <TicketResults query={query} setTotalResults={setTotalResults} />
+        </CustomTabPanel>
       </Box>
     </ThemeProvider>
   );

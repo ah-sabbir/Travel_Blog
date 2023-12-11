@@ -16,10 +16,10 @@ export async function GET(req: Request) {
     await dbConnect();
 
     const numberOfResults = await Gallery.countDocuments({
-      name: { $regex: query, $options: "i" },
+      $text: { $search: query as string },
     });
 
-    const articles = await Gallery.find({
+    const galleries = await Gallery.find({
       $text: { $search: query as string },
     })
       .select("name slug thumbnail description updatedAt")
@@ -36,7 +36,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({
       ok: true,
-      articles,
+      galleries,
       totalPages,
       numberOfResults,
     });

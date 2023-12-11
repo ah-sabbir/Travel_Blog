@@ -1,5 +1,9 @@
 import dbConnect from "@/lib/db";
-import Article from "@/models/Article";
+import Brand from "@/models/Brand";
+import Country from "@/models/Country";
+import Gallery from "@/models/Gallery";
+import Region from "@/models/Region";
+import Ticket from "@/models/Ticket";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
@@ -15,28 +19,40 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const numberOfResults = await Article.countDocuments({
+    const numberOfResults = await Ticket.countDocuments({
       $text: { $search: query as string },
     });
 
-    const articles = await Article.find({
+    const tickets = await Ticket.find({
       $text: { $search: query as string },
     })
-      .select("name slug thumbnail description updatedAt")
+      .select("name slug thumbnail description")
       .skip(skip)
       .limit(limit)
-      .populate({
-        path: "author",
-        model: User,
-        select: "name",
-      })
+      .populate([
+        {
+          path: "brand",
+          model: Brand,
+          select: "name",
+        },
+        {
+          path: "country",
+          model: Country,
+          select: "name",
+        },
+        {
+          path: "region",
+          model: Region,
+          select: "name",
+        },
+      ])
       .sort({ createdAt: -1 });
 
     const totalPages = Math.ceil(numberOfResults / 6);
 
     return NextResponse.json({
       ok: true,
-      articles,
+      tickets,
       totalPages,
       numberOfResults,
     });
