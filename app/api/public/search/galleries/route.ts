@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/db";
-import Article from "@/models/Article";
+import Gallery from "@/models/Gallery";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
@@ -15,11 +15,11 @@ export async function GET(req: Request) {
 
     await dbConnect();
 
-    const numberOfResults = await Article.countDocuments({
+    const numberOfResults = await Gallery.countDocuments({
       name: { $regex: query, $options: "i" },
     });
 
-    const articles = await Article.find({
+    const articles = await Gallery.find({
       $text: { $search: query as string },
     })
       .select("name slug thumbnail description updatedAt")

@@ -144,3 +144,23 @@ export const getSameInterestGalleries = async (
     return;
   }
 };
+
+export const getGallerySearchResults = async (
+  query: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetGalleryResultsOutput } = await axiosInstance(
+      `/api/public/search/galleries`,
+      {
+        params: { query, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

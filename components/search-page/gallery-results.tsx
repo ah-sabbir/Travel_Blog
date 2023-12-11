@@ -1,19 +1,19 @@
-import { ArticleEntity } from "@/entities/article.entity";
-import { getSearchResults } from "@/lib/fetch-article-data";
 import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import ArticleCard from "../article-card";
+import GalleryCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
+import { GalleryEntity } from "@/entities/gallery.entity";
+import { getGallerySearchResults } from "@/lib/fetch-gallery-data";
 
 interface Props {
   query: string | null;
   setTotalResults: Dispatch<SetStateAction<number>>;
 }
 
-const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
-  const [articles, setArticles] = useState<ArticleEntity[]>();
+const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
+  const [galleries, setGalleries] = useState<GalleryEntity[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
@@ -24,8 +24,8 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
     }
 
     setIsLoading(true);
-    const data = await getSearchResults(query, currentPage, 6);
-    setArticles(data?.articles || []);
+    const data = await getGallerySearchResults(query, currentPage, 6);
+    setGalleries(data?.galleries || []);
     setTotalPages(data?.totalPages || 1);
     setTotalResults(data?.numberOfResults || 0);
     setIsLoading(false);
@@ -46,11 +46,11 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
           </div>
         ) : (
           <>
-            {articles && articles?.length > 0 ? (
+            {galleries && galleries?.length > 0 ? (
               <div>
                 <div className="grid grid-cols-3 container gap-6">
-                  {articles?.map((article) => (
-                    <ArticleCard
+                  {galleries?.map((article) => (
+                    <GalleryCard
                       key={article._id.toString()}
                       article={article}
                     />
@@ -76,4 +76,4 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
   );
 };
 
-export default ArticleResults;
+export default GalleryResults;

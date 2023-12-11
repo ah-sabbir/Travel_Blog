@@ -4,6 +4,7 @@ import { Box, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import CustomTabPanel from "../custom-tab-panel";
 import ArticleResults from "./article-results";
+import GalleryResults from "./gallery-results";
 
 interface Props {
   query: string | null;
@@ -58,7 +59,9 @@ const SearchTabs: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
         <CustomTabPanel value={value} index={0}>
           <ArticleResults query={query} setTotalResults={setTotalResults} />
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}></CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <GalleryResults query={query} setTotalResults={setTotalResults} />
+        </CustomTabPanel>
         <CustomTabPanel value={value} index={2}></CustomTabPanel>
       </Box>
     </ThemeProvider>

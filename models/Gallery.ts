@@ -83,6 +83,8 @@ const GallerySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+GallerySchema.index({ name: "text" });
+
 const Gallery = models.Gallery || mongoose.model("Gallery", GallerySchema);
 
 export default Gallery;

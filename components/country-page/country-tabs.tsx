@@ -13,6 +13,7 @@ import CountryDestinations from "./country-destinations";
 import CountryArticles from "@/components/all-countries-page/country-articles";
 import CountryGalleries from "../all-countries-page/country-galleries";
 import CountryRegions from "./country-regions";
+import CountryTickets from "../ticket-page/country-tickets";
 
 const theme = createTheme({
   palette: {
@@ -71,6 +72,11 @@ export default function CountryTabs({ country }: Props) {
               {...a11yProps(4)}
               className="tab-heading "
             />
+            <Tab
+              label="Vé / Tour du lịch"
+              {...a11yProps(5)}
+              className="tab-heading "
+            />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
@@ -90,6 +96,9 @@ export default function CountryTabs({ country }: Props) {
         </CustomTabPanel>
         <CustomTabPanel value={value} index={4}>
           <CountryGalleries countryId={country?._id.toString()} />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={5}>
+          <CountryTickets ticketId="" countryId={country?._id.toString()} />
         </CustomTabPanel>
       </Box>
     </ThemeProvider>
