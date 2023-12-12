@@ -209,3 +209,23 @@ export const getArticlesOfRegion = async (
     return;
   }
 };
+
+export const getArticlesOfUser = async (
+  userId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetArticleResultsOutput } = await axiosInstance(
+      `/api/public/user/articles`,
+      {
+        params: { userId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

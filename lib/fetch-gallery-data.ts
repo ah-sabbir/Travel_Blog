@@ -164,3 +164,23 @@ export const getGallerySearchResults = async (
     return;
   }
 };
+
+export const getSameAuthorGalleries = async (
+  userId: string,
+  page: number = 1,
+  limit: number = 6
+) => {
+  try {
+    const { data }: { data: GetGalleryResultsOutput } = await axiosInstance(
+      `/api/public/galleries/same-author`,
+      {
+        params: { userId, page, limit },
+      }
+    );
+
+    return data;
+  } catch (err: any) {
+    console.log(err);
+    return;
+  }
+};

@@ -12,3 +12,15 @@ export const getUserProfileById = async (userId: string) => {
     console.log(error);
   }
 };
+
+export const getUserProfileBySlug = async (slug: string) => {
+  try {
+    const { data }: { data: MeOutput } = await axiosInstance(
+      `/api/public/user?slug=${slug}`
+    );
+
+    return data.user;
+  } catch (error) {
+    console.log(error);
+  }
+};
