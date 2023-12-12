@@ -12,6 +12,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { FaAngleLeft } from "react-icons/fa";
 import { FcAlarmClock } from "react-icons/fc";
+import slugify from "slugify";
 
 interface Props {
   params: { slug: string };
@@ -74,7 +75,9 @@ const Page: NextPage<Props> = async ({ params }) => {
             <span>
               Bởi{" "}
               <Link
-                href=""
+                href={`${path.author}${slugify(article?.author?.name || "", {
+                  lower: true,
+                })}`}
                 className="underline font-extrabold text-admin_primary"
               >
                 {article?.author?.name}

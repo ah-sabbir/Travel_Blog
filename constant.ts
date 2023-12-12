@@ -58,6 +58,7 @@ export const path = {
   allTickets: "/ve/tat-ca",
   gallery: "/thu-vien-anh/",
   allGalleries: "/thu-vien-anh/tat-ca",
+  author: "/tac-gia/",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";

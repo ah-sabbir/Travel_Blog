@@ -65,7 +65,7 @@ const Header: FC<Props> = (props): JSX.Element => {
           </div>
 
           <div className={liClasses}>
-            Về chúng tôi
+            Tham khảo
             <BiSolidChevronDown size={18} />
             <AboutUsDropdown />
           </div>
