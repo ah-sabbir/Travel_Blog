@@ -120,8 +120,8 @@ export default async function page() {
         </div>
       </div>
 
-      <div className="flex max-[1250px]:block gap-4 my-16">
-        <div className="w-[40%] max-[1250px]:w-[95%] max-[1250px]:mx-auto">
+      <div className="container !pr-0 flex max-[1250px]:block gap-4 my-16">
+        <div className="w-[40%] max-[1250px]:w-full">
           {articles?.slice(3)?.map((article, index) => (
             <SmallArticleCard
               image={article?.thumbnail?.url}
@@ -134,7 +134,7 @@ export default async function page() {
           ))}
         </div>
 
-        <div className="flex-1 max-w-[60%] max-[1250px]:w-full max-[1250px]:max-w-full max-[1250px]:mt-6">
+        <div className="flex-1 max-w-[62%] max-[1250px]:w-full max-[1250px]:max-w-full max-[1250px]:mt-6">
           <DestinationsSwiper
             destinations={
               destinations as GetDestinationsForHomepage["destinations"]

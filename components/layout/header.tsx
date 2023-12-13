@@ -44,49 +44,51 @@ const Header: FC<Props> = (props): JSX.Element => {
   return (
     <>
       <header
-        className={`z-10 container fixed top-0 right-0 left-0 py-3 flex items-center justify-between max-[1250px]:justify-center ${
+        className={`z-10 fixed top-0 right-0 left-0 py-3 ${
           changeBg && "bg-black_text !text-white"
         } ${pathName === "/" ? "text-white" : "text-black_text"} transition`}
       >
-        <div className="flex items-center gap-8">
-          <Logo wrapperClasses="w-[150px] h-[30px]" />
+        <div className="container flex items-center justify-between max-[1250px]:justify-center">
+          <div className="flex items-center gap-8">
+            <Logo wrapperClasses="w-[150px] h-[30px]" />
 
-          <ul className="flex items-center gap-2 max-[1250px]:hidden">
-            <div className={liClasses}>
-              Điểm đến <BiSolidChevronDown size={18} />
-              <DestinationsDropdown wrapperClasses="-left-1/3" />
-            </div>
+            <ul className="flex items-center gap-2 max-[1250px]:hidden">
+              <div className={liClasses}>
+                Điểm đến <BiSolidChevronDown size={18} />
+                <DestinationsDropdown wrapperClasses="-left-1/3" />
+              </div>
 
-            <li className={liClasses}>
-              Danh mục <BiSolidChevronDown size={18} />
-              <CategoriesDropdown />
-            </li>
+              <li className={liClasses}>
+                Danh mục <BiSolidChevronDown size={18} />
+                <CategoriesDropdown />
+              </li>
 
-            <div className={liClasses}>
-              Dịch vụ
-              <BiSolidChevronDown size={18} />
-              <ServicesDropdown />
-            </div>
+              <div className={liClasses}>
+                Dịch vụ
+                <BiSolidChevronDown size={18} />
+                <ServicesDropdown />
+              </div>
 
-            <div className={liClasses}>
-              Tìm đọc theo
-              <BiSolidChevronDown size={18} />
-              <AboutUsDropdown />
-            </div>
-          </ul>
+              <div className={liClasses}>
+                Tìm đọc theo
+                <BiSolidChevronDown size={18} />
+                <AboutUsDropdown />
+              </div>
+            </ul>
+          </div>
+
+          <div className="flex items-center gap-2 max-[1250px]:hidden">
+            <SearchBar />
+            <SocialItems />
+          </div>
+
+          <button
+            onClick={() => setOpenMobileMenu(true)}
+            className="absolute w-10 h-10 top-2 right-4 bg-white circle-radius hidden max-[1250px]:grid place-items-center"
+          >
+            <HamburgerIcon className="w-5 h-5" />
+          </button>
         </div>
-
-        <div className="flex items-center gap-2 max-[1250px]:hidden">
-          <SearchBar />
-          <SocialItems />
-        </div>
-
-        <button
-          onClick={() => setOpenMobileMenu(true)}
-          className="absolute w-10 h-10 top-2 right-4 bg-white circle-radius hidden max-[1250px]:grid place-items-center"
-        >
-          <HamburgerIcon className="w-5 h-5" />
-        </button>
       </header>
 
       <MenuModal

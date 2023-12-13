@@ -16,7 +16,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
       <div className="bg-black_text">
         <div className="container">
           <div className="flex justify-between max-[965px]:block">
-            <div className="-mt-16 relative z-1 text-white">
+            <div className="max-[1800px]:-mt-16 relative z-1 text-white">
               <p className="font-extrabold text-3xl">Đăng ký nhận bản tin</p>
               <p className="mt-2 mb-4">
                 Tôi sẽ gửi đến bạn những trải nghiệm du lịch một cách chân thực

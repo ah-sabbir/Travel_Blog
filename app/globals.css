@@ -45,13 +45,19 @@
 
 /* Background for cover */
 .home-page-cover {
-  @apply h-[550px] absolute w-[calc(100vw_-_(43%_+_40px)_-_(100vw_-_100%)_/_2)] z-0 mr-10 left-[initial] right-[43%] top-0;
+  @apply h-[550px] absolute max-[1720px]:w-[calc(100vw_-_(43%_+_40px)_-_(100vw_-_100%)_/_2)] w-[800px] z-0 mr-10 left-[initial] right-[46%] top-0;
   mask-position: bottom right;
   -webkit-mask-position: bottom right;
-  mask-size: 110% 150%;
-  -webkit-mask-size: 110% 150%;
+  mask-size: 100% 150%;
+  -webkit-mask-size: 100% 150%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+
+  @media screen and (max-width: 1720px) {
+    mask-size: 110% 150%;
+    -webkit-mask-size: 110% 150%;
+    right: 43%;
+  }
 
   @media screen and (max-width: 1250px) {
     display: block;
@@ -109,7 +115,7 @@
   background-repeat: no-repeat;
   background-position: 80% 50%;
 
-  @apply my-10 aspect-[2.98] relative;
+  @apply my-10 h-[483px] relative;
 
   @media screen and (max-width: 1000px) {
     background: url("/assets/images/home-page/blog-du-lich-home-cover-3.jpg");
@@ -131,7 +137,7 @@
   background-repeat: no-repeat;
   background-position: 80% 50%;
 
-  @apply my-10 aspect-[2.98] relative;
+  @apply my-10 h-[483px] relative;
 
   @media screen and (max-width: 1000px) {
     background: url("/assets/images/home-page/blog-du-lich-home-cover-5.jpg");
