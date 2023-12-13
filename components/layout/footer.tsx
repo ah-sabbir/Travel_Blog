@@ -15,7 +15,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
       <div className="footer-wave"></div>
       <div className="bg-black_text">
         <div className="container">
-          <div className="flex justify-between">
+          <div className="flex justify-between max-[965px]:block">
             <div className="-mt-16 relative z-1 text-white">
               <p className="font-extrabold text-3xl">Đăng ký nhận bản tin</p>
               <p className="mt-2 mb-4">
@@ -35,8 +35,8 @@ const Footer: FC<Props> = (props): JSX.Element => {
             </div>
           </div>
 
-          <div className="flex gap-6 my-6 text-sm text-white">
-            <div className="flex-1 grid grid-cols-4">
+          <div className="flex gap-6 my-6 text-sm text-white max-[545px]:block">
+            <div className="flex-1 grid grid-cols-4 max-[800px]:grid-cols-3 max-[650px]:grid-cols-2 max-[545px]:grid-cols-1 gap-y-6">
               {footerColumns.map((column, index) => (
                 <div key={index}>
                   <h5 className="font-extrabold mb-2">{column.heading}</h5>
@@ -51,7 +51,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
               ))}
             </div>
 
-            <div className="w-fit">
+            <div className="w-fit max-[545px]:mt-6">
               <h5 className="font-extrabold mb-2">Liên hệ</h5>
               <ul className="mb-3">
                 <li>
@@ -70,8 +70,8 @@ const Footer: FC<Props> = (props): JSX.Element => {
         </div>
 
         <div className="border-t">
-          <div className="container flex items-center justify-center gap-4 py-2">
-            <Logo wrapperClasses="w-[90px] h-[20px]" />
+          <div className="container flex items-center justify-center gap-4 py-2 max-[685px]:block max-[685px]:text-center">
+            <Logo wrapperClasses="w-[90px] h-[20px] max-[685px]:mx-auto max-[685px]:mt-2 max-[685px]:mb-3" />
 
             <div className="text-xs text-white">
               ©2023 Bản quyền thuộc về DU LỊCH 4 PHƯƠNG - Website được thiết kế

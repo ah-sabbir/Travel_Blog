@@ -48,7 +48,7 @@ const SameTypeBrands: FC<Props> = ({ brandId, brandTypeId }): JSX.Element => {
                     <BrandCard key={brand._id.toString()} brand={brand} />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 mx-auto">
+                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}

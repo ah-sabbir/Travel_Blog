@@ -57,7 +57,7 @@ const CountryTickets: FC<Props> = ({ ticketId, countryId }): JSX.Element => {
                     <TicketCard key={ticket._id.toString()} ticket={ticket} />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 mx-auto">
+                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}

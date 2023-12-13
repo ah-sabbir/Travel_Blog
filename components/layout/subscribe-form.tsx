@@ -36,11 +36,11 @@ const SubscribeForm: FC<Props> = (props): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 max-[390px]:block">
         <input
           type="email"
           {...register("email")}
-          className="flex-1 h-[48px] rounded-[40px] outline-none px-4 text-black_text"
+          className="flex-1 h-[48px] rounded-[40px] outline-none px-4 text-black_text max-[390px]:w-full"
           placeholder="Nhập địa chỉ email của bạn"
         />
         <BtnWithLoading
@@ -48,7 +48,7 @@ const SubscribeForm: FC<Props> = (props): JSX.Element => {
           content="Đăng ký"
           isLoading={isLoading}
           disabled={isLoading}
-          customClasses="w-fit !rounded-[40px] before:!rounded-[40px]"
+          customClasses="w-fit max-[390px]:!w-full max-[390px]:!mt-3 !rounded-[40px] before:!rounded-[40px]"
         />
       </div>
     </form>

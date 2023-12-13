@@ -36,7 +36,7 @@
 }
 
 .footer-image-wrapper {
-  @apply w-[400px] h-[400px] circle-radius relative -mt-[240px];
+  @apply w-[400px] aspect-square circle-radius relative -mt-[240px] max-[965px]:my-10 max-[965px]:w-[70%] max-[965px]:mx-auto;
 }
 
 .footer-image-wrapper::after {
@@ -316,7 +316,7 @@ figure.image figcaption {
 /* Pagination */
 /* Paginagation */
 .pagination .page-link {
-  @apply !font-arima !rounded-lg grid !text-[#333] font-bold text-sm !border-transparent !py-[10px] !px-4 shadow-md border;
+  @apply !font-arima !rounded-lg grid !text-[#333] font-bold text-sm !border-transparent !py-[10px] max-[500px]:!py-2 !px-4 shadow-md max-[500px]:!text-xs border;
 }
 
 .pagination .page-item.active .page-link {
@@ -325,4 +325,9 @@ figure.image figcaption {
 
 .pagination .page-item.disabled .page-link {
   @apply !text-[#ccc];
+}
+
+/* Cards grid */
+.cards-grid {
+  @apply grid grid-cols-3 max-[900px]:grid-cols-2 max-[650px]:grid-cols-1 gap-6;
 }

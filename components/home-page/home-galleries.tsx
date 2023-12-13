@@ -37,7 +37,7 @@ const HomeGalleries: FC<Props> = (): JSX.Element => {
 
   return (
     <div>
-      <div className="flex items-baseline justify-between">
+      <div className="flex items-baseline justify-between max-[500px]:text-center max-[500px]:block">
         <h4 className="font-dancing text-admin_primary font-bold text-[40px] mb-3 max-[500px]:mb-0">
           Thư viện ảnh của tôi
         </h4>
@@ -51,7 +51,7 @@ const HomeGalleries: FC<Props> = (): JSX.Element => {
       </div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid ">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -60,7 +60,7 @@ const HomeGalleries: FC<Props> = (): JSX.Element => {
           <>
             {galleries && galleries?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[650px]:grid-cols-1 gap-6">
+                <div className="cards-grid">
                   {galleries?.map((gallery) => (
                     <GalleryCard
                       key={gallery._id.toString()}
@@ -68,7 +68,7 @@ const HomeGalleries: FC<Props> = (): JSX.Element => {
                     />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 mx-auto">
+                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}

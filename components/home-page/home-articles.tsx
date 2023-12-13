@@ -51,7 +51,7 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
       </div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -60,7 +60,7 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
           <>
             {articles && articles?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[650px]:grid-cols-1 gap-6">
+                <div className="cards-grid">
                   {articles?.map((article) => (
                     <ArticleCard
                       key={article._id.toString()}
@@ -68,7 +68,7 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
                     />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 mx-auto">
+                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}
