@@ -36,7 +36,7 @@
 }
 
 .footer-image-wrapper {
-  @apply w-[400px] aspect-square circle-radius relative -mt-[240px] max-[965px]:my-10 max-[965px]:w-[70%] max-[965px]:mx-auto;
+  @apply w-[400px] aspect-square circle-radius relative -mt-[240px] max-[965px]:my-10 max-[965px]:w-[70%] max-[965px]:mx-auto max-[650px]:w-full;
 }
 
 .footer-image-wrapper::after {
@@ -56,7 +56,7 @@
   @media screen and (max-width: 1250px) {
     display: block;
     right: 0;
-    margin-right: 0;
+    margin-right: 0px !important;
     width: calc(100% + 30px);
     -webkit-mask-position: bottom center;
   }
