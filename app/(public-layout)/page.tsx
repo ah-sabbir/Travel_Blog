@@ -4,6 +4,7 @@ import DestinationsSwiper from "@/components/home-page/destinations-swiper";
 import HomeArticles from "@/components/home-page/home-articles";
 import HomeGalleries from "@/components/home-page/home-galleries";
 import IntroSection from "@/components/home-page/intro-section";
+import MobileIntroSection from "@/components/home-page/mobile-intro-section";
 import SmallInterestCard from "@/components/home-page/small-interest-card";
 import NextImage from "@/components/next-image";
 import SmallItemSwiper from "@/components/smaill-item-swiper";
@@ -52,11 +53,15 @@ export default async function page() {
             alt="Ảnh bìa trang chủ"
             priority
           />
+
+          <div className="hidden max-[1250px]:block absolute top-1/2 -translate-y-1/2 z-10 right-0 left-0">
+            <MobileIntroSection />
+          </div>
         </div>
       </div>
 
       <div className="container">
-        <div className="flex gap-6 mt-[88px]">
+        <div className="flex gap-6 mt-[88px] max-[1250px]:hidden">
           <div className="w-[56%]"></div>
 
           <div className="flex-1">
@@ -66,7 +71,7 @@ export default async function page() {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-8">
+        <div className="mt-16 grid grid-cols-3 max-[955px]:grid-cols-1 max-[955px]:max-w-[550px] max-[955px]:mx-auto max-[745px]:max-w-full gap-8 max-[1250px]:mt-[530px]">
           {articles?.slice(0, 3)?.map((article, index) => (
             <BigArticleCard
               key={article._id.toString()}

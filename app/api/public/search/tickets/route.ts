@@ -26,7 +26,7 @@ export async function GET(req: Request) {
     const tickets = await Ticket.find({
       $text: { $search: query as string },
     })
-      .select("name slug thumbnail description")
+      .select("name slug thumbnail description price")
       .skip(skip)
       .limit(limit)
       .populate([

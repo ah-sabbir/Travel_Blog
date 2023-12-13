@@ -10,6 +10,8 @@ import AboutUsDropdown from "./about-us-dropdown";
 import SearchBar from "./search-bar";
 import SocialItems from "../social-items";
 import { usePathname } from "next/navigation";
+import HamburgerIcon from "@/public/assets/images/icons/hamburger";
+import MenuModal from "./menu-modal";
 
 interface Props {}
 const liClasses =
@@ -18,6 +20,7 @@ const liClasses =
 const Header: FC<Props> = (props): JSX.Element => {
   const [changeBg, setChangeBg] = useState(false);
   const pathName = usePathname();
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   useEffect(() => {
     const scrollHandler: any = () => {
@@ -39,44 +42,58 @@ const Header: FC<Props> = (props): JSX.Element => {
   }, []);
 
   return (
-    <header
-      className={`z-10 container fixed top-0 right-0 left-0 py-3 flex items-center justify-between ${
-        changeBg && "bg-black_text !text-white"
-      } ${pathName === "/" ? "text-white" : "text-black_text"} transition`}
-    >
-      <div className="flex items-center gap-8">
-        <Logo wrapperClasses="w-[150px] h-[30px]" />
+    <>
+      <header
+        className={`z-10 container fixed top-0 right-0 left-0 py-3 flex items-center justify-between max-[1250px]:justify-center ${
+          changeBg && "bg-black_text !text-white"
+        } ${pathName === "/" ? "text-white" : "text-black_text"} transition`}
+      >
+        <div className="flex items-center gap-8">
+          <Logo wrapperClasses="w-[150px] h-[30px]" />
 
-        <ul className="flex items-center gap-2">
-          <div className={liClasses}>
-            Điểm đến <BiSolidChevronDown size={18} />
-            <DestinationsDropdown wrapperClasses="-left-1/3" />
-          </div>
+          <ul className="flex items-center gap-2 max-[1250px]:hidden">
+            <div className={liClasses}>
+              Điểm đến <BiSolidChevronDown size={18} />
+              <DestinationsDropdown wrapperClasses="-left-1/3" />
+            </div>
 
-          <li className={liClasses}>
-            Danh mục <BiSolidChevronDown size={18} />
-            <CategoriesDropdown />
-          </li>
+            <li className={liClasses}>
+              Danh mục <BiSolidChevronDown size={18} />
+              <CategoriesDropdown />
+            </li>
 
-          <div className={liClasses}>
-            Dịch vụ
-            <BiSolidChevronDown size={18} />
-            <ServicesDropdown />
-          </div>
+            <div className={liClasses}>
+              Dịch vụ
+              <BiSolidChevronDown size={18} />
+              <ServicesDropdown />
+            </div>
 
-          <div className={liClasses}>
-            Tham khảo
-            <BiSolidChevronDown size={18} />
-            <AboutUsDropdown />
-          </div>
-        </ul>
-      </div>
+            <div className={liClasses}>
+              Tìm đọc theo
+              <BiSolidChevronDown size={18} />
+              <AboutUsDropdown />
+            </div>
+          </ul>
+        </div>
 
-      <div className="flex items-center gap-2">
-        <SearchBar />
-        <SocialItems />
-      </div>
-    </header>
+        <div className="flex items-center gap-2 max-[1250px]:hidden">
+          <SearchBar />
+          <SocialItems />
+        </div>
+
+        <button
+          onClick={() => setOpenMobileMenu(true)}
+          className="absolute w-10 h-10 top-2 right-4 bg-white circle-radius hidden max-[1250px]:grid place-items-center"
+        >
+          <HamburgerIcon className="w-5 h-5" />
+        </button>
+      </header>
+
+      <MenuModal
+        open={openMobileMenu}
+        onClose={() => setOpenMobileMenu(false)}
+      />
+    </>
   );
 };
 

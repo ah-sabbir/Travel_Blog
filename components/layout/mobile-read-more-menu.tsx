@@ -4,9 +4,9 @@ import { FC } from "react";
 
 interface Props {}
 
-const AboutUsDropdown: FC<Props> = (props): JSX.Element => {
+const MobileReadMoreMenu: FC<Props> = (props): JSX.Element => {
   return (
-    <div className="header-dropdown-card top-[130%] -left-[10%] text-black_text w-[160px]">
+    <ul className="text-black_text">
       <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-t-md">
         <Link href={path.allGalleries}>Thư viện ảnh</Link>
       </li>
@@ -26,8 +26,16 @@ const AboutUsDropdown: FC<Props> = (props): JSX.Element => {
       <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
         <Link href={path.allTickets}>Vé / tour</Link>
       </li>
-    </div>
+
+      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
+        <Link href={path.allBrandTypes}>Phân loại thương hiệu</Link>
+      </li>
+
+      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
+        <Link href={path.allTicketTypes}>Phân loại vé</Link>
+      </li>
+    </ul>
   );
 };
 
-export default AboutUsDropdown;
+export default MobileReadMoreMenu;

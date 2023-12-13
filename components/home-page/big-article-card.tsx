@@ -16,7 +16,7 @@ const BigArticleCard: FC<Props> = ({ article, order }): JSX.Element => {
       href={`${path.article}${article?.slug}`}
       className="block w-full text-black_text relative"
     >
-      {order === 0 && (
+      {(order === 0 || order === 1) && (
         <span className="bg-white block z-0 absolute w-[100px] h-[100px] circle-radius -top-[10px] left-1/2 -translate-x-1/2"></span>
       )}
       <StyledIcon

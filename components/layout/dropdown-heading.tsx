@@ -10,7 +10,7 @@ interface Props {
 const DropdownHeading: FC<Props> = ({ link, title }): JSX.Element => {
   return (
     <Link
-      className="w-full flex items-center justify-between border-b border-light_gray pb-2"
+      className="w-full flex items-center justify-between border-b border-light_gray pb-2 font-bold"
       href={link}
     >
       {title}

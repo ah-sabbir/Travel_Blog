@@ -1,26 +1,16 @@
-"use client";
-
-import { CategoryEntity } from "@/entities/category.entity";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import SubArticleCard from "../sub-article-card";
 import { FaChevronRight } from "react-icons/fa";
-import { getAllCategories } from "@/lib/fetch-category-data";
 import { path } from "@/constant";
 import { categoryMenu } from "@/data/menu";
 
 interface Props {}
 
-const CategoriesDropdown: FC<Props> = (): JSX.Element => {
+const MobileCategoriesMenu: FC<Props> = (): JSX.Element => {
   return (
-    <div className="header-dropdown-card top-[130%] -left-1/3 text-black_text w-[780px]">
-      <Link
-        href=""
-        className="block w-full border-b border-light_gray pb-2 pt-6 px-6"
-      >
-        Danh mục
-      </Link>
-      <div className="grid grid-cols-4 gap-[10px] py-3 px-6">
+    <div className="text-black_text">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-[10px]">
         {categoryMenu?.map((category) => (
           <Link
             key={category.name}
@@ -32,7 +22,7 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-[10px] px-6 pt-2 pb-4">
+      <div className="grid grid-cols-2 max-[750px]:grid-cols-1 gap-[10px] pt-2 pb-4">
         <SubArticleCard
           image="/assets/images/header/article-1.jpg"
           slug=""
@@ -47,7 +37,7 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
 
       <Link
         href={path.allCategories}
-        className="flex items-center justify-center gap-2 py-3 bg-[#DFF0F0] hover:underline rounded-b-md"
+        className="flex items-center justify-center gap-2 py-3 bg-[#DFF0F0] hover:underline rounded-md"
       >
         Tất cả danh mục <FaChevronRight size={12} />
       </Link>
@@ -55,4 +45,4 @@ const CategoriesDropdown: FC<Props> = (): JSX.Element => {
   );
 };
 
-export default CategoriesDropdown;
+export default MobileCategoriesMenu;

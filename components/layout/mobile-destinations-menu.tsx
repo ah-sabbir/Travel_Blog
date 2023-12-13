@@ -5,16 +5,12 @@ import DropdownHeading from "./dropdown-heading";
 import { path } from "@/constant";
 import { destinationMenu } from "@/data/menu";
 
-interface Props {
-  wrapperClasses?: string;
-}
+interface Props {}
 
-const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
+const MobileDestinationsMenu: FC<Props> = (): JSX.Element => {
   return (
-    <div
-      className={`!not-italic !text-base header-dropdown-card top-[130%] text-black_text w-[990px] ${wrapperClasses}`}
-    >
-      <div className="grid grid-cols-2 gap-6 p-6">
+    <div className={`!not-italic !text-base text-black_text`}>
+      <div className="space-y-6">
         {destinationMenu?.map((country) => (
           <div key={country.name}>
             <DropdownHeading
@@ -22,7 +18,7 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
               title={country.name}
             />
 
-            <ul className="grid grid-cols-4 gap-[10px] pt-2">
+            <ul className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-[10px] pt-2">
               {country.regions.map((region) => (
                 <Link
                   key={region.name}
@@ -39,7 +35,7 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
 
       <Link
         href={`${path.allCountries}`}
-        className="flex items-center justify-center gap-2 py-3 bg-[#DFF0F0] hover:underline"
+        className="flex rounded-md mt-6 items-center justify-center gap-2 py-3 bg-[#DFF0F0] hover:underline"
       >
         Tất cả quốc gia <FaChevronRight size={12} />
       </Link>
@@ -47,4 +43,4 @@ const DestinationsDropdown: FC<Props> = ({ wrapperClasses }): JSX.Element => {
   );
 };
 
-export default DestinationsDropdown;
+export default MobileDestinationsMenu;

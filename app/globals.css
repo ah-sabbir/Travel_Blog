@@ -4,7 +4,7 @@
 
 /* Common */
 .container {
-  @apply max-w-7xl px-8 mx-auto;
+  @apply max-w-7xl px-8 mx-auto max-[1250px]:w-full max-[1250px]:max-w-none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -52,6 +52,14 @@
   -webkit-mask-size: 110% 150%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+
+  @media screen and (max-width: 1250px) {
+    display: block;
+    right: 0;
+    margin-right: 0;
+    width: calc(100% + 30px);
+    -webkit-mask-position: bottom center;
+  }
 }
 
 .article-page-cover {
@@ -77,7 +85,7 @@
 .home-page-cover:after,
 .article-page-cover:after,
 .page-cover:after {
-  @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)];
+  @apply bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)] max-[1250px]:bg-[linear-gradient(_180deg,rgba(0,0,0,0.2509803922)_10%,rgba(0,0,0,0.5019607843)_65%_)];
   @apply content-[""] h-full absolute bottom-0 inset-x-0;
 }
 
@@ -253,6 +261,11 @@
 
 .react-responsive-modal-modal {
   @apply !p-0 !m-0;
+}
+
+.headerModal {
+  @apply rounded-md py-0 w-screen h-screen relative max-[790px]:!pt-14;
+  max-width: unset !important;
 }
 
 .customModal {
