@@ -22,7 +22,7 @@ const MobileCategoriesMenu: FC<Props> = (): JSX.Element => {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 max-[750px]:grid-cols-1 gap-[10px] pt-2 pb-4">
+      <div className="grid grid-cols-2 max-[750px]:grid-cols-1 gap-[10px] pt-2 pb-4 mt-4">
         <SubArticleCard
           image="/assets/images/header/article-1.jpg"
           slug=""

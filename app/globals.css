@@ -111,7 +111,7 @@
 
   @apply my-10 aspect-[2.98] relative;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1000px) {
     background: url("/assets/images/home-page/blog-du-lich-home-cover-3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -132,6 +132,13 @@
   background-position: 80% 50%;
 
   @apply my-10 aspect-[2.98] relative;
+
+  @media screen and (max-width: 1000px) {
+    background: url("/assets/images/home-page/blog-du-lich-home-cover-5.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+  }
 }
 
 .sub-page-cover {
