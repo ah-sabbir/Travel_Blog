@@ -43,6 +43,13 @@ const SmallItemSwiper: FC<Props> = ({
         speed={500}
         navigation={false}
         loop={true}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          430: { slidesPerView: 2 },
+          720: { slidesPerView: 3 },
+          900: { slidesPerView: 4 },
+          1250: { slidesPerView: 6 },
+        }}
       >
         {items?.map((item: any) => (
           <SwiperSlide key={item?._id?.toString()}>
@@ -67,7 +74,7 @@ const SmallItemSwiper: FC<Props> = ({
       {isHomepage && (
         <Link
           href={`${path.allRegions}`}
-          className="w-[200px] flex items-center gap-[10px] rounded-[40px] bg-light_gray p-[6px]"
+          className="max-[1050px]:hidden w-[200px] flex items-center gap-[10px] rounded-[40px] bg-light_gray p-[6px]"
         >
           <div className="circle-radius border border-white relative w-11 h-11 grid place-items-center">
             <MdOutlineAdsClick size={18} />

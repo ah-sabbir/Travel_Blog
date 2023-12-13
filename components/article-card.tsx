@@ -31,7 +31,7 @@ const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
         <p className="text-sm mt-3 line-clamp-3 leading-7">
           {article.description}
         </p>
-        <p className="flex items-center gap-4 text-[#838383] text-xs mt-4">
+        <p className="flex items-center flex-wrap gap-4 text-[#838383] text-xs mt-4">
           <span className="flex items-center gap-[3px]">
             <ImClock size={11} className="-mt-[2px]" />
             Ngày đăng: {formatShortDate(article?.updatedAt)}

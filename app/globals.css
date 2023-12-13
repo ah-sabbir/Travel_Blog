@@ -4,7 +4,7 @@
 
 /* Common */
 .container {
-  @apply max-w-7xl px-8 mx-auto max-[1250px]:w-full max-[1250px]:max-w-none;
+  @apply max-w-7xl px-8 max-[1250px]:px-4 mx-auto max-[1250px]:w-full max-[1250px]:max-w-none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -110,6 +110,13 @@
   background-position: 80% 50%;
 
   @apply my-10 aspect-[2.98] relative;
+
+  @media screen and (max-width: 800px) {
+    background: url("/assets/images/home-page/blog-du-lich-home-cover-3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+  }
 }
 
 .home-page-cover-2:after,

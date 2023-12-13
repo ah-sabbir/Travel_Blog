@@ -37,12 +37,15 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
 
   return (
     <div>
-      <div className="flex items-baseline justify-between">
-        <h4 className="font-dancing text-admin_primary font-bold text-[40px] mb-3">
+      <div className="flex items-baseline justify-between max-[500px]:text-center max-[500px]:block">
+        <h4 className="font-dancing text-admin_primary font-bold text-[40px] mb-3 max-[500px]:mb-0">
           Trải nghiệm của tôi
         </h4>
 
-        <Link href={`${path.allArticles}`} className="font-bold underline">
+        <Link
+          href={`${path.allArticles}`}
+          className="font-bold underline max-[500px]:mb-6 max-[500px]:block"
+        >
           Xem tất cả
         </Link>
       </div>
@@ -57,7 +60,7 @@ const HomeArticles: FC<Props> = (): JSX.Element => {
           <>
             {articles && articles?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[650px]:grid-cols-1 gap-6">
                   {articles?.map((article) => (
                     <ArticleCard
                       key={article._id.toString()}

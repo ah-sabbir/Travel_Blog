@@ -14,7 +14,7 @@ const MobileIntroSection: FC<Props> = (props): JSX.Element => {
   return (
     <>
       <div>
-        <div className="w-[80%] mx-auto italic text-lg max-[770px]:text-[15px] max-[480px]:text-sm leading-9 text-white text-center">
+        <div className="w-[80%] mx-auto italic text-lg max-[770px]:text-[15px] max-[480px]:text-[14px] leading-9 text-white text-center">
           {parse(intro)}
 
           <div

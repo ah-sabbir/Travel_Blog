@@ -21,6 +21,14 @@ const DestinationsSwiper: FC<Props> = ({ destinations }): JSX.Element => {
       slidesPerGroup={1}
       navigation={false}
       loop={true}
+      breakpoints={{
+        0: {
+          slidesPerView: 1.5,
+        },
+        660: {
+          slidesPerView: 2.5,
+        },
+      }}
     >
       {destinations?.map((destination) => (
         <SwiperSlide key={destination._id.toString()}>

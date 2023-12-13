@@ -27,7 +27,7 @@ const SmallArticleCard: FC<Props> = ({
     >
       <div
         className={`relative ${
-          isMedium ? "w-[126px]" : "w-[90px]"
+          isMedium ? "w-[126px] max-[700px]:w-[90px]" : "w-[90px]"
         } aspect-[1.5] overflow-hidden rounded-md`}
       >
         <NextImage
@@ -39,7 +39,7 @@ const SmallArticleCard: FC<Props> = ({
 
       <h4
         className={`flex-1 font-black line-clamp-2 tracking-tight text-black_text ${
-          isMedium ? "text-xl" : "text-base"
+          isMedium ? "text-xl max-[700px]:text-base" : "text-base"
         }`}
       >
         {title}

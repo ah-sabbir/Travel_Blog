@@ -38,11 +38,14 @@ const HomeGalleries: FC<Props> = (): JSX.Element => {
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <h4 className="font-dancing text-admin_primary font-bold text-[40px] mb-3">
+        <h4 className="font-dancing text-admin_primary font-bold text-[40px] mb-3 max-[500px]:mb-0">
           Thư viện ảnh của tôi
         </h4>
 
-        <Link href={`${path.allGalleries}`} className="font-bold underline">
+        <Link
+          href={`${path.allGalleries}`}
+          className="font-bold underline max-[500px]:mb-6 max-[500px]:block"
+        >
           Xem tất cả
         </Link>
       </div>
@@ -57,7 +60,7 @@ const HomeGalleries: FC<Props> = (): JSX.Element => {
           <>
             {galleries && galleries?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[650px]:grid-cols-1 gap-6">
                   {galleries?.map((gallery) => (
                     <GalleryCard
                       key={gallery._id.toString()}

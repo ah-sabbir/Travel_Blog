@@ -87,11 +87,15 @@ export default async function page() {
       </div>
 
       <div className="home-page-cover-2">
-        <div className="container flex items-center justify-between gap-24 py-[70px] relative z-[1]">
+        <div className="container max-[1000px]:block flex items-center justify-between gap-24 py-[70px] relative z-[1]">
           <div className="max-w-[550px] text-white flex flex-col justify-center">
-            <p className="font-extrabold text-2xl">Không phải ai cũng biết</p>
-            <h3 className="text-6xl font-black my-4">Mẹo nhỏ du lịch</h3>
-            <p className="font-normal text-sm max-w-[350px] leading-6">
+            <p className="font-extrabold text-2xl max-[550px]:text-xl">
+              Không phải ai cũng biết
+            </p>
+            <h3 className="text-6xl font-black my-4 max-[550px]:text-5xl">
+              Mẹo nhỏ du lịch
+            </h3>
+            <p className="font-normal text-sm max-w-[350px] max-[1000px]:max-w-full leading-6">
               Có rất nhiều mẹo nhỏ để giúp bạn có được một chuyến đi đáng nhớ và
               thú vị. Tham khảo ngay để có thêm kinh nghiệm cho chuyến du lịch
               giá rẻ!
@@ -102,7 +106,7 @@ export default async function page() {
               to={`${path.category}meo-vat`}
             />
           </div>
-          <div className="max-w-[450px] rounded-md p-2 bg-white">
+          <div className="max-w-[450px] max-[1000px]:max-w-full max-[1000px]:mt-6 rounded-md p-2 bg-white">
             {tipsArticles?.map((article, index) => (
               <SmallArticleCard
                 image={article?.thumbnail?.url}
@@ -116,8 +120,8 @@ export default async function page() {
         </div>
       </div>
 
-      <div className="flex gap-4 my-16">
-        <div className="flex-1">
+      <div className="flex max-[1250px]:block gap-4 my-16">
+        <div className="w-[40%] max-[1250px]:w-[95%] max-[1250px]:mx-auto">
           {articles?.slice(3)?.map((article, index) => (
             <SmallArticleCard
               image={article?.thumbnail?.url}
@@ -130,7 +134,7 @@ export default async function page() {
           ))}
         </div>
 
-        <div className="w-[60%]">
+        <div className="flex-1 max-w-[60%] max-[1250px]:w-full max-[1250px]:max-w-full max-[1250px]:mt-6">
           <DestinationsSwiper
             destinations={
               destinations as GetDestinationsForHomepage["destinations"]
@@ -140,10 +144,14 @@ export default async function page() {
       </div>
 
       <div className="home-page-cover-3">
-        <div className="container flex items-center gap-24 py-[70px] relative z-[1]">
-          <div className="max-w-[550px] text-white flex flex-col justify-center">
-            <p className="font-extrabold text-2xl">Chuyên mục</p>
-            <h3 className="text-6xl font-black my-4">Đọc theo sở thích</h3>
+        <div className="container flex max-[1000px]:block items-center gap-24 py-[70px] relative z-[1]">
+          <div className="max-w-[550px] max-[1000px]:max-w-full text-white flex flex-col justify-center">
+            <p className="font-extrabold text-2xl max-[550px]:text-xl">
+              Chuyên mục
+            </p>
+            <h3 className="text-6xl font-black my-4 max-[550px]:text-5xl">
+              Đọc theo sở thích
+            </h3>
             <p className="font-normal text-sm max-w-[350px] leading-6">
               Rất nhiều lọai địa điểm độc đáo đang chờ bạn khám phá đấy. Đón đọc
               ngay để xem những nơi tôi từng đi qua có gì hay nào!
@@ -154,7 +162,7 @@ export default async function page() {
               to={path.allInterests}
             />
           </div>
-          <div className="flex-1 grid grid-cols-2 gap-4">
+          <div className="flex-1 grid grid-cols-2 max-[550px]:grid-cols-1 gap-4 max-[1000px]:mt-6">
             <div className="rounded-md p-2 bg-white">
               {interests?.slice(0, 4)?.map((interest, index) => (
                 <SmallInterestCard
