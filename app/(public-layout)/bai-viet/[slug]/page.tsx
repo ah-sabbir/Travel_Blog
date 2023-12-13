@@ -33,7 +33,7 @@ const Page: NextPage<Props> = async ({ params }) => {
         </div>
       </div>
       <div className="container flex max-[1250px]:block">
-        <div className="mt-20 w-[45%] max-[1250px]:w-full max-[1250px]:mt-10">
+        <div className="mt-20 w-[43%] max-[1250px]:w-full max-[1250px]:mt-10">
           <div className="flex items-center gap-2">
             <BtnWithIcon
               icon={FaAngleLeft}
@@ -137,7 +137,7 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
 
       <div className="container mt-16">
-        <p className="font-bold text-2xl text-admin_primary">
+        <p className="font-bold text-2xl text-admin_primary mb-3">
           Bài viết cùng danh mục &quot;{article?.category.name}&quot;
         </p>
         <RelatedArticles
@@ -156,10 +156,10 @@ const Page: NextPage<Props> = async ({ params }) => {
           {formatLongDate(article?.updatedAt || "")}
         </p>
 
-        <div className="flex items-center gap-2 mt-3">
-          <p className="italic my-0">Các chủ đề liên quan:</p>
+        <div className="flex items-center gap-2 mt-3 max-[700px]:block">
+          <p className="italic my-0 max-[700px]:mb-2">Các chủ đề liên quan:</p>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             {article?.country?.name && (
               <BtnWithIcon
                 to={`${path.country}${article.country.slug}`}

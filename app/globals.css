@@ -79,23 +79,27 @@
 }
 
 .page-cover {
-  @apply h-[570px] absolute w-[calc(100vw_-_(45%_+_40px)_-_(100vw_-_100%)_/_2)] z-0 ml-6 left-[46%] top-0;
+  @apply h-[570px] absolute max-[1400px]:w-[calc(100vw_-_(45%_+_40px)_-_(100vw_-_100%)_/_2)] w-[800px] z-0 ml-6 max-[1250px]:ml-0 left-[46%] top-0;
   mask-position: bottom left;
   -webkit-mask-position: bottom left;
-  mask-size: 115% 120%;
-  -webkit-mask-size: 115% 120%;
+  mask-size: 100% 115%;
+  -webkit-mask-size: 100% 115%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 
+  @media screen and (max-width: 1400px) {
+    mask-size: 115% 120%;
+    -webkit-mask-size: 115% 120%;
+  }
+
   @media screen and (max-width: 1250px) {
     position: static;
-    width: calc(100% + 30px);
+    width: 100%;
     mask-position: bottom center;
     -webkit-mask-position: bottom center;
     mask-size: 200% 250%;
     -webkit-mask-size: 200% 250%;
     left: 0;
-    margin-left: 0px !important;
   }
 }
 
