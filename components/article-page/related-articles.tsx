@@ -36,7 +36,7 @@ const RelatedArticles: FC<Props> = ({
   }, []);
 
   return (
-    <div className="mt-5 grid grid-cols-3 gap-6">
+    <div className="cards-grid">
       {isLoading ? (
         <>
           {[...Array(3).keys()].map((item) => (

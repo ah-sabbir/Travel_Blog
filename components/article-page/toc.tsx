@@ -110,9 +110,7 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
                   });
                 }}
               >
-                {heading.innerHTML.length > 30
-                  ? heading.innerHTML.substring(0, 30) + "..."
-                  : heading.innerHTML}
+                {heading.innerHTML}
               </li>
             );
           })}

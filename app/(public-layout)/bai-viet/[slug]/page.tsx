@@ -32,8 +32,8 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container flex">
-        <div className="mt-20 w-[45%]">
+      <div className="container flex max-[1250px]:block">
+        <div className="mt-20 w-[45%] max-[1250px]:w-full max-[1250px]:mt-10">
           <div className="flex items-center gap-2">
             <BtnWithIcon
               icon={FaAngleLeft}
@@ -114,11 +114,11 @@ const Page: NextPage<Props> = async ({ params }) => {
           <p className="leading-8 text-justify">{article?.description}</p>
         </div>
 
-        <div className="h-[550px]"></div>
+        <div className="h-[550px] max-[1250px]:hidden"></div>
       </div>
 
-      <div className="container grid grid-cols-1 lg:grid-cols-[0.9fr,0.4fr] gap-10 mt-12">
-        <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
+      <div className="container flex gap-10 mt-12 max-[1000px]:flex-col-reverse">
+        <div className="content w-[68%] max-[1000px]:w-full prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
           <ArticleContent content={article?.content} />
 
           <div className="mt-10">
@@ -131,7 +131,9 @@ const Page: NextPage<Props> = async ({ params }) => {
             />
           </div>
         </div>
-        <TOC selector=".content" />
+        <div className="flex-1 max-[1000px]:w-full">
+          <TOC selector=".content" />
+        </div>
       </div>
 
       <div className="container mt-16">
