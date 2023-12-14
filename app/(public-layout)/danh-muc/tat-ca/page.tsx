@@ -10,11 +10,9 @@ const Page: NextPage<Props> = async () => {
   return (
     <>
       <div className="sub-page-cover relative">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
-          <h1 className="font-dancing font-bold text-admin_primary mb-2 text-[60px] text-center">
-            Tất cả danh mục
-          </h1>
-          <p className="text-center text-lg font-semibold flex items-center gap-3 justify-center">
+        <div className="text-center pt-28 mx-4">
+          <h1 className="sub-page-heading">Tất cả danh mục</h1>
+          <p className="sub-page-sub-heading">
             Từ ngày 03/11/2023 đến {formatShortDate(new Date().toDateString())}
           </p>
         </div>

@@ -37,7 +37,7 @@ const AllCategoriesTabs: FC<Props> = ({ categories }): JSX.Element => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%" }} className="container">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}

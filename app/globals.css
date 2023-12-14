@@ -167,6 +167,10 @@
   @apply font-dancing font-bold text-admin_primary text-[60px] mb-3 max-[1130px]:text-[45px] max-[550px]:text-[38px];
 }
 
+.sub-page-sub-heading {
+  @apply text-center text-xl font-semibold flex items-center gap-3 justify-center max-[450px]:text-base;
+}
+
 .sub-page-cover {
   background: url("/assets/images/interest-category-page/cover-image.jpg");
   background-size: cover;
