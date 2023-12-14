@@ -49,7 +49,7 @@ const DestinationContent: FC<Props> = ({ destination }): JSX.Element => {
           </p>
         </div>
 
-        <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
+        <div className="content page-content !w-full">
           <ArticleContent content={destination?.content} />
         </div>
       </div>

@@ -9,7 +9,7 @@ const Page: NextPage<Props> = async () => {
   const categories = await getAllCategories("name");
   return (
     <>
-      <div className="sub-page-cover relative">
+      <div className="sub-page-cover">
         <div className="pt-28 mx-4">
           <h1 className="sub-page-heading">Tất cả danh mục</h1>
           <p className="sub-page-sub-heading">

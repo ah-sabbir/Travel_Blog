@@ -25,9 +25,7 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
       <div className="container flex">
         <div className="w-[43%] mt-24 max-[1250px]:w-full max-[1250px]:mt-10">
-          <h1 className="font-dancing font-bold text-[70px] max-[700px]:text-[50px] text-admin_primary">
-            Du lịch {country?.name}
-          </h1>
+          <h1 className="sub-page-heading-type-2">Du lịch {country?.name}</h1>
           <p className="leading-8 text-justify">{country?.description}</p>
         </div>
 

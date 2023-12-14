@@ -24,7 +24,7 @@ const DestinationImages: FC<Props> = ({ images }): JSX.Element => {
     <>
       {images && images.length > 0 ? (
         <>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="cards-grid">
             {images.map((image, index) => (
               <div
                 key={index}
