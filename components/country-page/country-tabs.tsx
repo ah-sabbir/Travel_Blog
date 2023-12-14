@@ -51,9 +51,11 @@ export default function CountryTabs({ country }: Props) {
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="primary tabs example"
             indicatorColor="secondary"
+            variant="scrollable"
             textColor="secondary"
+            scrollButtons="auto"
+            aria-label="primary scrollable auto tabs example"
           >
             <Tab
               label={`Tổng quan về đất nước ${country?.name}`}
@@ -80,9 +82,11 @@ export default function CountryTabs({ country }: Props) {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <div className="content grid grid-cols-1 lg:grid-cols-[1fr,0.35fr] gap-10">
+          <div className="content flex gap-10 max-[1000px]:flex-col-reverse">
             <CountryContent content={country?.content} />
-            <TOC selector=".content" />
+            <div className="flex-1">
+              <TOC selector=".content" />
+            </div>
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>

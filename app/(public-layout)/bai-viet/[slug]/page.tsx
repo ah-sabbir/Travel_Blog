@@ -118,7 +118,7 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
 
       <div className="container flex gap-10 mt-12 max-[1000px]:flex-col-reverse">
-        <div className="content w-[68%] max-[1000px]:w-full prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
+        <div className="content page-content">
           <ArticleContent content={article?.content} />
 
           <div className="mt-10">

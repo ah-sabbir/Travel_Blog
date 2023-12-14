@@ -24,6 +24,7 @@ const config: Config = {
       },
       transitionProperty: {
         width: "width",
+        max_height: "maxHeight",
       },
       typography: {
         DEFAULT: {

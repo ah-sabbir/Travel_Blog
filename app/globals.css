@@ -43,6 +43,10 @@
   @apply circle-radius bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)] content-[''] absolute inset-0 z-0;
 }
 
+.page-content {
+  @apply w-[70%] max-[1000px]:w-full prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify;
+}
+
 /* Background for cover */
 .home-page-cover {
   @apply h-[550px] absolute max-[1720px]:w-[calc(100vw_-_(43%_+_40px)_-_(100vw_-_100%)_/_2)] w-[800px] z-0 mr-10 left-[initial] right-[46%] top-0;
@@ -389,4 +393,8 @@ figure.image figcaption {
 /* Cards grid */
 .cards-grid {
   @apply grid grid-cols-3 max-[900px]:grid-cols-2 max-[650px]:grid-cols-1 gap-6;
+}
+
+.destination-cards-grid {
+  @apply grid grid-cols-4 gap-4 max-[950px]:grid-cols-3 max-[700px]:grid-cols-2 max-[500px]:grid-cols-1;
 }

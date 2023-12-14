@@ -24,14 +24,14 @@ const Page: NextPage<Props> = async ({ params }) => {
         </div>
       </div>
       <div className="container flex">
-        <div className="w-[45%] mt-24">
-          <h1 className="font-dancing font-bold text-[70px] text-admin_primary">
+        <div className="w-[43%] mt-24 max-[1250px]:w-full max-[1250px]:mt-10">
+          <h1 className="font-dancing font-bold text-[70px] max-[700px]:text-[50px] text-admin_primary">
             Du lịch {country?.name}
           </h1>
           <p className="leading-8 text-justify">{country?.description}</p>
         </div>
 
-        <div className="h-[550px]"></div>
+        <div className="h-[550px] max-[1250px]:hidden"></div>
       </div>
 
       <div className="mt-12 container">

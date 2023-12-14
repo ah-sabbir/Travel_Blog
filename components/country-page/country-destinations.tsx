@@ -41,7 +41,7 @@ const CountryDestinations: FC<Props> = ({ countryId }): JSX.Element => {
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-4 gap-4">
+          <div className="destination-cards-grid">
             {[...Array(8).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -50,7 +50,7 @@ const CountryDestinations: FC<Props> = ({ countryId }): JSX.Element => {
           <>
             {destinations && destinations?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="destination-cards-grid">
                   {destinations?.map((destination) => (
                     <DestinationCard
                       key={destination._id.toString()}

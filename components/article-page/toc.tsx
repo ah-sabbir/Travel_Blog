@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useEffect, useRef, useState } from "react";
+import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import { MdOutlineFormatListNumbered } from "react-icons/md";
 
 interface Props {
@@ -12,6 +13,8 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
   const [currentHeadingID, setCurrentHeadingID] = useState<
     string | undefined
   >();
+
+  const [expand, setExpand] = useState(false);
 
   const listWrapperRef = useRef<HTMLUListElement>(null);
 
@@ -67,8 +70,12 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
   }, [currentHeadingID]);
 
   return (
-    <aside>
-      <nav className="sticky block top-28 max-h-[490px] overflow-y-scroll border-l border-[#3c3c431f] no-scrollbar">
+    <aside className="sticky block top-24">
+      <nav
+        className={`${
+          expand ? "max-h-fit" : "max-h-[350px]"
+        } border-l border-[#3c3c431f] no-scrollbar transition-max_height duration-500 overflow-y-scroll`}
+      >
         <ul ref={listWrapperRef}>
           <div className="flex items-center gap-2 pl-10 tracking-widest text-lg text-gray-700 uppercase mb-4 font-extrabold">
             <MdOutlineFormatListNumbered className="w-5 h-w-5" /> Mục Lục
@@ -116,6 +123,23 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
           })}
         </ul>
       </nav>
+
+      <button
+        onClick={() => setExpand(!expand)}
+        className="ml-10 text-xs mt-8 block border rounded-md px-2 py-1 text-gray-500"
+      >
+        {expand ? (
+          <span className="flex items-center gap-1">
+            Thu gọn
+            <IoChevronUpOutline />
+          </span>
+        ) : (
+          <span className="flex items-center gap-1">
+            Mở rộng
+            <IoChevronDownOutline />
+          </span>
+        )}
+      </button>
     </aside>
   );
 };

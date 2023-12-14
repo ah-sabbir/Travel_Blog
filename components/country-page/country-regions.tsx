@@ -33,7 +33,7 @@ const CountryRegions: FC<Props> = ({ countryId, regionId }): JSX.Element => {
   return (
     <>
       {isLoading ? (
-        <div className="grid grid-cols-8 gap-4">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4">
           {[...Array(16).keys()].map((item) => (
             <Skeleton className="w-full h-[40px] !rounded-[40px]" key={item} />
           ))}
