@@ -12,22 +12,16 @@ const Page: NextPage<Props> = async ({ params }) => {
   return (
     <>
       <div className="sub-page-cover relative">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
-          <h1 className="font-dancing font-bold text-admin_primary text-[60px] mb-3">
-            Danh mục {category?.name}
-          </h1>
-          <p className="text-center text-xl font-semibold flex items-center gap-3 justify-center">
+        <div className="text-center pt-28 mx-4">
+          <h1 className="sub-page-heading">Danh mục {category?.name}</h1>
+          <p className="text-center text-xl font-semibold flex items-center gap-3 justify-center max-[450px]:text-base">
             <span>{category?.articles.length} bài viết</span>|
             <span>{category?.galleries.length} thư viện ảnh</span>
           </p>
         </div>
       </div>
 
-      <CategoryTabs
-        articles={category?.articles}
-        galleries={category?.galleries}
-        categoryId={category?._id.toString()}
-      />
+      <CategoryTabs categoryId={category?._id.toString()} />
     </>
   );
 };

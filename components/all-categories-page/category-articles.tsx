@@ -37,7 +37,7 @@ const CategoryArticles: FC<Props> = ({ categoryId }): JSX.Element => {
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -46,7 +46,7 @@ const CategoryArticles: FC<Props> = ({ categoryId }): JSX.Element => {
           <>
             {articles && articles?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="cards-grid">
                   {articles?.map((article) => (
                     <ArticleCard
                       key={article._id.toString()}
@@ -54,7 +54,7 @@ const CategoryArticles: FC<Props> = ({ categoryId }): JSX.Element => {
                     />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
+                <div className="pagination-wrapper">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}

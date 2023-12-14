@@ -79,7 +79,7 @@
 }
 
 .page-cover {
-  @apply h-[570px] absolute max-[1400px]:w-[calc(100vw_-_(45%_+_40px)_-_(100vw_-_100%)_/_2)] w-[800px] z-0 ml-6 max-[1250px]:ml-0 left-[46%] top-0;
+  @apply h-[570px] max-[700px]:h-[500px] absolute max-[1500px]:w-[calc(100vw_-_(45%_+_40px)_-_(100vw_-_100%)_/_2)] w-[800px] z-0 ml-6 max-[1250px]:ml-0 left-[48%] top-0;
   mask-position: bottom left;
   -webkit-mask-position: bottom left;
   mask-size: 100% 115%;
@@ -87,13 +87,14 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1500px) {
     mask-size: 115% 120%;
     -webkit-mask-size: 115% 120%;
+    left: 46%;
   }
 
   @media screen and (max-width: 1250px) {
-    position: static;
+    position: relative;
     width: 100%;
     mask-position: bottom center;
     -webkit-mask-position: bottom center;
@@ -162,12 +163,34 @@
   }
 }
 
+.sub-page-heading {
+  @apply font-dancing font-bold text-admin_primary text-[60px] mb-3 max-[1130px]:text-[45px] max-[550px]:text-[38px];
+}
+
 .sub-page-cover {
   background: url("/assets/images/interest-category-page/cover-image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 0;
-  @apply w-full aspect-[3];
+  background-position: 50% 20%;
+  @apply w-full h-[422px];
+}
+
+@media screen and (max-width: 1450px) {
+  .sub-page-cover {
+    background-position: 50% 0%;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .sub-page-cover {
+    background-size: 100% 150%;
+  }
+}
+
+@media screen and (max-width: 662px) {
+  .sub-page-cover {
+    background-size: 250% 175%;
+  }
 }
 
 /* Admin Common */
@@ -343,6 +366,10 @@ figure.image figcaption {
 
 /* Pagination */
 /* Paginagation */
+.pagination-wrapper {
+  @apply w-fit pagination pt-12 max-[500px]:pt-8 mx-auto;
+}
+
 .pagination .page-link {
   @apply !font-arima !rounded-lg grid !text-[#333] font-bold text-sm !border-transparent !py-[10px] max-[500px]:!py-2 !px-4 shadow-md max-[500px]:!text-xs border;
 }

@@ -56,7 +56,7 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
                     />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
+                <div className="pagination-wrapper">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}

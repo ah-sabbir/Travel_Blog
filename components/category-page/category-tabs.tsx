@@ -7,10 +7,10 @@ import { ArticleEntity } from "@/entities/article.entity";
 import { GalleryEntity } from "@/entities/gallery.entity";
 import ArticleCard from "../article-card";
 import OtherCategories from "./other-categories";
+import CategoryArticles from "../all-categories-page/category-articles";
+import CategoryGalleries from "./category-galleries";
 
 interface Props {
-  articles: ArticleEntity[] | undefined;
-  galleries: GalleryEntity[] | undefined;
   categoryId: string | undefined;
 }
 
@@ -32,11 +32,7 @@ function a11yProps(index: number) {
   };
 }
 
-const CategoryTabs: FC<Props> = ({
-  articles,
-  galleries,
-  categoryId,
-}): JSX.Element => {
+const CategoryTabs: FC<Props> = ({ categoryId }): JSX.Element => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -45,15 +41,16 @@ const CategoryTabs: FC<Props> = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%" }} className="container">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="primary tabs example"
             indicatorColor="secondary"
+            variant="scrollable"
             textColor="secondary"
-            centered
+            scrollButtons="auto"
+            aria-label="primary scrollable auto tabs example"
           >
             <Tab label="Bài viết" {...a11yProps(0)} className="tab-heading " />
             <Tab
@@ -69,40 +66,10 @@ const CategoryTabs: FC<Props> = ({
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          {
-            <>
-              {articles && articles?.length > 0 ? (
-                <div className="grid grid-cols-3 container gap-6">
-                  {articles?.map((article) => (
-                    <ArticleCard
-                      key={article._id.toString()}
-                      article={article}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <p>Chưa có bài viết nào</p>
-              )}
-            </>
-          }
+          <CategoryArticles categoryId={categoryId} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          {/* {
-            <>
-              {galleries && galleries?.length > 0 ? (
-                <div className="grid grid-cols-3 container gap-6">
-                  {galleries?.map((article) => (
-                    <GalleryCard
-                      key={article._id.toString()}
-                      gallery={gallery}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <p>Chưa có bài viết nào</p>
-              )}
-            </>
-          } */}
+          <CategoryGalleries categoryId={categoryId} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
           <OtherCategories currentId={categoryId} />

@@ -60,7 +60,7 @@ const SameTypeTickets: FC<Props> = ({
                     <TicketCard key={ticket._id.toString()} ticket={ticket} />
                   ))}
                 </div>
-                <div className="w-fit pagination pt-12 max-[500px]:pt-8 mx-auto">
+                <div className="pagination-wrapper">
                   <ResponsivePagination
                     current={currentPage}
                     total={totalPages}

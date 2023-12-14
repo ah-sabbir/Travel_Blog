@@ -1,56 +1,56 @@
-import { ArticleEntity } from "@/entities/article.entity";
-import { getArticlesOfInterest } from "@/lib/fetch-article-data";
 import { FC, useEffect, useState } from "react";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import ArticleCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
+import { GalleryEntity } from "@/entities/gallery.entity";
+import GalleryCard from "../gallery-card";
+import { getSameCategoryGalleries } from "@/lib/fetch-gallery-data";
 
 interface Props {
-  interestId: string | undefined;
+  categoryId: string | undefined;
 }
 
-const InterestArticles: FC<Props> = ({ interestId }): JSX.Element => {
-  const [articles, setArticles] = useState<ArticleEntity[]>();
+const CategoryGalleries: FC<Props> = ({ categoryId }): JSX.Element => {
+  const [galleries, setGalleries] = useState<GalleryEntity[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
 
   const fetchResults = async () => {
-    if (!interestId) {
+    if (!categoryId) {
       return;
     }
 
     setIsLoading(true);
-    const data = await getArticlesOfInterest(interestId, currentPage, 6);
-    setArticles(data?.articles || []);
+    const data = await getSameCategoryGalleries(categoryId, currentPage, 6);
+    setGalleries(data?.galleries || []);
     setTotalPages(data?.totalPages || 1);
     setIsLoading(false);
   };
 
   useEffect(() => {
     fetchResults();
-  }, [interestId, currentPage]);
+  }, [categoryId, currentPage]);
 
   return (
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
           </div>
         ) : (
           <>
-            {articles && articles?.length > 0 ? (
+            {galleries && galleries?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
-                  {articles?.map((article) => (
-                    <ArticleCard
-                      key={article._id.toString()}
-                      article={article}
+                <div className="cards-grid">
+                  {galleries?.map((gallery) => (
+                    <GalleryCard
+                      key={gallery._id.toString()}
+                      gallery={gallery}
                     />
                   ))}
                 </div>
@@ -65,7 +65,7 @@ const InterestArticles: FC<Props> = ({ interestId }): JSX.Element => {
                 </div>
               </div>
             ) : (
-              <p>Không tìm thấy bài viết nào</p>
+              <p>Không tìm thấy thư viện ảnh nào</p>
             )}
           </>
         )}
@@ -74,4 +74,4 @@ const InterestArticles: FC<Props> = ({ interestId }): JSX.Element => {
   );
 };
 
-export default InterestArticles;
+export default CategoryGalleries;

@@ -71,7 +71,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             </span>
           </p>
 
-          <div className="flex items-center gap-4 text-sm flex-wrap">
+          <div className="flex items-center gap-x-4 gap-y-2 text-sm flex-wrap">
             <span>
               Bởi{" "}
               <Link
