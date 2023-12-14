@@ -175,7 +175,7 @@ export default async function page() {
               ))}
             </div>
 
-            <div className="rounded-md p-2 bg-white">
+            <div className="rounded-md p-2 bg-white max-[550px]:hidden">
               {interests?.slice(4)?.map((interest, index) => (
                 <SmallInterestCard
                   image={interest?.thumbnail?.url}
