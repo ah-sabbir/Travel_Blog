@@ -126,7 +126,7 @@ const TOC: FC<Props> = ({ selector }): JSX.Element => {
 
       <button
         onClick={() => setExpand(!expand)}
-        className="ml-10 text-xs mt-8 block border rounded-md px-2 py-1 text-gray-500"
+        className="ml-10 text-xs mt-6 block border rounded-md px-2 py-1 text-gray-500"
       >
         {expand ? (
           <span className="flex items-center gap-1">

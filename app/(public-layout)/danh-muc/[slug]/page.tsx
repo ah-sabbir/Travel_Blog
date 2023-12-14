@@ -12,7 +12,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   return (
     <>
       <div className="sub-page-cover relative">
-        <div className="text-center pt-28 mx-4">
+        <div className="pt-28 mx-4">
           <h1 className="sub-page-heading">Danh mục {category?.name}</h1>
           <p className="sub-page-sub-heading">
             <span>{category?.articles.length} bài viết</span>|

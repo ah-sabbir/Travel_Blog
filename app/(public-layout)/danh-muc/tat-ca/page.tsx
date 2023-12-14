@@ -10,7 +10,7 @@ const Page: NextPage<Props> = async () => {
   return (
     <>
       <div className="sub-page-cover relative">
-        <div className="text-center pt-28 mx-4">
+        <div className="pt-28 mx-4">
           <h1 className="sub-page-heading">Tất cả danh mục</h1>
           <p className="sub-page-sub-heading">
             Từ ngày 03/11/2023 đến {formatShortDate(new Date().toDateString())}

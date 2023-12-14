@@ -168,7 +168,7 @@
 }
 
 .sub-page-heading {
-  @apply font-dancing font-bold text-admin_primary text-[60px] mb-3 max-[1130px]:text-[45px] max-[550px]:text-[38px];
+  @apply text-center font-dancing font-bold text-admin_primary text-[60px] mb-3 max-[1130px]:text-[45px] max-[550px]:text-[38px];
 }
 
 .sub-page-sub-heading {

@@ -84,7 +84,7 @@ export default function CountryTabs({ country }: Props) {
         <CustomTabPanel value={value} index={0}>
           <div className="content flex gap-10 max-[1000px]:flex-col-reverse">
             <CountryContent content={country?.content} />
-            <div className="flex-1">
+            <div className="flex-1 mt-4">
               <TOC selector=".content" />
             </div>
           </div>
