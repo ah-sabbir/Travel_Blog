@@ -20,8 +20,8 @@ const Page: NextPage<Props> = async ({ params }) => {
   return (
     <>
       <div className="container mt-28">
-        <div className="flex gap-16">
-          <div className="w-1/2">
+        <div className="flex gap-16 max-[890px]:gap-8 max-[750px]:block">
+          <div className="w-1/2 max-[750px]:w-full">
             <div className="flex items-center gap-2">
               <BtnWithIcon
                 icon={FaAngleLeft}
@@ -46,7 +46,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <p className="leading-8 text-justify">{brand?.description}</p>
           </div>
 
-          <div className="flex-1 border shadow-md rounded-md h-fit">
+          <div className="flex-1 border shadow-md rounded-md h-fit max-[750px]:mt-4">
             <div className="w-full relative aspect-video rounded-t-md">
               <NextImage
                 src={brand?.logo.url || ""}
@@ -57,7 +57,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             </div>
 
             <div className="px-4 py-2">
-              <div className="flex items-center justify-between pt-2 pb-4 border-b">
+              <div className="flex items-center justify-between pt-2 pb-4 border-b flex-wrap gap-2">
                 <span className="flex items-center gap-1">
                   <BiSolidDashboard />
                   Loại thương hiệu :{" "}
@@ -70,8 +70,8 @@ const Page: NextPage<Props> = async ({ params }) => {
                 </Link>
               </div>
 
-              <div className="flex items-center justify-between py-4 border-b">
-                <span className="flex items-center gap-1 flex-1">
+              <div className="flex items-center justify-between py-4 border-b flex-wrap gap-2">
+                <span className="flex items-center gap-1">
                   <GiEarthAmerica />
                   Website :{" "}
                 </span>
@@ -79,7 +79,7 @@ const Page: NextPage<Props> = async ({ params }) => {
                   href={brand?.affLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-admin_primary underline ml-auto w-[70%] line-clamp-1 flex justify-end"
+                  className="font-semibold text-admin_primary underline line-clamp-1"
                 >
                   {brand?.link}
                 </a>

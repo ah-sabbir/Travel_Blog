@@ -6,7 +6,7 @@ interface Props {
 }
 
 const BrandContent: FC<Props> = ({ content }): JSX.Element => {
-  return <div className="prose">{parse(content as string)}</div>;
+  return <div className="prose page-content">{parse(content as string)}</div>;
 };
 
 export default BrandContent;

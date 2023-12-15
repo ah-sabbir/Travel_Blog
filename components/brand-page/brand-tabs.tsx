@@ -6,7 +6,6 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import CustomTabPanel from "../custom-tab-panel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import TicketContent from "./brand-content";
 import BrandContent from "./brand-content";
 import { BrandEntity } from "@/entities/brand.entity";
 import TOC from "../article-page/toc";
@@ -49,9 +48,11 @@ export default function BrandTabs({ brand }: Props) {
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="primary tabs example"
             indicatorColor="secondary"
+            variant="scrollable"
             textColor="secondary"
+            scrollButtons="auto"
+            aria-label="primary scrollable auto tabs example"
           >
             <Tab
               label={`Giới thiệu tổng quan`}
@@ -67,9 +68,11 @@ export default function BrandTabs({ brand }: Props) {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <div className="content grid grid-cols-1 lg:grid-cols-[1fr,0.35fr] gap-10">
+          <div className="content flex gap-10 max-[1000px]:flex-col-reverse">
             <BrandContent content={brand?.content} />
-            <TOC selector=".content" />
+            <div className="flex-1 mt-4">
+              <TOC selector=".content" />
+            </div>
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
