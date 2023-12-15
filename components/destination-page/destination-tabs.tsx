@@ -73,9 +73,7 @@ export default function DestinationTabs({ destination }: Props) {
         </Box>
         <CustomTabPanel value={value} index={0}>
           <div className="content flex gap-10 max-[1000px]:flex-col-reverse">
-            <div className="w-[70%]">
-              <DestinationContent destination={destination} />
-            </div>
+            <DestinationContent destination={destination} />
             <div className="flex-1 mt-4">
               <TOC selector=".content" />
             </div>

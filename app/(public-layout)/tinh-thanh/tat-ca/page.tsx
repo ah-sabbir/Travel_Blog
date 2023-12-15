@@ -12,9 +12,7 @@ const Page: NextPage<Props> = async () => {
     <>
       <div className="sub-page-cover">
         <div className="container pt-24">
-          <h1 className="font-dancing font-bold text-admin_primary mb-2 text-[60px] text-center">
-            Những tỉnh / thành đã ghé thăm
-          </h1>
+          <h1 className="sub-page-heading">Những tỉnh / thành đã ghé thăm</h1>
           <div>
             <SmallItemSwiper items={regions} coreSlug={path.region} />
           </div>

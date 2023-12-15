@@ -23,9 +23,9 @@ const Page: NextPage<Props> = async ({ params }) => {
   return (
     <>
       <div className="container mt-28">
-        <div className="flex gap-16">
-          <div className="w-[55%]">
-            <div className="flex items-center gap-2">
+        <div className="flex gap-16 max-[1000px]:block">
+          <div className="w-[55%] max-[1000px]:w-full">
+            <div className="flex items-center gap-2 flex-wrap">
               <BtnWithIcon
                 icon={FaAngleLeft}
                 content=""
@@ -69,7 +69,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <TicketDescription description={ticket?.description} />
           </div>
 
-          <div className="flex-1 border shadow-md rounded-md h-fit">
+          <div className="flex-1 max-[1000px]:w-[70%] max-[650px]:w-full max-[1000px]:mt-6 border shadow-md rounded-md h-fit">
             <div className="w-full relative aspect-video rounded-t-md">
               <NextImage
                 src={ticket?.thumbnail?.url || ""}
@@ -80,7 +80,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             </div>
 
             <div className="px-4 py-2">
-              <div className="flex items-center justify-between pt-2 pb-4 border-b">
+              <div className="flex items-center justify-between pt-2 pb-4 border-b flex-wrap gap-2">
                 <span className="flex items-center gap-1">
                   <BiSolidDashboard />
                   Loại vé :{" "}
@@ -93,7 +93,7 @@ const Page: NextPage<Props> = async ({ params }) => {
                 </Link>
               </div>
 
-              <div className="flex items-center justify-between py-4 border-b">
+              <div className="flex items-center justify-between py-4 border-b flex-wrap gap-2">
                 <span className="flex items-center gap-1 flex-1">
                   <MdAirplaneTicket />
                   Hãng vé :{" "}

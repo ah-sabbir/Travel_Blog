@@ -49,7 +49,7 @@ const DestinationContent: FC<Props> = ({ destination }): JSX.Element => {
           </p>
         </div>
 
-        <div className="content page-content !w-full">
+        <div className="content page-content">
           <ArticleContent content={destination?.content} />
         </div>
       </div>

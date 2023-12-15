@@ -39,6 +39,13 @@ const TicketImages: FC<Props> = ({ images }): JSX.Element => {
             speed={500}
             navigation={false}
             loop={true}
+            breakpoints={{
+              0: { slidesPerView: 2 },
+              430: { slidesPerView: 3 },
+              720: { slidesPerView: 4 },
+              900: { slidesPerView: 5 },
+              1250: { slidesPerView: 7 },
+            }}
           >
             {images?.map((image, index) => (
               <SwiperSlide key={index}>

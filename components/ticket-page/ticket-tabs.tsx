@@ -82,9 +82,11 @@ export default function TicketTabs({ ticket }: Props) {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <div className="content grid grid-cols-1 lg:grid-cols-[1fr,0.35fr] gap-10">
+          <div className="content flex gap-10 max-[1000px]:flex-col-reverse">
             <TicketContent content={ticket?.content} />
-            <TicketCTA ticket={ticket} />
+            <div className="flex-1 mt-4">
+              <TicketCTA ticket={ticket} />
+            </div>
           </div>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TicketContent: FC<Props> = ({ content }): JSX.Element => {
-  return <div className="prose">{parse(content as string)}</div>;
+  return <div className="content page-content">{parse(content as string)}</div>;
 };
 
 export default TicketContent;
