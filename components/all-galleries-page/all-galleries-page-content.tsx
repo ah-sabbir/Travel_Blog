@@ -38,13 +38,15 @@ const AllGalleriesPageContent: FC<Props> = (props): JSX.Element => {
 
   return (
     <>
-      <div className="sub-page-cover relative">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
-          <h1 className="font-dancing font-bold text-admin_primary mb-2 text-[60px] text-center">
+      <div className="sub-page-cover">
+        <div className="pt-28 mx-4">
+          <h1 className="sub-page-heading">
             Tất cả thư viện ảnh{" "}
-            <span className="text-[45px]">({numberOfResults})</span>
+            <span className="text-[45px] max-[1130px]:text-[40px] max-[550px]:text-[32px]">
+              ({numberOfResults})
+            </span>
           </h1>
-          <p className="text-center text-lg font-semibold flex items-center gap-3 justify-center">
+          <p className="sub-page-sub-heading">
             Từ ngày 03/11/2023 đến {formatShortDate(new Date().toDateString())}
           </p>
         </div>

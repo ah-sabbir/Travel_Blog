@@ -387,7 +387,7 @@ figure.image figcaption {
 }
 
 .pagination .page-item.active .page-link {
-  @apply bg-[#ad2849] border-[#c60000] !text-white !px-4;
+  @apply bg-[#ad2849] border-[#c60000] !text-white !px-4 max-[330px]:!px-2;
 }
 
 .pagination .page-item.disabled .page-link {
