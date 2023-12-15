@@ -50,9 +50,11 @@ export default function DestinationTabs({ destination }: Props) {
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="primary tabs example"
             indicatorColor="secondary"
+            variant="scrollable"
             textColor="secondary"
+            scrollButtons="auto"
+            aria-label="primary scrollable auto tabs example"
           >
             <Tab
               label={`Tổng quan về ${destination?.name}`}

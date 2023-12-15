@@ -44,9 +44,11 @@ const InterestTabs: FC<Props> = ({ interestId }): JSX.Element => {
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="primary tabs example"
             indicatorColor="secondary"
+            variant="scrollable"
             textColor="secondary"
+            scrollButtons="auto"
+            aria-label="primary scrollable auto tabs example"
           >
             <Tab label="Bài viết" {...a11yProps(0)} className="tab-heading " />
             <Tab

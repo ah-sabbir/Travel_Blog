@@ -33,7 +33,7 @@ const OtherInterests: FC<Props> = ({ currentId }): JSX.Element => {
   return (
     <>
       {isLoading ? (
-        <div className="grid grid-cols-8 gap-4">
+        <div className="category-cards-grid">
           {[...Array(16).keys()].map((item) => (
             <Skeleton className="w-full h-[40px] !rounded-[40px]" key={item} />
           ))}

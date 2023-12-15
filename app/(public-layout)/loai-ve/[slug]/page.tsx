@@ -12,10 +12,8 @@ const Page: NextPage<Props> = async ({ params }) => {
     <>
       <div className="sub-page-cover">
         <div className="container pt-24">
-          <h1 className="font-dancing font-bold text-admin_primary mb-2 text-[60px] text-center">
-            {ticketType?.name}
-          </h1>
-          <p className="text-center text-lg font-semibold flex items-center gap-3 justify-center">
+          <h1 className="sub-page-heading">{ticketType?.name}</h1>
+          <p className="sub-page-sub-heading">
             Tìm thấy {ticketType?.tickets.length} vé thuộc danh mục{" "}
             {ticketType?.name}
           </p>

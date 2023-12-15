@@ -33,7 +33,7 @@ const RelatedGalleries: FC<Props> = ({ countryId, galleryId }): JSX.Element => {
   }, []);
 
   return (
-    <div className="mt-5 grid grid-cols-3 gap-6">
+    <div className="mt-5 cards-grid">
       {isLoading ? (
         <>
           {[...Array(3).keys()].map((item) => (

@@ -43,14 +43,16 @@ export default function BrandTypeTabs({ brandType }: Props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%" }} className="container">
         <Box sx={{ borderBottom: 1, borderColor: "divider", mx: "16px" }}>
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="primary tabs example"
             indicatorColor="secondary"
             textColor="secondary"
+            scrollButtons="auto"
+            variant="scrollable"
+            aria-label="primary scrollable auto tabs example"
           >
             <Tab
               label="Thương hiệu"

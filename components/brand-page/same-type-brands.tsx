@@ -34,7 +34,7 @@ const SameTypeBrands: FC<Props> = ({ brandId, brandTypeId }): JSX.Element => {
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -43,7 +43,7 @@ const SameTypeBrands: FC<Props> = ({ brandId, brandTypeId }): JSX.Element => {
           <>
             {brands && brands?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="cards-grid">
                   {brands?.map((brand) => (
                     <BrandCard key={brand._id.toString()} brand={brand} />
                   ))}

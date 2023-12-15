@@ -46,7 +46,7 @@ const SameTypeTickets: FC<Props> = ({
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -55,7 +55,7 @@ const SameTypeTickets: FC<Props> = ({
           <>
             {tickets && tickets?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="cards-grid">
                   {tickets?.map((ticket) => (
                     <TicketCard key={ticket._id.toString()} ticket={ticket} />
                   ))}

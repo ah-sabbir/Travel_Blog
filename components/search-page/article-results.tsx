@@ -39,7 +39,7 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
     <div>
       <>
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}

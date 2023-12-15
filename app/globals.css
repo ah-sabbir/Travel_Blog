@@ -404,3 +404,8 @@ figure.image figcaption {
 .destination-cards-grid {
   @apply grid grid-cols-4 gap-4 max-[950px]:grid-cols-3 max-[700px]:grid-cols-2 max-[500px]:grid-cols-1;
 }
+
+/* Category grid */
+.category-cards-grid {
+  @apply grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4;
+}

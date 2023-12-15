@@ -52,7 +52,7 @@ const AllGalleriesPageContent: FC<Props> = (props): JSX.Element => {
 
       <div className="container mt-[30px]">
         {isLoading ? (
-          <div className="grid grid-cols-3 gap-6">
+          <div className="cards-grid">
             {[...Array(6).keys()].map((item) => (
               <Skeleton className="w-full aspect-[0.755]" key={item} />
             ))}
@@ -61,7 +61,7 @@ const AllGalleriesPageContent: FC<Props> = (props): JSX.Element => {
           <>
             {galleries && galleries?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="cards-grid">
                   {galleries?.map((article) => (
                     <GalleryCard
                       key={article._id.toString()}

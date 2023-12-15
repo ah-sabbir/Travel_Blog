@@ -27,7 +27,7 @@ const Header: FC<Props> = (props): JSX.Element => {
       const position =
         document.body.scrollTop || document.documentElement.scrollTop;
 
-      if (position > 80) {
+      if (position > 50) {
         setChangeBg(true);
       } else {
         setChangeBg(false);
