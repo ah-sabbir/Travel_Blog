@@ -150,7 +150,7 @@ const EditBrandForm: FC<Props> = ({ brand }): JSX.Element => {
       <div className="admin-card-body relative !pb-24">
         <div className="text-right mb-6">
           <BtnWithIcon
-            content="Trở về trang trước"
+            content="Trở về Trước"
             icon={TiArrowBack}
             iconSize={22}
             onClick={() => router.back()}

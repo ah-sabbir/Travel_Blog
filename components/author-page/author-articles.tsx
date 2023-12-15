@@ -60,10 +60,10 @@ const AuthorArticles: FC<Props> = ({ userId }): JSX.Element => {
                 <div className="pagination-wrapper">
                   <ResponsivePagination
                     current={currentPage}
-                    total={totalPages}
+                    total={4}
                     onPageChange={setCurrentPage}
-                    previousLabel="Trang trước"
-                    nextLabel="Trang sau"
+                    previousLabel="Trước"
+                    nextLabel="Sau"
                   />
                 </div>
               </div>

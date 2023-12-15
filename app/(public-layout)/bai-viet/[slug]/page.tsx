@@ -34,12 +34,12 @@ const Page: NextPage<Props> = async ({ params }) => {
       </div>
       <div className="container flex max-[1250px]:block">
         <div className="mt-20 w-[43%] max-[1250px]:w-full max-[1250px]:mt-10">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <BtnWithIcon
               icon={FaAngleLeft}
               content=""
               customClasses="grid place-items-center h-[28px] w-[28px] !p-0 !rounded-full before:!rounded-full !text-sm"
-              to="/"
+              to={path.allArticles}
             />
 
             {article?.country?.name && (

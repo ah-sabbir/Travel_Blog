@@ -371,8 +371,6 @@ figure.image figcaption {
   @apply !font-arima font-bold !text-lg !normal-case;
 }
 
-/* Pagination */
-/* Pagination */
 /* Paginagation */
 .common-shadow {
   box-shadow: 0 2px 4px #00000012;
@@ -381,11 +379,11 @@ figure.image figcaption {
 /* Pagination */
 /* Paginagation */
 .pagination-wrapper {
-  @apply w-fit pagination pt-12 max-[500px]:pt-8 mx-auto;
+  @apply w-fit max-[500px]:max-w-full pagination pt-12 max-[500px]:pt-8 mx-auto;
 }
 
 .pagination .page-link {
-  @apply !font-arima !rounded-lg grid !text-[#333] font-bold text-sm !border-transparent !py-[10px] max-[500px]:!py-2 !px-4 shadow-md max-[500px]:!text-xs border;
+  @apply !font-arima !rounded-lg grid !text-[#333] font-bold text-sm !border-transparent !py-[10px] max-[500px]:!py-2 !px-4  max-[330px]:!px-2 shadow-md max-[500px]:!text-xs border;
 }
 
 .pagination .page-item.active .page-link {

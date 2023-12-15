@@ -53,8 +53,8 @@ const SameTypeBrands: FC<Props> = ({ brandId, brandTypeId }): JSX.Element => {
                     current={currentPage}
                     total={totalPages}
                     onPageChange={setCurrentPage}
-                    previousLabel="Trang trước"
-                    nextLabel="Trang sau"
+                    previousLabel="Trước"
+                    nextLabel="Sau"
                   />
                 </div>
               </div>

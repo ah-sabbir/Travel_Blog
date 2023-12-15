@@ -31,14 +31,14 @@ const Page: NextPage<Props> = async ({ params }) => {
           />
         </div>
       </div>
-      <div className="container flex">
-        <div className="mt-20 w-[45%]">
-          <div className="flex items-center gap-2">
+      <div className="container flex max-[1250px]:block">
+        <div className="mt-20 w-[43%] max-[1250px]:w-full max-[1250px]:mt-10">
+          <div className="flex items-center gap-2 flex-wrap">
             <BtnWithIcon
               icon={FaAngleLeft}
               content=""
               customClasses="grid place-items-center h-[28px] w-[28px] !p-0 !rounded-full before:!rounded-full !text-sm"
-              to="/"
+              to={path.allGalleries}
             />
 
             {gallery?.country?.name && (
@@ -121,10 +121,10 @@ const Page: NextPage<Props> = async ({ params }) => {
           <p className="leading-8 text-justify">{gallery?.description}</p>
         </div>
 
-        <div className="h-[550px]"></div>
+        <div className="h-[550px] max-[1250px]:hidden"></div>
       </div>
 
-      <div className="container mt-14 mb-10">
+      <div className="container mt-14 max-[1250px]:mt-4 mb-10">
         <div className="content prose prose-img:w-full prose-figure:!mb-8">
           <GalleryContent content={gallery?.imagesContent} />
 
@@ -160,10 +160,10 @@ const Page: NextPage<Props> = async ({ params }) => {
           {formatLongDate(gallery?.updatedAt || "")}
         </p>
 
-        <div className="flex items-center gap-2 mt-3">
-          <p className="italic my-0">Các chủ đề liên quan:</p>
+        <div className="flex items-center gap-2 mt-3 max-[700px]:block">
+          <p className="italic my-0 max-[700px]:mb-2">Các chủ đề liên quan:</p>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             {gallery?.country?.name && (
               <BtnWithIcon
                 to={`${path.country}${gallery.country.slug}`}
