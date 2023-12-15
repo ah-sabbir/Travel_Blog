@@ -7,7 +7,7 @@ interface Props {
 
 const RegionContent: FC<Props> = ({ content }): JSX.Element => {
   return (
-    <div className="content prose prose-img:w-full prose-h2:text-admin_primary prose-h2:font-extrabold prose-h3:font-extrabold text-justify">
+    <div className="content page-content">
       <ArticleContent content={content} />
     </div>
   );
