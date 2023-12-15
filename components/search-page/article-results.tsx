@@ -48,7 +48,7 @@ const ArticleResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
           <>
             {articles && articles?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 container gap-6">
+                <div className="cards-grid">
                   {articles?.map((article) => (
                     <ArticleCard
                       key={article._id.toString()}

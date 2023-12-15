@@ -37,15 +37,15 @@ const SearchResults: FC<Props> = (props): JSX.Element => {
   return (
     <>
       <div className="sub-page-cover relative">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
+        <div className="pt-28 w-[760px] mx-auto max-[820px]:w-[90%]">
           <p className="text-lg font-bold mb-1">Bạn đang tìm kiếm điều gì?</p>
           <form
             onSubmit={searchHandler}
-            className="flex items-center w-[760px] py-[2px] pl-8 pr-[2px] bg-white rounded-[22px]"
+            className="flex items-center w-full py-[2px] pl-8 pr-[2px] bg-white rounded-[22px]"
           >
             <input
               type="text"
-              className="flex-1 py-2 h-full outline-none text-2xl"
+              className="flex-1 py-2 h-full outline-none text-2xl max-[500px]:text-base"
               onChange={(e) => setNewQuery(e.target.value)}
               value={newQuery || ""}
             />
@@ -53,7 +53,7 @@ const SearchResults: FC<Props> = (props): JSX.Element => {
             <BtnWithIcon
               content="Tìm kiếm"
               type="submit"
-              customClasses="!text-xl !w-[120px] !h-[80px] before:!rounded-r-[22px] !rounded-r-[22px]"
+              customClasses="!text-xl max-[500px]:!text-base !w-[120px] !h-[80px] max-[500px]:!h-[60px] before:!rounded-r-[22px] !rounded-r-[22px]"
             />
           </form>
           <p className="mt-2 text-sm">

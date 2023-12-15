@@ -50,7 +50,7 @@ const TicketResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
           <>
             {tickets && tickets?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 container gap-6">
+                <div className="cards-grid">
                   {tickets?.map((ticket) => (
                     <TicketCard key={ticket._id.toString()} ticket={ticket} />
                   ))}

@@ -50,7 +50,7 @@ const GalleryResults: FC<Props> = ({ query, setTotalResults }): JSX.Element => {
           <>
             {galleries && galleries?.length > 0 ? (
               <div>
-                <div className="grid grid-cols-3 container gap-6">
+                <div className="cards-grid">
                   {galleries?.map((gallery) => (
                     <GalleryCard
                       key={gallery._id.toString()}
