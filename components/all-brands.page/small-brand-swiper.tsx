@@ -32,6 +32,12 @@ const SmallBrandSwiper: FC<Props> = ({ items }): JSX.Element => {
         speed={500}
         navigation={false}
         loop={true}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          600: { slidesPerView: 2 },
+          800: { slidesPerView: 3 },
+          1100: { slidesPerView: 4 },
+        }}
       >
         {items?.map((item: any) => (
           <SwiperSlide key={item?._id?.toString()}>

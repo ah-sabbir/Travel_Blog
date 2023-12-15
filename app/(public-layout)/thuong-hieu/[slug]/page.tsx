@@ -22,7 +22,7 @@ const Page: NextPage<Props> = async ({ params }) => {
       <div className="container mt-28">
         <div className="flex gap-16 max-[890px]:gap-8 max-[750px]:block">
           <div className="w-1/2 max-[750px]:w-full">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <BtnWithIcon
                 icon={FaAngleLeft}
                 content=""
@@ -39,7 +39,7 @@ const Page: NextPage<Props> = async ({ params }) => {
               )}
             </div>
 
-            <h1 className="font-dancing font-bold text-[70px] text-admin_primary mt-10">
+            <h1 className="sub-page-heading-type-2 !text-[60px] mt-10">
               {brand?.name}
             </h1>
 

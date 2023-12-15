@@ -13,9 +13,7 @@ const Page: NextPage<Props> = async () => {
     <>
       <div className="sub-page-cover">
         <div className="container pt-24">
-          <h1 className="font-dancing font-bold text-admin_primary mb-2 text-[60px] text-center">
-            Thương hiệu trong ngành du lịch
-          </h1>
+          <h1 className="sub-page-heading">Thương hiệu trong ngành du lịch</h1>
           <div className="mt-4">
             <SmallBrandSwiper items={brands} />
           </div>
