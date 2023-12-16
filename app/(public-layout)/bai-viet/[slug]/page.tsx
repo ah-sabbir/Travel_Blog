@@ -5,7 +5,7 @@ import TOC from "@/components/article-page/toc";
 import BtnWithIcon from "@/components/btn-with-icon";
 import Comments from "@/components/comments";
 import NextImage from "@/components/next-image";
-import { path } from "@/constant";
+import { path, websiteName } from "@/constant";
 import { getArticleBySlug } from "@/lib/fetch-article-data";
 import { formatLongDate } from "@/lib/format-date";
 import { NextPage } from "next";
@@ -21,8 +21,29 @@ interface Props {
 const Page: NextPage<Props> = async ({ params }) => {
   const article = await getArticleBySlug(params.slug);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article?.name,
+    image: article?.thumbnail.url,
+    author: article?.author.name,
+    genre: article?.category.name,
+    publisher: websiteName,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/bai-viet/${params.slug}`,
+    datePublished: new Date(article?.createdAt || "").toISOString(),
+    dateCreated: new Date(article?.createdAt || "").toISOString(),
+    dateModified: new Date(article?.updatedAt || "").toISOString(),
+    description: article?.description,
+    articleBody: article?.content,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="page-cover bubble-mask">
         <div className="relative w-full h-full">
           <NextImage

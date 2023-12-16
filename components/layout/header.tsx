@@ -41,6 +41,10 @@ const Header: FC<Props> = (props): JSX.Element => {
     };
   }, []);
 
+  useEffect(() => {
+    setOpenMobileMenu(false);
+  }, [pathName]);
+
   return (
     <>
       <header

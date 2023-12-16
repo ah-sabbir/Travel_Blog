@@ -78,6 +78,8 @@ export const iconPosition = {
 export const owner = "Lê Thanh Trường";
 export const domain = "dulich4phuong.com";
 export const websiteName = "Du Lịch 4 Phương";
+export const websiteDescription =
+  "Blog Du lịch 4 phương ghi lại kinh nghiệm và hành trình du lịch của 1 travel blogger trong suốt nhiều năm.";
 
 export const intro = `<h1>Xin chào! Mình là Travel Blogger ${owner} - người sáng lập blog du lịch <strong class="font-extrabold underline">${websiteName}</strong></h1><p>Hy vọng những bài viết của mình sẽ giúp bạn có thêm một xíu kinh nghiệm và nguồn cảm hứng để tự mình cất bước chân khám phá thế giới.</p>`;
 
