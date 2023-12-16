@@ -3,6 +3,23 @@ import RegionTabs from "@/components/region-page/region-tabs";
 import { getRegionBySlug } from "@/lib/fetch-region-data";
 import { NextPage } from "next";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const region = await getRegionBySlug(params.slug, "name description");
+
+    return {
+      title: region?.name,
+      description: region?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

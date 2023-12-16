@@ -14,6 +14,23 @@ import { FaAngleLeft } from "react-icons/fa";
 import { FcAlarmClock } from "react-icons/fc";
 import slugify from "slugify";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const gallery = await getGalleryBySlug(params.slug);
+
+    return {
+      title: gallery?.name,
+      description: gallery?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

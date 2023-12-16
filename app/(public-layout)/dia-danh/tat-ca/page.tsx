@@ -2,8 +2,14 @@ import AllDestinationsTabs from "@/components/all-destinations-page/all-destinat
 import SmallItemSwiper from "@/components/smaill-item-swiper";
 import { path } from "@/constant";
 import { getAllDestinations } from "@/lib/fetch-destination-data";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Tất cả địa danh",
+  description:
+    "Tất cả bài viết về những địa danh khắp 5 năm châu mà tôi đã ghé thăm. Khám phá những câu chuyện, cảm hứng và ý tưởng du lịch độc đáo cho chuyến vi vu tiếp theo của bạn.",
+};
 
 interface Props {}
 

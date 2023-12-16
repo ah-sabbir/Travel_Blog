@@ -10,6 +10,23 @@ import { FaAngleLeft } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { GiEarthAmerica } from "react-icons/gi";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const article = await getBrandBySlug(params.slug);
+
+    return {
+      title: article?.name,
+      description: article?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

@@ -2,6 +2,7 @@
 import BtnWithIcon from "@/components/btn-with-icon";
 import SearchTabs from "@/components/search-page/search-tabs";
 import { path } from "@/constant";
+import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
@@ -37,6 +38,13 @@ const SearchResults: FC<Props> = (props): JSX.Element => {
 
   return (
     <>
+      <Head>
+        <title>Kết quả tìm kiếm cho {query}</title>
+        <meta
+          name="description"
+          content={`Kết quả tìm kiếm gồm bài viết, thư viện ảnh và vé giá rẻ cho từ khóa ${query} trên website Dulich4phuong.com`}
+        />
+      </Head>
       <div className="sub-page-cover relative">
         <div className="pt-28 w-[760px] mx-auto max-[820px]:w-[90%]">
           <p className="text-lg font-bold mb-1">Bạn đang tìm kiếm điều gì?</p>

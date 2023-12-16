@@ -14,6 +14,23 @@ import { FaAngleLeft } from "react-icons/fa";
 import { FcAlarmClock } from "react-icons/fc";
 import slugify from "slugify";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const article = await getArticleBySlug(params.slug);
+
+    return {
+      title: article?.name,
+      description: article?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

@@ -7,6 +7,23 @@ interface Props {
   params: { slug: string };
 }
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const country = await getCountryBySlug(params.slug);
+
+    return {
+      title: country?.name,
+      description: country?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const Page: NextPage<Props> = async ({ params }) => {
   const country = await getCountryBySlug(
     params.slug,

@@ -3,6 +3,26 @@ import NextImage from "@/components/next-image";
 import { getDestinationBySlug } from "@/lib/fetch-destination-data";
 import { NextPage } from "next";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const destination = await getDestinationBySlug(
+      params.slug,
+      "name description"
+    );
+
+    return {
+      title: destination?.name,
+      description: destination?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

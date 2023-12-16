@@ -3,6 +3,23 @@ import NextImage from "@/components/next-image";
 import { getInterestBySlug } from "@/lib/fetch-interest-data";
 import { NextPage } from "next";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const interest = await getInterestBySlug(params.slug);
+
+    return {
+      title: interest?.name,
+      description: interest?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

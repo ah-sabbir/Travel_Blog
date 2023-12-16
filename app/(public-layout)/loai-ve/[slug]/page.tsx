@@ -2,6 +2,25 @@ import TicketTypeTabs from "@/components/ticket-type-page/ticket-type-tabs";
 import { getTicketTypeBySlug } from "@/lib/fetch-ticket-type-data";
 import { NextPage } from "next";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const ticketType = await getTicketTypeBySlug(params.slug);
+
+    return {
+      title: ticketType?.name,
+      description: `
+    Những loại vế giá rẻ nhất thuộc loại ${ticketType?.name} mà tôi muốn gợi ý cho chuyến du lịch vi vu tiếp theo của bạn.
+      `,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

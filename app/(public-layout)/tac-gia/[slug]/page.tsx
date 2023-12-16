@@ -1,13 +1,29 @@
 import AuthorTabs from "@/components/author-page/author-tabs";
 import BtnWithIcon from "@/components/btn-with-icon";
 import NextImage from "@/components/next-image";
-import UserAvatar from "@/components/user-avatar";
 import { domain } from "@/constant";
 import { getUserProfileBySlug } from "@/lib/fetch-user-data";
 import { NextPage } from "next";
 import { FaUserCog, FaUserEdit } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdLocationPin } from "react-icons/md";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const author = await getUserProfileBySlug(params.slug);
+
+    return {
+      title: author?.name,
+      description: author?.description,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 interface Props {
   params: { slug: string };

@@ -2,6 +2,23 @@ import CategoryTabs from "@/components/category-page/category-tabs";
 import { getCategoryBySlug } from "@/lib/fetch-category-data";
 import { NextPage } from "next";
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
+  try {
+    const category = await getCategoryBySlug(params.slug);
+
+    return {
+      title: category?.name,
+      description: `Tất cả bài viết thuộc danh mục ${category?.name}. Khám phá những câu chuyện, cảm hứng và ý tưởng du lịch độc đáo cho chuyến vi vu tiếp theo của bạn.`,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 interface Props {
   params: { slug: string };
 }

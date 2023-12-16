@@ -1,9 +1,15 @@
 import AllCategoriesTabs from "@/components/all-categories-page/all-categories-tabs";
 import { getAllCategories } from "@/lib/fetch-category-data";
 import { formatShortDate } from "@/lib/format-date";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 
 interface Props {}
+
+export const metadata: Metadata = {
+  title: "Tất cả danh mục",
+  description:
+    "Tất cả danh mục bài viết về bí kíp du lịch chinh phục thế giới. Khám phá những câu chuyện, cảm hứng và ý tưởng du lịch độc đáo cho chuyến vi vu tiếp theo của bạn.",
+};
 
 const Page: NextPage<Props> = async () => {
   const categories = await getAllCategories("name");

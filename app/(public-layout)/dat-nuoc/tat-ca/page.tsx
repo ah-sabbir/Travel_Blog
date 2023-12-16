@@ -2,8 +2,14 @@ import AllCountriesTabs from "@/components/all-countries-page/all-countries-tabs
 import SmallItemSwiper from "@/components/smaill-item-swiper";
 import { path } from "@/constant";
 import { getAllCountries } from "@/lib/fetch-country-data";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Tất cả đất nước",
+  description:
+    "Tất cả đất nước thế giới mà tôi đã ghé thăm. Khám phá những câu chuyện, cảm hứng và ý tưởng du lịch độc đáo cho chuyến vi vu tiếp theo của bạn.",
+};
 
 interface Props {}
 
