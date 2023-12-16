@@ -5,6 +5,7 @@ import GalleryContent from "@/components/gallery-page/gallery-content";
 import RelatedGalleries from "@/components/gallery-page/related-galleries";
 import NextImage from "@/components/next-image";
 import { path } from "@/constant";
+import { GalleryEntity } from "@/entities/gallery.entity";
 import { getGalleryBySlug } from "@/lib/fetch-gallery-data";
 import { formatLongDate } from "@/lib/format-date";
 import { NextPage } from "next";
@@ -132,10 +133,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <p className="italic mx-auto w-fit border-b text-admin_gray_text">
               Chia sẻ ngay để mọi người cùng xem
             </p>
-            <ArticleSocialShare
-              slug={gallery?.slug || ""}
-              title={gallery?.name || ""}
-            />
+            <ArticleSocialShare object={gallery as GalleryEntity} />
           </div>
         </div>
       </div>

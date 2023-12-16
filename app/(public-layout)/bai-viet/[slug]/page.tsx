@@ -30,9 +30,9 @@ const Page: NextPage<Props> = async ({ params }) => {
     genre: article?.category.name,
     publisher: websiteName,
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/bai-viet/${params.slug}`,
-    datePublished: new Date(article?.createdAt || "").toISOString(),
-    dateCreated: new Date(article?.createdAt || "").toISOString(),
-    dateModified: new Date(article?.updatedAt || "").toISOString(),
+    datePublished: new Date(article?.createdAt || "")?.toISOString(),
+    dateCreated: new Date(article?.createdAt || "")?.toISOString(),
+    dateModified: new Date(article?.updatedAt || "")?.toISOString(),
     description: article?.description,
     articleBody: article?.content,
   };
@@ -146,10 +146,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             <p className="italic mx-auto w-fit border-b text-admin_gray_text">
               Chia sẻ ngay để mọi người cùng đọc
             </p>
-            <ArticleSocialShare
-              slug={article?.slug || ""}
-              title={article?.name || ""}
-            />
+            <ArticleSocialShare object={article} isArticle />
           </div>
         </div>
         <div className="flex-1 max-[1000px]:w-full">

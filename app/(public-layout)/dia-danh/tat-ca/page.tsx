@@ -3,6 +3,7 @@ import SmallItemSwiper from "@/components/smaill-item-swiper";
 import { path } from "@/constant";
 import { getAllDestinations } from "@/lib/fetch-destination-data";
 import { NextPage } from "next";
+export const dynamic = "force-dynamic";
 
 interface Props {}
 

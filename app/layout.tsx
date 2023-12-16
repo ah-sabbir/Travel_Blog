@@ -28,21 +28,6 @@ export const generateMetadata = async () => {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     },
-    openGraph: {
-      title: websiteName,
-      description: websiteDescription,
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-      siteName: websiteName,
-      images: [
-        {
-          url: "https://localhost:3000/opengraph-image.png",
-          width: 1280,
-          height: 720,
-        },
-      ],
-      locale: "vi",
-      type: "website",
-    },
   };
 };
 

@@ -1,5 +1,6 @@
 import AllGalleriesPageContent from "@/components/all-galleries-page/all-galleries-page-content";
 import { NextPage } from "next";
+export const dynamic = "force-dynamic";
 
 interface Props {}
 

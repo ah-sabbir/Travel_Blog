@@ -5,6 +5,7 @@ import { path } from "@/constant";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
+export const dynamic = "force-dynamic";
 
 interface Props {}
 
