@@ -14,6 +14,7 @@ import { getAllTickets } from "@/lib/fetch-ticket-data";
 import { getAllTicketTypes } from "@/lib/fetch-ticket-type-data";
 import { getAllUsers } from "@/lib/fetch-user-data";
 import { MetadataRoute } from "next";
+export const dynamic = "force-dynamic";
 
 type ObjectArr = { url: string; lastModified: Date }[];
 
