@@ -15,4 +15,6 @@ export interface CountryEntity {
     url: string;
   };
   views: number;
+  createdAt: string;
+  updatedAt: string;
 }
