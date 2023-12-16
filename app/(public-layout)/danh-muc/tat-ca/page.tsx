@@ -2,7 +2,6 @@ import AllCategoriesTabs from "@/components/all-categories-page/all-categories-t
 import { getAllCategories } from "@/lib/fetch-category-data";
 import { formatShortDate } from "@/lib/format-date";
 import { NextPage } from "next";
-export const dynamic = "force-dynamic";
 
 interface Props {}
 
