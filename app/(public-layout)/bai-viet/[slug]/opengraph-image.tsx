@@ -26,7 +26,7 @@ export default async function og({
         <div tw="absolute flex inset-0">
           <img
             tw="flex flex-1 object-cover w-full h-full object-center"
-            src={`${process.env.NEXT_PUBLIC_ASSETS_URL}${article?.thumbnail?.url}`}
+            src={article?.thumbnail?.url}
             alt={article?.name!!}
           />
           {/* Overlay */}
