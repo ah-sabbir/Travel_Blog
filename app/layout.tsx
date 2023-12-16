@@ -18,18 +18,18 @@ const dancing_script = Dancing_Script({
   variable: "--font-dancing-script",
 });
 
-// export const generateMetadata = async () => {
-//   return {
-//     title: {
-//       template: `%s | ${websiteName}`,
-//       default: websiteName,
-//     },
-//     description: websiteDescription,
-//     alternates: {
-//       canonical: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-//     },
-//   };
-// };
+export const generateMetadata = async () => {
+  return {
+    title: {
+      template: `%s | ${websiteName}`,
+      default: websiteName,
+    },
+    description: websiteDescription,
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+    },
+  };
+};
 
 export default function RootLayout({
   children,
