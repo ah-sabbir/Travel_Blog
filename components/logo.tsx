@@ -4,12 +4,20 @@ import ContainNextImage from "./contain-next-image";
 
 interface Props {
   wrapperClasses: string;
+  isBlack?: boolean;
 }
 
-const Logo: FC<Props> = ({ wrapperClasses }): JSX.Element => {
+const Logo: FC<Props> = ({ wrapperClasses, isBlack }): JSX.Element => {
   return (
     <Link href="/" className={`relative block ${wrapperClasses}`}>
-      <ContainNextImage src="/assets/images/logo.svg" alt="Logo" />
+      <ContainNextImage
+        src={
+          isBlack
+            ? "/assets/images/du-lich-4-phuong-logo.png"
+            : "/assets/images/du-lich-4-phuong-logo-text-white.png"
+        }
+        alt="Logo"
+      />
     </Link>
   );
 };

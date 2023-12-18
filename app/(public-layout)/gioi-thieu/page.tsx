@@ -52,7 +52,7 @@ const page: NextPage<Props> = () => {
         </p>
         <h2>2. Hành Trình Trải Nghiệm Thực Tế</h2>
         <p>
-          Chẳng ai muốn một kỳ nghỉ rơi vào kiểu chụp hình "lấy về để ngắm" mà
+          Chẳng ai muốn một kỳ nghỉ rơi vào kiểu chụp hình “lấy về để ngắm” mà
           thiếu đi những trải nghiệm thực tế. {websiteName} sẽ chia sẻ những
           hành trình thú vị, từ việc thử nghiệm ẩm thực địa phương đến việc tham
           gia các hoạt động văn hóa độc đáo. Bạn sẽ được dẫn dắt qua những con

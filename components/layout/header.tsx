@@ -54,7 +54,10 @@ const Header: FC<Props> = (props): JSX.Element => {
       >
         <div className="container flex items-center justify-between max-[1250px]:justify-center">
           <div className="flex items-center gap-8">
-            <Logo wrapperClasses="w-[150px] h-[30px]" />
+            <Logo
+              wrapperClasses="w-[150px] h-[35px] -mt-1"
+              isBlack={pathName !== "/" && !changeBg}
+            />
 
             <ul className="flex items-center gap-2 max-[1250px]:hidden">
               <div className={liClasses}>
