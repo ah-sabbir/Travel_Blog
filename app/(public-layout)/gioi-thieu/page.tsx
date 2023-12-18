@@ -22,7 +22,7 @@ const page: NextPage<Props> = () => {
       </div>
 
       <div className="profile-bg h-auto px-6 pb-8 pt-36 text-center mt-36 mb-20 relative">
-        <div className="circle-radius border w-[200px] h-[200px] absolute -top-[100px] right-[156px]">
+        <div className="circle-radius border w-[200px] h-[200px] absolute -top-[100px] left-1/2 -translate-x-1/2">
           <NextImage
             src="/assets/images/footer/du-lich-blog-footer-image.jpg"
             alt="Du lịch 4 phương"
