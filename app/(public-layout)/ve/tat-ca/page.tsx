@@ -1,4 +1,3 @@
-import AllBrandTypesTabs from "@/components/all-brands.page/all-brand-types-tabs";
 import SmallBrandSwiper from "@/components/all-brands.page/small-brand-swiper";
 import AllBrandsTabs from "@/components/all-tickets-page/all-brands-tabs";
 import { getAllBrands } from "@/lib/fetch-brand-data";

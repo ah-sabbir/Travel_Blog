@@ -112,14 +112,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
-      url: `${baseURL}${path.allBrandTypes}`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseURL}${path.allTicketTypes}`,
-      lastModified: new Date(),
-    },
-    {
       url: `${baseURL}${path.allInterests}`,
       lastModified: new Date(),
     },

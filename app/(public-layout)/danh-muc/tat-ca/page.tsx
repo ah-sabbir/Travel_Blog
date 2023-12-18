@@ -1,4 +1,5 @@
 import AllCategoriesTabs from "@/components/all-categories-page/all-categories-tabs";
+import { webCreatedDate } from "@/constant";
 import { getAllCategories } from "@/lib/fetch-category-data";
 import { formatShortDate } from "@/lib/format-date";
 import { Metadata, NextPage } from "next";
@@ -19,7 +20,8 @@ const Page: NextPage<Props> = async () => {
         <div className="pt-28 mx-4">
           <h1 className="sub-page-heading">Tất cả danh mục</h1>
           <p className="sub-page-sub-heading">
-            Từ ngày 03/11/2023 đến {formatShortDate(new Date().toDateString())}
+            Từ ngày {webCreatedDate} đến{" "}
+            {formatShortDate(new Date().toDateString())}
           </p>
         </div>
       </div>

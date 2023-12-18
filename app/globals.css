@@ -40,7 +40,7 @@
 }
 
 .footer-image-wrapper::after {
-  @apply circle-radius bg-[linear-gradient(_0,rgba(0,0,0,0.168627451)_50%,rgba(0,0,0,0.3490196078)_85%_)] content-[''] absolute inset-0 z-0;
+  @apply circle-radius bg-[linear-gradient(_0,rgba(0,0,0,0.35)_50%,rgba(0,0,0,0.3490196078)_85%_)] content-[''] absolute inset-0 z-0;
 }
 
 .page-content {
@@ -406,4 +406,13 @@ figure.image figcaption {
 /* Category grid */
 .category-cards-grid {
   @apply grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4;
+}
+
+/* About page */
+.profile-bg {
+  background-image: url("/assets/images/about-page/bubbles-bg.png");
+  background-size: cover;
+  background-color: #c0e2e2;
+  background-position: center;
+  @apply w-[520px] mx-auto rounded-[15px] max-[600px]:w-full;
 }

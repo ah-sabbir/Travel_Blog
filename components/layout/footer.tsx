@@ -3,9 +3,10 @@ import NextImage from "../next-image";
 import SubscribeForm from "./subscribe-form";
 import { footerColumns } from "@/data/menu";
 import Link from "next/link";
-import { ownerEmail } from "@/constant";
+import { ownerEmail, ownerTel, socialLinks, webCreatedDate } from "@/constant";
 import SocialItems from "../social-items";
 import Logo from "../logo";
+import { FaInstagram } from "react-icons/fa";
 
 interface Props {}
 
@@ -26,13 +27,25 @@ const Footer: FC<Props> = (props): JSX.Element => {
               <SubscribeForm />
             </div>
 
-            <div className="footer-image-wrapper border">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={socialLinks.igLink}
+              className="block footer-image-wrapper border relative"
+            >
               <NextImage
                 src="/assets/images/footer/du-lich-blog-footer-image.jpg"
                 alt="Du lịch 4 phương"
                 className="circle-radius"
               />
-            </div>
+
+              <div className="absolute right-0 left-0 bottom-[45%]">
+                <div className="relative z-[5] w-[80%] mx-auto flex gap-3 text-white text-lg font-semibold leading-8">
+                  <FaInstagram size={35} /> Theo dõi Du Lịch 4 Phương trên
+                  Instagram cùng những người khác
+                </div>
+              </div>
+            </a>
           </div>
 
           <div className="flex gap-6 my-6 text-sm text-white max-[545px]:block">
@@ -53,16 +66,20 @@ const Footer: FC<Props> = (props): JSX.Element => {
 
             <div className="w-fit max-[545px]:mt-6">
               <h5 className="font-extrabold mb-2">Liên hệ</h5>
-              <ul className="mb-3">
+              <ul className="mb-3 space-y-3">
+                <li>
+                  <a href={`mailto:${ownerTel}`}>Tel: {ownerTel}</a>
+                </li>
                 <li>
                   <a
                     href={`mailto:${ownerEmail}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {ownerEmail}
+                    Email: {ownerEmail}
                   </a>
                 </li>
+                <li>Ngày thành lập: {webCreatedDate}</li>
               </ul>
               <SocialItems />
             </div>

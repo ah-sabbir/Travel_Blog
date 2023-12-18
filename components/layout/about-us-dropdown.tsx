@@ -26,6 +26,10 @@ const AboutUsDropdown: FC<Props> = (props): JSX.Element => {
       <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
         <Link href={path.allTickets}>Vé / tour</Link>
       </li>
+
+      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
+        <Link href={path.introduce}>Về tôi</Link>
+      </li>
     </div>
   );
 };

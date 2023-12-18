@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import BtnWithLoading from "../btn-with-loading";
+import { subcribeHandler } from "@/lib/subcribe";
+import toast from "react-hot-toast";
 
 interface Props {}
 
@@ -30,9 +32,21 @@ const SubscribeForm: FC<Props> = (props): JSX.Element => {
 
   const { register, handleSubmit, formState } = form;
 
-  const { errors } = formState;
+  const onSubmit = async (data: FormValues) => {
+    try {
+      setIsLoading(true);
+      const res = await subcribeHandler(data.email);
 
-  const onSubmit = async () => {};
+      if (res?.ok) {
+        toast.success("Đăng ký bản tin thành công!");
+      }
+
+      setIsLoading(false);
+    } catch (error: any) {
+      toast.error(error.response.data.error);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>

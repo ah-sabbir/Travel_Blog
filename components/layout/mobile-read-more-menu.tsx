@@ -26,14 +26,6 @@ const MobileReadMoreMenu: FC<Props> = (props): JSX.Element => {
       <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
         <Link href={path.allTickets}>Vé / tour</Link>
       </li>
-
-      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
-        <Link href={path.allBrandTypes}>Phân loại thương hiệu</Link>
-      </li>
-
-      <li className="py-4 px-5 border-b border-light_gray hover:bg-light_gray transition rounded-b-md">
-        <Link href={path.allTicketTypes}>Phân loại vé</Link>
-      </li>
     </ul>
   );
 };

@@ -59,6 +59,7 @@ export const path = {
   gallery: "/thu-vien-anh/",
   allGalleries: "/thu-vien-anh/tat-ca",
   author: "/tac-gia/",
+  introduce: "/gioi-thieu",
 };
 
 export const iconsFile = "/assets/images/icons/icons.png";
@@ -80,7 +81,14 @@ export const domain = "dulich4phuong.com";
 export const websiteName = "Du Lịch 4 Phương";
 export const websiteDescription =
   "Blog Du lịch 4 phương ghi lại kinh nghiệm và hành trình du lịch của 1 travel blogger trong suốt nhiều năm.";
-
 export const intro = `<h1>Xin chào! Mình là Travel Blogger ${owner} - người sáng lập blog du lịch <strong class="font-extrabold underline">${websiteName}</strong></h1><p>Hy vọng những bài viết của mình sẽ giúp bạn có thêm một xíu kinh nghiệm và nguồn cảm hứng để tự mình cất bước chân khám phá thế giới.</p>`;
-
 export const ownerEmail = "legiangbmt09@gmail.com";
+export const ownerTel = "0962334807";
+export const webCreatedDate = "17/12/2023";
+
+export const socialLinks = {
+  igLink: "https://www.instagram.com/dulich4phuong_online",
+  fbLink: "https://www.facebook.com/dulich4phuongonline",
+  ytLink: "https://www.youtube.com/channel/UCh25Htk4TeEhTPzQKbG6oaQ",
+  pinLink: "https://www.pinterest.com/dulich4phuong_online",
+};

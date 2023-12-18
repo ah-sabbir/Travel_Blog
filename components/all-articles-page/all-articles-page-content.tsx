@@ -9,6 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import ArticleCard from "../article-card";
 import Skeleton from "react-loading-skeleton";
 import { getAllArticlesWithPagination } from "@/lib/fetch-article-data";
+import { webCreatedDate } from "@/constant";
 
 interface Props {}
 
@@ -47,7 +48,8 @@ const AllArticlesPageContent: FC<Props> = (props): JSX.Element => {
             </span>
           </h1>
           <p className="sub-page-sub-heading">
-            Từ ngày 03/11/2023 đến {formatShortDate(new Date().toDateString())}
+            Từ ngày {webCreatedDate} đến{" "}
+            {formatShortDate(new Date().toDateString())}
           </p>
         </div>
       </div>

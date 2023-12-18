@@ -1,6 +1,6 @@
-import mongoose, { Schema, models } from "mongoose";
+import mongoose, { models } from "mongoose";
 
-const RegionSchema = new mongoose.Schema(
+const subcriberSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -9,3 +9,8 @@ const RegionSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+const Subcriber =
+  models.Subcriber || mongoose.model("Subcriber", subcriberSchema);
+
+export default Subcriber;

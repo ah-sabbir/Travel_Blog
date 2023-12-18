@@ -1,4 +1,4 @@
-import { iconPosition, path } from "@/constant";
+import { iconPosition, path, socialLinks } from "@/constant";
 import { IconType } from "react-icons";
 import {
   FaInstagram,
@@ -92,10 +92,10 @@ export const headerServiceItems = [
 ];
 
 export const headerSocialItems = [
-  { link: "", icon: FaInstagram },
-  { link: "", icon: FaYoutube },
-  { link: "", icon: FaPinterestP },
-  { link: "", icon: FaFacebookF, size: 16 },
+  { link: socialLinks.igLink, icon: FaInstagram },
+  { link: socialLinks.ytLink, icon: FaYoutube },
+  { link: socialLinks.pinLink, icon: FaPinterestP },
+  { link: socialLinks.fbLink, icon: FaFacebookF, size: 16 },
 ];
 
 export const footerColumns = [
